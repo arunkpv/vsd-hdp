@@ -32,9 +32,9 @@ We will be building Yosys from the source using gcc, the instructions for which 
   - Install the build system prerequsites/ dependencies:
     ```
     sudo apt-get install build-essential clang bison flex \
-	libreadline-dev gawk tcl-dev libffi-dev git \
-	graphviz xdot pkg-config python3 libboost-system-dev \
-	libboost-python-dev libboost-filesystem-dev zlib1g-dev
+        libreadline-dev gawk tcl-dev libffi-dev git \
+        graphviz xdot pkg-config python3 libboost-system-dev \
+        libboost-python-dev libboost-filesystem-dev zlib1g-dev
     ```
     
   - Build (using gcc) and install Yosys:
