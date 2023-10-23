@@ -43,22 +43,26 @@ We will be building Yosys from the source using gcc, the instructions for which 
     make
     sudo make install
     ```
-  - ![day0_yosys](https://github.com/arunkpv/vsd-hdp/assets/79094513/08e41e35-5f95-4416-95af-011c6fb81ff8)
     
+  - Invoke from shell:  
+    ![day0_yosys](https://github.com/arunkpv/vsd-hdp/assets/79094513/08e41e35-5f95-4416-95af-011c6fb81ff8)
+  
  **2. iverilog - Icarus Verilog**  
    - Install from official Ubuntu repository:
      ```
      sudo apt-get install iverilog
      ```
-   - ![day0_iverilog](https://github.com/arunkpv/vsd-hdp/assets/79094513/5edb8420-274d-4309-8d23-ff3176a21094)
-    
+     
+   - Invoke from shell:  
+     ![day0_iverilog](https://github.com/arunkpv/vsd-hdp/assets/79094513/5edb8420-274d-4309-8d23-ff3176a21094)
+  
  **3. GTKWave**
    - Install from official Ubuntu repository:
      ```
      sudo apt-get install gtkwave
      ```
-
-   - ![day0_gtkwave](https://github.com/arunkpv/vsd-hdp/assets/79094513/4a58eb72-04c6-41fb-9d1f-6f2f7dfd1c10)  
-
-
+     
+   - Invoke from shell:  
+     ![day0_gtkwave](https://github.com/arunkpv/vsd-hdp/assets/79094513/4a58eb72-04c6-41fb-9d1f-6f2f7dfd1c10)  
+  
 ## Day 1
