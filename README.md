@@ -6,7 +6,7 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  | Day # | Topic(s) Covered |
  |---|---|
  |[Day 0](#day-0) | GitHub repo creation, System/ Tools Setup |
- |[Day 1](#day-2) | Introduction to Verilog RTL design and Synthesis |
+ |[Day 1](#day-1) | Introduction to Verilog RTL design and Synthesis |
 
 
 ## Day 0
