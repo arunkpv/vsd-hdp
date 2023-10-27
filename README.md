@@ -91,7 +91,7 @@ vvp good_mux
 
 
 # Step 3: Running the verilog simulation in step 2 will generate & dump the stimulus and output 
-# signal values for the defined simulation duration in the testbench file to a vcd file.
+# signal values for the defined simulation duration in the testbench to a vcd file.
 # This can now be viewed using gtkwave.
 # Syntax: gtkwave <dumpfile.vcd>
 
@@ -104,4 +104,48 @@ _Snapshot of the waves from the above simulation in gtkwave:_
 ### Lab 3: Synthesis of RTL design using Yosys with sky130 library as target
 In this lab, we will perform gate-level synthesis of the example RTL design simulated in the previous session using Yosys and sky130 as the target library.
 <br />
+```
+# 1. Invoke the yosys shell (since we are doing each step manually this time around)
+yosys
 
+# 2. Read the library file(s)
+# Syntax: read_liberty -lib <path-to-libfile(s)>
+
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+
+# 3. Read the RTL design files
+# Syntax: read_verilog <verilog_file.v>
+
+read_verilog good_mux.v
+
+
+# 4. Perform the synthesis
+# Syntax: synth -top <module_name> 
+
+synth -top good_mux
+
+
+# 5. Generate the gate-level netlist for the target library
+# Syntax: abc -liberty <path-to-libfile(s)>
+# Note: Pay attention to the syntesis results!
+
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+------------------------------------------------------
+ABC Result:
+------------------------------------------------------
+4.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__mux2_1 cells:        1
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:        3
+ABC RESULTS:          output signals:        1
+------------------------------------------------------
+
+# 6. (Optional) Show a graphical flow diagram of the logic realized by the 
+# synthesis tool for the provided target library file(s)
+# Syntax: show
+show
+```
+_Logic realized by the synthesis tool in the above example:_
+![day1_lab3_2input_mux_synth_logical_diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/835db108-0779-49d5-bd24-657814a6283d)
