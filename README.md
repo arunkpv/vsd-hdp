@@ -66,3 +66,42 @@ We will be building Yosys from the source using gcc, the instructions for which 
      ![day0_gtkwave](https://github.com/arunkpv/vsd-hdp/assets/79094513/4a58eb72-04c6-41fb-9d1f-6f2f7dfd1c10)  
   
 ## Day 1
+### Labs 1,2: Functional Simulation of RTL design using iverilog and gktwave
+In this lab, we clone the gihthub repo - [sky130RTLDesignAndSynthesisWorkshop](https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop) - and use one of the example RTL design sources together with its corresponding testbench to get familiarised with the functional simulation of an RTL design using iverilog and gtkwave.   
+<br />
+1. Clone the github repo with the RTL design examples and sky130*.lib files
+```
+git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+```
+
+2. We will be performing functional simulation of the module good_mux (defined in good_mux.v), as an example.
+```
+# Step1: Use iverilog to read and interpret the source and testbench file(s) and generate 
+# a compiled output (with default output format=vvp)
+# Syntax: iverilog -o <outfile> <file1.v> <file2.v> ... <tb_top.v>
+
+iverilog -o good_mux good_mux.v tb_good_mux.v
+
+
+# Step 2: iverilog has now generated a compiled output named "good_mux", which can now be run using the
+# simulation runtime engine, vvp
+# Syntax: vvp <outfile>
+
+vvp good_mux
+
+
+# Step 3: Running the verilog simulation in step 2 will generate & dump the stimulus and output 
+# signal values for the defined simulation duration in the testbench file to a vcd file.
+# This can now be viewed using gtkwave.
+# Syntax: gtkwave <dumpfile.vcd>
+
+gtkwave tb_good_mux.vcd
+```
+_Snapshot of the waves from the above simulation in gtkwave:_
+![day1_lab1_2input_mux_iverilog_gktwave](https://github.com/arunkpv/vsd-hdp/assets/79094513/f877ae83-789d-4f2c-b8d1-5ff33b641f32)
+<br />
+<br />
+### Lab 3: Synthesis of RTL design using Yosys with sky130 library as target
+In this lab, we will perform gate-level synthesis of the example RTL design simulated in the previous session using Yosys and sky130 as the target library.
+<br />
+
