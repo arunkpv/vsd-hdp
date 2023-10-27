@@ -142,10 +142,19 @@ ABC RESULTS:           input signals:        3
 ABC RESULTS:          output signals:        1
 ------------------------------------------------------
 
+
 # 6. (Optional) Show a graphical flow diagram of the logic realized by the 
 # synthesis tool for the provided target library file(s)
 # Syntax: show
 show
+
+
+# 7. Write the output netlist
+# Syntax: write_verilog <netlist_outfile.v>
+#         write_verilog -noattr  <netlist_outfile.v>  (excluding attributes)
+
+write_verilog -noattr good_mux_netlist.v
 ```
+<br />
 _Logic realized by the synthesis tool in the above example:_
 ![day1_lab3_2input_mux_synth_logical_diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/835db108-0779-49d5-bd24-657814a6283d)
