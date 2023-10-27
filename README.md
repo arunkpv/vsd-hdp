@@ -83,8 +83,8 @@ git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 iverilog -o good_mux good_mux.v tb_good_mux.v
 
 
-# Step 2: iverilog has now generated a compiled output named "good_mux", which can now be run using the
-# simulation runtime engine, vvp
+# Step 2: iverilog has now generated a compiled output named "good_mux", which can now be run using
+# the simulation runtime engine, vvp
 # Syntax: vvp <outfile>
 
 vvp good_mux
