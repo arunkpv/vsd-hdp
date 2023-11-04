@@ -7,6 +7,9 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |---|---|
  |[Day 0](#day-0) | GitHub repo creation, System/ Tools Setup |
  |[Day 1](#day-1) | Introduction to Verilog RTL design and Synthesis |
+ |[Day 2](#day-2) | <ol><li>Familiarization of .lib file structure and various timing models (QTMs/ETMs)</li><li>Hierarchical vs. Flat synthesis</li><li>Efficient Flop coding styles</li></ol> |
+ |[Day 3](#day-3) | Combinational and Sequential Logic Synthesis Optimizations |
+ |[Day 4](#day-4) | <ol><li>Gate Level Simulation</li><li>Verilog Blocking vs. Non-blocking assignment</li><li>Synthesis-Simulation mismatch</li></ol> |
 
 
 ## Day 0
@@ -189,4 +192,19 @@ endmodule
   
 _Logic realized by the synthesis tool in the above example:_
 ![day1_lab3_2input_mux_synth_logical_diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/7658d852-9881-4e5b-970f-a9bfc376a2fd)
-
+  
+## Day 2
+### Lab 4: Familiarization of the .lib file structure and various timing models (QTMs/ETMs)
+1. Open up the ***sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib*** library file and get familiarized with the overall structure and the various parameters defined like:
+<ul>
+ <li>PVT corner for which the lib file is defined</li>
+ <li>Process technology</li>
+ <li>Delay model</li>
+ <li>For the different standard cells, various parameters like: Cell Area, Pin capacitances, Leakage power for different input combinations, Dynamic power during transitions, Transition times, Propagation Delay times etc.</li>
+</ul>
+  
+2. Read up about the various timing models (QTM, ETM, NLDM etc.)  
+Ref:  
+  [1]: STA for Nanometer Designs - J. Bhasker, Rakesh Chadha (Chapter 3)  
+  [2]: [https://www.vlsi-expert.com/2011/02/etm-extracted-timing-models-basics.html](https://www.vlsi-expert.com/2011/02/etm-extracted-timing-models-basics.html)  
+  [3]: [https://asic-pd.blogspot.com/2011/08/basic-of-timing-analysis-in-physical_22.html](https://asic-pd.blogspot.com/2011/08/basic-of-timing-analysis-in-physical_22.html)
