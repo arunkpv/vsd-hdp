@@ -7,7 +7,7 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |---|---|
  |[Day 0](#day-0) | GitHub repo creation, System/ Tools Setup |
  |[Day 1](#day-1) | Introduction to Verilog RTL design and Synthesis |
- |[Day 2](#day-2) | <ol><li>Familiarization of .lib file structure and various timing models (QTMs/ETMs)</li><li>Hierarchical vs. Flat synthesis</li><li>Efficient Flop coding styles</li></ol> |
+ |[Day 2](#day-2) | <ol><li>Familiarization of .lib file structure and various timing models (QTMs/ETMs)</li><li>Hierarchical vs. Flat synthesis</li><li>Various Flip-Flop designs</li></ol> |
  |[Day 3](#day-3) | Combinational and Sequential Logic Synthesis Optimizations |
  |[Day 4](#day-4) | <ol><li>Gate Level Simulation</li><li>Verilog Blocking vs. Non-blocking assignment</li><li>Synthesis-Simulation mismatch</li></ol> |
 
@@ -362,3 +362,87 @@ module multiple_modules(a, b, c, y);
   assign net1 = \u1.y ;
 endmodule
   ```
+  
+### Lab 6: Various Flip-Flop Designs
+Here, we will take a look at the simulation and synthesis of different flip-flops.  
+<br>
+  **1. DFF with Asynchronous Reset**  
+  ```
+  module dff_asyncres ( input clk ,  input async_reset , input d , output reg q );
+  always @ (posedge clk , posedge async_reset)
+  begin
+	  if(async_reset)
+		  q <= 1'b0;
+	  else	
+		  q <= d;
+  end
+  endmodule
+  ```
+  
+  **NOTE :**
+    To synthesize flip-flops using Ysosys, we need to provide an additional command ```dfflibmap``` so as to map the internal flip-flop cells to the flip-flop cells in the technology
+library specified in the given liberty file.  
+  
+  ```
+  # For example, to perform synthesis of the dff_asyncres module for the sky130 library:
+  
+  read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+  read_verilog dff_asyncres.v 
+  synth -top dff_asyncres 
+  dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+  abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+  show
+  ```
+  
+  **Behavioral Simulation:**  
+  | Reset Deassertion | Reset Assertion |
+  |-------------------|-----------------|
+  | ![dff_asyncres_reset_deassertion](https://github.com/arunkpv/vsd-hdp/assets/79094513/d655f107-3caa-4978-8baa-b14951a2dcc7) | ![dff_asyncres_reset_asserted](https://github.com/arunkpv/vsd-hdp/assets/79094513/0e160a39-e4c6-41d5-b38c-fdead597bc7b) |
+  
+  **Synthesis Result:**
+  ![dff_asyncres](https://github.com/arunkpv/vsd-hdp/assets/79094513/9540a5af-44a2-400d-9f97-9080f0386b5a)  
+_________________________________________________________________________________________________________  
+  **2. DFF with Synchronous Reset**  
+  ```
+  module dff_syncres ( input clk , input async_reset , input sync_reset , input d , output reg q );
+  always @ (posedge clk )
+  begin
+	  if (sync_reset)
+		  q <= 1'b0;
+	  else	
+		  q <= d;
+  end
+  endmodule
+  ```
+    
+  **Behavioral Simulation:**  
+  | Reset Deassertion | Reset Assertion |
+  |-------------------|-----------------|
+  | ![dff_syncres_reset_deassertion](https://github.com/arunkpv/vsd-hdp/assets/79094513/0f85bc8b-f8d0-4456-8343-b492b95b7982) | ![dff_syncres_reset_assertion](https://github.com/arunkpv/vsd-hdp/assets/79094513/63d9e906-9e74-4810-8a17-956bca82ca78) |
+    
+  **Synthesis Result:**
+  ![dff_syncres](https://github.com/arunkpv/vsd-hdp/assets/79094513/8c7466ee-ceae-4703-9b93-9138ecc63522)  
+_________________________________________________________________________________________________________  
+  **3. DFF with both Asynchronous & Synchronous Reset**  
+  ```
+  module dff_asyncres_syncres ( input clk , input async_reset , input sync_reset , input d , output reg q );
+  always @ (posedge clk , posedge async_reset)
+  begin
+	  if(async_reset)
+		  q <= 1'b0;
+	  else if (sync_reset)
+		  q <= 1'b0;
+	  else	
+		  q <= d;
+  end
+  endmodule
+  ```
+    
+  **Behavioral Simulation:**  
+  ![dff_asyncres_syncres_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/f93df1c2-7123-4fd5-b66c-086726891405)
+
+    
+  **Synthesis Result:**
+  ![dff_asyncres_syncres](https://github.com/arunkpv/vsd-hdp/assets/79094513/aa337785-ae19-4872-b253-229b74e7fded)
+_________________________________________________________________________________________________________  
+
