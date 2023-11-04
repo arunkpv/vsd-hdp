@@ -188,4 +188,5 @@ endmodule
 ```
   
 _Logic realized by the synthesis tool in the above example:_
-![day1_lab3_2input_mux_synth_logical_diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/835db108-0779-49d5-bd24-657814a6283d)
+![day1_lab3_2input_mux_synth_logical_diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/7658d852-9881-4e5b-970f-a9bfc376a2fd)
+
