@@ -215,6 +215,18 @@ In this experiment, we will take a look at how the Yosys tool performs the synth
 For this example, we will use the design file, multiple_modules.v, which contains some logic implementation using two sub-modules.  
 <br />
   **1. Hierarchical**  
+  Perform the hierarchical synthesis from the Yosys shell using the following commands:  
+  ```
+  read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+  read_verilog multiple_modules.v
+  synth -top multiple_modules
+  abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+  write_verilog -noattr multiple_modules_hier.v
+  show -stretch multiple_modules
+  show sub_module1
+  show sub_module2
+  ```
+  
   Synthesis result preserving the design hierarchy:  
   ![day2_multiple_modules_hier](https://github.com/arunkpv/vsd-hdp/assets/79094513/a2087ca8-0b43-4549-b642-23d5faecb35f)
   <br />
@@ -288,6 +300,13 @@ endmodule
 ________________________________________________________________________________________________________________________
   
   **2. Flattened**  
+  To flatten the hierarchical design, the command **flatten** is used following which we can write the netlist, as shown below:  
+  ```
+  flatten
+  write_verilog -noattr multiple_modules_flat.v
+  show -stretch multiple_modules 
+  ```
+    
   Synthesis result after flattening:  
   ![day2_multiple_modules_flat](https://github.com/arunkpv/vsd-hdp/assets/79094513/7e77fe42-0cda-4a56-a3b2-eff054840783)
   <br />
