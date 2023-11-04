@@ -195,7 +195,7 @@ _Logic realized by the synthesis tool in the above example:_
   
 ## Day 2
 ### Lab 4: Familiarization of the .lib file structure and various timing models (QTMs/ETMs)
-1. Open up the ***sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib*** library file and get familiarized with the overall structure and the various parameters defined like:
+1. Open up the **sky130_fd_sc_hd__tt_025C_1v80.lib** library file and get familiarized with the overall structure and the various parameters defined like:
 <ul>
  <li>PVT corner for which the lib file is defined</li>
  <li>Process technology</li>
