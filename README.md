@@ -208,3 +208,8 @@ Ref:
   [1]: STA for Nanometer Designs - J. Bhasker, Rakesh Chadha (Chapter 3)  
   [2]: [https://www.vlsi-expert.com/2011/02/etm-extracted-timing-models-basics.html](https://www.vlsi-expert.com/2011/02/etm-extracted-timing-models-basics.html)  
   [3]: [https://asic-pd.blogspot.com/2011/08/basic-of-timing-analysis-in-physical_22.html](https://asic-pd.blogspot.com/2011/08/basic-of-timing-analysis-in-physical_22.html)
+
+### Lab 5: Heirarchical vs. Flat Synthesis
+In this experiment, we will take a look at how the Yosys tool performs the synthesis and generates the netlst for a multi-module design with and without preserving the design heriarchy.  
+For this example, we will use the design file, multiple_modules.v, which contains some logic implementation using two sub-modules.  
+  *1. Heirarchical Form*
