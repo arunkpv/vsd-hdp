@@ -514,7 +514,7 @@ The combinational logic is simplified to the most optimized form which is effici
 **2. Boolean Logic Optimization** : The various Boolean expression optimization techniques like K-maps (graphical), Quine-McLusky, reduction to standard SOP/ POS forms best suited for the cell library/ technology etc.  
 <br>
 
-**NOTE :** The command to perform combinational logic optimization in Yosys is ```opt_clean```.  
+**NOTE :** The command to perform logic optimization in Yosys is ```opt_clean```.  
 Additionally, for a hierarchical design involving multiple sub-modules, the design must be flattened by running the ```flatten``` command before executing the ```opt_clean``` command.
 ```
 USAGE:
