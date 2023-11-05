@@ -231,6 +231,7 @@ For this example, we will use the design file, multiple_modules.v, which contain
   ![day2_multiple_modules_hier](https://github.com/arunkpv/vsd-hdp/assets/79094513/a2087ca8-0b43-4549-b642-23d5faecb35f)
   <br />
   <br />
+<!---
   Corresponding Netlist - multiple_modules_hier.v:  
   ```
   /* multiple_modules_hier.v
@@ -297,6 +298,7 @@ module sub_module2(a, b, y);
   assign y = _2_;
 endmodule
   ```
+-->
 ________________________________________________________________________________________________________________________
   
   **2. Flattened**  
@@ -311,6 +313,7 @@ ________________________________________________________________________________
   ![day2_multiple_modules_flat](https://github.com/arunkpv/vsd-hdp/assets/79094513/7e77fe42-0cda-4a56-a3b2-eff054840783)
   <br />
   <br />
+<!---
   Corresponding Netlist - multiple_modules_flat.v:  
   ```
   /* multiple_modules_flat.v
@@ -362,6 +365,11 @@ module multiple_modules(a, b, c, y);
   assign net1 = \u1.y ;
 endmodule
   ```
+-->
+
+  **Comparing the netlist generated for hierarchical and flat synthesis:**  
+  ![multiple_modules_hierarchical_vs_flat](https://github.com/arunkpv/vsd-hdp/assets/79094513/b557ef26-d58e-4006-b8a6-5269070c5453)
+
   
 ### Lab 6: Various Flip-Flop Designs
 Here, we will take a look at the simulation and synthesis of different flip-flops.  
