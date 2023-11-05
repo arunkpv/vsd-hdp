@@ -8,7 +8,7 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |[Day 0](#day-0) | GitHub repo creation, System/ Tools Setup |
  |[Day 1](#day-1) | Introduction to Verilog RTL design and Synthesis |
  |[Day 2](#day-2) | <ol><li>Familiarization of .lib file structure and various timing models (QTMs/ETMs)</li><li>Hierarchical vs. Flat synthesis</li><li>Various Flip-Flop designs</li></ol> |
- |[Day 3](#day-3) | Combinational and Sequential Logic Synthesis Optimizations |
+ |[Day 3](#day-3) | Logic Synthesis Optimizations<ol><li>Combinational</li><li>Sequential</li></ol> |
  |[Day 4](#day-4) | <ol><li>Gate Level Simulation</li><li>Verilog Blocking vs. Non-blocking assignment</li><li>Synthesis-Simulation mismatch</li></ol> |
 
 
