@@ -664,7 +664,7 @@ endmodule
 <br>
 
 Synthesis Result:  
-![multiple_module_opt2](https://github.com/arunkpv/vsd-hdp/assets/79094513/38459afd-1cdf-43f3-ba93-a11364fbc6fc)  
+![mult8](https://github.com/arunkpv/vsd-hdp/assets/79094513/62e9dc6d-6afa-4169-b2f1-7def92c62694)  
 <br>
 _________________________________________________________________________________________________________  
 
