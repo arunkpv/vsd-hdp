@@ -904,7 +904,8 @@ ________________________________________________________________________________
 To run GLS, we need to provide the Gate level netlist, the testbench and the Gate Level verilog models to the simulator.  
 GLS can be run in different delay modes:
    1. Functional validation (zero delay similar to RTL sim): if the Gate Level verilog models do not have the timing information for various corners, we can only verify the functional correctness of the design by running GLS.
-   2. Full Timing validation: if the Gate level verilog models have the necessary timing information, both the functional correctness and the timing behaviour can be verified by GLS.
+   2. Full Timing validation: if the Gate level verilog models have the necessary timing information, both the functional correctness and the timing behaviour can be verified by GLS.  
+<br>
 
 **GLS using iverilog**  
 The following block diagram shows the GLS flow using iverilog:  
@@ -942,23 +943,59 @@ endmodule
 
 | RTL Simulation | ![ternary_operator_mux_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/0a90dfb1-5edd-4bda-ab58-97364c1838f3) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![ternary_operator_mux](https://github.com/arunkpv/vsd-hdp/assets/79094513/c245bd88-3b81-4924-89dc-ea6a2dd3790f) |
 | **GLS** | ![ternary_operator_mux_waves_GLS](https://github.com/arunkpv/vsd-hdp/assets/79094513/f5269536-5314-4b95-bfa9-62bd8d078bae) |
+| **Synthesis Result** | ![ternary_operator_mux](https://github.com/arunkpv/vsd-hdp/assets/79094513/c245bd88-3b81-4924-89dc-ea6a2dd3790f) |
 <br>
 
 _________________________________________________________________________________________________________  
 
-### Lab 10: GLS Synthesis - Sumulation mismatch - Example 2: ternary_operator_mux.v
+### Lab 10: GLS Synthesis - Sumulation mismatch - Example 2: bad_mux.v
 ```
-
+module bad_mux (input i0 , input i1 , input sel , output reg y);
+    always @ (sel)
+    begin
+        if(sel)
+            y <= i1;
+        else
+            y <= i0;
+    end
+endmodule
 ```
 <br>
 
-| RTL Simulation | 
+| RTL Simulation | ![bad_mux_rtl_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/93e9ca05-983d-4b43-bcb7-c9894f159d05) |
 |-----------------------|------------------|
-| **Synthesis Result** | 
-| **GLS** | 
+| **GLS** | ![bad_mux_waves_GLS](https://github.com/arunkpv/vsd-hdp/assets/79094513/65a73835-3411-4ef4-869a-5c278a43a304) |
+| **Synthesis Result** | ![bad_mux_rtl](https://github.com/arunkpv/vsd-hdp/assets/79094513/058c5e1b-9e75-4c8c-8111-d75f04502a31) |
+<br>
+
+In this case, we can clearly see that there is a mismatch in the simulation between pre and post-synthesis.  
+In fact, yosys actually throws a warning message about the possible omission of signals from the sensitivity list assuming a purely combinational circuit.  
+_Yosys warning about missing signals in sensitivity list_  
+![yosys_read_verilog_message](https://github.com/arunkpv/vsd-hdp/assets/79094513/244f2f24-e33c-4a08-b710-6c328c2dd894)
 <br>
 
 _________________________________________________________________________________________________________  
 
+### Lab 10: GLS Synthesis - Sumulation mismatch - Example 3: bad_mux.v
+```
+module bad_mux (input i0 , input i1 , input sel , output reg y);
+    always @ (sel)
+    begin
+        if(sel)
+            y <= i1;
+        else
+            y <= i0;
+    end
+endmodule
+```
+<br>
+
+| RTL Simulation | ![bad_mux_rtl_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/93e9ca05-983d-4b43-bcb7-c9894f159d05) |
+|-----------------------|------------------|
+| **GLS** | ![bad_mux_waves_GLS](https://github.com/arunkpv/vsd-hdp/assets/79094513/65a73835-3411-4ef4-869a-5c278a43a304) |
+| **Synthesis Result** | ![bad_mux_rtl](https://github.com/arunkpv/vsd-hdp/assets/79094513/058c5e1b-9e75-4c8c-8111-d75f04502a31) |
+<br>
+
+In this case, we can clearly see that there is a mismatch in the simulation between pre and post-synthesis.  
+In fact, yosys actually throws a warning message about the possible omission of signals from the sensitivity list assuming a purely combinational circuit.  
