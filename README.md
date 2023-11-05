@@ -516,7 +516,6 @@ ________________________________________________________________________________
   Synthesis result:  
   ![mult8](https://github.com/arunkpv/vsd-hdp/assets/79094513/d8864d9a-6759-4435-96e8-a49460b63714)  
 _________________________________________________________________________________________________________  
-
 <br>
 
 ## Day 3
@@ -674,6 +673,7 @@ endmodule
 Synthesis Result:  
 ![mult8](https://github.com/arunkpv/vsd-hdp/assets/79094513/62e9dc6d-6afa-4169-b2f1-7def92c62694)  
 <br>
+
 _________________________________________________________________________________________________________  
 
 ### Sequential Logic Optimizations
@@ -893,3 +893,25 @@ So when this design is synthesized, we expect 3 DFF instantiations to be present
 <br>
 
 _________________________________________________________________________________________________________  
+
+## Day 4
+### Gate Level Simulation (GLS)
+  * _Gate Level_ refers to the netlist view of a design after the synthesis has been performed.
+  * RTL simulations are pre-synthesis, while GLS is post-synthesis - i.e., in RTL simulations, the Device Under Test (DUT) is the RTL design itself while in GLS, the DUT is the netlist generated after synthesis.
+  * The RTL code and the generated netlist are logically equivalent (well, supposed to be!)  and hence the same testbenches can be used to verify both.
+  * Although it is expected that the generated netlist has the same logical correctness as the RTL design, there can sometimes be mismatches between the RTL-level simulation and the sythesized design (Synthesis - Simulation mismatch) and thus arises the need to run GLS to help identify such scenarios and fix them to ensure the logical correctness post-synthesis as well.
+
+To run GLS, we need to provide the Gate level netlist, the testbench and the Gate Level verilog models to the simulator.  
+GLS can be run in different delay modes:
+   1. Functional validation (zero delay similar to RTL sim): if the Gate Level verilog models do not have the timing information for various corners, we can only verify the functional correctness of the design by running GLS.
+   2. Full Timing validation: if the Gate level verilog models have the necessary timing information, both the functional correctness and the timing behaviour can be verified by GLS.
+
+**GLS using iverilog**  
+The following block diagram shows the GLS flow using iverilog:  
+![Day4_GLS_using_iverilog](https://github.com/arunkpv/vsd-hdp/assets/79094513/047135e0-6560-49cf-a7b9-7db60684278f)  
+<br>
+
+### Synthesis - Simulation mismatch
+Synthesis - Simulation mismatch (mismatch between pre- and post-synthesis simulations) could occur due to the following reasons:  
+  * Incomplete sensitivity list
+  * 
