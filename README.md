@@ -514,10 +514,21 @@ The combinational logic is simplified to the most optimized form which is effici
 **2. Boolean Logic Optimization** : The various Boolean expression optimization techniques like K-maps (graphical), Quine-McLusky, reduction to standard SOP/ POS forms best suited for the cell library/ technology etc.  
 <br>
 
-#### Lab 6.a: Example 1: opt_check.v 
+**NOTE :** The command to perform combinational logic optimization in Yosys is ```opt_clean```.  
+Additionally, for a hierarchical design involving multiple sub-modules, the design must be flattened by running the ```flatten``` command before executing the ```opt_clean``` command.
+```
+USAGE:
+After the synth -top <module_name> command is executed, do:
+opt_clean -purge
+
+This command identifies wires and cells that are unused and removes them.
+The additional switch, purge also removes the internal nets if they have a public name
+```
+
+#### Lab 6: Example 1: opt_check.v 
 ```
 module opt_check (input a , input b , output y);
-	assign y = a?b:0;
+    assign y = a?b:0;
 endmodule
 
 # We can see by direct simplification that:
@@ -528,13 +539,13 @@ endmodule
 
 Synthesis Result:  
 ![opt_check](https://github.com/arunkpv/vsd-hdp/assets/79094513/3a580389-a7cb-4310-82cb-d5d431c12deb)  
-
 <br>
+_________________________________________________________________________________________________________  
 
-#### Lab 6.b: Example 2: opt_check2.v
+#### Lab 6: Example 2: opt_check2.v
 ```
 module opt_check2 (input a , input b , output y);
-	assign y = a?1:b;
+    assign y = a?1:b;
 endmodule
 
 # Boolean simplification:
@@ -551,12 +562,13 @@ Synthesis Result:
 _The cell library already seems to have an OR gate available as the synthesis result is an OR gate itself and not a NAND-realization of the OR to avoid the stacked PMOS as shown in the demo videos_  
 ![opt_check2](https://github.com/arunkpv/vsd-hdp/assets/79094513/651d0599-ed95-443e-93fe-b796a1a75771)  
 <br>
+_________________________________________________________________________________________________________  
 
-#### Lab 6.c: Example 3: opt_check3.v
+#### Lab 6: Example 3: opt_check3.v
 ```
 
 module opt_check3 (input a , input b, input c , output y);
-	assign y = a?(c?b:0):0;
+    assign y = a?(c?b:0):0;
 endmodule
 
 # Boolean simplification:
@@ -569,6 +581,78 @@ endmodule
 Synthesis Result:  
 ![opt_check3](https://github.com/arunkpv/vsd-hdp/assets/79094513/ac7e0e36-3b22-4a43-9ee5-51a36a2cf088)  
 <br>
+_________________________________________________________________________________________________________  
+
+#### Lab 6: Example 4: opt_check4.v
+```
+
+module opt_check4 (input a , input b , input c , output y);
+    assign y = a?(b?(a & c):c):(!c);
+endmodule
+
+# Boolean simplification:
+#      y = a*(abc + b_bar*c) + a_bar*c_bar
+#        = abc + a*b_bar*c + a_bar*c_bar
+#        = abc + a*b_bar*c + (a_bar*b*c_bar + a_bar*b_bar*c_bar)
+#        = ac + a_bar*c_bar
+#        = 
+# i.e, a 2-input XNOR Gate.
+```
+<br>
+
+Synthesis Result:  
+![opt_check4](https://github.com/arunkpv/vsd-hdp/assets/79094513/9da67324-e6c9-474e-a3f3-d246f111e5ab)  
+<br>
+_________________________________________________________________________________________________________  
+
+#### Lab 6: Example 5: multiple_module_opt.v
+```
+module sub_module1(input a , input b , output y);
+    assign y = a & b;
+endmodule
+
+module sub_module2(input a , input b , output y);
+    assign y = a^b;
+endmodule
+
+module multiple_module_opt(input a , input b , input c , input d , output y);
+    wire n1,n2,n3;
+
+    sub_module1 U1 (.a(a) , .b(1'b1) , .y(n1));
+    sub_module2 U2 (.a(n1), .b(1'b0) , .y(n2));
+    sub_module2 U3 (.a(b), .b(d) , .y(n3));
+
+    assign y = c | (b & n1); 
+endmodule
+```
+<br>
+
+Synthesis Result:  
+![multiple_module_opt](https://github.com/arunkpv/vsd-hdp/assets/79094513/35158a89-6788-45a2-b405-301ec891c6c5)  
+<br>
+_________________________________________________________________________________________________________  
+
+#### Lab 6: Example 6: multiple_module_opt2.v
+```
+module sub_module(input a , input b , output y);
+    assign y = a & b;
+endmodule
+
+module multiple_module_opt2(input a , input b , input c , input d , output y);
+    wire n1,n2,n3;
+
+    sub_module U1 (.a(a) , .b(1'b0) , .y(n1));
+    sub_module U2 (.a(b), .b(c) , .y(n2));
+    sub_module U3 (.a(n2), .b(d) , .y(n3));
+    sub_module U4 (.a(n3), .b(n1) , .y(y));
+endmodule
+```
+<br>
+
+Synthesis Result:  
+![multiple_module_opt2](https://github.com/arunkpv/vsd-hdp/assets/79094513/38459afd-1cdf-43f3-ba93-a11364fbc6fc)  
+<br>
+_________________________________________________________________________________________________________  
 
 ### Sequential Logic Optimizations
 **1. Constant Propagation** : Optimization technique used when a constant value is propagated through a flip-flop -- i.e., irrespective of the state of the triggering signals (CLK, Reset, Set), there are no transitions in the flip-flop output.  
