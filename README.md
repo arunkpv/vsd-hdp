@@ -9,7 +9,7 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |[Day 1](#day-1) | Introduction to Verilog RTL design and Synthesis |
  |[Day 2](#day-2) | <ol><li>Familiarization of .lib file structure and various timing models (QTMs/ETMs)</li><li>Hierarchical vs. Flat synthesis</li><li>Various Flip-Flop designs</li></ol> |
  |[Day 3](#day-3) | Logic Synthesis Optimizations<ol><li>Combinational</li><li>Sequential</li></ol> |
- |[Day 4](#day-4) | <ol><li>Gate Level Simulation</li><li>Verilog Blocking vs. Non-blocking assignment</li><li>Synthesis-Simulation mismatch</li></ol> |
+ |[Day 4](#day-4) | <ol><li>Gate Level Simulation</li><li>Synthesis-Simulation mismatch</li></ol> |
 
 
 ## Day 0
@@ -912,6 +912,14 @@ The following block diagram shows the GLS flow using iverilog:
 <br>
 
 ### Synthesis - Simulation mismatch
-Synthesis - Simulation mismatch (mismatch between pre- and post-synthesis simulations) could occur due to the following reasons:  
+Some of the common reasons for Synthesis - Simulation mismatch (mismatch between pre- and post-synthesis simulations) :  
   * Incomplete sensitivity list
-  * 
+  * Use of blocking assignments inside always block vs. non-blocking assignments
+    * Blocking assignments ("=") inside always block are executed sequentially by the simulator.
+    * The RHS of non-blocking assignments ("<=") are evaluated first and then assigned to the LHS at the same simulation clock tick by the simulator. 
+    * Synthesis will yield the same circuit with blocking and non-blocking assignments, with the synthesis output being that of the non-blocking case for both.
+    * Hence, if the RTL was written assuming one functionality using blocking assignments, a simulation mismatch can occur in GLS.
+  * Non-standard verilog coding
+<br>
+
+### Lab 10: GLS: Synthesis - Sumulation mismatch - Example 1: ternary_operator_mux.v
