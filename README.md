@@ -911,6 +911,16 @@ The following block diagram shows the GLS flow using iverilog:
 ![Day4_GLS_using_iverilog](https://github.com/arunkpv/vsd-hdp/assets/79094513/047135e0-6560-49cf-a7b9-7db60684278f)  
 <br>
 
+The Gate level verilog model(s) need to be provided as shown below to do GLS using iverilog:
+```
+Syntax:
+    iverilog <path-to-gate-level-verilog-model(s)> <netlist_file.v> <tb_top.v>
+
+Example using ternary_operator_mux_netlist.v:
+    iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_netlist.v tb_ternary_operator_mux.v
+```
+<br>
+
 ### Synthesis - Simulation mismatch
 Some of the common reasons for Synthesis - Simulation mismatch (mismatch between pre- and post-synthesis simulations) :  
   * Incomplete sensitivity list
@@ -922,4 +932,33 @@ Some of the common reasons for Synthesis - Simulation mismatch (mismatch between
   * Non-standard verilog coding
 <br>
 
-### Lab 10: GLS: Synthesis - Sumulation mismatch - Example 1: ternary_operator_mux.v
+### Lab 10: GLS Synthesis - Sumulation mismatch - Example 1: ternary_operator_mux.v
+```
+module ternary_operator_mux (input i0 , input i1 , input sel , output y);
+    assign y = sel ? i1 : i0;
+endmodule
+```
+<br>
+
+| RTL Simulation | ![ternary_operator_mux_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/0a90dfb1-5edd-4bda-ab58-97364c1838f3) |
+|-----------------------|------------------|
+| **Synthesis Result** | ![ternary_operator_mux](https://github.com/arunkpv/vsd-hdp/assets/79094513/c245bd88-3b81-4924-89dc-ea6a2dd3790f) |
+| **GLS** | ![ternary_operator_mux_waves_GLS](https://github.com/arunkpv/vsd-hdp/assets/79094513/f5269536-5314-4b95-bfa9-62bd8d078bae) |
+<br>
+
+_________________________________________________________________________________________________________  
+
+### Lab 10: GLS Synthesis - Sumulation mismatch - Example 2: ternary_operator_mux.v
+```
+
+```
+<br>
+
+| RTL Simulation | 
+|-----------------------|------------------|
+| **Synthesis Result** | 
+| **GLS** | 
+<br>
+
+_________________________________________________________________________________________________________  
+
