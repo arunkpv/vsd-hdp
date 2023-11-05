@@ -519,13 +519,23 @@ Additionally, for a hierarchical design involving multiple sub-modules, the desi
 ```
 USAGE:
 After the synth -top <module_name> command is executed, do:
-opt_clean -purge
+    opt_clean -purge
 
 This command identifies wires and cells that are unused and removes them.
-The additional switch, purge also removes the internal nets if they have a public name
+The additional switch, purge also removes the internal nets if they have a public name.
+```
+```
+# Example showing the sequence of commands to perform combinational logic optimization using Yosys
+# on module opt_check in opt_check.v:
+    read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    read_verilog opt_check.v 
+    synth -top opt_check 
+    opt_clean -purge
+    abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    show
 ```
 
-#### Lab 6: Example 1: opt_check.v 
+#### Lab 8: Example 1: opt_check.v 
 ```
 module opt_check (input a , input b , output y);
     assign y = a?b:0;
@@ -542,7 +552,7 @@ Synthesis Result:
 <br>
 _________________________________________________________________________________________________________  
 
-#### Lab 6: Example 2: opt_check2.v
+#### Lab 8: Example 2: opt_check2.v
 ```
 module opt_check2 (input a , input b , output y);
     assign y = a?1:b;
@@ -564,7 +574,7 @@ _The cell library already seems to have an OR gate available as the synthesis re
 <br>
 _________________________________________________________________________________________________________  
 
-#### Lab 6: Example 3: opt_check3.v
+#### Lab 8: Example 3: opt_check3.v
 ```
 
 module opt_check3 (input a , input b, input c , output y);
@@ -583,7 +593,7 @@ Synthesis Result:
 <br>
 _________________________________________________________________________________________________________  
 
-#### Lab 6: Example 4: opt_check4.v
+#### Lab 8: Example 4: opt_check4.v
 ```
 
 module opt_check4 (input a , input b , input c , output y);
@@ -605,7 +615,7 @@ Synthesis Result:
 <br>
 _________________________________________________________________________________________________________  
 
-#### Lab 6: Example 5: multiple_module_opt.v
+#### Lab 8: Example 5: multiple_module_opt.v
 ```
 module sub_module1(input a , input b , output y);
     assign y = a & b;
@@ -632,7 +642,7 @@ Synthesis Result:
 <br>
 _________________________________________________________________________________________________________  
 
-#### Lab 6: Example 6: multiple_module_opt2.v
+#### Lab 8: Example 6: multiple_module_opt2.v
 ```
 module sub_module(input a , input b , output y);
     assign y = a & b;
@@ -662,3 +672,205 @@ ________________________________________________________________________________
 **2. State optimization** : Unused states in the sequential design are optimized and/or the total states needed in the FSM are minimized.  
 **3. Cloning** : This is a physically-aware (PnR-aware) optimization method where some of the flops in the design are cloned/ duplicated so that the timing can be met post-PnR for the timing arcs involved (provided there is already some minimum positive slack available).  
 **4. Retming** : The pipelining flops in the design are placed optimally so that the combinational delay at each pipeline stage is more or less equalized so that the maximum clock frequency can be increased.  
+<br>
+
+```
+# Example showing the sequence of commands to perform combinational logic optimization using Yosys
+# on module dff_const1 in dff_const1.v:
+    read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    read_verilog dff_const1.v 
+    synth -top dff_const1
+    opt_clean -purge
+    dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+    show
+```
+
+#### Lab 9: Example 1: dff_const1.v 
+```
+module dff_const1(input clk, input reset, output reg q);
+    always @(posedge clk, posedge reset)
+    begin
+	    if(reset)
+                q <= 1'b0;
+	    else
+                q <= 1'b1;
+    end
+endmodule
+```
+In this example, no optimization is possible as the flop output, q changes.  
+
+<br>
+
+| Behavioral Simulation | ![dff_const1_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/a0fe3f49-1d34-45c4-a366-73540da4c323)  |
+|-----------------------|------------------|
+| **Synthesis Result** | ![dff_const1](https://github.com/arunkpv/vsd-hdp/assets/79094513/4acce9d8-d9ed-4569-81db-9a5412af34d4) |  
+<br>
+_________________________________________________________________________________________________________  
+
+#### Lab 9: Example 2: dff_const2.v 
+```
+module dff_const2(input clk, input reset, output reg q);
+    always @(posedge clk, posedge reset)
+    begin
+    if(reset)
+        q <= 1'b1;
+    else
+        q <= 1'b1;
+    end
+endmodule
+```
+Here, the the flip-flop output, q remains constant at 1 irrespective of the other signals in the sensitivity list.  
+Thus the realization does not need any cells and q is connected to 1'b1.  
+
+<br>
+
+| Behavioral Simulation | ![dff_const2_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/1cebdf7a-3eae-4a3a-a01d-0eb2576dd8c7) |
+|-----------------------|------------------|
+| **Synthesis Result** | ![dff_const2](https://github.com/arunkpv/vsd-hdp/assets/79094513/080cb437-7c70-469b-8da1-5ff79dabd328) |
+<br>
+_________________________________________________________________________________________________________  
+
+#### Lab 9: Example 3: dff_const3.v 
+```
+module dff_const3(input clk, input reset, output reg q);
+    reg q1;
+
+    always @(posedge clk, posedge reset)
+    begin
+        if(reset)
+            begin
+	         q <= 1'b1;
+                q1 <= 1'b0;
+            end
+        else
+	     begin
+                 q1 <= 1'b1;
+	          q <= q1;
+	     end
+    end
+endmodule
+```
+Here, both q1 & q have transitions and thus cannot be optimized further.  
+So the design will have two DFFs.  
+<br>
+
+| Behavioral Simulation | ![dff_const3_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/6b3a3758-50f7-432a-998c-85b32069a60a) |
+|-----------------------|------------------|
+| **Synthesis Result** | ![dff_const3](https://github.com/arunkpv/vsd-hdp/assets/79094513/92478814-09dd-44d3-b4ea-6b116bba73d7) |
+<br>
+_________________________________________________________________________________________________________  
+
+#### Lab 9: Example 4: dff_const4.v 
+```
+module dff_const4(input clk, input reset, output reg q);
+    reg q1;
+    
+    always @(posedge clk, posedge reset)
+    begin
+        if(reset)
+            begin
+                q <= 1'b1;
+                q1 <= 1'b1;
+            end
+        else
+            begin
+                q1 <= 1'b1;
+                q <= q1;
+            end
+        end
+endmodule
+```
+In this example, both q1 & q remain constant at 1'b1.  
+Thus, the design can be optimized to have only wires. Further, q1 being an internal net can also be removed.  
+<br>
+
+| Behavioral Simulation | ![dff_const4_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/db5a8603-bdef-4f2e-91d3-cbd5a5d2fb1d) |
+|-----------------------|------------------|
+| **Synthesis Result** | ![dff_const4](https://github.com/arunkpv/vsd-hdp/assets/79094513/0184674d-f4aa-481e-9f40-4306e164b32c) |
+<br>
+_________________________________________________________________________________________________________  
+
+#### Lab 9: Example 5: dff_const5.v 
+```
+module dff_const5(input clk, input reset, output reg q);
+    reg q1;
+    
+    always @(posedge clk, posedge reset)
+    begin
+        if(reset)
+            begin
+                q <= 1'b0;
+                q1 <= 1'b0;
+            end
+        else
+            begin
+                q1 <= 1'b1;
+                q <= q1;
+            end
+        end
+endmodule
+```
+<br>
+
+| Behavioral Simulation | ![dff_const5_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/5ba417f8-ba59-428d-915d-239cff5524d7) |
+|-----------------------|------------------|
+| **Synthesis Result** | ![dff_const5](https://github.com/arunkpv/vsd-hdp/assets/79094513/82fac704-3c55-4c77-b7c0-bdb68565e00f) |
+<br>
+_________________________________________________________________________________________________________  
+
+#### Lab 9: Example 6: counter_opt.v 
+```
+module counter_opt (input clk , input reset , output q);
+    reg [2:0] count;
+    assign q = count[0];
+    
+    always @(posedge clk ,posedge reset)
+    begin
+        if(reset)
+            count <= 3'b000;
+        else
+            count <= count + 1;
+    end
+endmodule
+```
+This design serves as an example for Sequential logic optimization with designs having unused outputs.  
+Although we have a 3-bit up counter in the RTL design, only the LSB, count[0:0] is used for generating the output signal, q.  
+Since count[0:0] toggles every clock cycle, there really is a need for only one flip-flop in the circuit.  
+In other words, the synthesis output does not have a 3-bit up counter and its associated count incrementing logic.  
+<br>
+
+| Behavioral Simulation | ![counter_opt_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/2a0aaaf3-9960-4575-baef-fe3dfd764270) |
+|-----------------------|------------------|
+| **Synthesis Result w/o opt_clean switch** | ![counter_opt_without_optimization](https://github.com/arunkpv/vsd-hdp/assets/79094513/e3fd75f2-0a5c-45e0-ad23-cc5566ce1a2d) |
+| **Synthesis Result with opt_clean switch** | ![counter_opt](https://github.com/arunkpv/vsd-hdp/assets/79094513/fcdeed7d-aab3-4e48-a5b7-4cbbfcde593d) |
+
+<br>
+_________________________________________________________________________________________________________  
+
+#### Lab 9: Example 7: counter_opt2.v 
+```
+module counter_opt (input clk , input reset , output q);
+    reg [2:0] count;
+    assign q = (count[2:0] == 3'b100);
+
+    always @(posedge clk ,posedge reset)
+    begin
+        if(reset)
+            count <= 3'b000;
+        else
+            count <= count + 1;
+        end
+endmodule
+```
+In this design, we have a 3-bit up counter and all the bits in the counter state value, count[2:0] are used for generating the output signal, q.  
+q = 1, when count[2:0] = 3'b100  
+So when this design is synthesized, we expect 3 DFF instantiations to be present along with the count incrementing logic and the logic to generate, q.  
+
+<br>
+
+| Behavioral Simulation | ![counter_opt2_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/36f8dbc1-0552-4f95-b9d0-827d16d6d520) |
+|-----------------------|------------------|
+| **Synthesis Result** | ![counter_opt2_with_optimizations](https://github.com/arunkpv/vsd-hdp/assets/79094513/8a8402f5-141f-490c-8c20-6b8e049061ec) |
+<br>
+_________________________________________________________________________________________________________  
