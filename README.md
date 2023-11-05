@@ -508,8 +508,8 @@ ________________________________________________________________________________
 <br>
 
 ## Day 3
-### Combinational Logic Optimizations
-The combinational logic is simplified to the most optimized form which is efficient in terms of area & power savings.
+### Combinational Logic Optimizations  
+The combinational logic is simplified to the most optimized form which is efficient in terms of area & power savings.  
 **1. Constant Propagation** : This is a direct optimization method wherein the Boolean expression of the synthesized logic is simplified if any of the inputs are "a constant" and subsequently some of the logic gate outputs also propagate a constant value always.  
 **2. Boolean Logic Optimization** : The various Boolean expression optimization techniques like K-maps (graphical), Quine-McLusky, reduction to standard SOP/ POS forms best suited for the cell library/ technology etc.  
 <br>
@@ -571,8 +571,10 @@ Synthesis Result:
 <br>
 
 ### Sequential Logic Optimizations
-**1. Constant Propagation** : Optimization technique used when a constant value is propagated through a flip-flop -- i.e., irrespective of the state of the triggering signals (CLK, Reset, Set), there are no transitions in the flip-flop output.   
-***[Other Advanced optimization methods not covered by examples in detail:]***   
-**2. State optimization** : Unused states in the sequential design are optimized and/or the total states needed in the FSM are minimized.
+**1. Constant Propagation** : Optimization technique used when a constant value is propagated through a flip-flop -- i.e., irrespective of the state of the triggering signals (CLK, Reset, Set), there are no transitions in the flip-flop output.  
+<br>
+
+***[Other Advanced optimization methods not covered by examples in detail:]***  
+**2. State optimization** : Unused states in the sequential design are optimized and/or the total states needed in the FSM are minimized.  
 **3. Cloning** : This is a physically-aware (PnR-aware) optimization method where some of the flops in the design are cloned/ duplicated so that the timing can be met post-PnR for the timing arcs involved (provided there is already some minimum positive slack available).  
 **4. Retming** : The pipelining flops in the design are placed optimally so that the combinational delay at each pipeline stage is more or less equalized so that the maximum clock frequency can be increased.  
