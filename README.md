@@ -446,7 +446,7 @@ ________________________________________________________________________________
   ![dff_asyncres_syncres](https://github.com/arunkpv/vsd-hdp/assets/79094513/aa337785-ae19-4872-b253-229b74e7fded)
 _________________________________________________________________________________________________________  
   
-### Lab 7: Some synthesis optimizations involving multipliers  
+### Lab 7: Some interesting synthesis optimizations involving multipliers  
 <br>
 Here, we will take a look at the synthesis of two special cases of multipliers where no cells are used at all.  
 <br>  
@@ -504,4 +504,75 @@ ________________________________________________________________________________
   endmodule
   ```
 _________________________________________________________________________________________________________  
-  
+
+<br>
+
+## Day 3
+### Combinational Logic Optimizations
+The combinational logic is simplified to the most optimized form which is efficient in terms of area & power savings.
+**1. Constant Propagation** : This is a direct optimization method wherein the Boolean expression of the synthesized logic is simplified if any of the inputs are "a constant" and subsequently some of the logic gate outputs also propagate a constant value always.  
+**2. Boolean Logic Optimization** : The various Boolean expression optimization techniques like K-maps (graphical), Quine-McLusky, reduction to standard SOP/ POS forms best suited for the cell library/ technology etc.  
+<br>
+
+#### Lab 6.a: Example 1: opt_check.v 
+```
+module opt_check (input a , input b , output y);
+	assign y = a?b:0;
+endmodule
+
+# We can see by direct simplification that:
+#      y = a*b + a_bar*0 = ab
+# i.e, a 2-input AND Gate. 
+```
+<br>
+
+Synthesis Result:  
+![opt_check](https://github.com/arunkpv/vsd-hdp/assets/79094513/3a580389-a7cb-4310-82cb-d5d431c12deb)  
+
+<br>
+
+#### Lab 6.b: Example 2: opt_check2.v
+```
+module opt_check2 (input a , input b , output y);
+	assign y = a?1:b;
+endmodule
+
+# Boolean simplification:
+#      y = a + a_bar*b
+#        = ab + a*b_bar + a_bar*b
+#        = (ab + ab) + a*b_bar + a_bar*b
+#        = (ab + a*b_bar) + (ab + a_bar*b)
+#        = a + b 
+# i.e, a 2-input OR Gate. 
+```
+<br>
+
+Synthesis Result:  
+_The cell library already seems to have an OR gate available as the synthesis result is an OR gate itself and not a NAND-realization of the OR to avoid the stacked PMOS as shown in the demo videos_  
+![opt_check2](https://github.com/arunkpv/vsd-hdp/assets/79094513/651d0599-ed95-443e-93fe-b796a1a75771)  
+<br>
+
+#### Lab 6.c: Example 3: opt_check3.v
+```
+
+module opt_check3 (input a , input b, input c , output y);
+	assign y = a?(c?b:0):0;
+endmodule
+
+# Boolean simplification:
+#      y = a* (bc) + a_bar*0
+#        = abc
+# i.e, a 3-input AND Gate.
+```
+<br>
+
+Synthesis Result:  
+![opt_check3](https://github.com/arunkpv/vsd-hdp/assets/79094513/ac7e0e36-3b22-4a43-9ee5-51a36a2cf088)  
+<br>
+
+### Sequential Logic Optimizations
+**1. Constant Propagation** : Optimization technique used when a constant value is propagated through a flip-flop -- i.e., irrespective of the state of the triggering signals (CLK, Reset, Set), there are no transitions in the flip-flop output.   
+***[Other Advanced optimization methods not covered by examples in detail:]***   
+**2. State optimization** : Unused states in the sequential design are optimized and/or the total states needed in the FSM are minimized.
+**3. Cloning** : This is a physically-aware (PnR-aware) optimization method where some of the flops in the design are cloned/ duplicated so that the timing can be met post-PnR for the timing arcs involved (provided there is already some minimum positive slack available).  
+**4. Retming** : The pipelining flops in the design are placed optimally so that the combinational delay at each pipeline stage is more or less equalized so that the maximum clock frequency can be increased.  
