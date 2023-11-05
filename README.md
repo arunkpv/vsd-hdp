@@ -369,7 +369,7 @@ endmodule
 
   **Comparing the netlist generated for hierarchical and flat synthesis:**  
   ![multiple_modules_hierarchical_vs_flat](https://github.com/arunkpv/vsd-hdp/assets/79094513/b557ef26-d58e-4006-b8a6-5269070c5453)
-
+________________________________________________________________________________________________________________________
   
 ### Lab 6: Various Flip-Flop Designs
 Here, we will take a look at the simulation and synthesis of different flip-flops.  
@@ -718,7 +718,8 @@ In this example, no optimization is possible as the flop output, q changes.
 |-----------------------|------------------|
 | **Synthesis Result** | ![dff_const1](https://github.com/arunkpv/vsd-hdp/assets/79094513/4acce9d8-d9ed-4569-81db-9a5412af34d4) |  
 <br>
-_________________________________________________________________________________________________________  
+
+_________________________________________________________________________________________________________
 
 #### Lab 9: Example 2: dff_const2.v 
 ```
@@ -741,6 +742,7 @@ Thus the realization does not need any cells and q is connected to 1'b1.
 |-----------------------|------------------|
 | **Synthesis Result** | ![dff_const2](https://github.com/arunkpv/vsd-hdp/assets/79094513/080cb437-7c70-469b-8da1-5ff79dabd328) |
 <br>
+
 _________________________________________________________________________________________________________  
 
 #### Lab 9: Example 3: dff_const3.v 
@@ -771,6 +773,7 @@ So the design will have two DFFs.
 |-----------------------|------------------|
 | **Synthesis Result** | ![dff_const3](https://github.com/arunkpv/vsd-hdp/assets/79094513/92478814-09dd-44d3-b4ea-6b116bba73d7) |
 <br>
+
 _________________________________________________________________________________________________________  
 
 #### Lab 9: Example 4: dff_const4.v 
@@ -801,6 +804,7 @@ Thus, the design can be optimized to have only wires. Further, q1 being an inter
 |-----------------------|------------------|
 | **Synthesis Result** | ![dff_const4](https://github.com/arunkpv/vsd-hdp/assets/79094513/0184674d-f4aa-481e-9f40-4306e164b32c) |
 <br>
+
 _________________________________________________________________________________________________________  
 
 #### Lab 9: Example 5: dff_const5.v 
@@ -829,6 +833,7 @@ endmodule
 |-----------------------|------------------|
 | **Synthesis Result** | ![dff_const5](https://github.com/arunkpv/vsd-hdp/assets/79094513/82fac704-3c55-4c77-b7c0-bdb68565e00f) |
 <br>
+
 _________________________________________________________________________________________________________  
 
 #### Lab 9: Example 6: counter_opt.v 
@@ -858,6 +863,7 @@ In other words, the synthesis output does not have a 3-bit up counter and its as
 | **Synthesis Result with opt_clean switch** | ![counter_opt](https://github.com/arunkpv/vsd-hdp/assets/79094513/fcdeed7d-aab3-4e48-a5b7-4cbbfcde593d) |
 
 <br>
+
 _________________________________________________________________________________________________________  
 
 #### Lab 9: Example 7: counter_opt2.v 
@@ -885,4 +891,5 @@ So when this design is synthesized, we expect 3 DFF instantiations to be present
 |-----------------------|------------------|
 | **Synthesis Result** | ![counter_opt2_with_optimizations](https://github.com/arunkpv/vsd-hdp/assets/79094513/8a8402f5-141f-490c-8c20-6b8e049061ec) |
 <br>
+
 _________________________________________________________________________________________________________  
