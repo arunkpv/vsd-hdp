@@ -970,32 +970,42 @@ endmodule
 <br>
 
 In this case, we can clearly see that there is a mismatch in the simulation between pre and post-synthesis.  
+The pre-synthesis simulation shows a behavior resembling that of a posedge triggered DFF with the "sel" signal acting as the CLK and the "i1" acting as the D input.  
+The synthesis result, however, is a 2-input mux and not a DFF.  
 In fact, yosys actually throws a warning message about the possible omission of signals from the sensitivity list assuming a purely combinational circuit.  
+<br>
+
 _Yosys warning about missing signals in sensitivity list_  
 ![yosys_read_verilog_message](https://github.com/arunkpv/vsd-hdp/assets/79094513/244f2f24-e33c-4a08-b710-6c328c2dd894)
 <br>
 
 _________________________________________________________________________________________________________  
 
-### Lab 10: GLS Synthesis - Sumulation mismatch - Example 3: bad_mux.v
+### Lab 10: GLS Synthesis - Sumulation mismatch - Example 3: blocking_caveat.v
 ```
-module bad_mux (input i0 , input i1 , input sel , output reg y);
-    always @ (sel)
+module blocking_caveat (input a , input b , input  c, output reg d);
+    reg x;
+
+    always @ (*)
     begin
-        if(sel)
-            y <= i1;
-        else
-            y <= i0;
+        d = x & c;
+        x = a | b;
     end
 endmodule
+
 ```
 <br>
 
-| RTL Simulation | ![bad_mux_rtl_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/93e9ca05-983d-4b43-bcb7-c9894f159d05) |
+In this case, there is a mismatch in the simulation results between pre and post-synthesis due to the use of blocking assignments. 
+Assuming we wanted to implement just a combinational logic with output, d = (a + b) * c:
+  * In the RTL sim, the blocking assignments make it seem as if there is a flop in the design.
+  * While in the GLS, the design is synthesized to a O2A1 gate implementing d = (a + b) * c, with no flops inferred, thus resulting in the mismatch.
+  
+| RTL Simulation | ![blocking_caveat_waves_RTL](https://github.com/arunkpv/vsd-hdp/assets/79094513/38335723-9430-4120-809e-caea0bbfec69) |
 |-----------------------|------------------|
-| **GLS** | ![bad_mux_waves_GLS](https://github.com/arunkpv/vsd-hdp/assets/79094513/65a73835-3411-4ef4-869a-5c278a43a304) |
-| **Synthesis Result** | ![bad_mux_rtl](https://github.com/arunkpv/vsd-hdp/assets/79094513/058c5e1b-9e75-4c8c-8111-d75f04502a31) |
+| **GLS** | ![blocking_caveat_waves_GLS](https://github.com/arunkpv/vsd-hdp/assets/79094513/5fedc6b3-49db-417d-975f-e0a227e2d072) |
+| **Synthesis Result** | ![blocking_caveat](https://github.com/arunkpv/vsd-hdp/assets/79094513/42a32ced-b8e1-4e26-95bc-bb3b2394ab4f) |
+
 <br>
 
-In this case, we can clearly see that there is a mismatch in the simulation between pre and post-synthesis.  
-In fact, yosys actually throws a warning message about the possible omission of signals from the sensitivity list assuming a purely combinational circuit.  
+_________________________________________________________________________________________________________  
