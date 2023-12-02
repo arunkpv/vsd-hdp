@@ -1050,7 +1050,6 @@ int main() {
     return 0;
 }
 ```
-<br>
 
 **Compilation command:**
 ```
@@ -1074,6 +1073,7 @@ Output:
 ![D5_disassemble](https://github.com/arunkpv/vsd-hdp/assets/79094513/5b8fb43e-a6d0-4cf1-a6a3-ab2e96d2377d)
 <br>
 
+### Lab 3: Write a C program to compute the sum of first N natural numbers and run this using Spike RISC-V ISA Simulator  
 _________________________________________________________________________________________________________  
 <br>
 
