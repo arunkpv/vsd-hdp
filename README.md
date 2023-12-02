@@ -1034,10 +1034,49 @@ ________________________________________________________________________________
       3) [https://five-embeddev.com/toolchain/2019/06/26/gcc-targets/](https://five-embeddev.com/toolchain/2019/06/26/gcc-targets/)
       4) [https://github.com/riscv-non-isa/riscv-toolchain-conventions](https://github.com/riscv-non-isa/riscv-toolchain-conventions)
 
-### Labs 1,2: Write a C program to compute the sum of first N natural numbers
+### Labs 1,2: Write a C program to compute the sum of first N natural numbers and run this using Spike RISC-V ISA Simulator  
+**C Program:**
+```
+#include <stdio.h>
 
+int main() {
+    int n=100, i, sum = 0;
+    
+    for (i = 1; i <= n; ++i) {
+        sum += i;
+    }
+    
+    printf("Sum of first %d natural numbers = %d\n", n, sum);
+    return 0;
+}
 ```
+<br>
+
+**Compilation command:**
 ```
+riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1toN.o sum1toN.c
+    where,
+        -mabi=ABI-string option specifies the ABI (Application Binary Interface) to be used.
+        -march=ISA-string option specifies the RISC-V ISA for which the object code is to be generated.
+        -O<number>, -Ofast, -Os, -Og etc. specify the optimize option to be used by the compiler.
+```
+Output:  
+![D5_sum1toN_compile_simulate](https://github.com/arunkpv/vsd-hdp/assets/79094513/4cb08a53-6980-4121-a030-aa67d551b300)
+<br>
+
+**Disassemble command:**
+```
+riscv64-unknown-elf-objdump -d sum1toN.o
+    where,
+        -d, --disassemble flag displays the assembler contents of the executable sections.
+```
+Output:  
+![D5_disassemble](https://github.com/arunkpv/vsd-hdp/assets/79094513/5b8fb43e-a6d0-4cf1-a6a3-ab2e96d2377d)
+<br>
+
+_________________________________________________________________________________________________________  
+<br>
+
 ## Day 6
 ### Introduction to ABI and basic verification flow
 
