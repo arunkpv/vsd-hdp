@@ -10,7 +10,11 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |[Day 2](#day-2) | <ol><li>Familiarization of .lib file structure and various timing models (QTMs/ETMs)</li><li>Hierarchical vs. Flat synthesis</li><li>Various Flip-Flop designs</li></ol> |
  |[Day 3](#day-3) | Logic Synthesis Optimizations<ol><li>Combinational</li><li>Sequential</li></ol> |
  |[Day 4](#day-4) | <ol><li>Gate Level Simulation</li><li>Synthesis-Simulation mismatch</li></ol> |
-
+ |[Day 5](#day-5) | Introduction to RISC-V ISA and GNU Compiler Toolchain |
+ |[Day 6](#day-6) | Introduction to ABI and basic verification flow |
+ |[Day 7](#day-7) | Digital Logic with TL-Verilog and Makerchip |
+ |[Day 8](#day-8) | Basic RISC-V CPU Microarchitecture |
+ |[Day 9](#day-9) | Complete Pipelined RISC-V CPU Microarchitecture |
 
 ## Day 0
 ### System Setup
@@ -1009,3 +1013,34 @@ Assuming we wanted to implement just a combinational logic with output, d = (a +
 <br>
 
 _________________________________________________________________________________________________________  
+
+## Day 5
+### Introduction to RISC-V ISA and GNU Compiler Toolchain
+
+_________________________________________________________________________________________________________  
+<br>
+
+## Day 6
+### Introduction to ABI and basic verification flow
+
+_________________________________________________________________________________________________________  
+<br>
+
+## Day 7
+### Digital Logic with TL-Verilog and Makerchip
+
+_________________________________________________________________________________________________________  
+<br>
+
+## Day 8
+### Basic RISC-V CPU Microarchitecture
+
+_________________________________________________________________________________________________________  
+<br>
+
+## Day 9
+### Complete Pipelined RISC-V CPU Microarchitecture
+
+_________________________________________________________________________________________________________  
+<br>
+
