@@ -1016,6 +1016,7 @@ ________________________________________________________________________________
 
 ## Day 5
 ### Introduction to RISC-V ISA and GNU Compiler Toolchain
+  * [RISC-V Technical Specifications](https://wiki.riscv.org/display/HOME/RISC-V+Technical+Specifications)
   * The RISC-V ISA simulator & GNU Compiler toolchain can be installed by running the following script from the terminal:
     [run.sh](https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh)
     <br>
@@ -1129,13 +1130,54 @@ help                            # This screen!
 h                                 Alias for help
 Note: Hitting enter is the same as: run 1
 ```
-
 _________________________________________________________________________________________________________  
 <br>
 
 ## Day 6
 ### Introduction to ABI and basic verification flow
+In computer software, an application binary interface (ABI) is an interface between two binary program modules. Often, one of these modules is a library or operating system facility, and the other is a program that is being run by a user.
+An ABI defines how data structures or computational routines are accessed in machine code, which is a low-level, hardware-dependent format.  
+_Reference:_ [Application binary interface](https://en.wikipedia.org/wiki/Application_binary_interface)  
+<br>
 
+RISC-V CPU architecture has 32 registers. Application programmer, can access each of these 32 registers through its ABI name; for example, if we need to move the stack pointer, the command ```addi sp, sp, -16``` will decrement the SP by 0x10, where "sp" is the ABI name of stack pointer. The following table shows the ABI Integer register calling convention :  
+![RV64I_IntegerRegisterConvention](https://github.com/arunkpv/vsd-hdp/assets/79094513/f8db0346-bfc0-4ea1-904a-e39895201a31)
+<br>
+
+For more detailed information, refer to the [RISC-V ABI Specification v1.0](https://drive.google.com/file/d/1Ja_Tpp_5Me583CGVD-BIZMlgGBnlKU4R/view)  
+
+### Lab 1: Rewrite the program to find the sum of first N natural numbers using C & Assembly
+
+C Program: 1to9_custom.c
+```
+#include <stdio.h>
+
+extern int load(int x, int y); 
+
+int main() {
+	int result = 0;
+       	int count = 100;
+    	result = load(0x0, count+1);
+    	printf("Sum of number from 1 to %d is %d\n", count, result); 
+}
+```
+
+Assembly program: load.s
+```
+.section .text
+.global load
+.type load, @function
+
+load:
+	add 	a4, a0, zero //Initialize sum register a4 with 0x0
+	add 	a2, a0, a1   // store count of 10 in register a2. Register a1 is loaded with 0xa (decimal 10) from main program
+	add	a3, a0, zero // initialize intermediate sum register a3 by 0
+loop:	add 	a4, a3, a4   // Incremental addition
+	addi 	a3, a3, 1    // Increment intermediate register by 1	
+	blt 	a3, a2, loop // If a3 is less than a2, branch to label named <loop>
+	add	a0, a4, zero // Store final result to register a0 so that it can be read by main program
+	ret
+```
 _________________________________________________________________________________________________________  
 <br>
 
