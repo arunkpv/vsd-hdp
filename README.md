@@ -1101,8 +1101,10 @@ fregd <core> <reg>              # Display double precision <reg> in <core>
 vreg <core> [reg]               # Display vector [reg] (all if omitted) in <core>
 pc <core>                       # Show current PC in <core>
 priv <core>                     # Show current privilege level in <core>
-mem [core] <hex addr>           # Show contents of virtual memory <hex addr> in [core] (physical memory <hex addr> if omitted)
-str [core] <hex addr>           # Show NUL-terminated C string at virtual address <hex addr> in [core] (physical address <hex addr> if omitted)
+mem [core] <hex addr>           # Show contents of virtual memory <hex addr>
+                                  in [core] (physical memory <hex addr> if omitted)
+str [core] <hex addr>           # Show NUL-terminated C string at virtual address <hex addr>
+                                  in [core] (physical address <hex addr> if omitted)
 dump                            # Dump physical memory to binary files
 mtime                           # Show mtime
 mtimecmp <core>                 # Show mtimecmp for <core>
@@ -1110,11 +1112,14 @@ until reg <core> <reg> <val>    # Stop when <reg> in <core> hits <val>
 untiln reg <core> <reg> <val>   # Run noisy and stop when <reg> in <core> hits <val>
 until pc <core> <val>           # Stop when PC in <core> hits <val>
 untiln pc <core> <val>          # Run noisy and stop when PC in <core> hits <val>
-until mem [core] <addr> <val>   # Stop when virtual memory <addr> in [core] (physical address <addr> if omitted) becomes <val>
-untiln mem [core] <addr> <val>  # Run noisy and stop when virtual memory <addr> in [core] (physical address <addr> if omitted) becomes <val>
+until mem [core] <addr> <val>   # Stop when virtual memory <addr>
+                                  in [core] (physical address <addr> if omitted) becomes <val>
+untiln mem [core] <addr> <val>  # Run noisy and stop when virtual memory <addr>
+                                  in [core] (physical address <addr> if omitted) becomes <val>
 while reg <core> <reg> <val>    # Run while <reg> in <core> is <val>
 while pc <core> <val>           # Run while PC in <core> is <val>
-while mem [core] <addr> <val>   # Run while virtual memory <addr> in [core] (physical memory <addr> if omitted) is <val>
+while mem [core] <addr> <val>   # Run while virtual memory <addr>
+                                  in [core] (physical memory <addr> if omitted) is <val>
 run [count]                     # Resume noisy execution (until CTRL+C, or [count] insns)
 r [count]                         Alias for run
 rs [count]                      # Resume silent execution (until CTRL+C, or [count] insns)
