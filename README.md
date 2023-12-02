@@ -1016,8 +1016,13 @@ ________________________________________________________________________________
 
 ## Day 5
 ### Introduction to RISC-V ISA and GNU Compiler Toolchain
+The RISC-V ISA simulator & GNU Compiler toolchain can be installed by running the following script from the terminal:  
+[run.sh](https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh)  
+<br>
 
-_________________________________________________________________________________________________________  
+The following GitHub repo contains sample programs and the verilog code for a RV32I processor core (PicoRV32):  
+[RISC-V Workshop Collaterals](https://github.com/kunalg123/riscv_workshop_collaterals.git)  
+
 <br>
 
 ## Day 6
