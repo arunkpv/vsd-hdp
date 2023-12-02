@@ -1016,15 +1016,28 @@ ________________________________________________________________________________
 
 ## Day 5
 ### Introduction to RISC-V ISA and GNU Compiler Toolchain
-The RISC-V ISA simulator & GNU Compiler toolchain can be installed by running the following script from the terminal:  
-[run.sh](https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh)  
-<br>
+  * The RISC-V ISA simulator & GNU Compiler toolchain can be installed by running the following script from the terminal:
+    [run.sh](https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh)
+    <br>
 
-The following GitHub repo contains sample programs and the verilog code for a RV32I processor core (PicoRV32):  
-[RISC-V Workshop Collaterals](https://github.com/kunalg123/riscv_workshop_collaterals.git)  
+  * The following GitHub repo contains sample programs and the verilog code for a RV32I processor core (PicoRV32):
+    [RISC-V Workshop Collaterals](https://github.com/kunalg123/riscv_workshop_collaterals.git)
+    <br>
 
-<br>
+  * More information on how to use the toolchain to compile a source file, simulation of the object file and using the interactive debug mode can be found in the README page of the Spike RISC-V simulator GitHub repository:
+    [Spike RISC-V ISA Simulator](https://github.com/riscv-software-src/riscv-isa-sim.git)
+    <br>
 
+  * More information on the RISC-V specific compiler options like ```-march```, ```-mabi```, and ```-mtune``` can be found in the following links:
+      1) [https://gcc.gnu.org/onlinedocs/gcc/RISC-V-Options.html](https://gcc.gnu.org/onlinedocs/gcc/RISC-V-Options.html)
+      2) [https://www.sifive.com/blog/all-aboard-part-1-compiler-args](https://www.sifive.com/blog/all-aboard-part-1-compiler-args)
+      3) [https://five-embeddev.com/toolchain/2019/06/26/gcc-targets/](https://five-embeddev.com/toolchain/2019/06/26/gcc-targets/)
+      4) [https://github.com/riscv-non-isa/riscv-toolchain-conventions](https://github.com/riscv-non-isa/riscv-toolchain-conventions)
+
+### Labs 1,2: Write a C program to compute the sum of first N natural numbers
+
+```
+```
 ## Day 6
 ### Introduction to ABI and basic verification flow
 
