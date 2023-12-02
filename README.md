@@ -1034,18 +1034,16 @@ ________________________________________________________________________________
       3) [https://five-embeddev.com/toolchain/2019/06/26/gcc-targets/](https://five-embeddev.com/toolchain/2019/06/26/gcc-targets/)
       4) [https://github.com/riscv-non-isa/riscv-toolchain-conventions](https://github.com/riscv-non-isa/riscv-toolchain-conventions)
 
-### Labs 1,2: Write a C program to compute the sum of first N natural numbers and run this using Spike RISC-V ISA Simulator  
+### Labs 1,2: Write a C program to compute the sum of first N natural numbers, compile using RISC-V GCC, simulate using Spike RISC-V ISA Simulator and disassemble to view the assembly code  
 **C Program:**
 ```
 #include <stdio.h>
 
 int main() {
     int n=100, i, sum = 0;
-    
     for (i = 1; i <= n; ++i) {
         sum += i;
     }
-    
     printf("Sum of first %d natural numbers = %d\n", n, sum);
     return 0;
 }
@@ -1059,7 +1057,7 @@ riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1toN.o sum1toN.c
         -march=ISA-string option specifies the RISC-V ISA for which the object code is to be generated.
         -O<number>, -Ofast, -Os, -Og etc. specify the optimize option to be used by the compiler.
 ```
-Output:  
+Spike simulation output:  
 ![D5_sum1toN_compile_simulate](https://github.com/arunkpv/vsd-hdp/assets/79094513/4cb08a53-6980-4121-a030-aa67d551b300)
 <br>
 
@@ -1073,7 +1071,60 @@ Output:
 ![D5_disassemble](https://github.com/arunkpv/vsd-hdp/assets/79094513/5b8fb43e-a6d0-4cf1-a6a3-ab2e96d2377d)
 <br>
 
-### Lab 3: Write a C program to compute the sum of first N natural numbers and run this using Spike RISC-V ISA Simulator  
+Comparing the generated assembly code for main function with -O1 vs -Ofast compiler options:
+| -O1 | -Ofast |
+|-----------------------|------------------|
+| ![D5_disassemble_sum1toN_O1](https://github.com/arunkpv/vsd-hdp/assets/79094513/b4f1accf-a3ec-4a14-b0d7-df5b0db49544) | ![D5_disassemble_sum1toN_Ofast](https://github.com/arunkpv/vsd-hdp/assets/79094513/6e2e0b03-2834-4fec-b398-0f2893370f6b) |
+<br>
+
+### Lab 3: Use the Interactive Debug mode in Spike RISC-V ISA sim to observe the execution of the program with -Ofast flag  
+A small example of how to use the debug mode can be found in the following page: [Interactive Debug Mode](https://github.com/riscv-software-src/riscv-isa-sim#interactive-debug-mode)  
+
+To enter the interactive debug mode, launch spike with ```-d``` option:  
+```
+Example:
+spike -d pk sum1toN.o
+```
+<br>
+
+_Snapshot showing usage of Spike Interactive Debug Mode_
+![D5_Spike_InteractiveDebugMode](https://github.com/arunkpv/vsd-hdp/assets/79094513/f6c5bde3-de13-472b-8322-f2c42dbf618c)
+<br>
+
+```
+Interactive commands:
+reg <core> [reg]                # Display [reg] (all if omitted) in <core>
+freg <core> <reg>               # Display float <reg> in <core> as hex
+fregh <core> <reg>              # Display half precision <reg> in <core>
+fregs <core> <reg>              # Display single precision <reg> in <core>
+fregd <core> <reg>              # Display double precision <reg> in <core>
+vreg <core> [reg]               # Display vector [reg] (all if omitted) in <core>
+pc <core>                       # Show current PC in <core>
+priv <core>                     # Show current privilege level in <core>
+mem [core] <hex addr>           # Show contents of virtual memory <hex addr> in [core] (physical memory <hex addr> if omitted)
+str [core] <hex addr>           # Show NUL-terminated C string at virtual address <hex addr> in [core] (physical address <hex addr> if omitted)
+dump                            # Dump physical memory to binary files
+mtime                           # Show mtime
+mtimecmp <core>                 # Show mtimecmp for <core>
+until reg <core> <reg> <val>    # Stop when <reg> in <core> hits <val>
+untiln reg <core> <reg> <val>   # Run noisy and stop when <reg> in <core> hits <val>
+until pc <core> <val>           # Stop when PC in <core> hits <val>
+untiln pc <core> <val>          # Run noisy and stop when PC in <core> hits <val>
+until mem [core] <addr> <val>   # Stop when virtual memory <addr> in [core] (physical address <addr> if omitted) becomes <val>
+untiln mem [core] <addr> <val>  # Run noisy and stop when virtual memory <addr> in [core] (physical address <addr> if omitted) becomes <val>
+while reg <core> <reg> <val>    # Run while <reg> in <core> is <val>
+while pc <core> <val>           # Run while PC in <core> is <val>
+while mem [core] <addr> <val>   # Run while virtual memory <addr> in [core] (physical memory <addr> if omitted) is <val>
+run [count]                     # Resume noisy execution (until CTRL+C, or [count] insns)
+r [count]                         Alias for run
+rs [count]                      # Resume silent execution (until CTRL+C, or [count] insns)
+quit                            # End the simulation
+q                                 Alias for quit
+help                            # This screen!
+h                                 Alias for help
+Note: Hitting enter is the same as: run 1
+```
+
 _________________________________________________________________________________________________________  
 <br>
 
