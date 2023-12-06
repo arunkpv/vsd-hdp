@@ -1030,13 +1030,11 @@ The RISC-V ISA is defined as a Base integer ISA, which is the basic necessity fo
 
 #### RISC-V Instruction Formats
 ![D5_32-bit_RISC-V_instruction_formats](https://github.com/arunkpv/vsd-hdp/assets/79094513/22b8169a-a5aa-40ec-9bfc-7bbed0afe3fc)  
-<br>
 
 References:
   1) [https://en.wikipedia.org/wiki/RISC-V](https://en.wikipedia.org/wiki/RISC-V)
   2) [RISC-V Technical Specifications](https://wiki.riscv.org/display/HOME/RISC-V+Technical+Specifications)
   3) [RISC-V MYTH Workshop](https://github.com/RISCV-MYTH-WORKSHOP/RISC-V-CPU-Core-using-TL-Verilog/blob/master/README.md#introduction-to-risc-v-isa)
-<br>
 
 #### RISC-V ISA Simulator and Compiler toolchain setup
   * The RISC-V ISA simulator & GNU Compiler toolchain can be installed by running the following script from the terminal:
