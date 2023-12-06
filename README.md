@@ -1016,7 +1016,29 @@ ________________________________________________________________________________
 
 ## Day 5
 ### Introduction to RISC-V ISA and GNU Compiler Toolchain
-  * [RISC-V Technical Specifications](https://wiki.riscv.org/display/HOME/RISC-V+Technical+Specifications)
+
+RISC-V is an open standard instruction set architecture based on established reduced instruction set computer(RISC) principles. It was first started by Prof. Krste Asanović and graduate students Yunsup Lee and Andrew Waterman in May 2010 as part of the Parallel Computing Laboratory, at UC Berkeley. Unlike most other ISA designs, the RISC-V ISA is provided under open source licenses that do not require fees to use, which provides it a huge edge over other commercially available ISAs. It is a simple, stable, small standard base ISA with extensible ISA support, that has been redefining the flexibility, scalability, extensibility, and modularity of chip designs.  
+
+#### ISA base and extensions
+RISC-V has a modular design, consisting of alternative base parts, with added optional extensions. The ISA base and its extensions are developed in a collective effort between industry, the research community and educational institutions. The base specifies instructions (and their encoding), control flow, registers (and their sizes), memory and addressing, logic (i.e., integer) manipulation, and ancillaries. The base alone can implement a simplified general-purpose computer, with full software support, including a general-purpose compiler.  
+
+The standard extensions are specified to work with all of the standard bases, and with each other without conflict.  
+![D5_RISC-V_ISA_Base_and_Extensions](https://github.com/arunkpv/vsd-hdp/assets/79094513/12f3e401-32eb-495a-97c5-68f61d5279a9)  
+<br>
+
+The RISC-V ISA is defined as a Base integer ISA, which is the basic necessity for the implemetation of any CPU core. In addition to that it also has optional extensions to the base ISA. The base RISC-V ISA has a little-endian memory system. The standard is maintained by the RISC-V foundation.  
+
+#### RISC-V Instruction Formats
+![D5_32-bit_RISC-V_instruction_formats](https://github.com/arunkpv/vsd-hdp/assets/79094513/22b8169a-a5aa-40ec-9bfc-7bbed0afe3fc)  
+<br>
+
+References:
+  1) [https://en.wikipedia.org/wiki/RISC-V](https://en.wikipedia.org/wiki/RISC-V)
+  2) [RISC-V Technical Specifications](https://wiki.riscv.org/display/HOME/RISC-V+Technical+Specifications)
+  3) [RISC-V MYTH Workshop](https://github.com/RISCV-MYTH-WORKSHOP/RISC-V-CPU-Core-using-TL-Verilog/blob/master/README.md#introduction-to-risc-v-isa)
+<br>
+
+#### RISC-V ISA Simulator and Compiler toolchain setup
   * The RISC-V ISA simulator & GNU Compiler toolchain can be installed by running the following script from the terminal:
     [run.sh](https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh)
     <br>
