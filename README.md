@@ -1255,9 +1255,38 @@ ________________________________________________________________________________
 
 ## Day 7
 ### Digital Logic with TL-Verilog and Makerchip
+  
+**TL-Verilog**  
+Transaction-Level Verilog (TL-Verilog) is an extension to SystemVerilog that supports a new design methodology, called transaction-level design. A transaction, in this methodology, is an entity that moves through structures like pipelines, arbiters, and queues. A transaction might be a machine instruction, a flit of a packet, or a memory read/write. Transaction logic, like packet header decode or instruction execution, that operates on the transaction can be placed anywhere along the transaction’s flow. Tools produce the logic to carry signals through their flows to stitch the transaction logic.  
+<br>
 
+**Makerchip Platform**  
+Makerchip is a free online environment provided by Redwood EDA for developing integrated circuits. The online platform can be used to code, compile, simulate and debug Verilog designs from a web browser. In addition to Verilog and synthesizable SystemVerilog, the platform provides support for Transaction-Level Verilog (TL-Verilog).  
+
+The Makerchip IDE also provides various tutorials and examples (inside Learn menu in the main window) to help learn the new concepts and constructs in TL-Verilog quickly.  
+
+_References:_
+  1) [https://www.redwoodeda.com/tl-verilog](https://www.redwoodeda.com/tl-verilog)
+  2) [https://www.tl-x.org](https://www.tl-x.org/)
+  3) [Top-Down Transaction-Level Design with TL-Verilog](https://arxiv.org/pdf/1811.01780.pdf)
+  4) [Makerchip IDE](https://makerchip.com/)
+  5) [Makerchip IDE Documentation](https://github.com/RISCV-MYTH-WORKSHOP/RISC-V-CPU-Core-using-TL-Verilog/tree/master/Documentation/Makerchip_IDE)
 _________________________________________________________________________________________________________  
 <br>
+
+In this session, we will learn the concepts and syntax of TL-Verilog by implementing basic combinational and sequential logic using the same.
+  1) Combinational logic in TL-Verilog using Makerchip
+  2) Sequential logic
+  3) Pipelined logic
+  4) Validity
+  
+#### Combinational Logic
+
+#### Sequential Logic
+
+#### Pipelined Logic
+
+#### Validity
 
 ## Day 8
 ### Basic RISC-V CPU Microarchitecture
