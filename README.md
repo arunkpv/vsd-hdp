@@ -1271,22 +1271,24 @@ _References:_
   3) [Top-Down Transaction-Level Design with TL-Verilog](https://arxiv.org/pdf/1811.01780.pdf)
   4) [Makerchip IDE](https://makerchip.com/)
   5) [Makerchip IDE Documentation](https://github.com/RISCV-MYTH-WORKSHOP/RISC-V-CPU-Core-using-TL-Verilog/tree/master/Documentation/Makerchip_IDE)
-_________________________________________________________________________________________________________  
-<br>
 
-In this session, we will learn the concepts and syntax of TL-Verilog by implementing basic combinational and sequential logic using the same.
-  1) Combinational logic in TL-Verilog using Makerchip
+In this session, we will learn the concepts and syntax of TL-Verilog by implementing basic combinational and sequential logic using the same in Makerchip.
+  1) Combinational logic
   2) Sequential logic
   3) Pipelined logic
   4) Validity
   
 #### Combinational Logic
 
+
 #### Sequential Logic
 
 #### Pipelined Logic
 
 #### Validity
+
+_________________________________________________________________________________________________________  
+<br>
 
 ## Day 8
 ### Basic RISC-V CPU Microarchitecture
