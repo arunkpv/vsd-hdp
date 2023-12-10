@@ -1281,13 +1281,17 @@ In this session, we will learn the concepts and syntax of TL-Verilog by implemen
 #### Combinational Logic
 Implemented basic combinational logic elements and circuits like gates, muxes, vector adder, combinational calculator etc. using TL-Verilog in Makerchip.  
   1) AND2 Gate
-     ![D7_AND2_Gate](https://github.com/arunkpv/vsd-hdp/assets/79094513/51dac606-7032-4fe4-bcba-974ed954d321)
+     |![D7_AND2_Gate](https://github.com/arunkpv/vsd-hdp/assets/79094513/51dac606-7032-4fe4-bcba-974ed954d321)|
+     |-|
   2) Vector Mux
-     ![D7_VectorMux](https://github.com/arunkpv/vsd-hdp/assets/79094513/aae16877-170f-48ed-8e41-debf2b65b93e)
+     |![D7_VectorMux](https://github.com/arunkpv/vsd-hdp/assets/79094513/aae16877-170f-48ed-8e41-debf2b65b93e)|
+     |-|
   3) Adder
-     ![D7_Vector_Addition](https://github.com/arunkpv/vsd-hdp/assets/79094513/f16b9765-9e47-4a14-8ba7-f685241e4609)
+     |![D7_Vector_Addition](https://github.com/arunkpv/vsd-hdp/assets/79094513/f16b9765-9e47-4a14-8ba7-f685241e4609)|
+     |-|
   4) Combinational Calculator
-     ![D7_Combinational_Calculator](https://github.com/arunkpv/vsd-hdp/assets/79094513/50f24afe-96da-4be0-b1c5-e94c244e850d)
+     |![D7_Combinational_Calculator](https://github.com/arunkpv/vsd-hdp/assets/79094513/50f24afe-96da-4be0-b1c5-e94c244e850d)|
+     |-|
 
 #### Sequential Logic
 
