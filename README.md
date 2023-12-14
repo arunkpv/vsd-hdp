@@ -1294,6 +1294,15 @@ Implemented basic combinational logic elements and circuits like gates, muxes, v
      |-|
 
 #### Sequential Logic
+  1) Fibonacci Series
+     |![D8_Fibonacci_Series](https://github.com/arunkpv/vsd-hdp/assets/79094513/818e525e-df9f-4456-9acc-79f01ab8961d)|
+     |-|
+  2) Free-running Counter (starts from 1 and increments by 1 every cycle)
+     |![D8_FR_Counter](https://github.com/arunkpv/vsd-hdp/assets/79094513/5f8b3a73-281a-46ee-b29e-c2a908839855)|
+     |-|
+  3) Sequential Calculator
+     |![D8_Sequential_Calculator](https://github.com/arunkpv/vsd-hdp/assets/79094513/7511a0c8-57f6-44c3-b4c6-366ba62a6451)|
+     |-|
 
 #### Pipelined Logic
 
