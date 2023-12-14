@@ -1305,6 +1305,15 @@ Implemented basic combinational logic elements and circuits like gates, muxes, v
      |-|
 
 #### Pipelined Logic
+  1) Pythagorus Theorem with 3-stage pipeline
+     |![D7_Pipelined_Pythagorus](https://github.com/arunkpv/vsd-hdp/assets/79094513/5f856ace-2574-4cf0-82d1-fe333711a526)|
+     |-|
+  2) Example showing the ease of pipelining/ retiming in TL-Verilog
+     |![D7_Errors_in_comp_pipe](https://github.com/arunkpv/vsd-hdp/assets/79094513/fb02fc31-3a8d-4734-a37f-5f8ecb910d8c)|
+     |-|
+  3) Sequential Calculator with counter
+     |
+     |-|
 
 #### Validity
 
