@@ -1312,7 +1312,7 @@ Implemented basic combinational logic elements and circuits like gates, muxes, v
      |![D7_Errors_in_comp_pipe](https://github.com/arunkpv/vsd-hdp/assets/79094513/fb02fc31-3a8d-4734-a37f-5f8ecb910d8c)|
      |-|
   3) Sequential Calculator with counter
-     |![D7_2-Cycle_Calculator](https://github.com/arunkpv/vsd-hdp/assets/79094513/8f78994a-1cfa-410b-9517-e4bf01577145)|
+     |![D7_Seq_Calculator_with_Counter](https://github.com/arunkpv/vsd-hdp/assets/79094513/3347e9ae-6be6-4c16-8580-9d2a97439656)|
      |-|
   4) 2-Cycle Sequential Calculator
 
