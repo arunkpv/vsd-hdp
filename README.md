@@ -1315,9 +1315,14 @@ Implemented basic combinational logic elements and circuits like gates, muxes, v
      |![D7_Seq_Calculator_with_Counter](https://github.com/arunkpv/vsd-hdp/assets/79094513/3347e9ae-6be6-4c16-8580-9d2a97439656)|
      |-|
   4) 2-Cycle Sequential Calculator
+     |![D7_2-Cycle_Calculator_BlockDiagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/98a8b8f0-457d-448d-a55e-536c763e0149)|
+     |-|
+     |![D7_2-Cycle_Calculator](https://github.com/arunkpv/vsd-hdp/assets/79094513/1352a5c3-3bd4-42cf-a666-a169d8f841e8)|
 
 #### Validity
-
+Using validity makes the design cleaner. Debugging and error checking also becomes easier.    
+  1) 2-Cycle Calculator with Validity
+     
 _________________________________________________________________________________________________________  
 <br>
 
