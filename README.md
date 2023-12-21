@@ -1324,11 +1324,11 @@ Using validity makes the design cleaner. Debugging and error checking also becom
   1) 2-Cycle Calculator with Validity
      |![D7_2-Cycle_Calculator_with_Validity_Diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/33515c94-c3db-4135-b357-13d4f1694721)|
      |-|
-     |![D7_2-Cycle_Calculator_with_Validity](https://github.com/arunkpv/vsd-hdp/assets/79094513/2093eb9a-16d6-4b96-8b95-d310cd9aaaaa)|
+     |![D7_2-Cycle_Calculator_with_Validity](https://github.com/arunkpv/vsd-hdp/assets/79094513/818f7dad-d8f2-4c19-b2e1-73c8cee02f11)|
   2) Calculator with Single-value Memory
      |![D7_Calculator_with_SingleValue_Memory_Diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/16fb6979-e7e8-4064-a76e-a620e70e2c77)|
      |-|
-     |
+     |![D7_Calculator_with_SingleValue_Memory](https://github.com/arunkpv/vsd-hdp/assets/79094513/93c17318-395d-4626-a9b2-1704df62ed1b)|
 _________________________________________________________________________________________________________  
 <br>
 
