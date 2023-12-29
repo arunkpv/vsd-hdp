@@ -1384,13 +1384,54 @@ ________________________________________________________________________________
 ## Day 9
 ### Complete Pipelined RISC-V CPU Microarchitecture
 Our RISC-V core from the previous day is still incomplete w.r.t the instructions implemented, and additionally we need to do pipelining and handling of the pipeline hazards.  
-<br>
+We need to do the following to complete the CPU Design:
+  1) Pipeline the CPU, taking care of the data dependency & control flow hazards
+  2) Complete the implementation of the remaining ALU instructions
+  3) Implement DMEM & Load, Store instructions
+  4) Implement the Jump (JAL, JALR) instructions
 
-First, we will implement with a simplified 3-stage pipeline with ~1 Instruction per 3 Clock cycles (IPC ~ 1/3) using a 3-Cycle valid signal, the various stages being:  
+#### Pipelining the CPU: Using 3-Cycle $valid signal
+First, we will implement with a simplified 3-stage pipeline with using a 3-Cycle valid signal, the various stages being:  
   * PC
   * Instruction Fetch + Decode
   * RF Read, ALU
   * RF Write, Branch Instrn. logic
+<br>
+
+This implementation would have an IPC of only ~1/3 as the valid signal is active once every 3 cycles (HLLHLL...) indicating only one valid instruction in the pipe at any point. We do this step to partition the core (or logic) into the respective pipeline stages first without having to worry about handling the pipeline hazards.   
+
+|**Waterfall Logic Diagram with 3-Cycle Valid**<br>  ![D9_Pipelining_with_3Cycle_Valid](https://github.com/arunkpv/vsd-hdp/assets/79094513/289daa46-bc5b-474d-8ad5-ed6098fd46d0)|
+|-|
+|**TL-V Logic Implementation Diagram**<br>  ![D9_3Cycle_Valid_Diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/54ab694b-9da4-4cdf-9afc-27ae6b3d5270)|
+
+|**Makerchip-generated Block Diagram for 3-Cycle Valid design**<br>  ![D9_3Cycle_Valid_Makerchip](https://github.com/arunkpv/vsd-hdp/assets/79094513/d8d82374-0777-4a2b-8ca5-9f85a68f91ee)|
+|-|
+<br>
+
+#### Pipelining the CPU: Solving the data & control hazards
+  1) Data Hazard: Read-After-Write (RAW) in the Refister File
+      * There is a 2-cycle delay (by design) between RF Read and Write operations.
+      * Hence we have a Read-After-Write (RAW) data hazard if the current instruction in the pipe is trying to read from the Register File (RF) when the previous instruction had written to the same RF index.
+      * To solve this, we need to add a Register File Bypass Mux at the input of the ALU and select the previous ALU output if the previous instruction was writing to the RF index accessed in the current instruction.
+
+  |**Register File Bypass Waterfall Logic Diagram**<br>  ![D9_RF_Bypass_Logic_Diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/b01a7d2c-2a1e-41c0-9cd8-03ab697f1eaa)|
+  |-|
+  |**Register File Bypass TL-V Implementation**<br>  ![D9_RF_Bypass_TLV_Diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/b7f807bb-a05b-4209-9dc9-1535f5472528)|
+
+  2) Control Hazard: Branch Instructions
+      * We have control flow hazards when a branch is taken.
+      * The PC logic is updated to handle the case when a branch is taken or not.
+  
+  |**Branch Instruction Control Hazard**<br>  ![D9_Branch_Hazard](https://github.com/arunkpv/vsd-hdp/assets/79094513/82950d80-a178-4501-812b-e98ffbf1416b)|
+  |-|
+
+#### Complete the ALU
+The Instruction Decoder is updated to decode all the instructions and the complete ALU is implemented.
+Note: All load instructions are treated as the same as the LW instruction. 
+
+#### DMEM & Load, Store Instructions
+The DMEM is a single-port R/W memory with 16 entries, 32-bit wide.  
+![D9_DMEM](https://github.com/arunkpv/vsd-hdp/assets/79094513/60908f90-c55d-4e1d-b268-16909f53b599)
 <br>
 
 
