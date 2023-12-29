@@ -1357,18 +1357,33 @@ The implementation is done stage-by-stage verifying the functionality at each st
 
 |**Program Counter + Intruction Fetch**<br> ![D8_PC_+_InstrFetch](https://github.com/arunkpv/vsd-hdp/assets/79094513/f86866f8-ce33-44aa-be68-0ff78c06eb3a)|
 |-|
+
 |**Instruction Decoder**<br>  ![D8_InstrDecoder](https://github.com/arunkpv/vsd-hdp/assets/79094513/84208733-d6b1-4c8d-9d8b-670c15766d82)|
-|**Register File Read**<br>  
-![D8_RF_Interface](https://github.com/arunkpv/vsd-hdp/assets/79094513/cc84ad3e-e148-4a39-9272-c8752110d30c)  <br>  Register File module interface <br>  
-![D8_RF_Read](https://github.com/arunkpv/vsd-hdp/assets/79094513/1245633f-b945-42da-b859-e3e0940dea61)|
+|-|
+|RISC-V Opcode Map <br>  ![D8_RISC-V_OpcodeMap](https://github.com/arunkpv/vsd-hdp/assets/79094513/9c1f3a41-3ebb-4097-909f-ce5f82d8dae5)  <br>  
+RISC-V Instruction Format <br>  ![D8_RISCV_ISA_Encoding](https://github.com/arunkpv/vsd-hdp/assets/79094513/52535210-daf5-47c0-b00f-0d2fb97deafa)  <br>  
+RV32I ISA Encoding <br>  ![D8_RISCV_RV32I_ISA_Encoding](https://github.com/arunkpv/vsd-hdp/assets/79094513/6bde0005-a0f7-4fae-89a1-2953abf664e4)  <br>  
+Instruction Type Decoding <br>  ![D8_RV32I_InstructionType_Decode](https://github.com/arunkpv/vsd-hdp/assets/79094513/77b2213c-5f3f-40ad-a4f4-8528c0812236)  <br>  
+Immediate Value Decoding <br>  ![D8_ImmediateValue_Decoding](https://github.com/arunkpv/vsd-hdp/assets/79094513/19124738-02e2-45b5-83a2-028b8036e5a6)  <br>|
+
+|**Register File Read**<br>  ![D8_RF_Read](https://github.com/arunkpv/vsd-hdp/assets/79094513/1245633f-b945-42da-b859-e3e0940dea61)|
+|-|
+|Register File module interface <br>  ![D8_RF_Interface](https://github.com/arunkpv/vsd-hdp/assets/79094513/cc84ad3e-e148-4a39-9272-c8752110d30c)  <br>|
+
 |**ALU (only ADD, ADDI implemented for now)**  <br>  ![D8_ALU](https://github.com/arunkpv/vsd-hdp/assets/79094513/0d3697cf-4276-4e19-81d2-bc6778d7cbfa)|
+|-|
+
 |**Register File Write**<br>  ![D8_RF_Write](https://github.com/arunkpv/vsd-hdp/assets/79094513/8c1f615f-54b7-4e64-b5e4-25e7cef44b44)|
-|**Branch Instrns Logic added**<br>  ![D8_Basic_RISC-V_CPU_Unpipelined](https://github.com/arunkpv/vsd-hdp/assets/79094513/30ea1461-482e-4dc8-bf8e-6d68f34d9105)|
+|-|
+
+|**Branch Instruction Logic added**<br>  ![D8_Basic_RISC-V_CPU_Unpipelined](https://github.com/arunkpv/vsd-hdp/assets/79094513/30ea1461-482e-4dc8-bf8e-6d68f34d9105)|
+|-|
 _________________________________________________________________________________________________________  
 <br>
 
 ## Day 9
 ### Complete Pipelined RISC-V CPU Microarchitecture
+
 
 _________________________________________________________________________________________________________  
 <br>
