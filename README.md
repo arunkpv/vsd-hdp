@@ -15,6 +15,9 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |[Day 7](#day-7) | Digital Logic with TL-Verilog and Makerchip |
  |[Day 8](#day-8) | Basic RISC-V CPU Microarchitecture |
  |[Day 9](#day-9) | Complete Pipelined RISC-V CPU Microarchitecture |
+ |[Day 10](#day-10)| GLS of the implemented RISC-V CPU Core |
+ |[Day 11](#day-11)| Advanced Synthesis and STA with DC |
+ |[Day 12](#day-12)| Circuit Design using sky130 |
 
 ## Day 0
 ### System Setup
