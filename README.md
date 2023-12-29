@@ -1334,7 +1334,36 @@ ________________________________________________________________________________
 
 ## Day 8
 ### Basic RISC-V CPU Microarchitecture
+Our objective is to implement a basic RISC-V CPU core (RV32I Base Instruction set except the instructions - FENCE, ECALL & EBREAK).  
+The following diagrams show the general block diagram of the CPU and the initial implementation pipeline diagram using TL-Verilog:  
+|**CPU Block Diagram**<br>  ![D8_CPU_BlockDiagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/f3d58392-0b98-496a-8567-3ffc33acd563)|
+|-|  
+|**TL-Verilog based implementation pipeline/ flow diagram**<br>  ![D8_Basic_CPU_Implementation](https://github.com/arunkpv/vsd-hdp/assets/79094513/438f867f-3654-4f69-a08a-69ab0b67c2a6)|
+<br>
 
+The implementation is done stage-by-stage verifying the functionality at each step in the Makerchip IDE. The following logic blocks are implemented and verified:  
+  * Program Counter (PC)
+  * Instruction Fetch from Instruction Memory (IMEM Read)
+  * Instruction Decoder
+    * Instruction Type Decode (I, R, S, B, U, J)
+    * Instruction Immediate Value Decoding
+    * Instruction Field Decoding
+    * Complete Instruction Decoding
+  * Register File Read
+  * Arithmetic & Logic Unit (ALU)
+  * Register File Write
+  * Branch Instructions
+       * (Modifying PC logic and adding additional logic to handle the Branch instructions)
+
+|**Program Counter + Intruction Fetch**<br> ![D8_PC_+_InstrFetch](https://github.com/arunkpv/vsd-hdp/assets/79094513/f86866f8-ce33-44aa-be68-0ff78c06eb3a)|
+|-|
+|**Instruction Decoder**<br>  ![D8_InstrDecoder](https://github.com/arunkpv/vsd-hdp/assets/79094513/84208733-d6b1-4c8d-9d8b-670c15766d82)|
+|**Register File Read**<br>  
+![D8_RF_Interface](https://github.com/arunkpv/vsd-hdp/assets/79094513/cc84ad3e-e148-4a39-9272-c8752110d30c)  <br>  Register File module interface <br>  
+![D8_RF_Read](https://github.com/arunkpv/vsd-hdp/assets/79094513/1245633f-b945-42da-b859-e3e0940dea61)|
+|**ALU (only ADD, ADDI implemented for now)**  <br>  ![D8_ALU](https://github.com/arunkpv/vsd-hdp/assets/79094513/0d3697cf-4276-4e19-81d2-bc6778d7cbfa)|
+|**Register File Write**<br>  ![D8_RF_Write](https://github.com/arunkpv/vsd-hdp/assets/79094513/8c1f615f-54b7-4e64-b5e4-25e7cef44b44)|
+|**Branch Instrns Logic added**<br>  ![D8_Basic_RISC-V_CPU_Unpipelined](https://github.com/arunkpv/vsd-hdp/assets/79094513/30ea1461-482e-4dc8-bf8e-6d68f34d9105)|
 _________________________________________________________________________________________________________  
 <br>
 
