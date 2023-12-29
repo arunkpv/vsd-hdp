@@ -1503,9 +1503,22 @@ Additional Reference Links:
   1) [Edalize](https://github.com/olofk/edalize.git)
   2) [Fusesoc](https://fusesoc.readthedocs.io/en/stable/user/installation.html)
 
+<br>
+
+**Update on GLS**
+  * The TL-Verilog code of the RISC-V CPU core implementation was successfully converted to Verilog using Sandpiper-SaaS.  
+  * To ensure that the flow is clean, I first tried GLS for a simple counter circuit:
+    a) TL-V code of counter was verified in Makerchip IDE -->
+    b) Convert to Verilog using Sandpiper-SaaS -->
+    c) Verify functionality using iverilog -->
+    d) Perform synthesis using Ysosys -->
+    e) Verify correctness by performing GLS using the synthesis output in iverilog
+
+All steps until (d) are verified to be working fine, however, the GLS using the synthesis tool generated netlist is failing.
+
 _________________________________________________________________________________________________________  
 <br>
 
 ## Day 11
 ### Advanced Synthesis and STA with DC
-
+**Update**: Constraint generation is in progress.  
