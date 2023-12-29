@@ -1353,7 +1353,7 @@ The implementation is done stage-by-stage verifying the functionality at each st
   * Arithmetic & Logic Unit (ALU)
   * Register File Write
   * Branch Instructions
-       * (Modifying PC logic and adding additional logic to handle the Branch instructions)
+    * (Modifying PC logic and adding additional logic to handle the Branch instructions)
 
 |**Program Counter + Intruction Fetch**<br> ![D8_PC_+_InstrFetch](https://github.com/arunkpv/vsd-hdp/assets/79094513/f86866f8-ce33-44aa-be68-0ff78c06eb3a)|
 |-|
@@ -1383,6 +1383,15 @@ ________________________________________________________________________________
 
 ## Day 9
 ### Complete Pipelined RISC-V CPU Microarchitecture
+Our RISC-V core from the previous day is still incomplete w.r.t the instructions implemented, and additionally we need to do pipelining and handling of the pipeline hazards.  
+<br>
+
+First, we will implement with a simplified 3-stage pipeline with ~1 Instruction per 3 Clock cycles (IPC ~ 1/3) using a 3-Cycle valid signal, the various stages being:  
+  * PC
+  * Instruction Fetch + Decode
+  * RF Read, ALU
+  * RF Write, Branch Instrn. logic
+<br>
 
 
 _________________________________________________________________________________________________________  
