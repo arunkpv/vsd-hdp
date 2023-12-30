@@ -1489,7 +1489,7 @@ ________________________________________________________________________________
 #### Sandpiper-Saas: Conversion of TLV code to Verilog
 SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert TL-Verilog code to Verilog or SystemVerilog code. SandPiper-SaaS provides a command-line interface to run the SandPiper TL-Verilog compiler as a microservice in the cloud. 
   * Install Sandpiper-SaaS by following the steps in the following link: [https://pypi.org/project/sandpiper-saas/](https://pypi.org/project/sandpiper-saas/)
-  * To convert tlv file to verilog: ```sandpiper-saas -i <input_tlv_file.tlv> -o <output_file.v> --outdir <output_dir> --iArgs```
+  * To convert tlv file to verilog: ```sandpiper-saas -i <input_tlv_file.tlv> -o <output_file.v> --outdir <output_dir> --inlineGen --iArgs```
   * Please note that for conversion to verilog, edit the **File Format Line** (i.e., usually the first line) in the tlv source file to add an additional option: ```-p verilog```<br>  
     For example: Change ```\m4_TLV_version 1d: tl-x.org``` to ```\m4_TLV_version 1d -p verilog: tl-x.org```<br>  
     Additionally, the following arguments may also be added:
