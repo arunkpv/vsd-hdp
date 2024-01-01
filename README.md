@@ -5,7 +5,7 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  **Progress Status**
  | Day # | Topic(s) Covered |
  |---|---|
- |[Day 0](#day-0) | GitHub repo creation, System/ Tools Setup |
+ |[Day 0](/docs/Day0.md) | GitHub repo creation, System/ Tools Setup |
  |[Day 1](#day-1) | Introduction to Verilog RTL design and Synthesis |
  |[Day 2](#day-2) | <ol><li>Familiarization of .lib file structure and various timing models (QTMs/ETMs)</li><li>Hierarchical vs. Flat synthesis</li><li>Various Flip-Flop designs</li></ol> |
  |[Day 3](#day-3) | Logic Synthesis Optimizations<ol><li>Combinational</li><li>Sequential</li></ol> |
