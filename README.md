@@ -6,18 +6,18 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  | Day # | Topic(s) Covered |
  |---|---|
  |[Day 0](/docs/Day0.md) | GitHub repo creation, System/ Tools Setup |
- |[Day 1](#day-1) | Introduction to Verilog RTL design and Synthesis |
- |[Day 2](#day-2) | <ol><li>Familiarization of .lib file structure and various timing models (QTMs/ETMs)</li><li>Hierarchical vs. Flat synthesis</li><li>Various Flip-Flop designs</li></ol> |
- |[Day 3](#day-3) | Logic Synthesis Optimizations<ol><li>Combinational</li><li>Sequential</li></ol> |
- |[Day 4](#day-4) | <ol><li>Gate Level Simulation</li><li>Synthesis-Simulation mismatch</li></ol> |
- |[Day 5](#day-5) | Introduction to RISC-V ISA and GNU Compiler Toolchain |
- |[Day 6](#day-6) | Introduction to ABI and basic verification flow |
- |[Day 7](#day-7) | Digital Logic with TL-Verilog and Makerchip |
- |[Day 8](#day-8) | Basic RISC-V CPU Microarchitecture |
- |[Day 9](#day-9) | Complete Pipelined RISC-V CPU Microarchitecture |
- |[Day 10](#day-10)| GLS of the implemented RISC-V CPU Core |
- |[Day 11](#day-11)| Advanced Synthesis and STA with DC |
- |[Day 12](#day-12)| Circuit Design using sky130 |
+ |[Day 1](/docs/Day1.md) | Introduction to Verilog RTL design and Synthesis |
+ |[Day 2](/docs/Day2.md) | <ol><li>Familiarization of .lib file structure and various timing models (QTMs/ETMs)</li><li>Hierarchical vs. Flat synthesis</li><li>Various Flip-Flop designs</li></ol> |
+ |[Day 3](/docs/Day3.md) | Logic Synthesis Optimizations<ol><li>Combinational</li><li>Sequential</li></ol> |
+ |[Day 4](/docs/Day4.md) | <ol><li>Gate Level Simulation</li><li>Synthesis-Simulation mismatch</li></ol> |
+ |[Day 5](/docs/Day5.md) | Introduction to RISC-V ISA and GNU Compiler Toolchain |
+ |[Day 6](/docs/Day6.md) | Introduction to ABI and basic verification flow |
+ |[Day 7](/docs/Day7.md) | Digital Logic with TL-Verilog and Makerchip |
+ |[Day 8](/docs/Day8.md) | Basic RISC-V CPU Microarchitecture |
+ |[Day 9](/docs/Day9.md) | Complete Pipelined RISC-V CPU Microarchitecture |
+ |[Day 10](/docs/Day10.md)| GLS of the implemented RISC-V CPU Core |
+ |[Day 11](/docs/Day11.md)| Advanced Synthesis and STA with DC |
+ |[Day 12](/docs/Day12.md)| Circuit Design using sky130 |
 
 ## Day 0
 ### System Setup
