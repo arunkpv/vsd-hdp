@@ -55,7 +55,7 @@ We will be building Yosys from the source using gcc, the instructions for which 
     ```
     
   - Invoke from shell:  
-    ![day0_yosys](https://github.com/arunkpv/vsd-hdp/assets/79094513/08e41e35-5f95-4416-95af-011c6fb81ff8)
+    ![day0_yosys](/docs/images/day0_yosys.png)
   
  **2. iverilog - Icarus Verilog**  
    - Install from official Ubuntu repository:
@@ -64,7 +64,7 @@ We will be building Yosys from the source using gcc, the instructions for which 
      ```
      
    - Invoke from shell:  
-     ![day0_iverilog](https://github.com/arunkpv/vsd-hdp/assets/79094513/5edb8420-274d-4309-8d23-ff3176a21094)
+     ![day0_iverilog](/docs/images/day0_iverilog.png)
   
  **3. GTKWave**
    - Install from official Ubuntu repository:
@@ -73,7 +73,7 @@ We will be building Yosys from the source using gcc, the instructions for which 
      ```
      
    - Invoke from shell:  
-     ![day0_gtkwave](https://github.com/arunkpv/vsd-hdp/assets/79094513/4a58eb72-04c6-41fb-9d1f-6f2f7dfd1c10)  
+     ![day0_gtkwave](/docs/images/day0_gtkwave.png)  
   
 ## Day 1
 ### Labs 1,2: Functional Simulation of RTL design using iverilog and gktwave
@@ -108,7 +108,7 @@ vvp good_mux
 gtkwave tb_good_mux.vcd
 ```
 _Snapshot of the waves from the above simulation in gtkwave:_
-![day1_lab1_2input_mux_iverilog_gktwave](https://github.com/arunkpv/vsd-hdp/assets/79094513/f877ae83-789d-4f2c-b8d1-5ff33b641f32)
+![day1_lab1_2input_mux_iverilog_gktwave](/docs/images/day1_lab1_2input_mux_iverilog_gktwave.png)
 <br />
 <br />
 ### Lab 3: Synthesis of RTL design using Yosys with sky130 library as target
@@ -198,7 +198,7 @@ endmodule
 ```
   
 _Logic realized by the synthesis tool in the above example:_
-![day1_lab3_2input_mux_synth_logical_diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/7658d852-9881-4e5b-970f-a9bfc376a2fd)
+![day1_lab3_2input_mux_synth_logical_diagram](/docs/images/day1_lab3_2input_mux_synth_logical_diagram.png)
   
 ## Day 2
 ### Lab 4: Familiarization of the .lib file structure and various timing models (QTMs/ETMs)
@@ -235,7 +235,7 @@ For this example, we will use the design file, multiple_modules.v, which contain
   ```
   
   Synthesis result preserving the design hierarchy:  
-  ![day2_multiple_modules_hier](https://github.com/arunkpv/vsd-hdp/assets/79094513/a2087ca8-0b43-4549-b642-23d5faecb35f)
+  ![day2_multiple_modules_hier](/docs/images/day2_multiple_modules_hier.png)
   <br />
   <br />
 <!---
@@ -317,7 +317,7 @@ ________________________________________________________________________________
   ```
     
   Synthesis result after flattening:  
-  ![day2_multiple_modules_flat](https://github.com/arunkpv/vsd-hdp/assets/79094513/7e77fe42-0cda-4a56-a3b2-eff054840783)
+  ![day2_multiple_modules_flat](/docs/images/day2_multiple_modules_flat.png)
   <br />
   <br />
 <!---
@@ -375,7 +375,7 @@ endmodule
 -->
 
   **Comparing the netlist generated for hierarchical and flat synthesis:**  
-  ![multiple_modules_hierarchical_vs_flat](https://github.com/arunkpv/vsd-hdp/assets/79094513/b557ef26-d58e-4006-b8a6-5269070c5453)
+  ![multiple_modules_hierarchical_vs_flat](/docs/images/multiple_modules_hierarchical_vs_flat.png)
 ________________________________________________________________________________________________________________________
   
 ### Lab 6: Various Flip-Flop Designs
@@ -412,10 +412,10 @@ library specified in the given liberty file.
   **Behavioral Simulation:**  
   | Reset Deassertion | Reset Assertion |
   |-------------------|-----------------|
-  | ![dff_asyncres_reset_deassertion](https://github.com/arunkpv/vsd-hdp/assets/79094513/d655f107-3caa-4978-8baa-b14951a2dcc7) | ![dff_asyncres_reset_asserted](https://github.com/arunkpv/vsd-hdp/assets/79094513/0e160a39-e4c6-41d5-b38c-fdead597bc7b) |
+  | ![dff_asyncres_reset_deassertion](/docs/images/dff_asyncres_reset_deassertion.png) | ![dff_asyncres_reset_asserted](/docs/images/dff_asyncres_reset_asserted.png) |
   
   **Synthesis Result:**
-  ![dff_asyncres](https://github.com/arunkpv/vsd-hdp/assets/79094513/9540a5af-44a2-400d-9f97-9080f0386b5a)  
+  ![dff_asyncres](/docs/images/dff_asyncres.png)  
 _________________________________________________________________________________________________________  
   **2. DFF with Synchronous Reset**  
   ```
@@ -433,10 +433,10 @@ ________________________________________________________________________________
   **Behavioral Simulation:**  
   | Reset Deassertion | Reset Assertion |
   |-------------------|-----------------|
-  | ![dff_syncres_reset_deassertion](https://github.com/arunkpv/vsd-hdp/assets/79094513/0f85bc8b-f8d0-4456-8343-b492b95b7982) | ![dff_syncres_reset_assertion](https://github.com/arunkpv/vsd-hdp/assets/79094513/63d9e906-9e74-4810-8a17-956bca82ca78) |
+  | ![dff_syncres_reset_deassertion](/docs/images/dff_syncres_reset_deassertion.png) | ![dff_syncres_reset_assertion](/docs/images/dff_syncres_reset_assertion.png) |
     
   **Synthesis Result:**
-  ![dff_syncres](https://github.com/arunkpv/vsd-hdp/assets/79094513/8c7466ee-ceae-4703-9b93-9138ecc63522)  
+  ![dff_syncres](/docs/images/dff_syncres.png)  
 _________________________________________________________________________________________________________  
   **3. DFF with both Asynchronous & Synchronous Reset**  
   ```
@@ -454,11 +454,11 @@ ________________________________________________________________________________
   ```
     
   **Behavioral Simulation:**  
-  ![dff_asyncres_syncres_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/f93df1c2-7123-4fd5-b66c-086726891405)
+  ![dff_asyncres_syncres_waves](/docs/images/dff_asyncres_syncres_waves.png)
 
     
   **Synthesis Result:**
-  ![dff_asyncres_syncres](https://github.com/arunkpv/vsd-hdp/assets/79094513/aa337785-ae19-4872-b253-229b74e7fded)
+  ![dff_asyncres_syncres](/docs/images/dff_asyncres_syncres.png)
 _________________________________________________________________________________________________________  
   
 ### Lab 7: Some interesting synthesis optimizations involving multipliers  
@@ -490,7 +490,7 @@ Here, we will take a look at the synthesis of two special cases of multipliers w
   ```
 
   Synthesis result:  
-  ![mult_2](https://github.com/arunkpv/vsd-hdp/assets/79094513/fb455910-b896-4b2b-ae6d-b84609577dba)  
+  ![mult_2](/docs/images/mult_2.png)  
 _________________________________________________________________________________________________________  
 <br>
 
@@ -521,7 +521,7 @@ ________________________________________________________________________________
 
 
   Synthesis result:  
-  ![mult8](https://github.com/arunkpv/vsd-hdp/assets/79094513/d8864d9a-6759-4435-96e8-a49460b63714)  
+  ![mult8](/docs/images/mult8.png)  
 _________________________________________________________________________________________________________  
 <br>
 
@@ -566,7 +566,7 @@ endmodule
 <br>
 
 Synthesis Result:  
-![opt_check](https://github.com/arunkpv/vsd-hdp/assets/79094513/3a580389-a7cb-4310-82cb-d5d431c12deb)  
+![opt_check](/docs/images/opt_check.png)  
 <br>
 _________________________________________________________________________________________________________  
 
@@ -588,7 +588,7 @@ endmodule
 
 Synthesis Result:  
 _The cell library already seems to have an OR gate available as the synthesis result is an OR gate itself and not a NAND-realization of the OR to avoid the stacked PMOS as shown in the demo videos_  
-![opt_check2](https://github.com/arunkpv/vsd-hdp/assets/79094513/651d0599-ed95-443e-93fe-b796a1a75771)  
+![opt_check2](/docs/images/opt_check2.png)  
 <br>
 _________________________________________________________________________________________________________  
 
@@ -607,7 +607,7 @@ endmodule
 <br>
 
 Synthesis Result:  
-![opt_check3](https://github.com/arunkpv/vsd-hdp/assets/79094513/ac7e0e36-3b22-4a43-9ee5-51a36a2cf088)  
+![opt_check3](/docs/images/opt_check3.png)  
 <br>
 _________________________________________________________________________________________________________  
 
@@ -629,7 +629,7 @@ endmodule
 <br>
 
 Synthesis Result:  
-![opt_check4](https://github.com/arunkpv/vsd-hdp/assets/79094513/9da67324-e6c9-474e-a3f3-d246f111e5ab)  
+![opt_check4](/docs/images/opt_check4.png)  
 <br>
 _________________________________________________________________________________________________________  
 
@@ -656,7 +656,7 @@ endmodule
 <br>
 
 Synthesis Result:  
-![multiple_module_opt](https://github.com/arunkpv/vsd-hdp/assets/79094513/35158a89-6788-45a2-b405-301ec891c6c5)  
+![multiple_module_opt](/docs/images/multiple_module_opt.png)  
 <br>
 _________________________________________________________________________________________________________  
 
@@ -678,7 +678,7 @@ endmodule
 <br>
 
 Synthesis Result:  
-![mult8](https://github.com/arunkpv/vsd-hdp/assets/79094513/62e9dc6d-6afa-4169-b2f1-7def92c62694)  
+![multiple_module_opt2](/docs/images/multiple_module_opt2.png)  
 <br>
 
 _________________________________________________________________________________________________________  
@@ -721,9 +721,9 @@ In this example, no optimization is possible as the flop output, q changes.
 
 <br>
 
-| Behavioral Simulation | ![dff_const1_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/a0fe3f49-1d34-45c4-a366-73540da4c323)  |
+| Behavioral Simulation | ![dff_const1_waves](/docs/images/dff_const1_waves.png)  |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const1](https://github.com/arunkpv/vsd-hdp/assets/79094513/4acce9d8-d9ed-4569-81db-9a5412af34d4) |  
+| **Synthesis Result** | ![dff_const1](/docs/images/dff_const1.png) |  
 <br>
 
 _________________________________________________________________________________________________________
@@ -745,9 +745,9 @@ Thus the realization does not need any cells and q is connected to 1'b1.
 
 <br>
 
-| Behavioral Simulation | ![dff_const2_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/1cebdf7a-3eae-4a3a-a01d-0eb2576dd8c7) |
+| Behavioral Simulation | ![dff_const2_waves](/docs/images/dff_const2_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const2](https://github.com/arunkpv/vsd-hdp/assets/79094513/080cb437-7c70-469b-8da1-5ff79dabd328) |
+| **Synthesis Result** | ![dff_const2](/docs/images/dff_const2.png) |
 <br>
 
 _________________________________________________________________________________________________________  
@@ -776,9 +776,9 @@ Here, both q1 & q have transitions and thus cannot be optimized further.
 So the design will have two DFFs.  
 <br>
 
-| Behavioral Simulation | ![dff_const3_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/6b3a3758-50f7-432a-998c-85b32069a60a) |
+| Behavioral Simulation | ![dff_const3_waves](/docs/images/dff_const3_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const3](https://github.com/arunkpv/vsd-hdp/assets/79094513/92478814-09dd-44d3-b4ea-6b116bba73d7) |
+| **Synthesis Result** | ![dff_const3](/docs/images/dff_const3.png) |
 <br>
 
 _________________________________________________________________________________________________________  
@@ -807,9 +807,9 @@ In this example, both q1 & q remain constant at 1'b1.
 Thus, the design can be optimized to have only wires. Further, q1 being an internal net can also be removed.  
 <br>
 
-| Behavioral Simulation | ![dff_const4_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/db5a8603-bdef-4f2e-91d3-cbd5a5d2fb1d) |
+| Behavioral Simulation | ![dff_const4_waves](/docs/images/dff_const4_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const4](https://github.com/arunkpv/vsd-hdp/assets/79094513/0184674d-f4aa-481e-9f40-4306e164b32c) |
+| **Synthesis Result** | ![dff_const4](/docs/images/dff_const4.png) |
 <br>
 
 _________________________________________________________________________________________________________  
@@ -836,9 +836,9 @@ endmodule
 ```
 <br>
 
-| Behavioral Simulation | ![dff_const5_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/5ba417f8-ba59-428d-915d-239cff5524d7) |
+| Behavioral Simulation | ![dff_const5_waves](/docs/images/dff_const5_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const5](https://github.com/arunkpv/vsd-hdp/assets/79094513/82fac704-3c55-4c77-b7c0-bdb68565e00f) |
+| **Synthesis Result** | ![dff_const5](/docs/images/dff_const5.png) |
 <br>
 
 _________________________________________________________________________________________________________  
@@ -864,10 +864,10 @@ Since count[0:0] toggles every clock cycle, there really is a need for only one 
 In other words, the synthesis output does not have a 3-bit up counter and its associated count incrementing logic.  
 <br>
 
-| Behavioral Simulation | ![counter_opt_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/2a0aaaf3-9960-4575-baef-fe3dfd764270) |
+| Behavioral Simulation | ![counter_opt_waves](/docs/images/counter_opt_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result w/o opt_clean switch** | ![counter_opt_without_optimization](https://github.com/arunkpv/vsd-hdp/assets/79094513/e3fd75f2-0a5c-45e0-ad23-cc5566ce1a2d) |
-| **Synthesis Result with opt_clean switch** | ![counter_opt](https://github.com/arunkpv/vsd-hdp/assets/79094513/fcdeed7d-aab3-4e48-a5b7-4cbbfcde593d) |
+| **Synthesis Result w/o opt_clean switch** | ![counter_opt_without_optimization](/docs/images/counter_opt_without_optimization.png) |
+| **Synthesis Result with opt_clean switch** | ![counter_opt](/docs/images/counter_opt.png) |
 
 <br>
 
@@ -894,9 +894,9 @@ So when this design is synthesized, we expect 3 DFF instantiations to be present
 
 <br>
 
-| Behavioral Simulation | ![counter_opt2_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/36f8dbc1-0552-4f95-b9d0-827d16d6d520) |
+| Behavioral Simulation | ![counter_opt2_waves](/docs/images/counter_opt2_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![counter_opt2_with_optimizations](https://github.com/arunkpv/vsd-hdp/assets/79094513/8a8402f5-141f-490c-8c20-6b8e049061ec) |
+| **Synthesis Result** | ![counter_opt2_with_optimizations](/docs/images/counter_opt2_with_optimizations.png) |
 <br>
 
 _________________________________________________________________________________________________________  
@@ -916,7 +916,7 @@ GLS can be run in different delay modes:
 
 **GLS using iverilog**  
 The following block diagram shows the GLS flow using iverilog:  
-![Day4_GLS_using_iverilog](https://github.com/arunkpv/vsd-hdp/assets/79094513/047135e0-6560-49cf-a7b9-7db60684278f)  
+![Day4_GLS_using_iverilog](/docs/images/Day4_GLS_using_iverilog.png)  
 <br>
 
 The Gate level verilog model(s) need to be provided as shown below to do GLS using iverilog:
@@ -948,10 +948,10 @@ endmodule
 ```
 <br>
 
-| RTL Simulation | ![ternary_operator_mux_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/0a90dfb1-5edd-4bda-ab58-97364c1838f3) |
+| RTL Simulation | ![ternary_operator_mux_waves](/docs/images/ternary_operator_mux_waves.png) |
 |-----------------------|------------------|
-| **GLS** | ![ternary_operator_mux_waves_GLS](https://github.com/arunkpv/vsd-hdp/assets/79094513/f5269536-5314-4b95-bfa9-62bd8d078bae) |
-| **Synthesis Result** | ![ternary_operator_mux](https://github.com/arunkpv/vsd-hdp/assets/79094513/c245bd88-3b81-4924-89dc-ea6a2dd3790f) |
+| **GLS** | ![ternary_operator_mux_waves_GLS](/docs/images/ternary_operator_mux_waves_GLS.png) |
+| **Synthesis Result** | ![ternary_operator_mux](/docs/images/ternary_operator_mux.png) |
 <br>
 
 _________________________________________________________________________________________________________  
@@ -970,10 +970,10 @@ endmodule
 ```
 <br>
 
-| RTL Simulation | ![bad_mux_rtl_waves](https://github.com/arunkpv/vsd-hdp/assets/79094513/93e9ca05-983d-4b43-bcb7-c9894f159d05) |
+| RTL Simulation | ![bad_mux_rtl_waves](/docs/images/bad_mux_rtl_waves.png) |
 |-----------------------|------------------|
-| **GLS** | ![bad_mux_waves_GLS](https://github.com/arunkpv/vsd-hdp/assets/79094513/65a73835-3411-4ef4-869a-5c278a43a304) |
-| **Synthesis Result** | ![bad_mux_rtl](https://github.com/arunkpv/vsd-hdp/assets/79094513/058c5e1b-9e75-4c8c-8111-d75f04502a31) |
+| **GLS** | ![bad_mux_waves_GLS](/docs/images/bad_mux_waves_GLS.png) |
+| **Synthesis Result** | ![bad_mux_rtl](/docs/images/bad_mux_rtl.png) |
 <br>
 
 In this case, we can clearly see that there is a mismatch in the simulation between pre and post-synthesis.  
@@ -983,7 +983,7 @@ In fact, yosys actually throws a warning message about the possible omission of 
 <br>
 
 _Yosys warning about missing signals in sensitivity list_  
-![yosys_read_verilog_message](https://github.com/arunkpv/vsd-hdp/assets/79094513/244f2f24-e33c-4a08-b710-6c328c2dd894)
+![yosys_read_verilog_message](/docs/images/yosys_read_verilog_message.png)
 <br>
 
 _________________________________________________________________________________________________________  
@@ -1008,10 +1008,10 @@ Assuming we wanted to implement just a combinational logic with output, d = (a +
   * In the RTL sim, the blocking assignments make it seem as if there is a flop in the design.
   * While in the GLS, the design is synthesized to a O2A1 gate implementing d = (a + b) * c, with no flops inferred, thus resulting in the mismatch.
   
-| RTL Simulation | ![blocking_caveat_waves_RTL](https://github.com/arunkpv/vsd-hdp/assets/79094513/38335723-9430-4120-809e-caea0bbfec69) |
+| RTL Simulation | ![blocking_caveat_waves_RTL](/docs/images/blocking_caveat_waves_RTL.png) |
 |-----------------------|------------------|
-| **GLS** | ![blocking_caveat_waves_GLS](https://github.com/arunkpv/vsd-hdp/assets/79094513/5fedc6b3-49db-417d-975f-e0a227e2d072) |
-| **Synthesis Result** | ![blocking_caveat](https://github.com/arunkpv/vsd-hdp/assets/79094513/42a32ced-b8e1-4e26-95bc-bb3b2394ab4f) |
+| **GLS** | ![blocking_caveat_waves_GLS](/docs/images/blocking_caveat_waves_GLS.png) |
+| **Synthesis Result** | ![blocking_caveat](/docs/images/blocking_caveat.png) |
 
 <br>
 
@@ -1026,13 +1026,13 @@ RISC-V is an open standard instruction set architecture based on established red
 RISC-V has a modular design, consisting of alternative base parts, with added optional extensions. The ISA base and its extensions are developed in a collective effort between industry, the research community and educational institutions. The base specifies instructions (and their encoding), control flow, registers (and their sizes), memory and addressing, logic (i.e., integer) manipulation, and ancillaries. The base alone can implement a simplified general-purpose computer, with full software support, including a general-purpose compiler.  
 
 The standard extensions are specified to work with all of the standard bases, and with each other without conflict.  
-![D5_RISC-V_ISA_Base_and_Extensions](https://github.com/arunkpv/vsd-hdp/assets/79094513/12f3e401-32eb-495a-97c5-68f61d5279a9)  
+![D5_RISC-V_ISA_Base_and_Extensions](/docs/images/D5_RISC-V_ISA_Base_and_Extensions.png)  
 <br>
 
 The RISC-V ISA is defined as a Base integer ISA, which is the basic necessity for the implemetation of any CPU core. In addition to that it also has optional extensions to the base ISA. The base RISC-V ISA has a little-endian memory system. The standard is maintained by the RISC-V foundation.  
 
 #### RISC-V Instruction Formats
-![D5_32-bit_RISC-V_instruction_formats](https://github.com/arunkpv/vsd-hdp/assets/79094513/22b8169a-a5aa-40ec-9bfc-7bbed0afe3fc)  
+![D5_32-bit_RISC-V_instruction_formats](/docs/images/D5_32-bit_RISC-V_instruction_formats.png)  
 
 References:
   1) [https://en.wikipedia.org/wiki/RISC-V](https://en.wikipedia.org/wiki/RISC-V)
@@ -1082,7 +1082,7 @@ riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1toN.o sum1toN.c
         -O<number>, -Ofast, -Os, -Og etc. specify the optimize option to be used by the compiler.
 ```
 Spike simulation output:  
-![D5_sum1toN_compile_simulate](https://github.com/arunkpv/vsd-hdp/assets/79094513/4cb08a53-6980-4121-a030-aa67d551b300)
+![D5_sum1toN_compile_simulate](/docs/images/D5_sum1toN_compile_simulate.png)
 <br>
 
 **Disassemble command:**
@@ -1092,13 +1092,13 @@ riscv64-unknown-elf-objdump -d sum1toN.o
         -d, --disassemble flag displays the assembler contents of the executable sections.
 ```
 Output:  
-![D5_disassemble](https://github.com/arunkpv/vsd-hdp/assets/79094513/5b8fb43e-a6d0-4cf1-a6a3-ab2e96d2377d)
+![D5_disassemble](/docs/images/D5_disassemble.png)
 <br>
 
 Comparing the generated assembly code for main function with -O1 vs -Ofast compiler options:
 | -O1 | -Ofast |
 |-----------------------|------------------|
-| ![D5_disassemble_sum1toN_O1](https://github.com/arunkpv/vsd-hdp/assets/79094513/b4f1accf-a3ec-4a14-b0d7-df5b0db49544) | ![D5_disassemble_sum1toN_Ofast](https://github.com/arunkpv/vsd-hdp/assets/79094513/6e2e0b03-2834-4fec-b398-0f2893370f6b) |
+| ![D5_disassemble_sum1toN_O1](/docs/images/D5_disassemble_sum1toN_O1.png) | ![D5_disassemble_sum1toN_Ofast](/docs/images/D5_disassemble_sum1toN_Ofast.png) |
 <br>
 
 ### Lab 3: Use the Interactive Debug mode in Spike RISC-V ISA sim to observe the execution of the program with -Ofast flag  
@@ -1112,7 +1112,7 @@ spike -d pk sum1toN.o
 <br>
 
 _Snapshot showing usage of Spike Interactive Debug Mode_
-![D5_Spike_InteractiveDebugMode](https://github.com/arunkpv/vsd-hdp/assets/79094513/f6c5bde3-de13-472b-8322-f2c42dbf618c)
+![D5_Spike_InteractiveDebugMode](/docs/images/D5_Spike_InteractiveDebugMode.png)
 <br>
 
 ```
@@ -1164,7 +1164,7 @@ _Reference:_ [Application binary interface](https://en.wikipedia.org/wiki/Applic
 <br>
 
 RISC-V CPU architecture has 32 registers. Application programmer, can access each of these 32 registers through its ABI name; for example, if we need to move the stack pointer, the command ```addi sp, sp, -16``` will decrement the SP by 0x10, where "sp" is the ABI name of stack pointer. The following table shows the ABI Integer register calling convention :  
-![RV64I_IntegerRegisterConvention](https://github.com/arunkpv/vsd-hdp/assets/79094513/f8db0346-bfc0-4ea1-904a-e39895201a31)
+![RV64I_IntegerRegisterConvention](/docs/images/RV64I_IntegerRegisterConvention.png)
 <br>
 
 For more detailed information, refer to the [RISC-V ABI Specification v1.0](https://drive.google.com/file/d/1Ja_Tpp_5Me583CGVD-BIZMlgGBnlKU4R/view)  
@@ -1207,12 +1207,12 @@ loop:	add 	a4, a3, a4   // Incremental addition
 <br>
 
 The program can be compiled using the gcc and simulated using Spike as follows:
-![D6_1to9_custom_ABI](https://github.com/arunkpv/vsd-hdp/assets/79094513/7b0c18aa-109f-4a62-af26-a9729ef8b86e)
+![D6_1to9_custom_ABI](/docs/images/D6_1to9_custom_ABI.png)
 <br>
 
 Disassembly of object code of above progam:
-![D6_ABI_Disassembly](https://github.com/arunkpv/vsd-hdp/assets/79094513/889192af-cb28-4f3a-a6e9-c631f2e10466)
-![D6_ABI_load_loop_subroutines](https://github.com/arunkpv/vsd-hdp/assets/79094513/7b92e8d7-ab19-45c0-a7a3-17af97dfc057)
+![D6_ABI_Disassembly](/docs/images/D6_ABI_Disassembly.png)
+![D6_ABI_load_loop_subroutines](/docs/images/D6_ABI_load_loop_subroutines.png)
 <br>
 
 ### Lab 2: Run the above C program on a RISC-V CPU
@@ -1250,7 +1250,7 @@ Basically what we are doing here is:
   * These 8-bit hex files are converted into 32-bit format using a python script, ```hex8tohex32.py```
   * Finally, a functional simulation is launched using iverilog, where the testbench loads the firmware.hex into the PicoRV32 CPU core for execution
 
-![D6_Lab_firmware_iverilog_tb_simulation](https://github.com/arunkpv/vsd-hdp/assets/79094513/b023791c-678d-4815-b432-fa520202be65)
+![D6_Lab_firmware_iverilog_tb_simulation](/docs/images/D6_Lab_firmware_iverilog_tb_simulation.png)
 <br>
 
 _________________________________________________________________________________________________________  
@@ -1284,54 +1284,55 @@ In this session, we will learn the concepts and syntax of TL-Verilog by implemen
 #### Combinational Logic
 Implemented basic combinational logic elements and circuits like gates, muxes, vector adder, combinational calculator etc. using TL-Verilog in Makerchip.  
   1) AND2 Gate
-     |![D7_AND2_Gate](https://github.com/arunkpv/vsd-hdp/assets/79094513/51dac606-7032-4fe4-bcba-974ed954d321)|
+     |![D7_AND2_Gate](/docs/images/D7_AND2_Gate.png)|
      |-|
   2) Vector Mux
-     |![D7_VectorMux](https://github.com/arunkpv/vsd-hdp/assets/79094513/aae16877-170f-48ed-8e41-debf2b65b93e)|
+     |![D7_VectorMux](/docs/images/D7_VectorMux.png)|
      |-|
   3) Adder
-     |![D7_Vector_Addition](https://github.com/arunkpv/vsd-hdp/assets/79094513/f16b9765-9e47-4a14-8ba7-f685241e4609)|
+     |![D7_Vector_Addition](/docs/images/D7_Vector_Addition.png)|
      |-|
   4) Combinational Calculator
-     |![D7_Combinational_Calculator](https://github.com/arunkpv/vsd-hdp/assets/79094513/50f24afe-96da-4be0-b1c5-e94c244e850d)|
+     |![D7_Combinational_Calculator](/docs/images/D7_Combinational_Calculator.png)|
      |-|
 
 #### Sequential Logic
   1) Fibonacci Series
-     |![D7_Fibonacci_Series](https://github.com/arunkpv/vsd-hdp/assets/79094513/afa0b955-58df-414e-aa0a-a53dbf41cce6)|
+     |![D7_Fibonacci_Series](/docs/images/D7_Fibonacci_Series.png)|
      |-|
   2) Free-running Counter (starts from 1 and increments by 1 every cycle)
-     |![D7_FR_Counter](https://github.com/arunkpv/vsd-hdp/assets/79094513/8517e98d-62a4-4e43-af9e-397ac13978bd)|
+     |![D7_FR_Counter](/docs/images/D7_FR_Counter.png)|
      |-|
   3) Sequential Calculator
-     |![D7_Sequential_Calculator](https://github.com/arunkpv/vsd-hdp/assets/79094513/bddd2e29-c250-48f0-acd6-37eef3fe22a9)|
+     |![D7_CombinationalCalculator](/docs/images/D7_CombinationalCalculator.png)|
      |-|
+     |![D7_Sequential_Calculator](/docs/images/D7_Sequential_Calculator.png)|
 
 #### Pipelined Logic
   1) Pythagorus Theorem with 3-stage pipeline
-     |![D7_Pipelined_Pythagorus](https://github.com/arunkpv/vsd-hdp/assets/79094513/5f856ace-2574-4cf0-82d1-fe333711a526)|
+     |![D7_Pipelined_Pythagorus](/docs/images/D7_Pipelined_Pythagorus.png)|
      |-|
   2) Example showing the ease of pipelining/ retiming in TL-Verilog
-     |![D7_Errors_in_comp_pipe](https://github.com/arunkpv/vsd-hdp/assets/79094513/fb02fc31-3a8d-4734-a37f-5f8ecb910d8c)|
+     |![D7_Errors_in_comp_pipe](/docs/images/D7_Errors_in_comp_pipe.png)|
      |-|
   3) Sequential Calculator with counter
-     |![D7_Seq_Calculator_with_Counter](https://github.com/arunkpv/vsd-hdp/assets/79094513/3347e9ae-6be6-4c16-8580-9d2a97439656)|
+     |![D7_Seq_Calculator_with_Counter](/docs/images/D7_Seq_Calculator_with_Counter.png)|
      |-|
   4) 2-Cycle Sequential Calculator
-     |![D7_2-Cycle_Calculator_BlockDiagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/98a8b8f0-457d-448d-a55e-536c763e0149)|
+     |![D7_2-Cycle_Calculator_BlockDiagram](/docs/images/D7_2-Cycle_Calculator_BlockDiagram.png)|
      |-|
-     |![D7_2-Cycle_Calculator](https://github.com/arunkpv/vsd-hdp/assets/79094513/55857d49-434d-41cb-a90a-cc65bdef8cac)|
+     |![D7_2-Cycle_Calculator](/docs/images/D7_2-Cycle_Calculator.png)|
 
 #### Validity
 Using validity makes the design cleaner. Debugging and error checking also becomes easier.    
   1) 2-Cycle Calculator with Validity
-     |![D7_2-Cycle_Calculator_with_Validity_Diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/33515c94-c3db-4135-b357-13d4f1694721)|
+     |![D7_2-Cycle_Calculator_with_Validity_Diagram](/docs/images/D7_2-Cycle_Calculator_with_Validity_Diagram.png)|
      |-|
-     |![D7_2-Cycle_Calculator_with_Validity](https://github.com/arunkpv/vsd-hdp/assets/79094513/818f7dad-d8f2-4c19-b2e1-73c8cee02f11)|
+     |![D7_2-Cycle_Calculator_with_Validity](/docs/images/D7_2-Cycle_Calculator_with_Validity.png)|
   2) Calculator with Single-value Memory
-     |![D7_Calculator_with_SingleValue_Memory_Diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/16fb6979-e7e8-4064-a76e-a620e70e2c77)|
+     |![D7_Calculator_with_SingleValue_Memory_Diagram](/docs/images/D7_Calculator_with_SingleValue_Memory_Diagram.png)|
      |-|
-     |![D7_Calculator_with_SingleValue_Memory](https://github.com/arunkpv/vsd-hdp/assets/79094513/93c17318-395d-4626-a9b2-1704df62ed1b)|
+     |![D7_Calculator_with_SingleValue_Memory](/docs/images/D7_Calculator_with_SingleValue_Memory.png)|
 _________________________________________________________________________________________________________  
 <br>
 
@@ -1339,9 +1340,9 @@ ________________________________________________________________________________
 ### Basic RISC-V CPU Microarchitecture
 Our objective is to implement a basic RISC-V CPU core (RV32I Base Instruction set except the instructions - FENCE, ECALL & EBREAK).  
 The following diagrams show the general block diagram of the CPU and the initial implementation pipeline diagram using TL-Verilog:  
-|**CPU Block Diagram**<br>  ![D8_CPU_BlockDiagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/f3d58392-0b98-496a-8567-3ffc33acd563)|
+|**CPU Block Diagram**<br>  ![D8_CPU_BlockDiagram](/docs/images/D8_CPU_BlockDiagram.png)|
 |-|  
-|**TL-Verilog based implementation pipeline/ flow diagram**<br>  ![D8_Basic_CPU_Implementation](https://github.com/arunkpv/vsd-hdp/assets/79094513/438f867f-3654-4f69-a08a-69ab0b67c2a6)|
+|**TL-Verilog based implementation pipeline/ flow diagram**<br>  ![D8_Basic_CPU_Implementation](/docs/images/D8_Basic_CPU_Implementation.png)|
 <br>
 
 The implementation is done stage-by-stage verifying the functionality at each step in the Makerchip IDE. The following logic blocks are implemented and verified:  
@@ -1358,28 +1359,29 @@ The implementation is done stage-by-stage verifying the functionality at each st
   * Branch Instructions
     * (Modifying PC logic and adding additional logic to handle the Branch instructions)
 
-|**Program Counter + Intruction Fetch**<br> ![D8_PC_+_InstrFetch](https://github.com/arunkpv/vsd-hdp/assets/79094513/f86866f8-ce33-44aa-be68-0ff78c06eb3a)|
+|**Program Counter + Intruction Fetch**<br> ![D8_Instruction_Fetch](/docs/images/D8_Instruction_Fetch.png)|
+|-|
+|![D8_PC_+_InstrFetch](/docs/images/D8_PC_+_InstrFetch.png)|
+
+|**Instruction Decoder**<br>  ![D8_InstrDecoder](/docs/images/D8_InstrDecoder.png)|
+|-|
+|RISC-V Opcode Map <br>  ![D8_RISC-V_OpcodeMap](/docs/images/D8_RISC-V_OpcodeMap.png)  <br>  
+RISC-V Instruction Format <br>  ![D8_RISCV_ISA_Encoding](/docs/images/D8_RISCV_ISA_Encoding.png)  <br>  
+RV32I ISA Encoding <br>  ![D8_RISCV_RV32I_ISA_Encoding](/docs/images/D8_RISCV_RV32I_ISA_Encoding.png)  <br>  
+Instruction Type Decoding <br>  ![D8_RV32I_InstructionType_Decode](/docs/images/D8_RV32I_InstructionType_Decode.png)  <br>  
+Immediate Value Decoding <br>  ![D8_ImmediateValue_Decoding](/docs/images/D8_ImmediateValue_Decoding.png)  <br>|
+
+|**Register File Read**<br>  ![D8_RF_Read](/docs/images/D8_RF_Read.png)|
+|-|
+|Register File module interface <br>  ![D8_RF_Interface](/docs/images/D8_RF_Interface.png)  <br>|
+
+|**ALU (only ADD, ADDI implemented for now)**  <br>  ![D8_ALU](/docs/images/D8_ALU.png)|
 |-|
 
-|**Instruction Decoder**<br>  ![D8_InstrDecoder](https://github.com/arunkpv/vsd-hdp/assets/79094513/84208733-d6b1-4c8d-9d8b-670c15766d82)|
-|-|
-|RISC-V Opcode Map <br>  ![D8_RISC-V_OpcodeMap](https://github.com/arunkpv/vsd-hdp/assets/79094513/9c1f3a41-3ebb-4097-909f-ce5f82d8dae5)  <br>  
-RISC-V Instruction Format <br>  ![D8_RISCV_ISA_Encoding](https://github.com/arunkpv/vsd-hdp/assets/79094513/52535210-daf5-47c0-b00f-0d2fb97deafa)  <br>  
-RV32I ISA Encoding <br>  ![D8_RISCV_RV32I_ISA_Encoding](https://github.com/arunkpv/vsd-hdp/assets/79094513/6bde0005-a0f7-4fae-89a1-2953abf664e4)  <br>  
-Instruction Type Decoding <br>  ![D8_RV32I_InstructionType_Decode](https://github.com/arunkpv/vsd-hdp/assets/79094513/77b2213c-5f3f-40ad-a4f4-8528c0812236)  <br>  
-Immediate Value Decoding <br>  ![D8_ImmediateValue_Decoding](https://github.com/arunkpv/vsd-hdp/assets/79094513/19124738-02e2-45b5-83a2-028b8036e5a6)  <br>|
-
-|**Register File Read**<br>  ![D8_RF_Read](https://github.com/arunkpv/vsd-hdp/assets/79094513/1245633f-b945-42da-b859-e3e0940dea61)|
-|-|
-|Register File module interface <br>  ![D8_RF_Interface](https://github.com/arunkpv/vsd-hdp/assets/79094513/cc84ad3e-e148-4a39-9272-c8752110d30c)  <br>|
-
-|**ALU (only ADD, ADDI implemented for now)**  <br>  ![D8_ALU](https://github.com/arunkpv/vsd-hdp/assets/79094513/0d3697cf-4276-4e19-81d2-bc6778d7cbfa)|
+|**Register File Write**<br>  ![D8_RF_Write](/docs/images/D8_RF_Write.png)|
 |-|
 
-|**Register File Write**<br>  ![D8_RF_Write](https://github.com/arunkpv/vsd-hdp/assets/79094513/8c1f615f-54b7-4e64-b5e4-25e7cef44b44)|
-|-|
-
-|**Branch Instruction Logic added**<br>  ![D8_Basic_RISC-V_CPU_Unpipelined](https://github.com/arunkpv/vsd-hdp/assets/79094513/30ea1461-482e-4dc8-bf8e-6d68f34d9105)|
+|**Branch Instruction Logic added**<br>  ![D8_Basic_RISC-V_CPU_Unpipelined](/docs/images/D8_Basic_RISC-V_CPU_Unpipelined.png)|
 |-|
 _________________________________________________________________________________________________________  
 <br>
@@ -1393,6 +1395,10 @@ We need to do the following to complete the CPU Design:
   3) Implement DMEM & Load, Store instructions
   4) Implement the Unconditional Jump (JAL, JALR) instructions
 
+|**Pipelining the RISC-V CPU Core ![D9_RISCV_Pipelined](/docs/images/D9_RISCV_Pipelined.png)|
+|-|
+<br>
+
 #### Pipelining the CPU: Using 3-Cycle $valid signal
 First, we will implement with a simplified 3-stage pipeline with using a 3-Cycle valid signal, the various stages being:  
   * PC
@@ -1403,11 +1409,11 @@ First, we will implement with a simplified 3-stage pipeline with using a 3-Cycle
 
 This implementation would have an IPC of only ~1/3 as the valid signal is active once every 3 cycles (HLLHLL...) indicating only one valid instruction in the pipe at any point. We do this step to partition the core (or logic) into the respective pipeline stages first without having to worry about handling the pipeline hazards.   
 
-|**Waterfall Logic Diagram with 3-Cycle Valid**<br>  ![D9_Pipelining_with_3Cycle_Valid](https://github.com/arunkpv/vsd-hdp/assets/79094513/289daa46-bc5b-474d-8ad5-ed6098fd46d0)|
+|**Waterfall Logic Diagram with 3-Cycle Valid**<br>  ![D9_Pipelining_with_3Cycle_Valid](/docs/images/D9_Pipelining_with_3Cycle_Valid.png)|
 |-|
-|**TL-V Logic Implementation Diagram**<br>  ![D9_3Cycle_Valid_Diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/54ab694b-9da4-4cdf-9afc-27ae6b3d5270)|
+|**TL-V Logic Implementation Diagram**<br>  ![D9_3Cycle_Valid_Diagram](/docs/images/D9_3Cycle_Valid_Diagram.png)|
 
-|**Makerchip-generated Block Diagram for 3-Cycle Valid design**<br>  ![D9_3Cycle_Valid_Makerchip](https://github.com/arunkpv/vsd-hdp/assets/79094513/d8d82374-0777-4a2b-8ca5-9f85a68f91ee)|
+|**Makerchip-generated Block Diagram for 3-Cycle Valid design**<br>  ![D9_3Cycle_Valid_Makerchip](/docs/images/D9_3Cycle_Valid_Makerchip.png)|
 |-|
 <br>
 
@@ -1417,15 +1423,15 @@ This implementation would have an IPC of only ~1/3 as the valid signal is active
       * Hence we have a Read-After-Write (RAW) data hazard if the current instruction in the pipe is trying to read from the Register File (RF) when the previous instruction had written to the same RF index.
       * To solve this, we need to add a Register File Bypass Mux at the input of the ALU and select the previous ALU output if the previous instruction was writing to the RF index accessed in the current instruction.
 
-  |**Register File Bypass Waterfall Logic Diagram**<br>  ![D9_RF_Bypass_Logic_Diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/b01a7d2c-2a1e-41c0-9cd8-03ab697f1eaa)|
+  |**Register File Bypass Waterfall Logic Diagram**<br>  ![D9_RF_Bypass_Logic_Diagram](/docs/images/D9_RF_Bypass_Logic_Diagram.png)|
   |-|
-  |**Register File Bypass TL-V Implementation**<br>  ![D9_RF_Bypass_TLV_Diagram](https://github.com/arunkpv/vsd-hdp/assets/79094513/b7f807bb-a05b-4209-9dc9-1535f5472528)|
+  |**Register File Bypass TL-V Implementation**<br>  ![D9_RF_Bypass_TLV_Diagram](/docs/images/D9_RF_Bypass_TLV_Diagram.png)|
 
   2) Control Hazard: Branch Instructions
       * We have control flow hazards when a branch is taken.
       * The PC logic is updated to handle the case when a branch is taken or not.
   
-  |**Branch Instruction Control Hazard**<br>  ![D9_Branch_Hazard](https://github.com/arunkpv/vsd-hdp/assets/79094513/82950d80-a178-4501-812b-e98ffbf1416b)|
+  |**Branch Instruction Control Hazard**<br>  ![D9_Branch_Hazard](/docs/images/D9_Branch_Hazard.png)|
   |-|
 
 #### Complete the ALU
@@ -1435,7 +1441,7 @@ Note: All load instructions are treated as the same as the LW instruction.
 #### DMEM & Load, Store Instructions
 The DMEM is a single-port R/W memory with 16 entries, 32-bit wide.  
 The DMEM is placed in the 4th pipeline stage.  
-|**DMEM**<br>  ![D9_DMEM](https://github.com/arunkpv/vsd-hdp/assets/79094513/60908f90-c55d-4e1d-b268-16909f53b599)|
+|**DMEM**<br>  ![D9_DMEM](/docs/images/D9_DMEM.png)|
 |-|
 
 **LOAD (LW, LH, LB, LHU, LBU) Instructions**  
@@ -1461,7 +1467,7 @@ $dmem_addr[3:0] = $result[5:2];
 ```
 
 Muxes need to be placed at the inputs of RF write index ($rf_wr_index) and RF write data ($rf_wr_data) ports to select the appropriate values depending on the validity of the load instruction.  
-|**DMEM Load/ Store**<br>  ![D9_LoadStore_TLV_Logic_Diagram2](https://github.com/arunkpv/vsd-hdp/assets/79094513/cd25857e-b536-46b7-b15b-231b19f714cf)|
+|**DMEM Load/ Store**<br>  ![D9_LoadStore_TLV_Logic_Diagram2](/docs/images/D9_LoadStore_TLV_Logic_Diagram2.png)|
 |-|
 
 Additionally, the Program Counter logic has to be updated for load redirects.
@@ -1474,7 +1480,7 @@ The logic to calculate the branch target for JALR needs to be implemented.
 The Program Counter logic also needs to be modified to handle the jumps.  
 
 #### Complete Pipelined RISC-V CPU Core Implementation in Makerchip
-![D9_Complete_Pipelined_RISCV_Core](https://github.com/arunkpv/vsd-hdp/assets/79094513/95fcb9cb-09fd-4217-9930-21fe6ee1ea70)
+![D9_Complete_Pipelined_RISCV_Core](/docs/images/D9_Complete_Pipelined_RISCV_Core.png)
 
 _________________________________________________________________________________________________________  
 <br>
