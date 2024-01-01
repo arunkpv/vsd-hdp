@@ -19,6 +19,7 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |[Day 11](/docs/Day11.md)| Advanced Synthesis and STA with DC |
  |[Day 12](/docs/Day12.md)| Circuit Design using sky130 |
 
+<!--
 ## Day 0
 ### System Setup
 The program uses Open Source EDA tools and thus a linux OS environment is preferred.
@@ -238,7 +239,8 @@ For this example, we will use the design file, multiple_modules.v, which contain
   ![day2_multiple_modules_hier](/docs/images/day2_multiple_modules_hier.png)
   <br />
   <br />
-<!---
+-->
+<!--
   Corresponding Netlist - multiple_modules_hier.v:  
   ```
   /* multiple_modules_hier.v
@@ -306,6 +308,7 @@ module sub_module2(a, b, y);
 endmodule
   ```
 -->
+<!--
 ________________________________________________________________________________________________________________________
   
   **2. Flattened**  
@@ -320,7 +323,8 @@ ________________________________________________________________________________
   ![day2_multiple_modules_flat](/docs/images/day2_multiple_modules_flat.png)
   <br />
   <br />
-<!---
+-->
+<!--
   Corresponding Netlist - multiple_modules_flat.v:  
   ```
   /* multiple_modules_flat.v
@@ -373,7 +377,7 @@ module multiple_modules(a, b, c, y);
 endmodule
   ```
 -->
-
+<!--
   **Comparing the netlist generated for hierarchical and flat synthesis:**  
   ![multiple_modules_hierarchical_vs_flat](/docs/images/multiple_modules_hierarchical_vs_flat.png)
 ________________________________________________________________________________________________________________________
@@ -1535,3 +1539,4 @@ ________________________________________________________________________________
 #### generated_clk
 #### vclk, max_latency, rise_fall IO Delays
 **Update**: Constraint generation is in progress.  
+-->
