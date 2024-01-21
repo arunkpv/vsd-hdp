@@ -33,18 +33,18 @@ This implementation would have an IPC of only ~1/3 as the valid signal is active
 <br>
 
 ### Pipelining the CPU: Solving the data & control hazards
-  1) Data Hazard: Read-After-Write (RAW) in the Refister File
-      * There is a 2-cycle delay (by design) between RF Read and Write operations.
-      * Hence we have a Read-After-Write (RAW) data hazard if the current instruction in the pipe is trying to read from the Register File (RF) when the previous instruction had written to the same RF index.
-      * To solve this, we need to add a Register File Bypass Mux at the input of the ALU and select the previous ALU output if the previous instruction was writing to the RF index accessed in the current instruction.
+#### 1) Data Hazard: Read-After-Write (RAW) in the Refister File
+  * There is a 2-cycle delay (by design) between RF Read and Write operations.
+  * Hence we have a Read-After-Write (RAW) data hazard if the current instruction in the pipe is trying to read from the Register File (RF) when the previous instruction had written to the same RF index.
+  * To solve this, we need to add a Register File Bypass Mux at the input of the ALU and select the previous ALU output if the previous instruction was writing to the RF index accessed in the current instruction.
 
   |**Register File Bypass Waterfall Logic Diagram**<br>  ![D9_RF_Bypass_Logic_Diagram](/docs/images/D9_RF_Bypass_Logic_Diagram.png)|
   |-|
   |**Register File Bypass TL-V Implementation**<br>  ![D9_RF_Bypass_TLV_Diagram](/docs/images/D9_RF_Bypass_TLV_Diagram.png)|
 
-  2) Control Hazard: Branch Instructions
-      * We have control flow hazards when a branch is taken.
-      * The PC logic is updated to handle the case when a branch is taken or not.
+####  2) Control Hazard: Branch Instructions
+  * We have control flow hazards when a branch is taken.
+  * The PC logic is updated to handle the case when a branch is taken or not.
   
   |**Branch Instruction Control Hazard**<br>  ![D9_Branch_Hazard](/docs/images/D9_Branch_Hazard.png)|
   |-|
