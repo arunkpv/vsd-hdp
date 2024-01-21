@@ -22,8 +22,8 @@ Ref:
 ## Lab 5: Hierarchical vs. Flat Synthesis
 In this experiment, we will take a look at how the Yosys tool performs the synthesis and generates the netlst for a multi-module design with and without preserving the design hierarchy.  
 For this example, we will use the design file, multiple_modules.v, which contains some logic implementation using two sub-modules.  
-<br />
-  **1. Hierarchical**  
+
+### 1. Hierarchical
   Perform the hierarchical synthesis from the Yosys shell using the following commands:  
   ```
   read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
@@ -108,9 +108,8 @@ module sub_module2(a, b, y);
 endmodule
   ```
 -->
-________________________________________________________________________________________________________________________
   
-  **2. Flattened**  
+### 2. Flattened
   To flatten the hierarchical design, the command **flatten** is used following which we can write the netlist, as shown below:  
   ```
   flatten
@@ -183,7 +182,7 @@ ________________________________________________________________________________
 ## Lab 6: Various Flip-Flop Designs
 Here, we will take a look at the simulation and synthesis of different flip-flops.  
 <br>
-  **1. DFF with Asynchronous Reset**  
+### 1. DFF with Asynchronous Reset
   ```
   module dff_asyncres ( input clk ,  input async_reset , input d , output reg q );
   always @ (posedge clk , posedge async_reset)
@@ -218,8 +217,8 @@ library specified in the given liberty file.
   
   **Synthesis Result:**
   ![dff_asyncres](/docs/images/dff_asyncres.png)  
-_________________________________________________________________________________________________________  
-  **2. DFF with Synchronous Reset**  
+  
+### 2. DFF with Synchronous Reset
   ```
   module dff_syncres ( input clk , input async_reset , input sync_reset , input d , output reg q );
   always @ (posedge clk )
@@ -239,8 +238,8 @@ ________________________________________________________________________________
     
   **Synthesis Result:**
   ![dff_syncres](/docs/images/dff_syncres.png)  
-_________________________________________________________________________________________________________  
-  **3. DFF with both Asynchronous & Synchronous Reset**  
+  
+### 3. DFF with both Asynchronous & Synchronous Reset
   ```
   module dff_asyncres_syncres ( input clk , input async_reset , input sync_reset , input d , output reg q );
   always @ (posedge clk , posedge async_reset)
@@ -269,10 +268,10 @@ Here, we will take a look at the synthesis of two special cases of multipliers w
 <br>  
 <br>
 
-  **1. Multiply by 2**  
+### 1. Multiply by 2
   The input is an n-bit binary number and the output is twice the input.  
   ```
-  i.e., output[n:0] = 2 * input[n-1 : 0]  
+  i.e., output[n:0] = 2 * input[n-1 : 0]
 
   This is equivalent to left-shifting the input by 1 bit position with trailing 0 added in the LSB.
   In this case also, we can see that there aren't any cells needed to realize this logic,
@@ -293,10 +292,8 @@ Here, we will take a look at the synthesis of two special cases of multipliers w
 
   Synthesis result:  
   ![mult_2](/docs/images/mult_2.png)  
-_________________________________________________________________________________________________________  
-<br>
 
-  **2. Multiply a 3-bit number by 9**  
+### 2. Multiply a 3-bit number by 9
   The input is a 3-bit binary number and the output is defined to be 9 * input.  
   ```
   i.e., output[5:0] = 9 * input[2:0]
