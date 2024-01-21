@@ -3,21 +3,21 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
 <br />
 <br />
  **Progress Status**
- | Day # | Topic(s) Covered |
- |---|---|
- |[Day 0](/docs/Day0.md) | GitHub repo creation, System/ Tools Setup |
- |[Day 1](/docs/Day1.md) | Introduction to Verilog RTL design and Synthesis |
- |[Day 2](/docs/Day2.md) | <ol><li>Familiarization of .lib file structure and various timing models (QTMs/ETMs)</li><li>Hierarchical vs. Flat synthesis</li><li>Various Flip-Flop designs</li></ol> |
- |[Day 3](/docs/Day3.md) | Logic Synthesis Optimizations<ol><li>Combinational</li><li>Sequential</li></ol> |
- |[Day 4](/docs/Day4.md) | <ol><li>Gate Level Simulation</li><li>Synthesis-Simulation mismatch</li></ol> |
- |[Day 5](/docs/Day5.md) | Introduction to RISC-V ISA and GNU Compiler Toolchain |
- |[Day 6](/docs/Day6.md) | Introduction to ABI and basic verification flow |
- |[Day 7](/docs/Day7.md) | Digital Logic with TL-Verilog and Makerchip |
- |[Day 8](/docs/Day8.md) | Basic RISC-V CPU Microarchitecture |
- |[Day 9](/docs/Day9.md) | Complete Pipelined RISC-V CPU Microarchitecture |
- |[Day 10](/docs/Day_10.md)| GLS of the implemented RISC-V CPU Core |
- |[Day 11](/docs/Day_11.md)| Advanced Synthesis and STA with DC |
- |[Day 12](/docs/Day_12.md)| Circuit Design using sky130 |
+ | Day # | Topic(s) Covered | % Completion |
+ |---|---|---|
+ |[Day 0](/docs/Day0.md) | GitHub repo creation, System/ Tools Setup | ![](https://geps.dev/progress/100) |
+ |[Day 1](/docs/Day1.md) | Introduction to Verilog RTL design and Synthesis | ![](https://geps.dev/progress/100) |
+ |[Day 2](/docs/Day2.md) | <ol><li>Familiarization of .lib file structure and various timing models (QTMs/ETMs)</li><li>Hierarchical vs. Flat synthesis</li><li>Various Flip-Flop designs</li></ol> | ![](https://geps.dev/progress/100) |
+ |[Day 3](/docs/Day3.md) | Logic Synthesis Optimizations<ol><li>Combinational</li><li>Sequential</li></ol> | ![](https://geps.dev/progress/100) |
+ |[Day 4](/docs/Day4.md) | <ol><li>Gate Level Simulation</li><li>Synthesis-Simulation mismatch</li></ol> | ![](https://geps.dev/progress/100) |
+ |[Day 5](/docs/Day5.md) | Introduction to RISC-V ISA and GNU Compiler Toolchain | ![](https://geps.dev/progress/100) |
+ |[Day 6](/docs/Day6.md) | Introduction to ABI and basic verification flow | ![](https://geps.dev/progress/100) |
+ |[Day 7](/docs/Day7.md) | Digital Logic with TL-Verilog and Makerchip | ![](https://geps.dev/progress/100) |
+ |[Day 8](/docs/Day8.md) | Basic RISC-V CPU Microarchitecture | ![](https://geps.dev/progress/100) |
+ |[Day 9](/docs/Day9.md) | Complete Pipelined RISC-V CPU Microarchitecture | ![](https://geps.dev/progress/100) |
+ |[Day 10](/docs/Day_10.md)| GLS of the implemented RISC-V CPU Core | ![](https://geps.dev/progress/100) |
+ |[Day 11](/docs/Day_11.md)| Advanced Synthesis and STA with DC | ![](https://geps.dev/progress/40) |
+ |[Day 12](/docs/Day_12.md)| Circuit Design using sky130 | ![](https://geps.dev/progress/10) |
 
 <!--
 ## Day 0
