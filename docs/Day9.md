@@ -96,7 +96,7 @@ The Program Counter logic also needs to be modified to handle the jumps.
 
 ### Complete Pipelined RISC-V CPU Core Implementation in Makerchip
 <!--[**Link to SVG file of the RISC-V Core Block Diagram**](https://htmlpreview.github.io/?https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/docs/html/riscv.html)  -->
-
+Click on the image below to open up the interactive svg file:  
 [![D9_Complete_Pipelined_RISCV_Core](/docs/images/D9_Complete_Pipelined_RISCV_Core.png)](https://htmlpreview.github.io/?https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/docs/html/riscv.html)
 
 _________________________________________________________________________________________________________  
