@@ -95,10 +95,9 @@ The logic to calculate the branch target for JALR needs to be implemented.
 The Program Counter logic also needs to be modified to handle the jumps.  
 
 ### Complete Pipelined RISC-V CPU Core Implementation in Makerchip
-[**Link to SVG file of the RISC-V Core Block Diagram**](https://htmlpreview.github.io/?https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/docs/html/riscv.html)  
-<br>
+<!--[**Link to SVG file of the RISC-V Core Block Diagram**](https://htmlpreview.github.io/?https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/docs/html/riscv.html)  -->
 
-![D9_Complete_Pipelined_RISCV_Core](/docs/images/D9_Complete_Pipelined_RISCV_Core.png)
+[![D9_Complete_Pipelined_RISCV_Core](/docs/images/D9_Complete_Pipelined_RISCV_Core.png)](https://htmlpreview.github.io/?https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/docs/html/riscv.html)
 
 _________________________________________________________________________________________________________  
 [Prev: Day8](Day8.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 10](Day_10.md)  
