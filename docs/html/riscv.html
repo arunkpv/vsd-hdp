@@ -4390,67 +4390,81 @@
         
         document.addEventListener('DOMContentLoaded', function () {
         
-        // Reset transition after the transition has ended
-        svgElement.addEventListener('transitionend', resetTransition);
-        
-        var elementsToHighlight = document.querySelectorAll('a, g.node, g.edge, g.cluster');
-        var clickOccurred = false;
-        
-        elementsToHighlight.forEach(function (element) {
-            element.addEventListener('click', function (event) {
-                // Check if a click has occurred
-                if (clickOccurred) {
-                // If a click has occurred, prevent the click event from triggering highlighting
-                event.preventDefault();
-                clickOccurred = false;
-                return;
-                }
+            // Reset transition after the transition has ended
+            svgElement.addEventListener('transitionend', resetTransition);
+            
+            var elementsToHighlight = document.querySelectorAll('a, g.node, g.edge, g.cluster');
+            var clickOccurred = false;
+            
+            elementsToHighlight.forEach(function (element) {
+                element.addEventListener('click', function (event) {
+                    // Check if a click has occurred
+                    if (clickOccurred) {
+                    // If a click has occurred, prevent the click event from triggering highlighting
+                    event.preventDefault();
+                    clickOccurred = false;
+                    return;
+                    }
+                    
+                    // Check if the element already has the 'highlight' class
+                    var alreadyHighlighted = element.classList.contains('highlight');
+            
+                    // Remove highlight from all previously clicked elements
+                    elementsToHighlight.forEach(function (el) {
+                        el.classList.remove('highlight');
+                        var textElement = el.querySelector('text');
+                        if (textElement) {
+                            textElement.classList.remove('highlight');
+                        }
+                        var polygonElement = el.querySelector('polygon');
+                        if (polygonElement) {
+                            polygonElement.classList.remove('highlight');
+                        }
+                        var pathElement = el.querySelector('path');
+                        if (pathElement) {
+                            pathElement.classList.remove('highlight');
+                        }
+                    });
+            
+                    // Toggle the 'highlight' class on the clicked element if not already highlighted
+                    if (!alreadyHighlighted) {
+                        element.classList.toggle('highlight');
+                        
+                        // Find and toggle the 'highlight' class on the text element
+                        var textElement = element.querySelector('text');
+                        if (textElement) {
+                            textElement.classList.toggle('highlight');
+                        }
+                        
+                        // Find and toggle the 'highlight' class on the polygon element
+                        var polygonElement = element.querySelector('polygon');
+                        if (polygonElement) {
+                            polygonElement.classList.toggle('highlight');
+                        }
                 
-                // Check if the element already has the 'highlight' class
-                var alreadyHighlighted = element.classList.contains('highlight');
-        
-                // Remove highlight from all previously clicked elements
-                elementsToHighlight.forEach(function (el) {
-                    el.classList.remove('highlight');
-                    var textElement = el.querySelector('text');
-                    if (textElement) {
-                        textElement.classList.remove('highlight');
-                    }
-                    var polygonElement = el.querySelector('polygon');
-                    if (polygonElement) {
-                        polygonElement.classList.remove('highlight');
-                    }
-                    var pathElement = el.querySelector('path');
-                    if (pathElement) {
-                        pathElement.classList.remove('highlight');
+                        // Find and toggle the 'highlight' class on the path element
+                        var pathElement = element.querySelector('path');
+                        if (pathElement) {
+                            pathElement.classList.toggle('highlight');
+                        }
                     }
                 });
-        
-                // Toggle the 'highlight' class on the clicked element if not already highlighted
-                if (!alreadyHighlighted) {
-                    element.classList.toggle('highlight');
-                    
-                    // Find and toggle the 'highlight' class on the text element
-                    var textElement = element.querySelector('text');
-                    if (textElement) {
-                        textElement.classList.toggle('highlight');
-                    }
-                    
-                    // Find and toggle the 'highlight' class on the polygon element
-                    var polygonElement = element.querySelector('polygon');
-                    if (polygonElement) {
-                        polygonElement.classList.toggle('highlight');
-                    }
-            
-                    // Find and toggle the 'highlight' class on the path element
-                    var pathElement = element.querySelector('path');
-                    if (pathElement) {
-                        pathElement.classList.toggle('highlight');
-                    }
-                }
             });
         });
-    });
+    
+        // Your JavaScript code for displaying a message box
+        window.onload = function() {
+            var message = "Click to Highlight any element";
+            var message =  message + "\n" + "Hover on the element to show signal assignments";
+            var message = message + "\n" + "Click and drag to Pan the diagram";
+            var message = message + "\n" + "Mousewheel to Zoom in/ out";
+            
+            alert(message);
+            
+            // Display the alert
+            setTimeout(function() {
+            }, 1);
+        };
     </script>
 
 </body>
