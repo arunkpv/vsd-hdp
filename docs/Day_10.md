@@ -8,8 +8,30 @@ ________________________________________________________________________________
   * To perform GLS of the implementation, we need to first convert the TL-Verilog code into synthesizable verilog and then perform the synthesis using Yosys.
 
 
-### Sandpiper-Saas: Conversion of TLV code to Verilog
+### Sandpiper-Saas: Conversion of TL-Verilod code to Verilog
 SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert TL-Verilog code to Verilog or SystemVerilog code. SandPiper-SaaS provides a command-line interface to run the SandPiper TL-Verilog compiler as a microservice in the cloud. 
+
+
+#### Method 1: Using the Makerchip IDE (for SystemVerilog output)
+The Makerchip IDE provides within itself indirect access to Sandpiper - i.e., the compilation output result files can be accessed via the IDE's Editor ("E") dropdown menu.  
+If the design is relatively small and not spread across multiple files, it is easier to use the [Makerchip IDE](https://makerchip.com/sandbox/#) itself to convert the TL-Verilog code to SystemVerilog.  
+**Steps:**
+  1) Enter the TL-Verilog code in the Makerchip IDE's Editor interface.
+  2) Under the Editor ("E") dropdown menu, choose **Compile/ Sim** to perform the TL-Verilog code compilation and simulation.  
+     |![D9_TLV_to_Verilog_using_MakerChipIDE_1](/docs/images/D9_TLV_to_Verilog_using_MakerChipIDE_1.png)|
+     |-|  
+     
+  3) Under the Editor ("E") dropdown menu, choose **Open Results**.
+     * This will open up a new webpage that has links to the last SystemVerilog output files of the compilation.  
+     |![D9_TLV_to_Verilog_using_MakerChipIDE_3](/docs/images/D9_TLV_to_Verilog_using_MakerChipIDE_3.png)|
+     |-|  
+     
+  * Alternately, under the Editor ("E") dropdown menu, choose **Show Verilog**.
+    * This will open up a new webpage that shows the last compiled SystemVerilog results, along with some statistics about your TL-Verilog and SystemVerilog code.  
+     |![D9_TLV_to_Verilog_using_MakerChipIDE_2](/docs/images/D9_TLV_to_Verilog_using_MakerChipIDE_2.png)|
+     |-|  
+
+#### Method 2: Using Sandpiper-SaaS
   * Install Sandpiper-SaaS by following the steps in the following link: [https://pypi.org/project/sandpiper-saas/](https://pypi.org/project/sandpiper-saas/)
   * To convert tlv file to verilog: ```sandpiper-saas -i <input_tlv_file.tlv> -o <output_file.v> --outdir <output_dir> --inlineGen --iArgs```
   * Please note that for conversion to verilog, edit the **File Format Line** (i.e., usually the first line) in the tlv source file to add an additional option: ```-p verilog```<br>  
@@ -19,7 +41,7 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
     * ```--bestsv : Optimize the readability of the generated SV code.```
 <br>
 
-**Using Sandpiper-SaaS with Edalize, Fusesoc**
+### Using Sandpiper-SaaS with Edalize, FuseSoc
    * Sandpiper-SaaS supports the Flow API and thus allowing sandpiper-saas to be used as a "frontend" to convert TL-Verilog to SystemVerilog/Verilog for any flow.
    * An example of how to use sandpiper-saas with Edalize or Fusesoc in various contexts - viz. standalone tool, frontend to Vivado, in a Custom flow) is available here:<br>
      [edalize_sandpiper_example](https://github.com/shariethernet/edalize_sandpiper_example)  
