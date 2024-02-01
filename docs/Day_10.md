@@ -53,15 +53,15 @@ If the design is relatively small and not spread across multiple files, it is ea
 ##### 2.1) By providing the SandPiper arguments in the source file
   * The first line of a TL-X file, called the **"File Format Line"**, must identify the TL-X File Format Version and HDL Language, as well as a URL to the language specification.  
     For example, for a TL-Verilog source file using m4 macro pre-processing language, the first line will look like as follows:  
-    ```\m4_TLV_version 1d: tl-x.org```
+    `\m4_TLV_version 1d: tl-x.org`
     <br>
     
     To this File Format line in the source file, we can add the required command-line arguments to be passed to Sandpiper, as shown in the following example:  
-    ```\m4_TLV_version 1d -p verilog --bestsv --noline --inlineGen --verbose: tl-x.org```
+    `\m4_TLV_version 1d -p verilog --bestsv --noline --inlineGen --verbose: tl-x.org`
     <br>
     
-  * So the command-line to be executed with the above arguments added to the File Format line in the source file is:
-    ```sandpiper-saas -i <input_tlv_file.tlv> -o <output_file.v> --outdir <output_dir> --inlineGen --iArgs```
+  * So the command-line to be executed with the above arguments added to the File Format line in the source file is:  
+    `sandpiper-saas -i <input_tlv_file.tlv> -o <output_file.v> --outdir <output_dir> --inlineGen --iArgs`
     <br>
     
     **NOTE:** Based on my observation, the argument `--iArgs` needs to be provided in the terminal itself for it to take effect for some reason.
