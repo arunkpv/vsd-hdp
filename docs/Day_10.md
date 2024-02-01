@@ -50,7 +50,7 @@ If the design is relatively small and not spread across multiple files, it is ea
   
   * For the complete list of arguments, execute: `sandpiper-saas --sphelp`
 
-##### 2.1) By providing the SandPiper arguments in the source file
+##### 2.1 By providing the SandPiper arguments in the source file
   * The first line of a TL-X file, called the **"File Format Line"**, must identify the TL-X File Format Version and HDL Language, as well as a URL to the language specification.  
     For example, for a TL-Verilog source file using m4 macro pre-processing language, the first line will look like as follows:  
     `\m4_TLV_version 1d: tl-x.org`
@@ -67,7 +67,7 @@ If the design is relatively small and not spread across multiple files, it is ea
     **NOTE:** Based on my observation, the argument `--iArgs` needs to be provided in the terminal itself for it to take effect for some reason.
     <br>
     
-##### 2.2) By providing the SandPiper arguments in the command-line/ shell
+##### 2.2 By providing the SandPiper arguments in the command-line/ shell
   * The first line in the source file - i.e., the "File Format Line" can be kept as it is and all the required arguments to sandpiper can be provided in the terminal.  
     The first line will remain unchanged in the standard format as follows: `\m4_TLV_version 1d: tl-x.org`
     <br>  
