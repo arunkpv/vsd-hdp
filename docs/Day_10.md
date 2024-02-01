@@ -80,7 +80,7 @@ If the design is relatively small and not spread across multiple files, it is ea
     sandpiper-saas -i <input_tlv_file.tlv> -o <output_file.v> --outdir <output_dir> --bestsv --noline --iArgs --inlineGen --hdl verilog
     ```
 
-### Using Sandpiper-SaaS with Edalize, FuseSoc
+#### <ins>Method 3:</ins> Using Sandpiper-SaaS with Edalize, FuseSoc
    * Sandpiper-SaaS supports the Flow API and thus allowing sandpiper-saas to be used as a "frontend" to convert TL-Verilog to SystemVerilog/Verilog for any flow.
    * An example of how to use sandpiper-saas with Edalize or Fusesoc in various contexts - viz. standalone tool, frontend to Vivado, in a Custom flow) is available here:<br>
      [edalize_sandpiper_example](https://github.com/shariethernet/edalize_sandpiper_example)  
