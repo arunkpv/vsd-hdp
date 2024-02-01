@@ -68,8 +68,8 @@ If the design is relatively small and not spread across multiple files, it is ea
     <br>
     
 ##### 2.2) By providing the SandPiper arguments in the command-line/ shell
-  * The first line in the source file - i.e., the "File Format Line" can be kept as it is and all the required arguments to sandpiper can be provided in the terminal.
-    The first line will remain in the standard format as follows: `\m4_TLV_version 1d: tl-x.org`
+  * The first line in the source file - i.e., the "File Format Line" can be kept as it is and all the required arguments to sandpiper can be provided in the terminal.  
+    The first line will remain unchanged in the standard format as follows: `\m4_TLV_version 1d: tl-x.org`
     <br>  
   * The sandpiper-saas command-line now needs to include all the required arguments.
   * To specify the target HDL language, either the project (`-p`) argument or the target HDL (`--hdl`) argument can be used.
