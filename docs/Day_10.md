@@ -43,7 +43,7 @@ If the design is relatively small and not spread across multiple files, it is ea
     | `-o` | <ul> <li>Produce the given translated HDL file, where the HDL language is determined from the project (-p) arg OR (--hdl ) arg.</li> <li>File is specified as an absolute path or a path relative to the current directory, or --outdir, if given.</li> <li>If a path ending in "/" or no/empty arg is given, the file name is derived from --basename or -i.</li> <li>A value of "STDOUT" may also be used.</li> </ul> |
     | `--outdir` | A root directory for all produced files as a relative or absolute path. |
     | `--inlineGen` | Produce the generated code in an inline code block within the translated code, rather than in a separate file. |
-    | `-iArgs` | Process command-line arguments provided in the source file. |
+    | `--iArgs` | Process command-line arguments provided in the source file. |
     | `--bestsv` | Optimize the readability/maintainability of the generated SV, unconstrained by correlation w/ TLV source. |
     | `--noline` | Disable `line directive in SV output |
     | `--verbose` | Verbose output for debug. |
