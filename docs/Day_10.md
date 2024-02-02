@@ -11,7 +11,7 @@ ________________________________________________________________________________
 ### Conversion of TL-Verilod code to Verilog using Sandpiper
 SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert TL-Verilog code to Verilog or SystemVerilog code. SandPiper-SaaS provides a command-line interface to run the SandPiper TL-Verilog compiler as a microservice in the cloud.  
 
-#### <ins>Method 1:</ins> Using the Makerchip IDE (for SystemVerilog output)
+#### <ins>Method 1:</ins> Using the Makerchip IDE
 The Makerchip IDE provides within itself indirect access to Sandpiper - i.e., the compilation output result files can be accessed via the IDE's Editor ("E") dropdown menu.  
 If the design is relatively small and not spread across multiple files, it is easier to use the [Makerchip IDE](https://makerchip.com/sandbox/#) itself to convert the TL-Verilog code to SystemVerilog.  
 
@@ -32,7 +32,7 @@ If the design is relatively small and not spread across multiple files, it is ea
       |-|
 <br>
 
-#### <ins>Method 2:</ins> Using Sandpiper-SaaS (for Verilog, SystemVerilog output)
+#### <ins>Method 2:</ins> Using Sandpiper-SaaS
   * Install Sandpiper-SaaS by following the steps in the following link: [https://pypi.org/project/sandpiper-saas/](https://pypi.org/project/sandpiper-saas/)
   * Commonly used sandpiper-saas arguments:
     | Argument | Details |
