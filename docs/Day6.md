@@ -17,7 +17,7 @@ For more detailed information, refer to the [RISC-V ABI Specification v1.0](http
 ## Lab 1: Rewrite the program to find the sum of first N natural numbers utilizing ABI function calls
 
 C Program: 1to9_custom.c
-```
+```C
 #include <stdio.h>
 
 extern int load(int x, int y); 
@@ -32,7 +32,7 @@ int main() {
 <br>
 
 Assembly program: load.s
-```
+```asm
 .section .text
 .global load
 .type load, @function
@@ -65,7 +65,7 @@ For this exercise, we will use the design files from the following GitHub reposi
 Execute the following file from shell:  
 
 rv32im.sh:
-```
+```shell
 riscv64-unknown-elf-gcc -c -mabi=ilp32 -march=rv32im -o 1to9_custom.o 1to9_custom.c 
 riscv64-unknown-elf-gcc -c -mabi=ilp32 -march=rv32im -o load.o load.S
 
