@@ -10,7 +10,7 @@ The combinational logic is simplified to the most optimized form which is effici
 
 **NOTE :** The command to perform logic optimization in Yosys is ```opt_clean```.  
 Additionally, for a hierarchical design involving multiple sub-modules, the design must be flattened by running the ```flatten``` command before executing the ```opt_clean``` command.
-```
+```shell
 USAGE:
 After the synth -top <module_name> command is executed, do:
     opt_clean -purge
@@ -18,7 +18,7 @@ After the synth -top <module_name> command is executed, do:
 This command identifies wires and cells that are unused and removes them.
 The additional switch, purge also removes the internal nets if they have a public name.
 ```
-```
+```shell
 # Example showing the sequence of commands to perform combinational logic optimization using Yosys
 # on module opt_check in opt_check.v:
     read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
@@ -30,14 +30,14 @@ The additional switch, purge also removes the internal nets if they have a publi
 ```
 
 ### Lab 8: Example 1: opt_check.v 
-```
+```verilog
 module opt_check (input a , input b , output y);
     assign y = a?b:0;
 endmodule
 
-# We can see by direct simplification that:
-#      y = a*b + a_bar*0 = ab
-# i.e, a 2-input AND Gate. 
+// We can see by direct simplification that:
+//      y = a*b + a_bar*0 = ab
+// i.e, a 2-input AND Gate. 
 ```
 <br>
 
@@ -47,18 +47,18 @@ Synthesis Result:
 _________________________________________________________________________________________________________  
 
 ### Lab 8: Example 2: opt_check2.v
-```
+```verilog
 module opt_check2 (input a , input b , output y);
     assign y = a?1:b;
 endmodule
 
-# Boolean simplification:
-#      y = a + a_bar*b
-#        = ab + a*b_bar + a_bar*b
-#        = (ab + ab) + a*b_bar + a_bar*b
-#        = (ab + a*b_bar) + (ab + a_bar*b)
-#        = a + b 
-# i.e, a 2-input OR Gate. 
+// Boolean simplification:
+//      y = a + a_bar*b
+//        = ab + a*b_bar + a_bar*b
+//        = (ab + ab) + a*b_bar + a_bar*b
+//        = (ab + a*b_bar) + (ab + a_bar*b)
+//        = a + b 
+// i.e, a 2-input OR Gate. 
 ```
 <br>
 
@@ -69,16 +69,15 @@ _The cell library already seems to have an OR gate available as the synthesis re
 _________________________________________________________________________________________________________  
 
 ### Lab 8: Example 3: opt_check3.v
-```
-
+```verilog
 module opt_check3 (input a , input b, input c , output y);
     assign y = a?(c?b:0):0;
 endmodule
 
-# Boolean simplification:
-#      y = a* (bc) + a_bar*0
-#        = abc
-# i.e, a 3-input AND Gate.
+// Boolean simplification:
+//      y = a* (bc) + a_bar*0
+//        = abc
+// i.e, a 3-input AND Gate.
 ```
 <br>
 
@@ -88,19 +87,18 @@ Synthesis Result:
 _________________________________________________________________________________________________________  
 
 ### Lab 8: Example 4: opt_check4.v
-```
-
+```verilog
 module opt_check4 (input a , input b , input c , output y);
     assign y = a?(b?(a & c):c):(!c);
 endmodule
 
-# Boolean simplification:
-#      y = a*(abc + b_bar*c) + a_bar*c_bar
-#        = abc + a*b_bar*c + a_bar*c_bar
-#        = abc + a*b_bar*c + (a_bar*b*c_bar + a_bar*b_bar*c_bar)
-#        = ac + a_bar*c_bar
-#        = 
-# i.e, a 2-input XNOR Gate.
+// Boolean simplification:
+//      y = a*(abc + b_bar*c) + a_bar*c_bar
+//        = abc + a*b_bar*c + a_bar*c_bar
+//        = abc + a*b_bar*c + (a_bar*b*c_bar + a_bar*b_bar*c_bar)
+//        = ac + a_bar*c_bar
+//        = 
+// i.e, a 2-input XNOR Gate.
 ```
 <br>
 
@@ -110,7 +108,7 @@ Synthesis Result:
 _________________________________________________________________________________________________________  
 
 ### Lab 8: Example 5: multiple_module_opt.v
-```
+```verilog
 module sub_module1(input a , input b , output y);
     assign y = a & b;
 endmodule
@@ -137,7 +135,7 @@ Synthesis Result:
 _________________________________________________________________________________________________________  
 
 ### Lab 8: Example 6: multiple_module_opt2.v
-```
+```verilog
 module sub_module(input a , input b , output y);
     assign y = a & b;
 endmodule
@@ -169,7 +167,7 @@ ________________________________________________________________________________
 **4. Retming** : The pipelining flops in the design are placed optimally so that the combinational delay at each pipeline stage is more or less equalized so that the maximum clock frequency can be increased.  
 <br>
 
-```
+```shell
 # Example showing the sequence of commands to perform combinational logic optimization using Yosys
 # on module dff_const1 in dff_const1.v:
     read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
@@ -181,8 +179,8 @@ ________________________________________________________________________________
     show
 ```
 
-### Lab 9: Example 1: dff_const1.v 
-```
+### Lab 9: Example 1: dff_const1.v
+```verilog
 module dff_const1(input clk, input reset, output reg q);
     always @(posedge clk, posedge reset)
     begin
@@ -204,8 +202,8 @@ In this example, no optimization is possible as the flop output, q changes.
 
 _________________________________________________________________________________________________________
 
-### Lab 9: Example 2: dff_const2.v 
-```
+### Lab 9: Example 2: dff_const2.v
+```verilog
 module dff_const2(input clk, input reset, output reg q);
     always @(posedge clk, posedge reset)
     begin
@@ -228,8 +226,8 @@ Thus the realization does not need any cells and q is connected to 1'b1.
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 3: dff_const3.v 
-```
+### Lab 9: Example 3: dff_const3.v
+```verilog
 module dff_const3(input clk, input reset, output reg q);
     reg q1;
 
@@ -259,8 +257,8 @@ So the design will have two DFFs.
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 4: dff_const4.v 
-```
+### Lab 9: Example 4: dff_const4.v
+```verilog
 module dff_const4(input clk, input reset, output reg q);
     reg q1;
     
@@ -290,8 +288,8 @@ Thus, the design can be optimized to have only wires. Further, q1 being an inter
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 5: dff_const5.v 
-```
+### Lab 9: Example 5: dff_const5.v
+```verilog
 module dff_const5(input clk, input reset, output reg q);
     reg q1;
     
@@ -319,8 +317,8 @@ endmodule
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 6: counter_opt.v 
-```
+### Lab 9: Example 6: counter_opt.v
+```verilog
 module counter_opt (input clk , input reset , output q);
     reg [2:0] count;
     assign q = count[0];
@@ -349,8 +347,8 @@ In other words, the synthesis output does not have a 3-bit up counter and its as
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 7: counter_opt2.v 
-```
+### Lab 9: Example 7: counter_opt2.v
+```verilog
 module counter_opt (input clk , input reset , output q);
     reg [2:0] count;
     assign q = (count[2:0] == 3'b100);
