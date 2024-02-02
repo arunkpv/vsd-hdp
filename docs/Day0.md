@@ -17,12 +17,12 @@ We will be building Yosys from the source using gcc, the instructions for which 
 [Build Yosys from source](https://github.com/YosysHQ/yosys#building-from-source)
 <br />
    - Clone source code from git repository:
-     ```bash
+     ```shell
      git clone https://github.com/YosysHQ/yosys.git
      ```
     
   - Install the build system prerequsites/ dependencies:
-    ```bash
+    ```shell
     sudo apt-get install build-essential clang bison flex \
         libreadline-dev gawk tcl-dev libffi-dev git \
         graphviz xdot pkg-config python3 libboost-system-dev \
@@ -30,7 +30,7 @@ We will be building Yosys from the source using gcc, the instructions for which 
     ```
     
   - Build (using gcc) and install Yosys:
-    ```bash
+    ```shell
     make config-gcc
     make
     sudo make install
@@ -41,7 +41,7 @@ We will be building Yosys from the source using gcc, the instructions for which 
   
  **2. iverilog - Icarus Verilog**  
    - Install from official Ubuntu repository:
-     ```bash
+     ```shell
      sudo apt-get install iverilog
      ```
      
@@ -50,7 +50,7 @@ We will be building Yosys from the source using gcc, the instructions for which 
   
  **3. GTKWave**
    - Install from official Ubuntu repository:
-     ```bash
+     ```shell
      sudo apt-get install gtkwave
      ```
      
