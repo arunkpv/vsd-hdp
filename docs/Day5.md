@@ -44,7 +44,7 @@ References:
 
 ## Labs 1,2: Write a C program to compute the sum of first N natural numbers, compile using RISC-V GCC, simulate using Spike RISC-V ISA Simulator and disassemble to view the assembly code  
 **C Program:**
-```
+```C
 #include <stdio.h>
 
 int main() {
@@ -58,7 +58,7 @@ int main() {
 ```
 
 **Compilation command:**
-```
+```shell
 riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1toN.o sum1toN.c
     where,
         -mabi=ABI-string option specifies the ABI (Application Binary Interface) to be used.
@@ -70,7 +70,7 @@ Spike simulation output:
 <br>
 
 **Disassemble command:**
-```
+```shell
 riscv64-unknown-elf-objdump -d sum1toN.o
     where,
         -d, --disassemble flag displays the assembler contents of the executable sections.
@@ -89,7 +89,7 @@ Comparing the generated assembly code for main function with -O1 vs -Ofast compi
 A small example of how to use the debug mode can be found in the following page: [Interactive Debug Mode](https://github.com/riscv-software-src/riscv-isa-sim#interactive-debug-mode)  
 
 To enter the interactive debug mode, launch spike with ```-d``` option:  
-```
+```shell
 Example:
 spike -d pk sum1toN.o
 ```
@@ -99,7 +99,7 @@ _Snapshot showing usage of Spike Interactive Debug Mode_
 ![D5_Spike_InteractiveDebugMode](/docs/images/D5_Spike_InteractiveDebugMode.png)
 <br>
 
-```
+```shell
 Interactive commands:
 reg <core> [reg]                # Display [reg] (all if omitted) in <core>
 freg <core> <reg>               # Display float <reg> in <core> as hex
