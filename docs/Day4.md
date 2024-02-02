@@ -22,7 +22,7 @@ The following block diagram shows the GLS flow using iverilog:
 <br>
 
 The Gate level verilog model(s) need to be provided as shown below to do GLS using iverilog:
-```
+```shell
 Syntax:
     iverilog <path-to-gate-level-verilog-model(s)> <netlist_file.v> <tb_top.v>
 
@@ -43,7 +43,7 @@ Some of the common reasons for Synthesis - Simulation mismatch (mismatch between
 <br>
 
 ### Lab 10: GLS Synthesis - Sumulation mismatch - Example 1: ternary_operator_mux.v
-```
+```verilog
 module ternary_operator_mux (input i0 , input i1 , input sel , output y);
     assign y = sel ? i1 : i0;
 endmodule
@@ -59,7 +59,7 @@ endmodule
 _________________________________________________________________________________________________________  
 
 ### Lab 10: GLS Synthesis - Sumulation mismatch - Example 2: bad_mux.v
-```
+```verilog
 module bad_mux (input i0 , input i1 , input sel , output reg y);
     always @ (sel)
     begin
@@ -91,7 +91,7 @@ _Yosys warning about missing signals in sensitivity list_
 _________________________________________________________________________________________________________  
 
 ### Lab 10: GLS Synthesis - Sumulation mismatch - Example 3: blocking_caveat.v
-```
+```verilog
 module blocking_caveat (input a , input b , input  c, output reg d);
     reg x;
 
