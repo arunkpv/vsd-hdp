@@ -82,6 +82,18 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
     sandpiper-saas -i <input_tlv_file.tlv> -o <output_file.v> --outdir <output_dir> --bestsv --noline --iArgs --inlineGen -p verilog
     sandpiper-saas -i <input_tlv_file.tlv> -o <output_file.v> --outdir <output_dir> --bestsv --noline --iArgs --inlineGen --hdl verilog
     ```
+  
+**NOTE:**  
+There is a "bug" with argrument parsing by sandpiper-saas wherein the first argument that is not a switch (like --inlineGen, --bestsv etc.) but an optional argument (like -p verilog, --hdl verilog) gets parsed incorrectly. Because of this bug, they had to be given as the last item of the command-line as shown in the usage examples above.  
+<br>
+
+The following GitLab merge request documents the issue and the fix for the same: [https://gitlab.com/rweda/sandpiper-saas/-/merge_requests/2](https://gitlab.com/rweda/sandpiper-saas/-/merge_requests/2)  
+To install sandpiper-saas with the above fix, clone the following repo [https://gitlab.com/arunkumarpv/sandpiper-saas.git](https://gitlab.com/arunkumarpv/sandpiper-saas.git) and install sandpiper-saas.  
+```
+git clone https://gitlab.com/arunkumarpv/sandpiper-saas.git
+cd sandpiper-saas
+pip3 install .
+```
 
 #### <ins>Method 3:</ins> Using Sandpiper-SaaS with Edalize, FuseSoc
    * Sandpiper-SaaS supports the Flow API and thus allowing sandpiper-saas to be used as a "frontend" to convert TL-Verilog to SystemVerilog/Verilog for any flow.
