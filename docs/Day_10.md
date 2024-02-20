@@ -84,7 +84,7 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
     ```
   
 **NOTE:**  
-There is a "bug" with argrument parsing by sandpiper-saas wherein the first argument that is not a switch (like --inlineGen, --bestsv etc.) but an optional argument (like -p verilog, --hdl verilog) gets parsed incorrectly. Because of this bug, they had to be given as the last item of the command-line as shown in the usage examples above.  
+There is a "bug" with argrument parsing by sandpiper-saas wherein the first argument that is not a switch (like --inlineGen, --bestsv etc.) but an optional argument (like -p verilog, --hdl verilog) gets parsed incorrectly. Because of this bug, they had to be given as the last item of the command-line as shown in the usage examples above.
 <br>
 
 The following GitLab merge request documents the issue and the fix for the same: [https://gitlab.com/rweda/sandpiper-saas/-/merge_requests/2](https://gitlab.com/rweda/sandpiper-saas/-/merge_requests/2)  
