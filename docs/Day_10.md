@@ -8,7 +8,7 @@ ________________________________________________________________________________
   * To perform GLS of the implementation, we need to first convert the TL-Verilog code into synthesizable verilog and then perform the synthesis using Yosys.
 
 
-### Conversion of TL-Verilod code to Verilog using Sandpiper
+### Conversion of TL-Verilog code to Verilog using Sandpiper
 SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert TL-Verilog code to Verilog or SystemVerilog code. SandPiper-SaaS provides a command-line interface to run the SandPiper TL-Verilog compiler as a microservice in the cloud.  
 
   * Commonly used Sandpiper arguments:
@@ -52,6 +52,7 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
   * The sandpiper-saas command-line now needs to include all the required arguments.
   * To specify the target HDL language, either the project (`-p`) argument or the target HDL (`--hdl`) argument can be used.
     * When the `-p verilog` argument is used, it needs to be provided as the last item in the command-line to avoid some issue with the argument interpretation by the tool.
+<br>
 
 #### <ins>Method 1:</ins> Using the Makerchip IDE
   * The Makerchip IDE provides within itself indirect access to Sandpiper - i.e., the compilation output result files can be accessed via the IDE's Editor ("E") dropdown menu.
@@ -94,6 +95,7 @@ git clone https://gitlab.com/arunkumarpv/sandpiper-saas.git
 cd sandpiper-saas
 pip3 install .
 ```
+<br>
 
 #### <ins>Method 3:</ins> Using Sandpiper-SaaS with Edalize, FuseSoc
    * Sandpiper-SaaS supports the Flow API and thus allowing sandpiper-saas to be used as a "frontend" to convert TL-Verilog to SystemVerilog/Verilog for any flow.
