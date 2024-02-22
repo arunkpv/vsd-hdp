@@ -152,13 +152,15 @@ In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU 
       - This is because, we not accounting for the fact that the data to be written to the RF could come from either the ALU (**$result**) or from the DMEM (**$ld_data**).  
         `$rf_wr_data[31:0] = >>2$valid_load ? >>2$ld_data : $result;`
           
-        But we are only considering the ALU output for RF Read during a RAW Hazard.  
-        |**RF Read Bypass Bug**<br>  ![D9_Bug_Slide_49_RF_ReadBypass](/docs/images/D9_Bug_Slide_49_RF_ReadBypass.png)|
-        |-|
-        <br>
+        But we are only considering the ALU output for RF Read during a RAW Hazard.
+        
+|**RF Read Bypass Bug**<br>  ![D9_Bug_Slide_49_RF_ReadBypass](/docs/images/D9_Bug_Slide_49_RF_ReadBypass.png)|
+|-|
+<br>
     
-  - [**FIX 1:**](https://github.com/arunkpv/vsd-hdp/blob/main/code/riscv_pipelined_withBugFix_1.tlv) During the initial debugs, I came up with the following solution to the bug based on the simulation waveforms and the VIZ_JS debug prints.  
-    - This explicitly considers the case of the instruction immediately succeeding LW.
+  - **FIX 1:** During the initial debugs, I came up with the following solution to the bug based on the simulation waveforms and the VIZ_JS debug prints.
+    - [riscv_pipelined_withBugFix_1.tlv](/code/riscv_pipelined_withBugFix_1.tlv)  
+      This explicitly considers the case of the instruction immediately succeeding LW.
     ```
     // Handling Read-After-Write Hazard
     $src1_value[31:0] = >>3$valid_load && (>>3$rf_wr_index == $rf_rd_index1) ? >>3$ld_data :
@@ -170,7 +172,8 @@ In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU 
                         $rf_rd_data2;
     ```
       
-  - [**FIX 2:**](https://github.com/arunkpv/vsd-hdp/blob/main/code/riscv_pipelined_withBugFix_2.tlv) Talking to Steve H. actually got me a better understanding of the issue, and he suggested the following code change:
+  - **FIX 2:** Talking to Steve H. actually got me a better understanding of the issue, and he suggested the following code change:
+    - [riscv_pipelined_withBugFix_2.tlv](/code/riscv_pipelined_withBugFix_2.tlv)
     ```
     // Handling Read-After-Write Hazard
     $src1_value[31:0] = (>>1$rf_wr_index == $rf_rd_index1) && >>1$rf_wr_en
