@@ -14,9 +14,9 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
   * Commonly used Sandpiper arguments:
     | Argument | Details |
     |-|-|
-    | `-p` | <ul><li>Project name, corresponding to project configuration directory (e.g. -p verilog).</li> <li>(default: default)</li></ul> |
+    | `-p` | <ul> <li>Project name, corresponding to project configuration directory (e.g. -p verilog).</li> <li>(default: default)</li></ul> |
     | `--hdl` | <ul><li>The extended and target hardware description language.</li> <li>One of: 'verilog', 'sv'.</li> <li>This argument is implicit if a project (--p) argument is given.</li> <li>(default: sv) |
-    | `-i` | <ul><li>Input TL-X file (with absolute or relative path).</li> <li>(See also, --basename.)</li></ul> |
+    | `-i` | <ul> <li>Input TL-X file (with absolute or relative path).</li> <li>(See also, --basename.)</li></ul> |
     | `-o` | <ul> <li>Produce the given translated HDL file, where the HDL language is determined from the project (-p) arg OR (--hdl ) arg.</li> <li>File is specified as an absolute path or a path relative to the current directory, or --outdir, if given.</li> <li>If a path ending in "/" or no/empty arg is given, the file name is derived from --basename or -i.</li> <li>A value of "STDOUT" may also be used.</li> </ul> |
     | `--outdir` | A root directory for all produced files as a relative or absolute path. |
     | `--inlineGen` | Produce the generated code in an inline code block within the translated code, rather than in a separate file. |
@@ -24,6 +24,11 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
     | `--bestsv` | Optimize the readability/maintainability of the generated SV, unconstrained by correlation w/ TLV source. |
     | `--noline` | Disable `line directive in SV output |
     | `--verbose` | Verbose output for debug. |
+    | `--clkAlways` | <ul> <li>Use a clocking strategy for deasserted 'when' conditions (vs. clkGate and clkEnable) in which all sequential elements use an always-enabled clock with no clock gating or clock enabling.</li> <li>Thus, no power is saved from clock distribution and avoided logic propagation.</li> <li> State signal values are held using explicit recirculation. </li></ul> |
+    | `--clkGate` | <ul> <li>This is the default and takes precedence over the other two --clk* flags.</li> <li>Use a clocking strategy for deasserted 'when' conditions in which gated clock signals are provided to sequential elements.</li> <li>Power is saved in clock distribution and by avoiding the propagation of unused values.</li> <li> Explicit recirculation of state is produced only when state is consumed in the cycle that the next state value is produced.</li> </ul> |
+    | `--clkEnable` | <ul> <li>'when' conditions are applied as clock enables to staging flip-flops.</li> <li>It is generally recommended to use this in combination with --clkStageAlways.</li> <li>This overrides --clkAlways.</li> </ul> |
+    | `--clkStageAlways` | <ul> <li>'when' conditions such that gating/enabling is applied only to the first flip-flop after each  assignment with subsequent staging using the free-running clock.</li> </ul> |
+
 
   * The Sandpiper arguments could be provided either in the source file as inline arguments or in the terminal while invoking sandpiper-saas.
 
