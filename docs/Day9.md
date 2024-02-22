@@ -103,9 +103,7 @@ Click on the image below to open up the interactive svg file:
 _________________________________________________________________________________________________________  
 ## Bug with the LW instruction and RF Read Bypass
 **Original Code:** [riscv_pipelined_with_LW_Bug.tlv](/code/riscv_pipelined_with_LW_Bug.tlv)
-In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU core that we have designed following the steps in the lecture videos and slides, I noticed two issues:  
-
-https://github.com/arunkpv/vsd-hdp/blob/main/docs/videos/D9_Bug_Video.mp4
+In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU core that we have designed following the steps in the lecture videos and slides, I noticed [two issues](/docs/videos/D9_Bug_Video.mp4):  
 
 ###  1) During the execution of the LW instruction, the DMEM address gets written to destination register in the first cycle.  
 **(NOTE: This is a benign issue and not a concern)**  
