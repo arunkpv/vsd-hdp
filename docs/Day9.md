@@ -102,7 +102,9 @@ Click on the image below to open up the interactive svg file:
 
 _________________________________________________________________________________________________________  
 ## Bug with the LW instruction and RF Read
-In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU core that we have designed following the steps in the lecture videos and slides, I noticed two issues:
+**Original Code:** [riscv_pipelined_with_LW_Bug.tlv](/code/riscv_pipelined_with_LW_Bug.tlv)
+In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU core that we have designed following the steps in the lecture videos and slides, I noticed two issues:  
+
 ###  1) During the execution of the LW instruction, the DMEM address gets written to destination register in the first cycle.  
 **(NOTE: This is a benign issue and not a concern)**  
   - Since LW is an I-type (Immediate-type instruction), the **$rd** (Destination Register) is valid during this phase and thus **$rf_wr_en** (Register File Write Enable).
@@ -151,11 +153,11 @@ In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU 
         `$rf_wr_data[31:0] = >>2$valid_load ? >>2$ld_data : $result;`
           
         But we are only considering the ALU output for RF Read during a RAW Hazard.  
-        | ![BUG_Slide_49_for_GitHub](/docs/images/BUG_Slide_49_for_GitHub.png) |
+        |**RF Read Bypass Bug**<br>  ![D9_Bug_Slide_49_RF_ReadBypass](/docs/images/D9_Bug_Slide_49_RF_ReadBypass.png)|
         |-|
         <br>
     
-  - **FIX 1:** During the initial debugs, I came up with the following solution to the bug based on the simulation waveforms and the VIZ_JS debug prints.  
+  - [**FIX 1:**](https://github.com/arunkpv/vsd-hdp/blob/main/code/riscv_pipelined_withBugFix_1.tlv) During the initial debugs, I came up with the following solution to the bug based on the simulation waveforms and the VIZ_JS debug prints.  
     - This explicitly considers the case of the instruction immediately succeeding LW.
     ```
     // Handling Read-After-Write Hazard
@@ -168,7 +170,7 @@ In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU 
                         $rf_rd_data2;
     ```
       
-  - **FIX 2:**: Talking to Steve H. actually got me a better understanding of the issue, and he suggested the following code change:
+  - [**FIX 2:**](https://github.com/arunkpv/vsd-hdp/blob/main/code/riscv_pipelined_withBugFix_2.tlv) Talking to Steve H. actually got me a better understanding of the issue, and he suggested the following code change:
     ```
     // Handling Read-After-Write Hazard
     $src1_value[31:0] = (>>1$rf_wr_index == $rf_rd_index1) && >>1$rf_wr_en
