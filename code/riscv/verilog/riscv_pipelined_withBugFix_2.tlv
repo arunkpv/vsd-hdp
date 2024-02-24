@@ -2,7 +2,7 @@
 \SV
    
    //m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/master/tlv_lib/risc-v_shell_lib.tlv'])
-   m4_include_lib(['https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/code/verilog/include/risc-v_shell_lib.tlv'])
+   m4_include_lib(['https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/code/riscv/verilog/include/risc-v_shell_lib.tlv'])
 
    // Module interface, either for Makerchip, or not.
    m4_ifelse_block(M4_MAKERCHIP, 1, ['
