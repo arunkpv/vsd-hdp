@@ -1,6 +1,7 @@
 \m4_TLV_version 1d: tl-x.org
 \SV
-   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/warp-v_includes/2d6d36baa4d2bc62321f982f78c8fe1456641a43/risc-v_defs.tlv'])
+   //m4_include_lib(['https://raw.githubusercontent.com/stevehoover/warp-v_includes/2d6d36baa4d2bc62321f982f78c8fe1456641a43/risc-v_defs.tlv'])
+   m4_include_lib(['https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/code/include/risc-v_defs.tlv'])
 
 m4+definitions(['
 m4_ifelse_block(M4_MAKERCHIP, 1,['
@@ -23,7 +24,7 @@ m4_ifelse_block(M4_MAKERCHIP, 1,['
       \SV_plus
          // The program in an instruction memory.
          wire [31:0] instrs [0:M4_NUM_INSTRS-1];
-         assign instrs[0] = m4_instr0;m4_forloop(['m4_instr_ind'], 1, M4_NUM_INSTRS, [' assign instrs[m4_instr_ind] = m4_echo(['m4_instr']m4_instr_ind);'])
+         assign instrs[0] = m4_instr0;m4_forloop(['m4_instr_ind'], 1, M4_NUM_INSTRS, [' assign instrs[m4_instr_ind] = m4_echo(['m4_instr']m4_instr_ind);m4_new_line'])
       /M4_IMEM_HIER
          $instr[31:0] = *instrs\[#imem\];
       ?$imem_rd_en
