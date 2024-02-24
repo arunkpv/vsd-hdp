@@ -179,7 +179,7 @@ m4+definitions(['
   m4_define(['m4_instrU'], ['m4_instr_no_func($@)m4_define(['m4_asm_$4'],
        ['m4_asm_instr_str(U, ['$4'], $']['@){m4_asm_imm_field(']m4_arg(2)[', 20, 19, 0), m4_asm_reg(']m4_arg(1)['), ']m4_localparam_value($4_INSTR_OPCODE)['}'])'])
   m4_define(['m4_instrJ'], ['m4_instr_no_func($@)m4_define(['m4_asm_$4'],
-       ['m4_asm_instr_str(J, ['$4'], $']['@){m4_asm_imm_field(']m4_arg(2)[', 20, 19, 19), m4_asm_imm_field(']m4_arg(2)[', 20, 9, 0), m4_asm_imm_field(']m4_arg(2)[', 20, 10, 10), m4_asm_imm_field(']m4_arg(2)[', 20, 18, 11), m4_asm_reg(']m4_arg(1)['), ']m4_localparam_value($4_INSTR_OPCODE)['}'])'])
+       ['m4_asm_instr_str(J, ['$4'], $']['@){m4_asm_imm_field(']m4_arg(2)[', 21, 20, 20), m4_asm_imm_field(']m4_arg(2)[', 21, 10, 1), m4_asm_imm_field(']m4_arg(2)[', 21, 11, 11), m4_asm_imm_field(']m4_arg(2)[', 21, 19, 12), m4_asm_reg(']m4_arg(1)['), ']m4_localparam_value($4_INSTR_OPCODE)['}'])'])
   m4_define(['m4_instr_'], ['m4_instr_no_func($@)'])
 
   // For each instruction type.
