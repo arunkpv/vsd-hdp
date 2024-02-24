@@ -24,7 +24,7 @@ m4_ifelse_block(M4_MAKERCHIP, 1,['
       \SV_plus
          // The program in an instruction memory.
          wire [31:0] instrs [0:M4_NUM_INSTRS-1];
-         assign instrs[0] = m4_instr0;m4_forloop(['m4_instr_ind'], 1, M4_NUM_INSTRS, [' assign instrs[m4_instr_ind] = m4_echo(['m4_instr']m4_instr_ind;   ['']m4_new_line)'])
+         assign instrs[0] = m4_instr0;m4_forloop(['m4_instr_ind'], 1, M4_NUM_INSTRS, ['assign instrs[m4_instr_ind] = m4_echo(['m4_instr']m4_instr_ind;['']m4_new_line)'])
       /M4_IMEM_HIER
          $instr[31:0] = *instrs\[#imem\];
       ?$imem_rd_en
