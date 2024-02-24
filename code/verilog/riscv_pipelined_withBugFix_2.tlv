@@ -1,29 +1,27 @@
-\m4_TLV_version 1d -p verilog --bestsv --noline --clkAlways --inlineGen --iArgs: tl-x.org
+\m4_TLV_version 1d -p verilog --bestsv --noline --clkAlways --inlineGen --iArgs --verbose: tl-x.org
 \SV
    
-   m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/master/tlv_lib/risc-v_shell_lib.tlv'])
-   //m4_include_lib(['https://raw.githubusercontent.com/BalaDhinesh/RISC-V_MYTH_Workshop/master/tlv_lib/risc-v_shell_lib.tlv'])
+   //m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/master/tlv_lib/risc-v_shell_lib.tlv'])
+   m4_include_lib(['https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/code/verilog/include/risc-v_shell_lib.tlv'])
 
    // Module interface, either for Makerchip, or not.
    m4_ifelse_block(M4_MAKERCHIP, 1, ['
-   // Makerchip module interface.
-   m4_makerchip_module
-   wire CLK_top = clk;
-   logic [9:0] out;
-   assign passed = cyc_cnt > 100;
-   assign failed = 1'b0;
-   '], ['
-   // Custom module interface for BabySoC.
-   module riscv(
-      input clk,
-      input reset
-      output reg [9:0]out,
-   );
-   wire clk = CLK_top;
-   '])
+      // Makerchip module interface.
+      m4_makerchip_module
+      wire CLK_top = clk;
+      logic [9:0] out;
+      assign passed = cyc_cnt > 100;
+      assign failed = 1'b0;
+      '], ['
+      // Custom module interface for BabySoC.
+      module riscv(
+         input clk,
+         input reset,
+         output reg [9:0] out
+      );
+      wire clk = CLK_top;
+      '])
 
-//\SV
-//   m4_makerchip_module   // (Expanded in Nav-TLV pane.)
 \TLV
 
    // /====================\
@@ -41,6 +39,7 @@
    // 
    // External to function:
    m4_asm(ADD,  r10,  r0,  r0)           // Initialize r10 to 0.
+   m4_asm(ADD,  r15,  r0,  r0)           // Initialize r15 to 0.
    // Function:
    m4_asm(ADD,  r14,  r0,  r0)           // Initialize partial sum register r14 with 0x0
    m4_asm(ADDI, r12,  r0, 1010)          // Store count of 10 in register r12.
@@ -55,6 +54,9 @@
    m4_asm(SW,  r0, r10, 00100)           // DMEM[1] = r10 = 45 (2d)
    m4_asm(LW, r15,  r0, 00100)           // r15 = DMEM[1] = 45 (2d)
    
+   // Optional: Jump to itself (infinite loop)
+   //m4_asm(JAL, r7, 111111111111111010100) // Offset[20:0] = -44 (0x1F_FFD4)
+   
    // Additional instructions added to test out the RAW hazard during Load redirect
    m4_asm(ADD,  r1, r15, r1)      // r1 = r1 + r15 = 46 (2e)
    m4_asm(ADD,  r1,  r1, r1)      // r1 = r1 + r1  = 92 (5c)
@@ -65,8 +67,6 @@
    m4_asm(ADD,  r2,  r2, r2)      // r2 = r2 + r2 = 90 (5a)
    
    
-   // Optional:
-   // m4_asm(JAL, r7, 00000000000000000000) // Done. Jump to itself (infinite loop). (Up to 20-bit signed immediate plus implicit 0 bit (unlike JALR) provides byte address; last immediate bit should also be 0)
    m4_define_hier(['M4_IMEM'], M4_NUM_INSTRS)
 
    |cpu
@@ -202,9 +202,9 @@
          
          $is_jump = ($is_jal || $is_jalr);
          
-         `BOGUS_USE($is_beq $is_bne $is_blt $is_bge $is_bltu $is_bgeu $is_load $is_sb $is_sh $is_sw $is_addi
-                    $is_slti $is_sltiu $is_xori $is_ori $is_andi $is_slli $is_srli $is_srai $is_add $is_sub
-                    $is_sll $is_slt $is_sltu $is_xor $is_srl $is_sra $is_or $is_and);
+         `BOGUS_USE($is_beq $is_bne $is_blt $is_bge $is_bltu $is_bgeu $is_load $is_sb $is_sh $is_sw $is_addi);
+         `BOGUS_USE($is_slti $is_sltiu $is_xori $is_ori $is_andi $is_slli $is_srli $is_srai $is_add $is_sub);
+         `BOGUS_USE($is_sll $is_slt $is_sltu $is_xor $is_srl $is_sra $is_or $is_and);
          
       @2
          // Target PC for a branch instruction
@@ -218,11 +218,11 @@
          $rf_rd_index2[4:0] = $rs2;
          
          // Handling Read-After-Write Hazard
-         $src1_value[31:0] = (>>1$rf_wr_index == $rf_rd_index1) && >>1$rf_wr_en ? >>1$rf_wr_data   :
-                             $rf_rd_data1;
+         $src1_value[31:0] = (>>1$rf_wr_index == $rf_rd_index1) && >>1$rf_wr_en
+                             ? >>1$rf_wr_data : $rf_rd_data1;
          
-         $src2_value[31:0] = (>>1$rf_wr_index == $rf_rd_index2) && >>1$rf_wr_en ? >>1$rf_wr_data   :
-                             $rf_rd_data2;
+         $src2_value[31:0] = (>>1$rf_wr_index == $rf_rd_index2) && >>1$rf_wr_en
+                             ? >>1$rf_wr_data : $rf_rd_data2;
          
       @3
          // ALU

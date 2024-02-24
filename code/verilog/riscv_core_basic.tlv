@@ -3,7 +3,6 @@
    // This code can be found in: https://github.com/stevehoover/RISC-V_MYTH_Workshop
    
    m4_include_lib(['https://raw.githubusercontent.com/stevehoover/RISC-V_MYTH_Workshop/master/tlv_lib/risc-v_shell_lib.tlv'])
-   //m4_include_lib(['https://raw.githubusercontent.com/BalaDhinesh/RISC-V_MYTH_Workshop/master/tlv_lib/risc-v_shell_lib.tlv'])
                    
 
 \SV
