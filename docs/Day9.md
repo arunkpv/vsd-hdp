@@ -102,7 +102,7 @@ Click on the image below to open up the interactive svg file:
 
 _________________________________________________________________________________________________________  
 ## Bug with the LW instruction and RF Read Bypass
-**Original Code:** [riscv_pipelined_with_LW_Bug.tlv](/code/riscv/verilog/riscv_pipelined_with_LW_Bug.tlv)
+**Original Code:** [riscv_pipelined_with_LW_Bug.tlv](./code/riscv/verilog/riscv_pipelined_with_LW_Bug.tlv)
 In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU core that we have designed following the steps in the lecture videos and slides, I noticed [two issues](/docs/videos/D9_Bug_Video.mp4):  
 
 ###  1) During the execution of the LW instruction, the DMEM address gets written to destination register in the first cycle.  
@@ -159,7 +159,7 @@ In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU 
 <br>
     
   - **FIX 1:** During the initial debugs, I came up with the following solution to the bug based on the simulation waveforms and the VIZ_JS debug prints.
-    - [riscv_pipelined_withBugFix_1.tlv](/code/riscv/verilog/riscv_pipelined_withBugFix_1.tlv)  
+    - [riscv_pipelined_withBugFix_1.tlv](./code/riscv/verilog/riscv_pipelined_withBugFix_1.tlv)  
       This explicitly considers the case of the instruction immediately succeeding LW.
     ```
     // Handling Read-After-Write Hazard
@@ -173,7 +173,7 @@ In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU 
     ```
       
   - **FIX 2:** Talking to Steve H. actually got me a better understanding of the issue, and he suggested the following code change:
-    - [riscv_pipelined_withBugFix_2.tlv](/code/riscv/verilog/riscv_pipelined_withBugFix_2.tlv)
+    - [riscv_pipelined_withBugFix_2.tlv](./code/riscv/verilog/riscv_pipelined_withBugFix_2.tlv)
     ```
     // Handling Read-After-Write Hazard
     $src1_value[31:0] = (>>1$rf_wr_index == $rf_rd_index1) && >>1$rf_wr_en
