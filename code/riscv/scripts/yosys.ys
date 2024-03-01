@@ -1,0 +1,16 @@
+read_liberty -lib ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+read_verilog ./riscv_pipelined_Final.v
+
+hierarchy -check -top riscv_core
+
+synth -top riscv_core
+dfflibmap -liberty ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+opt
+abc -liberty ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime,{D};strash;dch,-f;map,-M,1,{D}
+flatten
+setundef -undriven -init -zero
+opt_clean -purge
+rename -enumerate
+stat
+write_verilog -noattr ./synth/riscv_pipelined_Final_netlist.v
