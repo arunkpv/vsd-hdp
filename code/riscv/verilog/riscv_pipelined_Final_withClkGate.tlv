@@ -14,7 +14,7 @@
       assign failed = 1'b0;
       '], ['
       // Custom module interface for BabySoC.
-      module riscv(
+      module riscv_core(
          input clk,
          input reset,
          output reg [9:0] out
