@@ -19,7 +19,6 @@
          input reset,
          output reg [9:0] out
       );
-      wire clk = CLK_top;
       '])
 
 \TLV
