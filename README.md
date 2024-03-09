@@ -17,7 +17,8 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |[Day 9](/docs/Day9.md) | Complete Pipelined RISC-V CPU Microarchitecture | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 10](/docs/Day_10.md)| GLS of the implemented RISC-V CPU Core <ol><li>Conversion of TL-Verilog code to Verilog/ SystemVerilog</li> <li>GLS of the RISC-V CPU Core</li> </ol> | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 11](/docs/Day_11.md)| Advanced Synthesis and STA with DC<br>**Pending:** Documentation | ![](https://progress-bar.dev/90/?title=progress) |
- |[Day 12](/docs/Day_12.md)| Circuit Design using sky130<br>**Pending:** Documentation | ![](https://progress-bar.dev/90/?title=progress) |
+ |[Day 12](/docs/Day_12.md)| Circuit Design using sky130<br>**Pending:** Documentation | ![](https://progress-bar.dev/75/?title=progress) |
+ |[Day 13](/docs/Day_13.md)| PVT Corner Analysis<br>**Pending:** Documentation | ![](https://progress-bar.dev/90/?title=progress) |
 
 <!--
 ## Day 0
