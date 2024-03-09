@@ -72,7 +72,50 @@ Defines how the output changes for different types of transitions on the input.
     set_output_delay -clock clk -min $min_ouput_dly [get_ports out]
     set_output_delay -clock clk -min $max_ouput_dly [get_ports out]
     ```
+  * [**SDC File written from OpenSTA using write_sdc command**](../code/riscv/sdc/riscv_core_sdc.sdc)
+
+  * OpenSTA shell showing the commands to perform STA for the design:
+    ```
+    arun@vsd-hdp-VirtualBox:~/.../edalize_sandpiper_example/top$ sta
+    OpenSTA 2.4.0 3e2295adfd Copyright (c) 2023, Parallax Software, Inc.
+    License GPLv3: GNU GPL version 3 <http://gnu.org/licenses/gpl.html>
     
+    This is free software, and you are free to change and redistribute it
+    under certain conditions; type `show_copying' for details. 
+    This program comes with ABSOLUTELY NO WARRANTY; for details type `show_warranty'.
+    % read_liberty ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+    Warning: ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib line 23, default_fanout_load is 0.0.
+    1
+    % read_verilog ./riscv_pipelined_Final_netlist.v
+    1
+    % link_design riscv_core
+    1
+    % current_design
+    riscv_core
+    % 
+    % read_sdc riscv_core_synthesis.sdc
+    % 
+    % check_setup -verbose -unconstrained_endpoints
+    Warning: There are 3 unconstrained endpoints.
+      _15766_/D
+      _15768_/D
+      _15777_/D
+    0
+    % 
+    % report_checks -path_delay min_max -fields {nets cap slew input_pins fanout} -digits {4}
+    ```  
+    | ![D11_OpenSTA_sta_commands](./images/D11_OpenSTA_sta_commands.png) |
+    |-|
+    
+    * **Min path**
+      
+    | ![D11_OpenSTA_min_delay](./images/D11_OpenSTA_min_delay.png) |
+    |-|
+
+    * **Max path**
+      
+    | ![D11_OpenSTA_max_delay](./images/D11_OpenSTA_max_delay.png) |
+    |-|
 <br>
 
 _________________________________________________________________________________________________________  
