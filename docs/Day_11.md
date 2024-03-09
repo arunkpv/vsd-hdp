@@ -74,8 +74,15 @@ Defines how the output changes for different types of transitions on the input.
     ```
   * [**SDC File written from OpenSTA using write_sdc command**](../code/riscv/sdc/riscv_core_sdc.sdc)
 
-**OpenSTA shell showing snapshots**
-|OpenSTA commands to perform STA<br>  ![D11_OpenSTA_sta_commands](/docs/images/D11_OpenSTA_sta_commands.png) |
+  * **OpenSTA shell showing snapshots**
+    The following snapshots show the commands to:
+      * `read_liberty`, `read_liberty`: Read the Liberty format library file and the gate level verilog netlist file
+      * `link_design`: Link (elaborate, flatten) the the top level cell
+      * `read_sdc`: Read SDC commands from the given constraints file
+      * `check_setup`: Perform sanity checks on the design
+      * `report_checks`: Report paths in the desing based on the additional arguments/ filters provided
+    
+|![D11_OpenSTA_sta_commands](/docs/images/D11_OpenSTA_sta_commands.png) |
 |-|
 |**Min path**<br>  ![D11_OpenSTA_min_delay](/docs/images/D11_OpenSTA_min_delay.png) |
 |**Max path**<br>  ![D11_OpenSTA_max_delay](/docs/images/D11_OpenSTA_max_delay.png) |
