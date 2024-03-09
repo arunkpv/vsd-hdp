@@ -74,20 +74,12 @@ Defines how the output changes for different types of transitions on the input.
     ```
   * [**SDC File written from OpenSTA using write_sdc command**](../code/riscv/sdc/riscv_core_sdc.sdc)
 
-  * OpenSTA shell showing the commands to perform STA for the design:  
+**OpenSTA shell showing snapshots**
+|OpenSTA commands to perform STA<br>  ![D11_OpenSTA_sta_commands](/docs/images/D11_OpenSTA_sta_commands.png) |
+|-|
+|**Min path**<br>  ![D11_OpenSTA_min_delay](/docs/images/D11_OpenSTA_min_delay.png) |
+|**Max path**<br>  ![D11_OpenSTA_max_delay](/docs/images/D11_OpenSTA_max_delay.png) |
     
-    | ![D11_OpenSTA_sta_commands](https://github.com/arunkpv/vsd-hdp/blob/main/docs/images/D11_OpenSTA_sta_commands.png) |
-    |-|
-    
-    * **Min path**
-    
-    | ![D11_OpenSTA_min_delay](https://github.com/arunkpv/vsd-hdp/blob/main/docs/images/D11_OpenSTA_min_delay.png) |
-    |-|
-    
-    * **Max path**
-    
-    | ![D11_OpenSTA_max_delay](https://github.com/arunkpv/vsd-hdp/blob/main/docs/images/D11_OpenSTA_max_delay.png) |
-    |-|
 <br>
 
 _________________________________________________________________________________________________________  
