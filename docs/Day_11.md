@@ -12,6 +12,8 @@ As the naming suggests, there is another method - Dynamic Timing Analysis (DTA) 
   * However, this is a very expensive method in terms of both simuation run time and resources as we cannot verify the entire space of test vectors exhaustively.
   * A trade-off could be to select the test vectors that exercise majority of the circuits, but this is usually not sufficient for sign-off as the coverage/ confidence obtained is only as exhaustive as the test vectors used and no 100% guarantee that the design will work across conditions.
 ## STA Basics
+STA can performed at various stages of the ASIC design flow, with the emphasis being on different aspects.
+![D11_STA_in_Design_Flow](/docs/images/D11_STA_in_Design_Flow.png)
 ### Timing Arcs
   1. Combinational arcs: Between input and output pin of a combinational block/ cell.
   2. Sequential arcs: Between the clock pin and either the input or output
