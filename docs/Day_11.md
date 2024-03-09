@@ -76,7 +76,8 @@ Defines how the output changes for different types of transitions on the input.
 
   * **OpenSTA shell showing snapshots**
     The following snapshots show the commands to:
-      * `read_liberty`, `read_liberty`: Read the Liberty format library file and the gate level verilog netlist file
+      * `read_liberty`: Read the Liberty format library file
+      * `read_verilog`: Read the gate level verilog netlist file
       * `link_design`: Link (elaborate, flatten) the the top level cell
       * `read_sdc`: Read SDC commands from the given constraints file
       * `check_setup`: Perform sanity checks on the design
