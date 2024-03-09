@@ -100,6 +100,11 @@ Defines how the output changes for different types of transitions on the input.
     * Yosys should have reduced them to constant drivers but somehow they still remain.
     * A Yosys GitHub issue has been raised to check if there is a way to avoid this.  
       Details of the issue can be read here: [https://github.com/YosysHQ/yosys/issues/4266](https://github.com/YosysHQ/yosys/issues/4266)
+
+  * The design also fails to meet the target timing requirements:
+    * Min path: most probably due to the overly conservative/ pessimistic values of the clock source latencies used.
+    * Max path: due to the conservative values of clock source latencies used and undefined fanout constraints. (Inverter instance `_10539_` of type **sky130_fd_sc_hd__clkinv_1** is having a fanout of 932)
+
 <br>
 
 _________________________________________________________________________________________________________  
