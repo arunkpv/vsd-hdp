@@ -76,17 +76,17 @@ Defines how the output changes for different types of transitions on the input.
 
   * OpenSTA shell showing the commands to perform STA for the design:  
     
-    | ![D11_OpenSTA_sta_commands](../docs/images/D11_OpenSTA_sta_commands.png) |
+    | ![D11_OpenSTA_sta_commands](images/D11_OpenSTA_sta_commands.png) |
     |-|
     
     * **Min path**
       
-    | [D11_OpenSTA_min_delay](../docs/images/D11_OpenSTA_min_delay.png) |
+    | ![D11_OpenSTA_min_delay](images/D11_OpenSTA_min_delay.png) |
     |-|
 
     * **Max path**
       
-    | [D11_OpenSTA_max_delay](../docs/images/D11_OpenSTA_max_delay.png) |
+    | ![D11_OpenSTA_max_delay](images/D11_OpenSTA_max_delay.png) |
     |-|
 <br>
 
