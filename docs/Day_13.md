@@ -44,7 +44,10 @@ The STA checks are performed across all the corners to confirm the design meets 
     report_wns -digits {4} >> ./sta_output/sta_wns.txt
     }
     ```
-
+| ![D13_riscv_core_sta_across_pvt](/docs/images/D13_riscv_core_sta_across_pvt.png)|
+|-|
+| ![D13_worst_setup_slack.png](/docs/images/D13_worst_setup_slack.png)|
+| ![D13_worst_hold_slack.png](/docs/images/D13_worst_hold_slack.png)|
 
 <br>
 
