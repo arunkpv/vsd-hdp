@@ -89,7 +89,17 @@ Defines how the output changes for different types of transitions on the input.
 |-|
 |**Min path**<br>  ![D11_OpenSTA_min_delay](/docs/images/D11_OpenSTA_min_delay.png) |
 |**Max path**<br>  ![D11_OpenSTA_max_delay](/docs/images/D11_OpenSTA_max_delay.png) |
-    
+
+  * As can be seen from the OpenSTA log, the design has 3 unconstrained endpoints.
+    ```
+    _15766_/D
+    _15768_/D
+    _15777_/D
+    ```
+    * On inspecting the gate level netlist, these endpoints are the D input pins of DFF (sky130_fd_sc_hd__dfxtp_1) tied to a constant "0".
+    * Yosys should have reduced them to constant drivers but somehow they still remain.
+    * A Yosys GitHub issue has been raised to check if there is a way to avoid this.  
+      Details of the issue can be read here: [https://github.com/YosysHQ/yosys/issues/4266](https://github.com/YosysHQ/yosys/issues/4266)
 <br>
 
 _________________________________________________________________________________________________________  
