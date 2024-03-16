@@ -120,31 +120,31 @@ ________________________________________________________________________________
   
   3) **Outputs**
      * CDL (Circuit Description Language)
-       * GDSII, LEF (dimensions), extracted spice netlist (.cir)
-       * Timing, noise, power .libs, function
+     * GDSII, LEF (dimensions), extracted spice netlist (.cir)
+     * Timing, noise, power .libs, function
        
-  * **Timing characterization parameters**
-    1) Timing threshold definitions
-       1) slew_low_rise_thr  (10%, 20%)
-       2) slew_high_rise_thr (90%, 80%)
-       3) slew_low_fall_thr  (10%, 20%)
-       4) slew_high_fall_thr (90%, 80%)
-       5) in_rise_thr (of input stimulus, usually 50%)
-       6) in_fall_thr (of input stimulus, usually 50%)
-       7) out_rise_thr (of output, usually 50%)
-       8) out_fall_thr (of output, usually 50%)
-    
-    2) Propagation delay
-       * propagation delay = time(out_*_thr) - time(in_*_thr)
-         * Problematic cases:
-           * Choice of threshold levels
-           * Large RC delays
-    
-    3) Transition time
-       * t_rise = time(slew_high_rise_thr) - time(slew_low_rise_thr)
-       * t_fall = time(slew_low_fall_thr) - time(slew_high_fall_thr)
-            
-        
+**Timing characterization parameters**
+  1) Timing threshold definitions
+     1) slew_low_rise_thr  (10%, 20%)
+     2) slew_high_rise_thr (90%, 80%)
+     3) slew_low_fall_thr  (10%, 20%)
+     4) slew_high_fall_thr (90%, 80%)
+     5) in_rise_thr (of input stimulus, usually 50%)
+     6) in_fall_thr (of input stimulus, usually 50%)
+     7) out_rise_thr (of output, usually 50%)
+     8) out_fall_thr (of output, usually 50%)
+  
+  2) Propagation delay
+     * propagation delay = time(out_*_thr) - time(in_*_thr)
+       * Problematic cases:
+         * Choice of threshold levels
+         * Large RC delays
+  
+  3) Transition time
+     * t_rise = time(slew_high_rise_thr) - time(slew_low_rise_thr)
+     * t_fall = time(slew_low_fall_thr) - time(slew_high_fall_thr)
+  
+  
 ## Day 14.3: Design library cell using Magic layout tool and characterization using ngspice
 
 
