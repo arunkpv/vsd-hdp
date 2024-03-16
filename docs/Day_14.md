@@ -89,7 +89,7 @@ ________________________________________________________________________________
     * threshold voltages
 
 **Stages**
-  1) **Inputs for Cell Design Flow**
+  1) **Inputs for Cell Design Flow**  
      From foundry, PDKs:  
        * DRC, LVS rules (eg: lambda-based design rules)
        * SPICE modelsfor the NMOS & PMOS devices
