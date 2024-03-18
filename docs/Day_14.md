@@ -11,18 +11,137 @@ ________________________________________________________________________________
     * Core, die
     * IPs, Macros
 
-  * [**SoC Design using OpenLane**](http://ef.content.s3.amazonaws.com/OpenLane-DialUp-MohamedShalan.pdf)
-    * Introduction to all components of open-source digital asic design
-    * Simplified rtl2gdsii flow
-    * Introduction to OpenLane
-    * Introduction to OpenLane detailed ASIC Design flow
+### [**Overview of ASIC Design Flow using OpenLane**](http://ef.content.s3.amazonaws.com/OpenLane-DialUp-MohamedShalan.pdf)
+  * ASIC implementation consists of numerous steps involving lots of detailed sub-processes at each step.
+  * A **design methodology** is needed for a successful ASIC implementation without any hiccups.
+  * The methodology is implemented through a **flow** that pieces together different tools to carry out the different steps of the design process from RTL to GDSII tapeout.
 
-  * **Familiarize with Open-Source EDA tools**
-    * OpenLANE Directory Structure
-    * Design Preparation Step - Interactive mode
-    * Review files after design prep and run synthesis
-    * OpenLANE project GitHub Page: [OpenLANE](https://github.com/efabless/openlane)
-    * [OpenLANE ReadMe](https://openlane.readthedocs.io/en/latest/flow_overview.html)
+#### Simplified RTL to GDSII ASIC Design Flow
+<kbd> ![Simplified Flow](/docs/images/D14.1_Simplified_Flow.png) </kbd>
+
+  1) **Synthesis**: Converts RTL to a circuit using components from the Standard Cell Library (SCL)
+  2) **Floor/ Power-planning**:
+     **Floor-planning**  
+     * _**Chip Floor-planning**_: Partition chip die area between the different building macros, IPs and place the I/O pads in the pad ring
+     * _**Macro Floor-planning**_: Define the dimensions, pin locations and the internal row definitions of the macro
+     **Power-Planning**: Design the Power Distribution Network (PDN) to ensure stable and efficient power delivery taking into account the different voltage rails, power usage trends and requirements of different blocks within the digital core, I/O and other AMS circuits.
+  3) **Placement**: Place the cells on the floorplan rows aligned with the sites, non-overlapping with each other.  
+     Usually done in 2 dteps: Global and Detailed
+  4) **Clock Tree Synthesis (CTS)**: Create a balanced clock distribution network that ensure minial skew and achieves proper timing across the entire design.  
+     Different types: H-tree, X-tree, Fish bone, Clock mesh.
+  5) **Routing**: Implement the interconnections using the available metal layers.
+     * Metal traacks form a routing grid, which is huge
+     * Perform routing using a divide and conquer approach:
+       * Global routing generates routing guides
+       * Detailed routing uses the routing guides to implement the actual wires
+  5) **Sign-Off**:
+     * Physical Verification
+       * Design Rule Checking (RDC)
+       * Layout vs. Schematic (LVS)
+     * Timing Verification
+       * Static Timing Analysis (STA)
+
+#### OpenLANE ASIC Design Flow
+Main requirements of Digital ASIC Design:
+  * RTL Design
+  * EDA Tools
+  * PDK
+
+<kbd> ![D14.1_OpenSource_ASIC_Design](/docs/images/D14.1_OpenSource_ASIC_Design.png) </kbd>
+  
+Open Source RTL IPs and competitive EDA tools have been available.  
+However, an OpenSource PDK was not available until Google collaborated with SkyWater to open source the skywater-130nm PDK.
+  
+**Process Design Kit (PDK)** : Interface between FAB and the designer, Process Design Kit, include:
+  * Process Design Rule: DRC, LVS, PEX
+  * Device Models
+  * Digital Standard Cell Libraries
+  * I/O Libraries
+
+**Introduction to OpenLANE**  
+  * Started as an Open-Source Flow for a True Open Source Tape-out Experiment
+  * **Main Goal:** Produce a clean GDSII with no human intervention (no-human-in-the-loop)
+  * **Clean means:** No LVS Errors and No DRC Errors
+  * Tuned for SkyWater 130nm Open PDK. Also supports XFAB180 and GF130G
+  * Containerized: Functional out of the box
+  * Can be used to harden Macros and Chips
+  * Two modes of operation:
+    * Autonomous or Interactive
+  * Supports Design Space Exploration: Find the best set of flow configurations
+
+
+  
+**OpenLANE ASIC Flow**  
+  * OpenLANE project GitHub Page: [OpenLANE](https://github.com/efabless/openlane)
+  * [OpenLANE ReadMe](https://openlane.readthedocs.io/en/latest/flow_overview.html)
+
+  <kbd> ![OpenLANE Flow](/docs/images/D14.1_OpenLANE_Flow.png) </kbd>
+  <br>
+  
+  1) Synthesis
+     * `Yosys`: RTL Synthesis
+     * `abc`: Technology mapping
+  2) Post-synthesis STA
+     * `OpenSTA`
+  3) DFS Insertion
+     * `Fault`: Scan Insertion, ATPG, Test Patterns compaction, Fault coverage, Fault simulation
+  4) Floor-planning, Placement, CTS, Fake Antenna Diodes Insertion, Global Routing
+     * `OpenROAD`: Also called automated PnR
+  5) Logical Equivalence Check (LEC)
+     * `Yosys`
+       * Every time the netlist is modified (ECO), verification must be performed
+         * CTS modifies the netlist
+         * Post Placement optimizations modifies the netlist
+       * LEC is used to formally confirm that the function did not change by modifying the netlist
+  6) Detailed Routing
+     * `TritonRoute`
+  7) Fake Antenna Diodes removal
+     * `Custom scripts in OpenROAD`
+  8) RC Extraction:
+     * `DEF2SPEF`
+  9) Post-route STA
+     * `OpenSTA`
+  10) Physical Verification
+      * `Magic` is used for Design Rules Checking and SPICE Extraction from Layout
+      * `Netgen` is used for LVS
+        * Extracted SPICE by Magic vs. Verilog netlist
+  11) GDSII streaming
+      * `Magic`
+
+[**OpenROAD**](https://github.com/The-OpenROAD-Project/OpenROAD)
+  * Everything in Floorplanning through Routing in the OpenLANE flow is done using OpenROAD and its various sub-utilities.
+  * Also called automated PnR (Place and Route)
+  * Performs:
+    * Floor/Power Planning
+    * End Decoupling Capacitors and Tap cells insertion
+    * Placement: Global and Detailed
+    * Post placement optimization
+    * Clock Tree Synthesis (CTS)
+    * Routing: Global and Detailed
+
+<ins>**Handling of Antenna Rules Violations in OpenLANE flow</ins>**  
+  * When a metal wire segment is fabricated, it can act as an antenna.
+    * Reactive ion etching causes charge to accumulate on the wire.
+    * Transistor gates can be damaged during fabrication  
+    <kbd> ![Antenna_Rules](/docs/images/D14.1_AntennaRules_1.png) </kbd>
+  * _**Two solutions:**_  
+  <kbd> ![Antenna_Rules_Soln](/docs/images/D14.1_AntennaRules_Soln.png) </kbd>
+    * Bridging attaches a higher layer intermediary
+      * Requires Router awareness (not there yet!)
+    * Add antenna diode cell to leak away charges
+      * Antenna diodes are provided by the SCL  
+  * _**Methodology followed:**_ a preventive approach
+    * Add a Fake Antenna Diode next to every cell input after placement
+    * Run the Antenna Checker (Magic) on the routed layout
+    * If the checker reports a violation on the cell input pin, replace the Fake Diode cell by a real one
+  <kbd> ![D14.1_AntennaRules_FakeDiode_RealDiode](/docs/images/D14.1_AntennaRules_FakeDiode_RealDiode.png) </kbd>
+
+
+#### Familiarize with OpenLANE flow
+  * OpenLANE Directory Structure
+  * Design Preparation Step - Interactive mode
+  * Review files after design prep and run synthesis
+
 
 ## Day 14.2: Floorplan considerations, Placement, Library Cells
 
@@ -125,14 +244,16 @@ ________________________________________________________________________________
        
 **Timing characterization parameters**
   1) Timing threshold definitions
-     1) slew_low_rise_thr  (10%, 20%)
-     2) slew_high_rise_thr (90%, 80%)
-     3) slew_low_fall_thr  (10%, 20%)
-     4) slew_high_fall_thr (90%, 80%)
-     5) in_rise_thr (of input stimulus, usually 50%)
-     6) in_fall_thr (of input stimulus, usually 50%)
-     7) out_rise_thr (of output, usually 50%)
-     8) out_fall_thr (of output, usually 50%)
+     | Parameter | Usually used values |
+     | --------- | ------------------- |
+     | slew_low_rise_thr | 10%, 20% |
+     | slew_high_rise_thr | 90%, 80% |
+     | slew_low_fall_thr  | 10%, 20% |
+     | slew_high_fall_thr | 90%, 80% |
+     | in_rise_thr | 50% |
+     | in_fall_thr | 50% |
+     | out_rise_thr | 50% |
+     | out_fall_thr | 50% |
   
   2) Propagation delay
      * propagation delay = time(out_*_thr) - time(in_*_thr)
