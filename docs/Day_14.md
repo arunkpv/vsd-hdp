@@ -137,11 +137,18 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
   <kbd> ![D14.1_AntennaRules_FakeDiode_RealDiode](/docs/images/D14.1_AntennaRules_FakeDiode_RealDiode.png) </kbd>
 
 
-#### Familiarize with OpenLANE flow
-  * OpenLANE Directory Structure
-  * Design Preparation Step - Interactive mode
-  * Review files after design prep and run synthesis
+#### Labs: Familiarize with OpenLANE flow
+* Objectives:
+  Using an existing design provided in the OpenLANE package:
+    * Familiarize with the OpenLANE directory structure and different input files
+    * Familiarize with the OpenLANE flow
+    * Analyse the intermediate step results
+    * Learn about the different control knobs and switches available for design space exploration
 
+* Design used for this exercise: **picorv32a**
+
+
+_________________________________________________________________________________________________________  
 
 ## Day 14.2: Floorplan considerations, Placement, Library Cells
 
@@ -265,6 +272,7 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
      * t_rise = time(slew_high_rise_thr) - time(slew_low_rise_thr)
      * t_fall = time(slew_low_fall_thr) - time(slew_high_fall_thr)
   
+_________________________________________________________________________________________________________  
   
 ## Day 14.3: Design library cell using Magic layout tool and characterization using ngspice
 
