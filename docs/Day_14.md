@@ -245,7 +245,7 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
        
           Chip area for module '\picorv32a': 147712.918400
        ```
-         * Flop Ratio
+         * **Flop Ratio**
            ```
            Flop Ratio = (Total no. of Flops/ Total no. of cells in the design)
                       = 1613/ 14876
