@@ -337,9 +337,18 @@ ________________________________________________________________________________
          * Estimate the wire length and capacitance and insert repeaters/ buffers
          * MaxTrans delay/ signal slew
    
-  4) Congestion aware placement using RePlAce
-     * HPWL (Half-Parameter Wire Length) based routing
+  4) Congestion aware placement using RePlAce followed by detailed placement using OpenDP
+     * Global placement: HPWL (Half-Parameter Wire Length) based
 
+### Lab: Run placement
+  * The `run_placement` command runs the global placement followed by detailed placement.
+  * First the global placement happens, where the main objective is to reduce the wire length. Algorithm used is Half-Parameter Wire Length (HPWL).
+  * Then detailed placement is performed to legalize the globally placed components.
+
+| **run_placement**<br>  ![D14.1_Lab_4a_run_placement](/docs/images/D14.1_Lab_4a_run_placement.png) |
+|:---|
+| **Layout after placement**<br>  ![D14.1_Lab_4b_run_placement_Magic](/docs/images/D14.1_Lab_4b_run_placement_Magic.png) |
+| **Layout after placement (Zoomed)** <br>  ![D14.1_Lab_4b_run_placement_Magic_zoomed](/docs/images/D14.1_Lab_4b_run_placement_Magic_zoomed.png) |
 
 ### 14.2.3 Cell Design Flow
 **Library**
