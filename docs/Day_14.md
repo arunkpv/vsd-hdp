@@ -137,22 +137,22 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
   <kbd> ![D14.1_AntennaRules_FakeDiode_RealDiode](/docs/images/D14.1_AntennaRules_FakeDiode_RealDiode.png) </kbd>
 
 
-### Labs: Familiarize with OpenLANE flow
-  * Objectives:
-    Using an existing design provided in the OpenLANE package:
-    * Familiarize with the OpenLANE directory structure and different input files
-    * Familiarize with the OpenLANE flow
-    * Analyse the intermediate step results
-    * Learn about the different control knobs and switches available for design space exploration
+### Lab: Familiarize with OpenLANE flow
 
-  * Design used for this exercise: **picorv32a**
+**Objectives**:  
+Using an existing design provided in the OpenLANE package to:
+  * Familiarize with the OpenLANE directory structure and different input files
+  * Familiarize with the OpenLANE flow
+  * Analyse the intermediate step results
+  * Learn about the different control knobs and switches available for design space exploration  
+    The OpenLANE flow can be configured using the following available variables for design
+    * **Flow Configuration variables**: [https://openlane.readthedocs.io/en/latest/reference/configuration.html](https://openlane.readthedocs.io/en/latest/reference/configuration.html)
+    * **PDK Configuration variables**: [https://openlane.readthedocs.io/en/latest/reference/pdk_configuration.html](https://openlane.readthedocs.io/en/latest/reference/pdk_configuration.html)  
 
+**Design used for this exercise: picorv32a**
   
-  1) To invoke OpenLANE, cd to the home directory of OpenLANE and run docker:
-
-    ```
-    docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21
-    ```
+  1) To invoke OpenLANE, cd to the home directory of OpenLANE and run docker:  
+    `docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21`  
     where the env variable PDK_ROOT points to the directory path containing the **sky130A** library.
 
   2) The entry point for OpenLANE is the `./flow.tcl` script. This script is used to run the flow, start interactive sessions, select the configuration and create OpenLane design files.
@@ -160,20 +160,26 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
        ```
        ./flow.tcl -design <design_name>
        ```
-     * To start an interactive session:
+     * To start an [**interactive session**](https://openlane.readthedocs.io/en/latest/reference/interactive_mode.html):
        ```
        ./flow.tcl -interactive
        ```
-     * We will be using the interactive mode to learn about the different steps in the flow.
-       The commands to start an interactive session and run the synthesis of the **picorv32a** example design are given below:
+  3) We will be using the interactive mode to learn about the different steps in the flow.
+     * The commands to start an interactive session and run the synthesis of the **picorv32a** example design are given below:
        ```
        ./flow.tcl -interactive
        package require openlane 0.9
        prep -design picorv32a
        run_synthesis
-       ```
-     * **Synthesis Result:**
-       ```
+       ```  
+| ![D14.1_Lab1_OpenLANE_InteractiveMode](/docs/images/D14.1_Lab1_OpenLANE_InteractiveMode.png) |
+|-|
+
+   * **Synthesis Result:**
+
+| ![D14.1_Lab2_run_synthesis](/docs/images/D14.1_Lab2_run_synthesis.png) |
+|-|
+
        === picorv32a ===
        
           Number of wires:              14596
@@ -244,14 +250,20 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
             sky130_fd_sc_hd__or4bb_2        2
        
           Chip area for module '\picorv32a': 147712.918400
-       ```
-         * **Flop Ratio**
-           ```
-           Flop Ratio = (Total no. of Flops/ Total no. of cells in the design)
-                      = 1613/ 14876
-                      = 10.843%
-           ```
-
+      
+   * **Flop Ratio**
+     ```
+     Flop Ratio = (Total no. of Flops/ Total no. of cells in the design)
+                = 1613/ 14876
+                = 10.843%
+     ```
+  
+  * **NOTE:**
+    The order of precedence of the config files in the OpenLANE flow is as follows, with the settings in the highest priority config overriding the values set in the previous config files:  
+    _**From lowest to highest:**_  
+    * Default OpenLANE config values
+    * openlane/designs/<design-name>/config.tcl
+    * openlane/designs/<design-name>/sky130A_sky130_fd_sc_hd_config.tcl
 _________________________________________________________________________________________________________  
 
 ## Day 14.2: Floorplan considerations, Placement, Library Cells
@@ -292,6 +304,24 @@ ________________________________________________________________________________
 
 **Now Floorplan is ready for PnR**
 
+### Lab: Run floorplan using OpenLANE and review the layout in Magic
+  * To run the floorplan creation, execute the following command from the OpenLANE shell: `run_floorplan`
+       
+  <kbd> ![D14.1_Lab_3a_run_floorplan](/docs/images/D14.1_Lab_3a_run_floorplan.png) </kbd>
+
+  * To view the floor plan in Magic: 
+    ```
+    1) cd to the floorplan results directory for the current run: openlane/designs/<design-name>/runs/<time-stamp>/results/floorplan
+    2) magic -T $PDK_ROOT/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read ./picorv32a.floorplan.def &
+    ```
+
+| **Floorplan view in Magic<br>  (FP_IO_MODE=1, Random equidistant mode)**<br>  ![D14.1_Lab_3b_floorplan_in_Magic](/docs/images/D14.1_Lab_3b_floorplan_in_Magic.png) |
+|:---|
+| **Floorplan Zoomed in at (0,0)** <br>  ![D14.1_Lab_3c_floorplan_in_Magic_Cells_at_0_0](/docs/images/D14.1_Lab_3c_floorplan_in_Magic_Cells_at_0_0.png) |
+| **FP_IO_MODE=0<br>  (Matching mode)** <br>  ![D14.1_Lab_3d_floorplan_in_Magic_FP_IO_Mode_0](/docs/images/D14.1_Lab_3d_floorplan_in_Magic_FP_IO_Mode_0.png) |
+| **FP_IO_MODE=1 Zoomed**<br>  ![D14.1_Lab_3d_floorplan_in_Magic_FP_IO_Mode_1_Zoomed](/docs/images/D14.1_Lab_3d_floorplan_in_Magic_FP_IO_Mode_1_Zoomed.png) |
+
+
 ### 14.2.2 Placement and Routing
   1) Bind netlist with physical cells
      * Library files
@@ -318,7 +348,8 @@ ________________________________________________________________________________
     * size/ drive strengths
     * threshold voltages
 
-**Stages**
+**Stages**  
+<kbd> ![D14.2_Cell_Design_Flow](/docs/images/D14.2_Cell_Design_Flow.png) </kbd>
   1) **Inputs for Cell Design Flow**  
      From foundry, PDKs:  
        * DRC, LVS rules (eg: lambda-based design rules)
