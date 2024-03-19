@@ -386,7 +386,7 @@ ________________________________________________________________________________
        7) Provide the necessary output capacitance
        8) Provide the necessary simulation commands
           
-          --> Now, feed in all this to GUNA tool --> to generate Timing, noise, power .libs, function
+     * Now, feed in all this to [**GUNA characterization tool**](https://www.paripath.com/Products/Guna)  --> to generate Timing, noise, power .libs, function
   
   3) **Outputs**
      * CDL (Circuit Description Language)
@@ -419,6 +419,7 @@ ________________________________________________________________________________
 _________________________________________________________________________________________________________  
   
 ## Day 14.3: Design library cell using Magic layout tool and characterization using ngspice
+### 16-Mask CMOS Process
 
 
 <br>
