@@ -496,7 +496,7 @@ TODO: Documentation
     * As a note, rules like these will always be correct by design and can be confirmed by measuring the distance from the contact cut to the edge of M3 contact by drawing a cursor box.
       *  To align the cursor box to the edge of the via shown in the CIF view, use the `snap int` command.
   
-| **Rule M3.4: Via2 must be enclosed by Met3 by at least 0.065µm**<br>  ![D14.3_sky130_DRC_Lab_M3.4_M3ContactCut](/docs/images/D14.3_sky130_DRC_Lab_M3.4_M3ContactCut.png) |
+| **Rule M3.4: Via2 must be enclosed by Met3 by at least 0.065µm**<br>  ![D14.3_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2](/docs/images/D14.3_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2.png) |
 |:---|
 
 <br>
