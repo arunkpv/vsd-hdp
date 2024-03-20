@@ -307,7 +307,7 @@ ________________________________________________________________________________
 ### Lab: Run floorplan using OpenLANE and review the layout in Magic
   * To run the floorplan creation, execute the following command from the OpenLANE shell: `run_floorplan`
        
-  <kbd> ![D14.1_Lab_3a_run_floorplan](/docs/images/D14.1_Lab_3a_run_floorplan.png) </kbd>
+  <kbd> ![D14.2_Lab_3a_run_floorplan](/docs/images/D14.2_Lab_3a_run_floorplan.png) </kbd>
 
   * To view the floor plan in Magic: 
     ```
@@ -315,11 +315,11 @@ ________________________________________________________________________________
     2) magic -T $PDK_ROOT/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read ./picorv32a.floorplan.def &
     ```
 
-| **Floorplan view in Magic<br>  (FP_IO_MODE=1, Random equidistant mode)**<br>  ![D14.1_Lab_3b_floorplan_in_Magic](/docs/images/D14.1_Lab_3b_floorplan_in_Magic.png) |
+| **Floorplan view in Magic<br>  (FP_IO_MODE=1, Random equidistant mode)**<br>  ![D14.2_Lab_3b_floorplan_in_Magic](/docs/images/D14.2_Lab_3b_floorplan_in_Magic.png) |
 |:---|
-| **Floorplan Zoomed in at (0,0)** <br>  ![D14.1_Lab_3c_floorplan_in_Magic_Cells_at_0_0](/docs/images/D14.1_Lab_3c_floorplan_in_Magic_Cells_at_0_0.png) |
-| **FP_IO_MODE=0<br>  (Matching mode)** <br>  ![D14.1_Lab_3d_floorplan_in_Magic_FP_IO_Mode_0](/docs/images/D14.1_Lab_3d_floorplan_in_Magic_FP_IO_Mode_0.png) |
-| **FP_IO_MODE=1 Zoomed**<br>  ![D14.1_Lab_3d_floorplan_in_Magic_FP_IO_Mode_1_Zoomed](/docs/images/D14.1_Lab_3d_floorplan_in_Magic_FP_IO_Mode_1_Zoomed.png) |
+| **Floorplan Zoomed in at (0,0)** <br>  ![D14.2_Lab_3c_floorplan_in_Magic_Cells_at_0_0](/docs/images/D14.2_Lab_3c_floorplan_in_Magic_Cells_at_0_0.png) |
+| **FP_IO_MODE=0<br>  (Matching mode)** <br>  ![D14.2_Lab_3d_floorplan_in_Magic_FP_IO_Mode_0](/docs/images/D14.2_Lab_3d_floorplan_in_Magic_FP_IO_Mode_0.png) |
+| **FP_IO_MODE=1 Zoomed**<br>  ![D14.2_Lab_3d_floorplan_in_Magic_FP_IO_Mode_1_Zoomed](/docs/images/D14.2_Lab_3d_floorplan_in_Magic_FP_IO_Mode_1_Zoomed.png) |
 
 
 ### 14.2.2 Placement and Routing
@@ -345,10 +345,10 @@ ________________________________________________________________________________
   * First the global placement happens, where the main objective is to reduce the wire length. Algorithm used is Half-Parameter Wire Length (HPWL).
   * Then detailed placement is performed to legalize the globally placed components.
 
-| **run_placement**<br>  ![D14.1_Lab_4a_run_placement](/docs/images/D14.1_Lab_4a_run_placement.png) |
+| **run_placement**<br>  ![D14.2_Lab_4a_run_placement](/docs/images/D14.2_Lab_4a_run_placement.png) |
 |:---|
-| **Layout after placement**<br>  ![D14.1_Lab_4b_run_placement_Magic](/docs/images/D14.1_Lab_4b_run_placement_Magic.png) |
-| **Layout after placement (Zoomed)** <br>  ![D14.1_Lab_4b_run_placement_Magic_zoomed](/docs/images/D14.1_Lab_4b_run_placement_Magic_zoomed.png) |
+| **Layout after placement**<br>  ![D14.2_Lab_4b_run_placement_Magic](/docs/images/D14.2_Lab_4b_run_placement_Magic.png) |
+| **Layout after placement (Zoomed)** <br>  ![D14.2_Lab_4b_run_placement_Magic_zoomed](/docs/images/D14.2_Lab_4b_run_placement_Magic_zoomed.png) |
 
 ### 14.2.3 Cell Design Flow
 **Library**
@@ -419,7 +419,48 @@ ________________________________________________________________________________
 _________________________________________________________________________________________________________  
   
 ## Day 14.3: Design library cell using Magic layout tool and characterization using ngspice
+
 ### 16-Mask CMOS Process
+TODO: Documentation
+
+### Lab: Introduction to Sky130 basic layers layout and LEF using inverter
+  * Clone a custom standard cell design from the following github repo for this exercise
+    [https://github.com/nickson-jose/vsdstdcelldesign.git](https://github.com/nickson-jose/vsdstdcelldesign.git)
+  * To open the design in magic: `magic -T sky130A.tech sky130_inv.mag`
+  * Get familiarized with the different layers in sky130 technology.
+  * To get the details about any drawn element in the layout, hover the mouse pointer over it and press `s` to select it (pressing multiple times selects the elements hierarchically).
+    Then, from the **tkcon shell**, use the command `what` to print the details:
+    
+| **sky130 Layers in Magic for an Inverter**<br>  ![D14.3_Lab_Magic_sky130_Layers](/docs/images/D14.3_Lab_Magic_sky130_Layers.png) |
+|:---|
+
+### Lab: Create the Inverter Standard Cell layout and extract the SPICE netlist
+  * The steps to layout a custom inverter standard cell in Magic is explained in this github repo: [vsdstdcelldesign](https://github.com/nickson-jose/vsdstdcelldesign?tab=readme-ov-file#standard-cell-layout-design-in-magic)
+    * DRC violations are updated continuously in Magic every time we make a change (draw, erase, move) in the layout. When we make small changes to an existing layout, we can find out immediately if we have introduced errors, without having to completely recheck the entire layout.
+  * To extract the SPICE netlist of the layout including the parasitics, switch to the **tkcon shell** of Magic:
+    ```
+    extract all
+    ext2spice cthresh 0 rthresh 0
+    ext2spice
+    ```
+  * Open the extracted netlist and correct the following:
+    * Ensure the Scaling: Open the layout in magic, enable the grid (Window menu -> Grid on), and zoom in to select one unit box. Find its dimensions by the command `box` from the **tkcon shell**
+    * Include the SPICE models for sky130 short-channel PMOS and NMOS.
+    * Change the PMOS and NMOS model names to match the ones in the included model files - `pshort_model.0, nshort_model.0`.
+### Lab: Create a SPICE deck to run a simple transient simulation using ngspice
+  * Modify the spice file to run a sample transient simulation using ngspice:
+    * Add VDD and GND:
+      ```
+      VDD VPWR 0 3.3V
+      VSS VGND 0 0V
+      ``` 
+    * Add a pulse source to the input node: `Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)`
+    * Transient simulation: `.tran 1n 20n`
+    * Finally, for some weird reasons, ngspice throws an **unknown subckt** error with transistor instance names starting with `X`. So, modify the instance names to M0 and M1
+
+| **SPICE deck to run trans sim using the extracted netlist**<br>  ![D14.3_Inverter_Extracted_SPICE_netlist_trans_sim](/docs/images/D14.3_Inverter_Extracted_SPICE_netlist_trans_sim.png) |
+|:---|
+| **Trans sim w**<br>  ![D14.3_Inverter_Extracted_SPICE_trans_sim_waveform](/docs/images/D14.3_Inverter_Extracted_SPICE_trans_sim_waveform.png) |
 
 
 <br>
