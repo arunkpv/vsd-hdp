@@ -431,8 +431,8 @@ TODO: Documentation
   * To get the details about any drawn element in the layout, hover the mouse pointer over it and press `s` to select it (pressing multiple times selects the elements hierarchically).
     Then, from the **tkcon shell**, use the command `what` to print the details:
     
-| **sky130 Layers in Magic for an Inverter**<br>  ![D14.3_Lab_Magic_sky130_Layers](/docs/images/D14.3_Lab_Magic_sky130_Layers.png) |
-|:---|
+  | **sky130 Layers in Magic for an Inverter**<br>  ![D14.3_Lab_Magic_sky130_Layers](/docs/images/D14.3_Lab_Magic_sky130_Layers.png) |
+  |:---|
 
 ### Lab: Create the Inverter Standard Cell layout and extract the SPICE netlist
   * The steps to layout a custom inverter standard cell in Magic is explained in this github repo: [vsdstdcelldesign](https://github.com/nickson-jose/vsdstdcelldesign?tab=readme-ov-file#standard-cell-layout-design-in-magic)
@@ -460,9 +460,9 @@ TODO: Documentation
     * Transient simulation: `.tran 1n 20n`
     * Finally, for some weird reasons, ngspice throws an **unknown subckt** error with transistor instance names starting with `X`. So, modify the instance names to M0 and M1
 
-| **SPICE deck to run trans sim using the extracted netlist**<br>  ![D14.3_Inverter_Extracted_SPICE_netlist_trans_sim](/docs/images/D14.3_Inverter_Extracted_SPICE_netlist_trans_sim.png) |
-|:---|
-| **Trans sim results with Waveforms**<br>  ![D14.3_Inverter_Extracted_SPICE_trans_sim_waveform](/docs/images/D14.3_Inverter_Extracted_SPICE_trans_sim_waveform.png) |
+    | **SPICE deck to run trans sim using the extracted netlist**<br>  ![D14.3_Inverter_Extracted_SPICE_netlist_trans_sim](/docs/images/D14.3_Inverter_Extracted_SPICE_netlist_trans_sim.png) |
+    |:---|
+    | **Trans sim results with Waveforms**<br>  ![D14.3_Inverter_Extracted_SPICE_trans_sim_waveform](/docs/images/D14.3_Inverter_Extracted_SPICE_trans_sim_waveform.png) |
 
 ### Lab: Introduction to DRC using Magic tool
   * Obtain the tutorial files for DRC labs from the following link:
@@ -472,7 +472,7 @@ TODO: Documentation
     ```
   * The Design Rules for Skywater 130nm technology can be found here: [**https://skywater-pdk.readthedocs.io/en/main/rules.html**](https://skywater-pdk.readthedocs.io/en/main/rules.html)
 
-#### Lab 1: met3.mag
+#### <ins>Lab 1: met3.mag</ins>
   * To open Magic using OpenGL or Cairo graphical interfaces, invoke magic using the `-d` option:
     * For OpenGL: `magic -d XR &`
     * For Cairo: `magic -d OGL &`
@@ -484,8 +484,8 @@ TODO: Documentation
     * For example, to view the DRC error for the m3.2 section, position the cursor box around it and type: `:drc why`
     * The **console** window will now display the DRC rule that is being violated
   
-| **Rule M3.2: Spacing of metal 3 to metal 3 - 0.300µm**<br>  ![D14.3_sky130_DRC_Lab_M3.2](/docs/images/D14.3_sky130_DRC_Lab_M3.2.png) |
-|:---|
+    | **Rule M3.2: Spacing of metal 3 to metal 3 - 0.300µm**<br>  ![D14.3_sky130_DRC_Lab_M3.2](/docs/images/D14.3_sky130_DRC_Lab_M3.2.png) |
+    |:---|
 <br>
 
   * Vias are a kind of derived layer in Magic, in which the drawn via represents an area that is filled with contact cuts. The contact cuts (which is essentially the Mask layer for VIA2 in the output GDS) don't actually exist in the drawn layout view. They are created from rules in the CIF output section of the tech file that tell Magic how to draw contact cuts in the drawn contact area.
@@ -493,11 +493,43 @@ TODO: Documentation
     * Otherwise, use the `paint m3contact` command after enclosing the required area in the cursor box.
     * To view the M3 contact cuts, from the layout window, type `:cif see VIA2`
       This view in the layout window is called a **feedback entry** and can be dismissed using the `feedback clear` command.
-    * As a note, rules like these will always be correct by design and can be confirmed by measuring the distance from the contact cut to the edge of M3 contact by drawing a cursor box.
+    * As a sidenote, rules like these will always be correct by design and can be confirmed by measuring the distance from the contact cut to the edge of M3 contact by drawing a cursor box.
       *  To align the cursor box to the edge of the via shown in the CIF view, use the `snap int` command.
   
-| **Rule M3.4: Via2 must be enclosed by Met3 by at least 0.065µm**<br>  ![D14.3_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2](/docs/images/D14.3_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2.png) |
-|:---|
+    | **Rule M3.4: Via2 must be enclosed by Met3 by at least 0.065µm**<br>  ![D14.3_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2](/docs/images/D14.3_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2.png) |
+    |:---|
+
+#### <ins>Lab 2: poly.mag - Exercise to fix poly.9 error in Sky130 tech-file</ins>
+  * **poly.9**: Poly resistor spacing to poly or spacing (no overlap) to diff/tap 0.480 µm
+  * This exercise deals with fixing an incomplete DRC rule in the `sky130A.tech` file
+  * The section shown below is violating the poly.9 DRC rule, but it is not reported as a DRC violation due to the rule being incompletely implemented in the `sky130A.tech` file
+
+    | **Rule poly.9: Poly resistor spacing to poly or spacing (no overlap) to diff/tap 0.480µm**<br>  ![D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_1](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_1.png) |
+    |:---|
+  * In the `sky130A.tech` file:
+    * The rules for poly resistor spacing to diffusion and to N-tap are implemented. So we need to implement the missing poly resistor spacing to poly rules.
+
+    | **sky130A.tech** | |
+    |:---|:---|
+    | ![D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_2](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_2.png) | ![D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_3](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_3.png) |
+
+  * 
+    * If we look at the aliases, we can see that there is a definition for allpolyres as follows:
+      `allpolyres       mrp1,xhrpoly,uhrpoly,rmp`
+
+    * So we can implement the missing poly.9 spacing rules by adding the following lines to the tech file at the appropriate sections:
+      ```
+      spacing npres allpolynonres 480 touching_illegal \
+              "poly.resistor spacing to poly < %d (poly.9)"
+      
+      spacing xhrpoly,uhrpoly,xpc allpolynonres 480 touching_illegal \
+            "xhrpoly/uhrpoly resistor spacing to poly < %d (poly.9)"
+      ```
+  * Now, from the console window, reload the tech file: `tech load sky130A.tech`
+  * The DRC checks needs to be run again, by executing: `drc check`
+
+    | **Magic DRC engine now shows the poly resistor to poly spacing error**<br>  ![D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_4](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_4.png) |
+    |:---|
 
 <br>
 
