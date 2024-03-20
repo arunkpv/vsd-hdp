@@ -436,7 +436,8 @@ TODO: Documentation
 
 ### Lab: Create the Inverter Standard Cell layout and extract the SPICE netlist
   * The steps to layout a custom inverter standard cell in Magic is explained in this github repo: [vsdstdcelldesign](https://github.com/nickson-jose/vsdstdcelldesign?tab=readme-ov-file#standard-cell-layout-design-in-magic)
-    * DRC violations are updated continuously in Magic every time we make a change (draw, erase, move) in the layout. When we make small changes to an existing layout, we can find out immediately if we have introduced errors, without having to completely recheck the entire layout.
+    * Magic has an interactive DRC engine - DRC violations are updated continuously in Magic every time we make a change (draw, erase, move) in the layout.
+    * When we make small changes to an existing layout, we can find out immediately if we have introduced errors, without having to completely recheck the entire layout.
   * To extract the SPICE netlist of the layout including the parasitics, switch to the **tkcon shell** of Magic:
     ```
     extract all
@@ -447,6 +448,7 @@ TODO: Documentation
     * Ensure the Scaling: Open the layout in magic, enable the grid (Window menu -> Grid on), and zoom in to select one unit box. Find its dimensions by the command `box` from the **tkcon shell**
     * Include the SPICE models for sky130 short-channel PMOS and NMOS.
     * Change the PMOS and NMOS model names to match the ones in the included model files - `pshort_model.0, nshort_model.0`.
+
 ### Lab: Create a SPICE deck to run a simple transient simulation using ngspice
   * Modify the spice file to run a sample transient simulation using ngspice:
     * Add VDD and GND:
@@ -460,8 +462,42 @@ TODO: Documentation
 
 | **SPICE deck to run trans sim using the extracted netlist**<br>  ![D14.3_Inverter_Extracted_SPICE_netlist_trans_sim](/docs/images/D14.3_Inverter_Extracted_SPICE_netlist_trans_sim.png) |
 |:---|
-| **Trans sim w**<br>  ![D14.3_Inverter_Extracted_SPICE_trans_sim_waveform](/docs/images/D14.3_Inverter_Extracted_SPICE_trans_sim_waveform.png) |
+| **Trans sim results with Waveforms**<br>  ![D14.3_Inverter_Extracted_SPICE_trans_sim_waveform](/docs/images/D14.3_Inverter_Extracted_SPICE_trans_sim_waveform.png) |
 
+### Lab: Introduction to DRC using Magic tool
+  * Obtain the tutorial files for DRC labs from the following link:
+    ```
+    wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+    tar xfz drc_tests.tgz
+    ```
+  * The Design Rules for Skywater 130nm technology can be found here: [**https://skywater-pdk.readthedocs.io/en/main/rules.html**](https://skywater-pdk.readthedocs.io/en/main/rules.html)
+
+#### Lab 1: met3.mag
+  * To open Magic using OpenGL or Cairo graphical interfaces, invoke magic using the `-d` option:
+    * For OpenGL: `magic -d XR &`
+    * For Cairo: `magic -d OGL &`
+  
+  * Open the `met3.mag` tutorial file in Magic either via the command line or from the GUI via **File -> Open...**
+  * To view the DRC errors/ violations flagged for an area:
+    * Position the cursor box around the required area by using the left and right mouse buttons.
+    * Commands to the **tkcon console** can be passed without leaving the main layout GUI window by pressing the `:` key followed by entering the required command
+    * For example, to view the DRC error for the m3.2 section, position the cursor box around it and type: `:drc why`
+    * The **console** window will now display the DRC rule that is being violated
+  
+| **Rule M3.2: Spacing of metal 3 to metal 3 - 0.300µm**<br>  ![D14.3_sky130_DRC_Lab_M3.2](/docs/images/D14.3_sky130_DRC_Lab_M3.2.png) |
+|:---|
+<br>
+
+  * Vias are a kind of derived layer in Magic, in which the drawn via represents an area that is filled with contact cuts. The contact cuts (which is essentially the Mask layer for VIA2 in the output GDS) don't actually exist in the drawn layout view. They are created from rules in the CIF output section of the tech file that tell Magic how to draw contact cuts in the drawn contact area.
+    * Draw an area of M3 contact by enclosing some area in the cursor box using the left and right mouse buttons, hover the mouse pointer over the `m3contact` icon in the sidebar and click the middle mouse-button (or, press the `p` key)
+    * Otherwise, use the `paint m3contact` command after enclosing the required area in the cursor box.
+    * To view the M3 contact cuts, from the layout window, type `:cif see VIA2`
+      This view in the layout window is called a **feedback entry** and can be dismissed using the `feedback clear` command.
+    * As a note, rules like these will always be correct by design and can be confirmed by measuring the distance from the contact cut to the edge of M3 contact by drawing a cursor box.
+      *  To align the cursor box to the edge of the via shown in the CIF view, use the `snap int` command.
+  
+| **Rule M3.4: Via2 must be enclosed by Met3 by at least 0.065µm**<br>  ![D14.3_sky130_DRC_Lab_M3.4_M3ContactCut](/docs/images/D14.3_sky130_DRC_Lab_M3.4_M3ContactCut.png) |
+|:---|
 
 <br>
 
