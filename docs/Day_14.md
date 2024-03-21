@@ -500,6 +500,7 @@ TODO: Documentation
     |:---|
 
 #### <ins>Lab 2: poly.mag - Exercise to fix poly.9 error in Sky130 tech-file</ins>
+  * [https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#poly](https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#poly)
   * **poly.9**: Poly resistor spacing to poly or spacing (no overlap) to diff/tap 0.480 µm
   * This exercise deals with fixing an incomplete DRC rule in the `sky130A.tech` file
   * The section shown below is violating the poly.9 DRC rule, but it is not reported as a DRC violation due to the rule being incompletely implemented in the `sky130A.tech` file
@@ -543,6 +544,79 @@ TODO: Documentation
   |:---|:---|
   |  <pre>spacing npres *nsd 480 touching_illegal \ <br>   "poly.resistor spacing to N-tap < %d (poly.9)"</pre> | <pre>spacing npres alldiff 480 touching_illegal \ <br>   "poly.resistor spacing to N-tap < %d (poly.9)"</pre> |
   | ![D14.3_sky130_DRC_Lab_poly.9_Diffusion_1](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Diffusion_1.png) | ![D14.3_sky130_DRC_Lab_poly.9_Diffusion_2](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Diffusion_2.png) |
+
+#### <ins>Lab 4: nwell.mag - Challenge exercise to describe DRC error as geometrical construct</ins>
+  * [https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#nwell](https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#nwell)
+  * **nwell.5**: Deep nwell must be enclosed by nwell by atleast… 0.400µm.  
+     Exempted inside UHVI or areaid.lw Nwells can merge over deep nwell if spacing too small (as in rule nwell.2)
+  * **nwell.6**: Min enclosure of nwell hole by deep nwell outside UHVI 1.030µm
+  * Relevant DRC rules in `sky130A.tech` file
+
+  | ![D14.3_sky130_DRC_Lab_nwell.5_0](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_0.png) | ![D14.3_sky130_DRC_Lab_nwell.5_1](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_1.png) |
+  |:---|:---|
+  
+  * Everything in the cifoutput DRC style is implemented as a templayer and not an actual layer.
+  * `templayer nwell_missing dnwell`:
+    * Depends on another templayer, **dnwell_shrink**
+    * **dnwell_shrink** is defined above it.
+      ```
+      templayer dnwell_shrink dnwell
+      shrink 1030
+      ```
+      * It takes the deep nwell and shrinks it by 1030nm (or 1.03um), which is the mininum required distance the nwell must overlap the deep nwell on the inside.
+      What this represents is the largest open area inside the area of the drawn deep nwell.
+  * Coming back to the **nwell_missing** templayer, it starts with the **dnwell** and grows it by 400nm (or 0.4um, `grow 400`), which is the minimum required distance the deep nwell must be enclosed by the nwell.
+    This will give the smallest nwell area needed to cover the deep nwell.
+  * `and-not dnwell_shrink`: Does nwell_missing AND-NOT dnwell_shrink, which generates a ring-shaped area that requires the least nwell to satisfy both the nwell to deep nwell inside overlap and the outside surround of deep nwell by nwell.
+    * i.e., if any of this area does not contain nwell, it will be flagged as an error as either of the two rules is being violated.
+  * `and-not nwell`: Results in anything leftover is passed back to the cifmaxwidth rule in the DNWELL
+
+  * Put the cursor box around the nwell.6 drawing and execute the following commands step by step reviewing the DRC errors flagged at each step:
+    ```
+    cif ostyle drc   --> to see the layers of the cifoutput style drc
+    cif see dnwell_shrink
+    feed clear
+    cif see nwell_missing
+    ```
+
+  | **nwell.6 drawing <br>**  ![D14.3_sky130_DRC_Lab_nwell.5_2](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_2.png) | **cif ostyle drc <br>cif see dnwell_shrink** <br>  ![D14.3_sky130_DRC_Lab_nwell.5_3](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_3.png) |
+  |:---|:---|
+  | **feed clear <br>cif see nwell_missing** <br>  ![D14.3_sky130_DRC_Lab_nwell.5_4](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_4.png) | |
+  
+  * **NOTE**:
+    * Any edge based rules could be implemented using cifoutput operators but generating these layers is highly compute-intensive.
+    * Hence to avoid Magic getting sluggish by these geometrically defined rules it is better to use the simple DRC edge-based rules whenever possible and put the cifoutput rules into a separate style variant, that can be run on-demand and can be prevented from running during interactive layout.
+    * In `sky130A.tech` file, there are two variants of DRC rule styles:
+      * `drc fast`: intended for working on backend metal layers and large synthesized digital designs without checking all the layers below metal
+      * `drc full`: will check everything. As long as the layout is relatively small, it can be enabled during interactive layout without everything turning sluggish.
+      * Switch between the two using: `drc style drc(fast)`, `drc style drc(full)`
+
+#### <ins>Lab 5: nwell.mag - Challenge  to find missing or incorrect rules and fix them</ins>
+  * **nwell.4**: All n-wells will contain metal-contacted tap (rule checks only for licon on tap) . Rule exempted from high voltage cells inside UHVI.
+  * Every nwell must have an n-tap layer contact inside it, which is called `nsubstratencontact` or `nsc`.
+  * Since there is no distance/ spacing associated with this rule, it is not possible to write this as an edge-based DRC rule. But it can be written as a cifoutput rule.
+    * To the NWELL rules section, add the following cifoutput rule:
+      ```
+       variant (full)   # -> Run this rule only for drc(fast) style
+       cifmaxwidth nwell_untapped 0 bend_illegal \
+               "N-well missing tap (nwell.4))"
+       variant *        # -> Run the rules below for all styles, unless explicitly specified
+      ```
+    * Now, in the style drc section, define the following templayers:
+      ```
+      templayer nwell_tapped           # Create a templayer nwell_tapped
+      bloat-all nsc nwell              # that takes all nsc layers and expand it to fill any nwell underneath it
+      templayer nwell_untapped nwell   # Now, create a second templayer nwell_untapped that starts with allnwell geometries
+      and-not nwell_tapped             # and subtract all nwell_tapped geometries
+      ```
+  | **untapped nwell being flagged for DRC violn. <br>**  ![D14.3_sky130_DRC_Lab_nwell.4_1](/docs/images/D14.3_sky130_DRC_Lab_nwell.4_1.png) | **tapped nwell showing no DRC violn.** <br>  ![D14.3_sky130_DRC_Lab_nwell.4_2](/docs/images/D14.3_sky130_DRC_Lab_nwell.4_2.png) |
+  |:---|:---|
+
+_________________________________________________________________________________________________________  
+  
+## Day 14.4: Pre-layout timing analysis and importance of good clock tree
+
+
 
 <br>
 
