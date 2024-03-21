@@ -676,6 +676,31 @@ ________________________________________________________________________________
   | * Synthesis result shows the sky130_vsdinv being instanced 1537 times. <br>  ![D14.4_Add_sky130_vsdinv_to_flow_run_synthesis](/docs/images/D14.4_Add_sky130_vsdinv_to_flow_run_synthesis.png) |
   |:---|
 
+### Introduction to Delay Tables
+  * Gate/ Cell delay is a function of the input transition (slew) time and the output load capacitance, Cload
+  * Cell delay is calculated using Non-Linear Delay Models (NLDM). NLDM is highly accurate as it is derived from SPICE characterizations.
+    The delay is a function of the input transition time (i.e. slew) of the cell, the wire capacitance and the pin capacitance of the driven cells.
+    * A slow input transition time will slow the rate at which the cell’s transistors can change state from logic 1 to logic 0 (or logic 0 to logic 1) thereby increasing the delay of the logic gate.
+    * A large output load Cload (Cnet + Cpin) also has a similar effect wherein the delay increases with the output load. 
+  * Similar to the NLDM table for cell delay, there is an corresponding table in the library to calculate output transition as well.
+  * Table models are usually two-dimensional to allow lookups based on the input slew and the output load (Cload).
+
+  | * Delay table for sky130_vsdinv @tt corner <br>  ![D14.4_NLDM_Delay_Table](/docs/images/D14.4_NLDM_Delay_Table.png) |
+  |:---|
+
+  *
+    * `index_1`: Input slew
+    * `index_2`: Output capacitance
+    * `values`: Cell delay values
+  * **Case 1:** Input transition and output load values match with table index values
+    * Corresponding delay value is directly picked up from the delay “values” table.
+  * **Case 2:** Output load values doesn't match with table index values
+    * Interpolation is performed using the nearest available table indices to calculate the approximate delay value.
+  
+  | Example Interpolation algorithm in NLDM Delay table <br> _Ref: STA for Nanometer Designs - J. Bhasker, Rakesh Chadha_ <br> <br>  ![D14.4_NLDM_Interpolation](/docs/images/D14.4_NLDM_Interpolation.png) |
+  |:---|
+
+
 <br>
 
 _________________________________________________________________________________________________________  
