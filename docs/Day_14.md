@@ -616,8 +616,40 @@ ________________________________________________________________________________
   
 ## Day 14.4: Pre-layout timing analysis and importance of good clock tree
 
+### Lab: Steps to convert grid info to track info
+  * **Objective**: Extract LEF file for the sky130_inv.mag and plug this custom std cell into OpenLANE flow
+  
+  * From PnR point of view, we only need the following information: PnR boundary of the standard cell, the power and ground rails, and finally the input & output ports.
+    LEF file has all these information.
+    
+  * Few guidelines to be followed by the layout:
+    * Input and Output ports must lie on the intersection of the vertical and horizontal tracks
+    * Width of the standard cell must be an odd multiple of the track pitch
+    * Height of the standard cell must be a multiple of the track vertical pitch
+      * Tracks:
+        * Track information is used during the routing stage as the routes can go only over the tracks.
+        * Track information for the locali and the differet metal layers is specified in the `pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tracks.info` file.
+  
+  * Before extracting the LEF file, we need to define the ports and set the correct class and use attributes to each port.
+    1) For each layer (to be turned into port), make a box on that particular layer and input a label name along with a sticky label of the layer name with which the port needs to be associated.
+       Ensure the Port enable checkbox is checked and default checkbox is unchecked.
+       
+    2) Next, the **port class** and **port use** attributes need to be set.
+       These attributes are used by the LEF and DEF format read and write routines, and match the LEF/DEF CLASS and USE properties for macro cell pins.
+       * Valid port classes: `default, input, output, tristate, bidirectional, inout, feedthrough, and feedthru`.
+       * Valid port uses: `default, analog, signal, digital, power, ground, and clock`.  
+       These attributes can be set in the **console** window after selecting each port in the layout window.
+       ```
+       # For ports A, Y:
+       port class input
+       port use signal
 
+       # For VPWR, VGND
+       port class inout
+       port use power
+       ```
 
+  * Now the LEF file can be written from the **console window** by the following command: `lef write`
 <br>
 
 _________________________________________________________________________________________________________  
