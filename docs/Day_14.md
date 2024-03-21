@@ -700,6 +700,23 @@ ________________________________________________________________________________
   | Example Interpolation algorithm in NLDM Delay table <br> _Ref: STA for Nanometer Designs - J. Bhasker, Rakesh Chadha_ <br> <br>  ![D14.4_NLDM_Interpolation](/docs/images/D14.4_NLDM_Interpolation.png) |
   |:---|
 
+### Lab: Configure synthesis settings to fix the timing violations and improve slack
+  * The synthesis results with the present settings has a huge wns slack of -26.53ns and tns of -3232.44. To obtain timing closure in post-route STA, this negative slack needs to be reduced in synthesis.
+     
+  * Read back the Synthesis configuration variables that could be potentitally wrecking the timing:
+    * `echo $::env(SYNTH_STRATEGY)` :== `AREA 0`
+    * `echo $::env(SYNTH_BUFFERING)` :== `1`
+    * `echo $::env(SYNTH_SIZING)` :== `0`
+    * `echo $::env(SYNTH_DRIVING_CELL)` :== `sky130_fd_sc_hd__inv_8` 
+  * Change the SYNTH_STRATEGY to optimize delay and enable cell sizing instead of buffering.
+    * `set ::env(SYNTH_STRATEGY) "DELAY 1"`
+    * `set ::env(SYNTH_SIZING) 1`
+  * **Comparison of synthesis results with the modified settings**
+    | **Before** | **After** |
+    |---|---|
+    | <pre>Chip area for module '\picorv32a': 147950.646400 <br> tns -3232.44 <br> wns -26.53 </pre> | <pre>Chip area for module '\picorv32a': 209179.369600 <br> tns -266.36 <br> wns -2.95 </pre>
+
+    The wns and tns values look much better and easier to fix later on.
 
 <br>
 
