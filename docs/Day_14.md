@@ -650,6 +650,32 @@ ________________________________________________________________________________
        ```
 
   * Now the LEF file can be written from the **console window** by the following command: `lef write`
+
+### Adding the extracted LEF file into OpenLANE flow for picorv32a design
+  * Copy the LEF file into the `openlane/designs/picorv32a/src` directory.
+  * Now we need to have the cell characterized and added to the technology library.
+    * This particular cell - **sky130_vsdinv** - it has already been characterized and added to the `sky130_fd_sc_hd__*.lib` files.
+    * Copy the downloaded timing lib files with the characterization info for **sky130_vsdinv** into the `openlane/designs/picorv32a/src` directory.
+  * Modify the `config.tcl` with the following:
+    * Set the PDK configuration variables to use the newly copied timing lib files for synthesis and sta.
+    * Add the LEF file of the inverter macro using the EXTRA_LEF flow configuration variable.
+      ```
+      set ::env(LIB_SYNTH) $::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib
+      set ::env(LIB_SLOWEST) $::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib
+      set ::env(LIB_FASTEST) $::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib
+      set ::env(LIB_TYPICAL) $::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib
+      
+      set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
+      ```
+  * Now invoke OpenLANE in interactive mode and after the `prep -design picorv32a` command is executed, run the following two commands to merge the custom cell(s)' LEF file(s) to the existing processed LEF files.
+    ```
+    lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+    add_lefs -src $lefs
+    ```
+
+  | * Synthesis result shows the sky130_vsdinv being instanced 1537 times. <br>  ![D14.4_Add_sky130_vsdinv_to_flow_run_synthesis](/docs/images/D14.4_Add_sky130_vsdinv_to_flow_run_synthesis.png) |
+  |:---|
+
 <br>
 
 _________________________________________________________________________________________________________  
