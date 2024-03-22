@@ -718,6 +718,51 @@ ________________________________________________________________________________
 
     The wns and tns values look much better and easier to fix later on.
 
+### Timing analysis with ideal clocks using openSTA
+
+**Note**: We have already gone through STA basics previously. We will capture the important essentials once again here.  
+
+#### Setup timing analysis and introduction to flip-flop setup time
+<!---
+| _**Ref: Digital Integrated Circuits: A Design Perspective by J. Rabaey et al.**_ | |
+|:---|:---|
+| **Single-Cycle Path Timing (Ideal Clock)** <br>  ![D14.4_Synchronous_Timing_Basics_Ideal_Clocks](/docs/images/D14.4_Synchronous_Timing_Basics_Ideal_Clocks.png) | **Origin of Flip-flop setup time** <br>  <br>  ![D14.4_Positive-Edge_Triggered_MS_DFF](/docs/images/D14.4_Positive-Edge_Triggered_MS_DFF.png) |
+| | **Example DFF Implementation using TG-Muxes** <br>  ![D14.4_Positive-Edge_Triggered_MS_DFF_using_TG-based_Muxes](/docs/images/D14.4_Positive-Edge_Triggered_MS_DFF_using_TG-based_Muxes.png) |
+--->
+  * Considering Ideal clocks, the condition to meet the setup timing for a single-cycle path (using same clock at launch and capture flops) is:
+    T_clk > tc_q + t_comb + t_setup
+    where,
+      * T_clk : Ideal Clock Period
+      * tc_q  : Clock-to-Q Delay of the FF
+      * t_comb : Total Combination Delay (including the wire/ net delay) from the output pin of the launch flop till the input pin of the capture flop. 
+      * t_setup : Setup time requirement of the FF
+
+  * **Origin of FF setup-time**
+    * The minimum time required for the relevant internal nodes of the Flip-Flop circuit to capture the value at the "D" input pin, before the arrival of the clock triggering edge.
+    * The exact values depend on the FF implementation style. If we consider a Mux/ Latch-based implementation of an edge-triggerted FF (where a negative latch is followed by a positive latch), the setup time is the time required for the 'D' input to reach the internal node, QM (i.e., the delay of the first Mux/ Latch)
+
+    | ![D14.4_Positive-Edge_Triggered_MS-DFF](/docs/images/D14.4_Positive-Edge_Triggered_MS-DFF.png) |
+    |:---|
+
+  * **Clock Jitter**
+    * Clock jitter refers to the temporal variation of the clock period at a given point — that is, the clock period can reduce or expand on a cycle-by-cycle basis.
+    * It is strictly a temporal uncertainty measure and is often specified at a given point on the chip.
+    * Jitter can be measured and cited in one of many ways.
+      * Cycle-to-cycle jitter refers to time varying deviation of a single clock period and for a given spatial location i is given as:
+        `Tjitter,i(n) = [(Ti, n+1 - Ti,n) - TCLK]`, where
+        * Ti,n is the clock period for period n
+        * Ti, n+1 is clock period for period n+1
+        * and TCLK is the nominal clock period
+
+  * **Setup Uncertainty**
+    * Clock uncertainty specifies a window within which a clock edge can occur.
+    * With respect to setup timing, we specify a new parameter called _**setup uncertainty**_ to model several factors like clock jitter, additional margins and clock skew (at pre-cts stage).
+
+    | ![D14.4_Setup_Uncertainty](/docs/images/D14.4_Setup_Uncertainty.png) |
+    |:---|
+
+#### Lab: Configure OpenSTA for Post-synth timing analysis
+
 <br>
 
 _________________________________________________________________________________________________________  
