@@ -651,7 +651,7 @@ ________________________________________________________________________________
 
   * Now the LEF file can be written from the **console window** by the following command: `lef write`
 
-### Adding the extracted LEF file into OpenLANE flow for picorv32a design
+### Lab: Adding the extracted LEF file into OpenLANE flow for picorv32a design
   * Copy the LEF file into the `openlane/designs/picorv32a/src` directory.
   * Now we need to have the cell characterized and added to the technology library.
     * This particular cell - **sky130_vsdinv** - it has already been characterized and added to the `sky130_fd_sc_hd__*.lib` files.
