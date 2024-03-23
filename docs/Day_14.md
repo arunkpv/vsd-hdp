@@ -11,12 +11,12 @@ ________________________________________________________________________________
     * Core, die
     * IPs, Macros
 
-### [**Overview of ASIC Design Flow using OpenLane**](http://ef.content.s3.amazonaws.com/OpenLane-DialUp-MohamedShalan.pdf)
+### [**14.1.1 Overview of ASIC Design Flow using OpenLane**](http://ef.content.s3.amazonaws.com/OpenLane-DialUp-MohamedShalan.pdf)
   * ASIC implementation consists of numerous steps involving lots of detailed sub-processes at each step.
   * A **design methodology** is needed for a successful ASIC implementation without any hiccups.
   * The methodology is implemented through a **flow** that pieces together different tools to carry out the different steps of the design process from RTL to GDSII tapeout.
 
-#### Simplified RTL to GDSII ASIC Design Flow
+#### 14.1.1.1 Simplified RTL to GDSII ASIC Design Flow
 <kbd> ![Simplified Flow](/docs/images/D14.1_Simplified_Flow.png) </kbd>
 
   1) **Synthesis**: Converts RTL to a circuit using components from the Standard Cell Library (SCL)
@@ -41,7 +41,7 @@ ________________________________________________________________________________
      * Timing Verification
        * Static Timing Analysis (STA)
 
-#### OpenLANE ASIC Design Flow
+#### 14.1.1.2 OpenLANE ASIC Design Flow
 Main requirements of Digital ASIC Design:
   * RTL Design
   * EDA Tools
@@ -137,7 +137,7 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
   <kbd> ![D14.1_AntennaRules_FakeDiode_RealDiode](/docs/images/D14.1_AntennaRules_FakeDiode_RealDiode.png) </kbd>
 
 
-### Lab: Familiarize with OpenLANE flow
+#### 14.1.1 - LAB: Familiarize with OpenLANE flow
 
 **Objectives**:  
 Using an existing design provided in the OpenLANE package to:
@@ -304,7 +304,7 @@ ________________________________________________________________________________
 
 **Now Floorplan is ready for PnR**
 
-### Lab: Run floorplan using OpenLANE and review the layout in Magic
+#### 14.2.1 - LAB: Run floorplan using OpenLANE and review the layout in Magic
   * To run the floorplan creation, execute the following command from the OpenLANE shell: `run_floorplan`
        
   <kbd> ![D14.2_Lab_3a_run_floorplan](/docs/images/D14.2_Lab_3a_run_floorplan.png) </kbd>
@@ -340,7 +340,7 @@ ________________________________________________________________________________
   4) Congestion aware placement using RePlAce followed by detailed placement using OpenDP
      * Global placement: HPWL (Half-Parameter Wire Length) based
 
-### Lab: Run placement
+### LAB: Run placement
   * The `run_placement` command runs the global placement followed by detailed placement.
   * First the global placement happens, where the main objective is to reduce the wire length. Algorithm used is Half-Parameter Wire Length (HPWL).
   * Then detailed placement is performed to legalize the globally placed components.
@@ -423,7 +423,7 @@ ________________________________________________________________________________
 ### 16-Mask CMOS Process
 TODO: Documentation
 
-### Lab: Introduction to Sky130 basic layers layout and LEF using inverter
+### LAB: Introduction to Sky130 basic layers layout and LEF using inverter
   * Clone a custom standard cell design from the following github repo for this exercise
     [https://github.com/nickson-jose/vsdstdcelldesign.git](https://github.com/nickson-jose/vsdstdcelldesign.git)
   * To open the design in magic: `magic -T sky130A.tech sky130_inv.mag`
@@ -434,7 +434,7 @@ TODO: Documentation
   | **sky130 Layers in Magic for an Inverter**<br>  ![D14.3_Lab_Magic_sky130_Layers](/docs/images/D14.3_Lab_Magic_sky130_Layers.png) |
   |:---|
 
-### Lab: Create the Inverter Standard Cell layout and extract the SPICE netlist
+### LAB: Create the Inverter Standard Cell layout and extract the SPICE netlist
   * The steps to layout a custom inverter standard cell in Magic is explained in this github repo: [vsdstdcelldesign](https://github.com/nickson-jose/vsdstdcelldesign?tab=readme-ov-file#standard-cell-layout-design-in-magic)
     * Magic has an interactive DRC engine - DRC violations are updated continuously in Magic every time we make a change (draw, erase, move) in the layout.
     * When we make small changes to an existing layout, we can find out immediately if we have introduced errors, without having to completely recheck the entire layout.
@@ -449,7 +449,7 @@ TODO: Documentation
     * Include the SPICE models for sky130 short-channel PMOS and NMOS.
     * Change the PMOS and NMOS model names to match the ones in the included model files - `pshort_model.0, nshort_model.0`.
 
-### Lab: Create a SPICE deck to run a simple transient simulation using ngspice
+### LAB: Create a SPICE deck to run a simple transient simulation using ngspice
   * Modify the spice file to run a sample transient simulation using ngspice:
     * Add VDD and GND:
       ```
@@ -464,7 +464,7 @@ TODO: Documentation
     |:---|
     | **Trans sim results with Waveforms**<br>  ![D14.3_Inverter_Extracted_SPICE_trans_sim_waveform](/docs/images/D14.3_Inverter_Extracted_SPICE_trans_sim_waveform.png) |
 
-### Lab: Introduction to DRC using Magic tool
+### LAB: Introduction to DRC using Magic tool
   * Obtain the tutorial files for DRC labs from the following link:
     ```
     wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
@@ -472,7 +472,7 @@ TODO: Documentation
     ```
   * The Design Rules for Skywater 130nm technology can be found here: [**https://skywater-pdk.readthedocs.io/en/main/rules.html**](https://skywater-pdk.readthedocs.io/en/main/rules.html)
 
-#### <ins>Lab 1: met3.mag</ins>
+#### <ins>LAB 1: met3.mag</ins>
   * To open Magic using OpenGL or Cairo graphical interfaces, invoke magic using the `-d` option:
     * For OpenGL: `magic -d XR &`
     * For Cairo: `magic -d OGL &`
@@ -499,7 +499,7 @@ TODO: Documentation
     | **Rule M3.4: Via2 must be enclosed by Met3 by at least 0.065µm**<br>  ![D14.3_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2](/docs/images/D14.3_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2.png) |
     |:---|
 
-#### <ins>Lab 2: poly.mag - Exercise to fix poly.9 error in Sky130 tech-file</ins>
+#### <ins>LAB 2: poly.mag - Exercise to fix poly.9 error in Sky130 tech-file</ins>
   * [https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#poly](https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#poly)
   * **poly.9**: Poly resistor spacing to poly or spacing (no overlap) to diff/tap 0.480 µm
   * This exercise deals with fixing an incomplete DRC rule in the `sky130A.tech` file
@@ -532,7 +532,7 @@ TODO: Documentation
     | **Magic DRC engine now shows the poly resistor to poly spacing error**<br>  ![D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_4](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_4.png) |
     |:---|
 
-#### <ins>Lab 3: poly.mag - Exercise to implement poly resistor spacing to diff and tap</ins>
+#### <ins>LAB 3: poly.mag - Exercise to implement poly resistor spacing to diff and tap</ins>
   * The additions we made for the poly.9 DRC rule are still not complete. We can check this by creating two copies of the three resistors (`npolyres, ppolyres and xhrpolyres`)
   * We will add `ndiffussion, pdiffusion, nsubstratendiff & psubstratepdiff` around the two copies of the three poly resistors as shown.
   * Also draw an `nwell` under the pdiffusion and N-tap (nsubstratendiff) to avoid the flagging of any diffusion-related DRC errors since we are not interested in them for this exercise.
@@ -545,7 +545,7 @@ TODO: Documentation
   |  <pre>spacing npres *nsd 480 touching_illegal \ <br>   "poly.resistor spacing to N-tap < %d (poly.9)"</pre> | <pre>spacing npres alldiff 480 touching_illegal \ <br>   "poly.resistor spacing to N-tap < %d (poly.9)"</pre> |
   | ![D14.3_sky130_DRC_Lab_poly.9_Diffusion_1](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Diffusion_1.png) | ![D14.3_sky130_DRC_Lab_poly.9_Diffusion_2](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Diffusion_2.png) |
 
-#### <ins>Lab 4: nwell.mag - Challenge exercise to describe DRC error as geometrical construct</ins>
+#### <ins>LAB 4: nwell.mag - Challenge exercise to describe DRC error as geometrical construct</ins>
   * [https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#nwell](https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#nwell)
   * **nwell.5**: Deep nwell must be enclosed by nwell by atleast… 0.400µm.  
      Exempted inside UHVI or areaid.lw Nwells can merge over deep nwell if spacing too small (as in rule nwell.2)
@@ -591,7 +591,7 @@ TODO: Documentation
       * `drc full`: will check everything. As long as the layout is relatively small, it can be enabled during interactive layout without everything turning sluggish.
       * Switch between the two using: `drc style drc(fast)`, `drc style drc(full)`
 
-#### <ins>Lab 5: nwell.mag - Challenge  to find missing or incorrect rules and fix them</ins>
+#### <ins>LAB 5: nwell.mag - Challenge  to find missing or incorrect rules and fix them</ins>
   * **nwell.4**: All n-wells will contain metal-contacted tap (rule checks only for licon on tap) . Rule exempted from high voltage cells inside UHVI.
   * Every nwell must have an n-tap layer contact inside it, which is called `nsubstratencontact` or `nsc`.
   * Since there is no distance/ spacing associated with this rule, it is not possible to write this as an edge-based DRC rule. But it can be written as a cifoutput rule.
@@ -616,7 +616,7 @@ ________________________________________________________________________________
   
 ## Day 14.4: Pre-layout timing analysis and importance of good clock tree
 
-### Lab: Steps to convert grid info to track info
+### LAB: Steps to convert grid info to track info
   * **Objective**: Extract LEF file for the sky130_inv.mag and plug this custom std cell into OpenLANE flow
   
   * From PnR point of view, we only need the following information: PnR boundary of the standard cell, the power and ground rails, and finally the input & output ports.
@@ -651,7 +651,7 @@ ________________________________________________________________________________
 
   * Now the LEF file can be written from the **console window** by the following command: `lef write`
 
-### Lab: Adding the extracted LEF file into OpenLANE flow for picorv32a design
+### LAB: Adding the extracted LEF file into OpenLANE flow for picorv32a design
   * Copy the LEF file into the `openlane/designs/picorv32a/src` directory.
   * Now we need to have the cell characterized and added to the technology library.
     * This particular cell - **sky130_vsdinv** - it has already been characterized and added to the `sky130_fd_sc_hd__*.lib` files.
@@ -724,7 +724,7 @@ ________________________________________________________________________________
   | Example Interpolation algorithm in NLDM Delay table <br> _Ref: STA for Nanometer Designs - J. Bhasker, Rakesh Chadha_ <br> <br>  ![D14.4_NLDM_Interpolation](/docs/images/D14.4_NLDM_Interpolation.png) |
   |:---|
 
-### Lab: Configure synthesis settings to fix the timing violations and improve slack
+### LAB: Configure synthesis settings to fix the timing violations and improve slack
   * The synthesis results with the present settings has a huge wns slack of -26.53ns and tns of -3232.44. To obtain timing closure in post-route STA, this negative slack needs to be reduced in synthesis.
      
   * Read back the Synthesis configuration variables that could be potentitally wrecking the timing:
@@ -785,7 +785,7 @@ ________________________________________________________________________________
     | ![D14.4_Setup_Uncertainty](/docs/images/D14.4_Setup_Uncertainty.png) |
     |:---|
 
-#### Lab: Configure OpenSTA for Post-synth timing analysis
+#### LAB: Configure OpenSTA for Post-synth timing analysis
   * During the PnR flow, it is very much possible that some timing violations may get fixed, some violations will get better, some worse and new violations could also be introduced.
   * In any PnR flow, the separate timing tool (like PrimeTime) is usually invoked outside of the automated flow for performing the timing analysis and timing ECO generation.
   * In the OpenLANE flow, we use OpenSTA tool for Post-synthesis timing analysis.
@@ -846,7 +846,7 @@ ________________________________________________________________________________
   * Invoke OpenSTA from another terminal and provide above config file as the input:
     ```sta pre_sta.conf```
 
-#### Lab: Optimize Synthesis to reduce setup violations
+#### LAB: Optimize Synthesis to reduce setup violations
   * In addition to the synthesis configuration variables that we have seen before, there are a few more that we can use to optimize synthesis to improve setup slack.
   * If there are setup timing violations (and possible slew & max cap violations) from nets with high fanout, we can limit the fanout to improve hte delay using:  
     ```
@@ -857,7 +857,7 @@ ________________________________________________________________________________
     report_net -connections <net_name>
     ```
 
-#### Lab: Steps to do basic Timing ECO
+#### LAB: Steps to do basic Timing ECO
   * From analysing the setup violations in OpenSTA, we will be able to infer the possible reasons for the violations
   * One common reason could a large output slew for a net due to large capacitance load/ fanout which the synthesis tool could not optimize further.
     In this case, we can **upsize** the cell (i.e., replace the cell instance with a higher drive strength version of it) to reduce the delay using the `replace_cell` command.
@@ -948,14 +948,14 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
       The shielding nets are connected to either VDD or GND (either both of them to VDD (or GND), or one of them to VDD & the other to GND).
       (Basically the shielding nets need to be connected to a non-transitioning net, low impedance upon which an aggressor has no effect).
 
-#### Lab: Steps to run CTS using TritonCTS
+#### LAB: Steps to run CTS using TritonCTS
   * Command to run cts: `run_cts`
   * After CTS, a new netlist **<design_name>.synthesis_cts.v** will be created in the `runs/<tag>/results/synthesis/` folder that includes the information on the generated clock clock tree and the newly instanced clock buffers.
 
   | ![D14.4_New_netlist_after_CTS](/docs/images/D14.4_New_netlist_after_CTS.png) |
   |---|
 
-#### Lab: Steps to verify CTS runs
+#### LAB: Steps to verify CTS runs
   * CTS configuration variables to verify:
 
   | Configuration Variable | Details |
@@ -972,7 +972,7 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
 
 #### Hold timing analysis using real clocks
 
-#### Lab: Steps to analyze timing with real clocks (Post-CTS STA) using OpenSTA
+#### LAB: Steps to analyze timing with real clocks (Post-CTS STA) using OpenSTA
   * In OpenRoad, the timing analysis is performed by creating a db file using the LEF and DEF files of the design.
   * db creation is a one-time process (unless the def changes).
     To create the db, invoke OpenRoad from within the OpenLANE shell using `openroad`. And then from within the OpenRoad shell execute the following commands:  
@@ -996,7 +996,7 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
   * Be sure to perform the timing analysis with the correct library file which was used for CTS (which was the LIB_SYNTH_COMPLETE or the LIB_TYPICAL in our case). 
   * **Note:** As of now, CTS does not support multi-corner optimization.
 
-#### Lab: Steps to observe impact of bigger CTS buffers on setup and hold timing
+#### LAB: Steps to observe impact of bigger CTS buffers on setup and hold timing
   * Modify the `CTS_CLK_BUFFER_LIST` variable to exclude the `sky130_fd_sc_hd__clkbuf_1` cell and re-run CTS again.
   * Be sure to modify the `CURRENT_DEF` variable to point to the DEF file after placement before triggering the CTS run.
     ```
