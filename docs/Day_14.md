@@ -972,7 +972,7 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
 
 #### Hold timing analysis using real clocks
 
-#### Lab: Steps to analyze timing with real clocks using OpenSTA (Post-CTS STA)
+#### Lab: Steps to analyze timing with real clocks (Post-CTS STA) using OpenSTA
   * In OpenRoad, the timing analysis is performed by creating a db file using the LEF and DEF files of the design.
   * db creation is a one-time process (unless the def changes).
     To create the db, invoke OpenRoad from within the OpenLANE shell using `openroad`. And then from within the OpenRoad shell execute the following commands:  
@@ -986,13 +986,15 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
     read_db picorv32a_cts.db
     read_verilog /openLANE_flow/designs/picorv32a/runs/latest_21-03/results/synthesis/picorv32a.synthesis_cts.v
     read_liberty $::env(LIB_SYNTH_COMPLETE)
-    read_liberty -max $::env(LIB_SLOWEST)
-    read_liberty -min $::env(LIB_FASTEST)
+    ##read_liberty -max $::env(LIB_SLOWEST)
+    ##read_liberty -min $::env(LIB_FASTEST)
     link_design picorv32a
     read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
     set_propagated_clock [all_clocks]
     report_checks -path_delay min_max -format full_clock_expanded -digits 4 -fields {net cap slew input_pins fanout}
     ```
+  * Be sure to perform the timing analysis with the correct library file which was used for CTS (which was the LIB_SYNTH_COMPLETE or the LIB_TYPICAL in our case). 
+  * **Note:** As of now, CTS does not support multi-corner optimization.
 
 #### Lab: Steps to observe impact of bigger CTS buffers on setup and hold timing
   * Modify the `CTS_CLK_BUFFER_LIST` variable to exclude the `sky130_fd_sc_hd__clkbuf_1` cell and re-run CTS again.
@@ -1007,6 +1009,14 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
     run_cts
     ```
   * We will be able to see the setup and hold slacks having some amount of improvement, but do note that this comes with a potentially large area & power penalty due to the larger clock buffers used.
+_________________________________________________________________________________________________________  
+
+## Day 14.5: Final steps for RTL2GDS using tritonRoute and openSTA
+###  Routing and Design Rule Check (DRC)
+#### Introduction to Maze Routing - Lee's Algorithm
+
+
+
 
 <br>
 
