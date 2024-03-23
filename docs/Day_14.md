@@ -675,7 +675,7 @@ ________________________________________________________________________________
 
   | * Synthesis result shows the sky130_vsdinv being instanced 1537 times. <br>  ![D14.4_Add_sky130_vsdinv_to_flow_run_synthesis](/docs/images/D14.4_Add_sky130_vsdinv_to_flow_run_synthesis.png) |
   |:---|
-  | **Layout showing sky130_vsdinv after placement stage** <br>  ![D14.4_picorv32a_Layout_after_Placement_showing_sky130_vsdinv_cells](/docs/images/D14.4_picorv32a_Layout_after_Placement_showing_sky130_vsdinv_cells.png) |
+  | **Layout showing sky130_vsdinv after placement stage** <br>  ![D14.4_picorv32a_Layout_after_Placement_showing_sky130_vsdinv](/docs/images/D14.4_picorv32a_Layout_after_Placement_showing_sky130_vsdinv.png) |
 
   * **Note**:
     * The `run_floorplan` command gave an error saying `Cannot find any macros in the design` after including the sky130_vsdinv cell.
