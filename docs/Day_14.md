@@ -949,8 +949,64 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
       (Basically the shielding nets need to be connected to a non-transitioning net, low impedance upon which an aggressor has no effect).
 
 #### Lab: Steps to run CTS using TritonCTS
+  * Command to run cts: `run_cts`
+  * After CTS, a new netlist **<design_name>.synthesis_cts.v** will be created in the `runs/<tag>/results/synthesis/` folder that includes the information on the generated clock clock tree and the newly instanced clock buffers.
+
+  | ![D14.4_New_netlist_after_CTS](/docs/images/D14.4_New_netlist_after_CTS.png) |
+  |---|
 
 #### Lab: Steps to verify CTS runs
+  * CTS configuration variables to verify:
+
+  | Configuration Variable | Details |
+  |:---|:---|
+  | `CTS_TARGET_SKEW` | The target clock skew in picoseconds, usually 10% of the clock period. |
+  | `CTS_ROOT_BUFFER` | The name of cell inserted at the root of the clock tree (`sky130_fd_sc_hd__clkbuf_16` in our case) |
+  | `CTS_TOLERANCE` | An integer value that represents a tradeoff of QoR and runtime. <br>  Higher values will produce smaller runtime but worse QoR. |
+  | `LIB_CTS` | The liberty file used for CTS. By default, this is the `LIB_SYNTH_COMPLETE` minus the cells with drc errors. |
+  | `CTS_MAX_CAP` | Defines the maximum capacitance for clock tree synthesis in the design in pF. |
+
+### Timing Analysis with real clocks using OpenSTA
+
+#### Setup timing analysis using real clocks
+
+#### Hold timing analysis using real clocks
+
+#### Lab: Steps to analyze timing with real clocks using OpenSTA (Post-CTS STA)
+  * In OpenRoad, the timing analysis is performed by creating a db file using the LEF and DEF files of the design.
+  * db creation is a one-time process (unless the def changes).
+    To create the db, invoke OpenRoad from within the OpenLANE shell using `openroad`. And then from within the OpenRoad shell execute the following commands:  
+    ```
+    read_lef /openLANE_flow/designs/picorv32a/runs/latest_21-03/tmp/merged.lef
+    read_def /openLANE_flow/designs/picorv32a/runs/latest_21-03/results/cts/picorv32a.cts.def
+    write_db picorv32a_cts.db
+    ```
+  * Performing STA:
+    ```
+    read_db picorv32a_cts.db
+    read_verilog /openLANE_flow/designs/picorv32a/runs/latest_21-03/results/synthesis/picorv32a.synthesis_cts.v
+    read_liberty $::env(LIB_SYNTH_COMPLETE)
+    read_liberty -max $::env(LIB_SLOWEST)
+    read_liberty -min $::env(LIB_FASTEST)
+    link_design picorv32a
+    read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+    set_propagated_clock [all_clocks]
+    report_checks -path_delay min_max -format full_clock_expanded -digits 4 -fields {net cap slew input_pins fanout}
+    ```
+
+#### Lab: Steps to observe impact of bigger CTS buffers on setup and hold timing
+  * Modify the `CTS_CLK_BUFFER_LIST` variable to exclude the `sky130_fd_sc_hd__clkbuf_1` cell and re-run CTS again.
+  * Be sure to modify the `CURRENT_DEF` variable to point to the DEF file after placement before triggering the CTS run.
+    ```
+    % echo $::env(CTS_CLK_BUFFER_LIST)
+    sky130_fd_sc_hd__clkbuf_1 sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8
+
+    set ::env(CTS_CLK_BUFFER_LIST) [lreplace $::env(CTS_CLK_BUFFER_LIST) 0 0]
+    set ::env(CURRENT_DEF) /openLANE_flow/designs/picorv32a/runs/latest_21-03/results/placement/picorv32a.placement.def
+
+    run_cts
+    ```
+  * We will be able to see the setup and hold slacks having some amount of improvement, but do note that this comes with a potentially large area & power penalty due to the larger clock buffers used.
 
 <br>
 
