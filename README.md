@@ -19,7 +19,7 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |[Day 11](/docs/Day_11.md)| Advanced Synthesis and STA with DC<br>**Pending:** Documentation | ![](https://progress-bar.dev/90/?title=progress) |
  |[Day 12](/docs/Day_12.md)| Circuit Design using sky130<br>**Pending:** Documentation | ![](https://progress-bar.dev/75/?title=progress) |
  |[Day 13](/docs/Day_13.md)| PVT Corner Analysis<br>**Pending:** Documentation | ![](https://progress-bar.dev/90/?title=progress) |
- |[Day 14](/docs/Day_14.md)| Advanced Physical Design using OpenLANE/ Sky130<br>**Pending:** Documentation | ![](https://progress-bar.dev/60/?title=progress) |
+ |[Day 14](/docs/Day_14.md)| Advanced Physical Design using OpenLANE/ Sky130<br>**Pending:** Documentation | ![](https://progress-bar.dev/80/?title=progress) |
 
 <!--
 ## Day 0
