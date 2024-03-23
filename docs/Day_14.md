@@ -683,13 +683,21 @@ ________________________________________________________________________________
     * Within `or_basic_mpl.tcl`, the error was being spewed out by `macro_placement` command and we don't have anymore info on why this error was being shown.
     * Hence, until things are cleared, `run_floorplan` is run manually instead with the following sub-routine calls:
       ```
+      run_synthesis
+
+      # run_floorplan
       init_floorplan
       place_io
-      apply_def_template
+      apply_def_template    # harmless I believe
       global_placement_or
       tap_decap_or
-      scrot_klayout -layout $::env(CURRENT_DEF)
-      run_power_grid_generation
+      scrot_klayout -layout $::env(CURRENT_DEF) # again, harmless
+
+      # run_placement
+      global_placement_or
+      run_openPhySyn    # Gets skipped, so just keep it here
+      run_resizer_design
+      detailed_placement_or
       ```
 
 ### Introduction to Delay Tables
