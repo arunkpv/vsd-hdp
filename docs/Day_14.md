@@ -17,7 +17,8 @@ ________________________________________________________________________________
   * The methodology is implemented through a **flow** that pieces together different tools to carry out the different steps of the design process from RTL to GDSII tapeout.
 
 #### 14.1.1.1 Simplified RTL to GDSII ASIC Design Flow
-<kbd> ![Simplified Flow](/docs/images/D14.1_Simplified_Flow.png) </kbd>
+| ![Simplified Flow](/docs/images/D14.1_Simplified_Flow.png) |
+|---|
 
   1) **Synthesis**: Converts RTL to a circuit using components from the Standard Cell Library (SCL)
   2) **Floor/ Power-planning**:
@@ -47,7 +48,8 @@ Main requirements of Digital ASIC Design:
   * EDA Tools
   * PDK
 
-<kbd> ![D14.1_OpenSource_ASIC_Design](/docs/images/D14.1_OpenSource_ASIC_Design.png) </kbd>
+| ![D14.1_OpenSource_ASIC_Design](/docs/images/D14.1_OpenSource_ASIC_Design.png) |
+|---|
   
 Open Source RTL IPs and competitive EDA tools have been available.  
 However, an OpenSource PDK was not available until Google collaborated with SkyWater to open source the skywater-130nm PDK.
@@ -69,8 +71,6 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
     * Autonomous or Interactive
   * Supports Design Space Exploration: Find the best set of flow configurations
 
-
-  
 **OpenLANE ASIC Flow**  
   * OpenLANE project GitHub Page: [OpenLANE](https://github.com/efabless/openlane)
   * [OpenLANE ReadMe](https://openlane.readthedocs.io/en/latest/flow_overview.html)
@@ -137,7 +137,7 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
   <kbd> ![D14.1_AntennaRules_FakeDiode_RealDiode](/docs/images/D14.1_AntennaRules_FakeDiode_RealDiode.png) </kbd>
 
 
-#### 14.1.1 - LAB: Familiarize with OpenLANE flow
+#### LAB: Familiarize with OpenLANE flow
 
 **Objectives**:  
 Using an existing design provided in the OpenLANE package to:
@@ -304,7 +304,7 @@ ________________________________________________________________________________
 
 **Now Floorplan is ready for PnR**
 
-#### 14.2.1 - LAB: Run floorplan using OpenLANE and review the layout in Magic
+#### LAB: Run floorplan using OpenLANE and review the layout in Magic
   * To run the floorplan creation, execute the following command from the OpenLANE shell: `run_floorplan`
        
   <kbd> ![D14.2_Lab_3a_run_floorplan](/docs/images/D14.2_Lab_3a_run_floorplan.png) </kbd>
@@ -340,7 +340,7 @@ ________________________________________________________________________________
   4) Congestion aware placement using RePlAce followed by detailed placement using OpenDP
      * Global placement: HPWL (Half-Parameter Wire Length) based
 
-### LAB: Run placement
+#### LAB: Run placement
   * The `run_placement` command runs the global placement followed by detailed placement.
   * First the global placement happens, where the main objective is to reduce the wire length. Algorithm used is Half-Parameter Wire Length (HPWL).
   * Then detailed placement is performed to legalize the globally placed components.
@@ -420,7 +420,7 @@ ________________________________________________________________________________
   
 ## Day 14.3: Design library cell using Magic layout tool and characterization using ngspice
 
-### 16-Mask CMOS Process
+### 14.3.1 16-Mask CMOS Process
 TODO: Documentation
 
 ### LAB: Introduction to Sky130 basic layers layout and LEF using inverter
@@ -700,7 +700,7 @@ ________________________________________________________________________________
       detailed_placement_or
       ```
 
-### Introduction to Delay Tables
+### 14.4.1 Introduction to Delay Tables
   * Gate/ Cell delay is a function of the input transition (slew) time and the output load capacitance, Cload
   * Cell delay is calculated using Non-Linear Delay Models (NLDM). NLDM is highly accurate as it is derived from SPICE characterizations.
     The delay is a function of the input transition time (i.e. slew) of the cell, the wire capacitance and the pin capacitance of the driven cells.
@@ -742,7 +742,7 @@ ________________________________________________________________________________
 
     The wns and tns values look much better and easier to fix later on.
 
-### Timing analysis with ideal clocks using openSTA
+### 14.4.2 Timing analysis with ideal clocks using openSTA
 
 **Note**: We have already gone through STA basics previously. We will capture the important essentials once again here.  
 
@@ -885,7 +885,7 @@ ________________________________________________________________________________
     * Now the STA engineer(s) will take the new data and perform STA analysis again and provide new timing ECOs for the new violations.
     * This "spinning" process goes on till all voilations are rectified.
 
-### Clock Tree Synthesis using TritonCTS and Signal Integrity
+### 14.4.3 Clock Tree Synthesis using TritonCTS and Signal Integrity
 Clock Tree Synthesis is the process of connecting the clocks to the clock pins of all sequential elements in the design by using inverters/ buffers in order to balance the skew and to minimize the insertion delay.
 
 | **Ideal Clock Tree before CTS** <br>  ![D14.4_Ideal_clock_tree_before_CTS](/docs/images/D14.4_Ideal_clock_tree_before_CTS.png) | **Real Clock tree (H-tree) after CTS** <br>  ![D14.4_Real_clock_tree_(H-tree)_after_CTS](/docs/images/D14.4_Real_clock_tree_(H-tree)_after_CTS.png)
@@ -966,7 +966,7 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
   | `LIB_CTS` | The liberty file used for CTS. By default, this is the `LIB_SYNTH_COMPLETE` minus the cells with drc errors. |
   | `CTS_MAX_CAP` | Defines the maximum capacitance for clock tree synthesis in the design in pF. |
 
-### Timing Analysis with real clocks using OpenSTA
+### 14.4.4 Timing Analysis with real clocks using OpenSTA
 
 #### Setup timing analysis using real clocks
 
@@ -1012,7 +1012,7 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
 _________________________________________________________________________________________________________  
 
 ## Day 14.5: Final steps for RTL2GDS using tritonRoute and openSTA
-###  Routing and Design Rule Check (DRC)
+###  14.5.1 Routing and Design Rule Check (DRC)
 #### Introduction to Maze Routing - Lee's Algorithm
 
 
