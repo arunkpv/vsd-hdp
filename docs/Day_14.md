@@ -410,7 +410,7 @@ ________________________________________________________________________________
      * propagation delay = time(out_*_thr) - time(in_*_thr)
        * Problematic cases:
          * Choice of threshold levels
-         * Large RC delays
+         * Large RC delays (due to improper designs and/ or large loads, long routes)
   
   3) Transition time
      * t_rise = time(slew_high_rise_thr) - time(slew_low_rise_thr)
@@ -675,6 +675,22 @@ ________________________________________________________________________________
 
   | * Synthesis result shows the sky130_vsdinv being instanced 1537 times. <br>  ![D14.4_Add_sky130_vsdinv_to_flow_run_synthesis](/docs/images/D14.4_Add_sky130_vsdinv_to_flow_run_synthesis.png) |
   |:---|
+  | **Layout showing sky130_vsdinv after placement stage** <br>  ![D14.4_picorv32a_Layout_after_Placement_showing_sky130_vsdinv_cells](/docs/images/D14.4_picorv32a_Layout_after_Placement_showing_sky130_vsdinv_cells.png) |
+
+  * **Note**:
+    * The `run_floorplan` command gave an error saying `Cannot find any macros in the design` after including the sky130_vsdinv cell.
+    * The error message was popping up when the function `basic_macro_placement` was being called by `run_floorplan` which inturn was calling `openroad ./scripts/openroad/or_basic_mpl.tcl`.
+    * Within `or_basic_mpl.tcl`, the error was being spewed out by `macro_placement` command and we don't have anymore info on why this error was being shown.
+    * Hence, until things are cleared, `run_floorplan` is run manually instead with the following sub-routine calls:
+      ```
+      init_floorplan
+      place_io
+      apply_def_template
+      global_placement_or
+      tap_decap_or
+      scrot_klayout -layout $::env(CURRENT_DEF)
+      run_power_grid_generation
+      ```
 
 ### Introduction to Delay Tables
   * Gate/ Cell delay is a function of the input transition (slew) time and the output load capacitance, Cload
