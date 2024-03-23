@@ -778,6 +778,114 @@ ________________________________________________________________________________
     |:---|
 
 #### Lab: Configure OpenSTA for Post-synth timing analysis
+  * During the PnR flow, it is very much possible that some timing violations may get fixed, some violations will get better, some worse and new violations could also be introduced.
+  * In any PnR flow, the separate timing tool (like PrimeTime) is usually invoked outside of the automated flow for performing the timing analysis and timing ECO generation.
+  * In the OpenLANE flow, we use OpenSTA tool for Post-synthesis timing analysis.
+  * **OpenSTA config file: pre_sta.conf**:
+    ```
+    set_cmd_units -time ns -capacitance fF -current uA -voltage V -resistance kOhm -distance um
+    
+    read_liberty -max ./designs/picorv32a/src/sky130_fd_sc_hd__slow.lib
+    read_liberty -min ./designs/picorv32a/src/sky130_fd_sc_hd__fast.lib
+    
+    #read_verilog ./designs/picorv32a/src/picorv32a.v
+    read_verilog ./designs/picorv32a/runs/latest_21-03/results/synthesis/picorv32a.synthesis.v
+    
+    link_design picorv32a
+    read_sdc ./designs/picorv32a/src/my_base.sdc
+    
+    check_setup -verbose
+    
+    report_checks -path_delay min_max -fields {nets cap slew trans input_pins}
+    report_tns
+    report_wns
+    ```
+    
+  * **SDC file: my_base.sdc**:
+    ```
+    set ::env(CLOCK_PORT) clk
+    set ::env(CLOCK_PERIOD) 12.000
+    set ::env(SYNTH_DRIVING_CELL) sky130_fd_sc_hd__inv_8
+    set ::env(SYNTH_DRIVING_CELL_PIN) Y
+    set ::env(SYNTH_CAP_LOAD) 17.65
+    create_clock [get_ports $::env(CLOCK_PORT)]  -name $::env(CLOCK_PORT)  -period $::env(CLOCK_PERIOD)
+    set IO_PCT  0.2
+    set input_delay_value [expr $::env(CLOCK_PERIOD) * $IO_PCT]
+    set output_delay_value [expr $::env(CLOCK_PERIOD) * $IO_PCT]
+    puts "\[INFO\]: Setting output delay to: $output_delay_value"
+    puts "\[INFO\]: Setting input delay to: $input_delay_value"
+    
+    
+    set clk_indx [lsearch [all_inputs] [get_port $::env(CLOCK_PORT)]]
+    #set rst_indx [lsearch [all_inputs] [get_port resetn]]
+    set all_inputs_wo_clk [lreplace [all_inputs] $clk_indx $clk_indx]
+    #set all_inputs_wo_clk_rst [lreplace $all_inputs_wo_clk $rst_indx $rst_indx]
+    set all_inputs_wo_clk_rst $all_inputs_wo_clk
+    
+    
+    # correct resetn
+    set_input_delay $input_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] $all_inputs_wo_clk_rst
+    #set_input_delay 0.0 -clock [get_clocks $::env(CLOCK_PORT)] {resetn}
+    set_output_delay $output_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] [all_outputs]
+    
+    # TODO set this as parameter
+    set_driving_cell -lib_cell $::env(SYNTH_DRIVING_CELL) -pin $::env(SYNTH_DRIVING_CELL_PIN) [all_inputs]
+    set cap_load [expr $::env(SYNTH_CAP_LOAD) / 1000.0]
+    puts "\[INFO\]: Setting load to: $cap_load"
+    set_load  $cap_load [all_outputs]
+    ```
+
+  * Invoke OpenSTA from another terminal and provide above config file as the input:
+    ```sta pre_sta.conf```
+
+#### Lab: Optimize Synthesis to reduce setup violations
+  * In addition to the synthesis configuration variables that we have seen before, there are a few more that we can use to optimize synthesis to improve setup slack.
+  * If there are setup timing violations (and possible slew & max cap violations) from nets with high fanout, we can limit the fanout to improve hte delay using:
+    ```set ::env(SYNTH_MAX_FANOUT) 4```
+  * To view the nets driven by the output pin of a cell, the following command can be used:
+    ```report_net -connections <net_name>```
+
+#### Lab: Steps to do basic Timing ECO
+  * From analysing the setup violations in OpenSTA, we will be able to infer the possible reasons for the violations
+  * One common reason could a large output slew for a net due to large capacitance load/ fanout which the synthesis tool could not optimize further.
+    In this case, we can **upsize** the cell (i.e., replace the cell instance with a higher drive strength version of it) to reduce the delay using the `replace_cell` command.
+    ```
+    Syntax : replace_cell replace_cell instance lib_cell
+    Example: replace_cell _44195_ sky130_fd_sc_hd__inv_4
+             where, _44195_ is the instance name of the cell to be replaced
+                    sky130_fd_sc_hd__inv_4 is the upsized std cell version
+    ```
+    * To check if the violation has been resolved:
+      ```
+      report_checks -from <instance or pin> -to <instance or pin> -through <instance> -path_delay max
+      Example: report_checks -from <instance or pin> -to <instance or pin> -through _44195_ -path_delay min_max
+      ```
+  * The above step of upsizing the cell to improve timing would obviously change the netlist, which needs to be updated in the netlist file for it to be captured in the OpenLANE flow.
+    To write the updated netlist:
+    ```write_verilog $OPENLANE_HOME/designs/picorv32a/runs/latest_21-03/results/synthesis/picorv32a.synthesis.v```
+  * **Note:**
+    * Fixing timing violations by ECOs is an iterative cyclical process.
+    * The STA engineer(s) will do the necessary modifications like upsizing, replacing cell with a different Vt cell, inserting buffers etc. to fix a violation and provide the ECO to the PnR engineer(s).
+    * The PnR engineer(s) will then take this ECO and do the PnR and perform the post-route timing analysis with the back-annotated values that capture the parasitics as well.
+    * This may fix or improve the existing the timing violation, while there is a chance that it may introduce new violations.
+    * Now the STA engineer(s) will take the new data and perform STA analysis again and provide new timing ECOs for the new violations.
+    * This "spinning" process goes on till all voilations are rectified.
+
+### Clock Tree Synthesis using TritonCTS and Signal Integrity
+  * **QoR parameters for a Clock Tree**:
+    1) Clock Insertion Delay/ Latency: Refers to the arrival time of the clock signal at the sink pin with respect to the clock source.
+    2) Clock Skew: Refers to the difference in the clock arrival time between two sinks. It can further be sub-divided into Local Clock Skew and Global Clock Skew:
+       * Local Clock Skew – The difference in the arrival times of the clock signal reaching any pair of registers that have a valid timing path between them.
+       * Global Clock Skew – The difference in the arrival times of the clock signal reaching any pair of registers that may or may not have a valid timing path between them.
+    3) Clock Slew (Transition Time): Clock slew needs to be as small as possible to provide a sharp timing edge by reducing the timing uncertainty. However this will have th implication of higher area and power if we use larger clock tree buffers.
+    4) Duty Cycle: Unequal rise and fall times of the clock buffers is the primary cause of duty cycle distortion in a clock tree. Usually inverters are used instead of buffers to reduce DCD in a clock tree.
+    5) Pulse Width: Usually SRAMs, flip-flops and latches will have minimum pulse width requirements to meet their internal timing. There will be minimum pulse width requirements for both the high and low times of a clock period. 
+
+#### Clock tree routing and buffering using H-Tree algorithm
+  * **H-Tree algorithm**
+    * This is a clock tree routing algorithm that tries to minimize the skew by minimizing the routing length.
+    * The clock routing taked place in the shape of the capital letter **"H"**
+    * 
 
 <br>
 
