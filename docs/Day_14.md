@@ -1075,6 +1075,24 @@ ________________________________________________________________________________
   | **Layout after routing (KLayout)** <br>  ![D14.5_Layout_after_routing_in_klayout](/docs/images/D14.5_Layout_after_routing_in_klayout.png) |
   | **Layout after routing - Zoomed (Magic)** <br>  ![D14.5_Layout_after_Routing](/docs/images/D14.5_Layout_after_Routing.png) |
   
+  * **Post-route STA**
+    ```
+    read_lef /openLANE_flow/designs/picorv32a/runs/latest_25-03/tmp/merged.lef
+    read_def /openLANE_flow/designs/picorv32a/runs/latest_25-03/results/routing/picorv32a.def
+    read_spef /openLANE_flow/designs/picorv32a/runs/latest_25-03/results/routing/picorv32a.spef
+    
+    write_db picorv32a_routing.db
+    
+    read_db picorv32a_routing.db
+    read_verilog /openLANE_flow/designs/picorv32a/runs/latest_25-03/results/synthesis/picorv32a.synthesis_preroute.v
+    read_liberty $::env(LIB_SYNTH_COMPLETE)
+    ##read_liberty -max $::env(LIB_SLOWEST)
+    ##read_liberty -min $::env(LIB_FASTEST)
+    link_design picorv32a
+    read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+    set_propagated_clock [all_clocks]
+    report_checks -path_delay min_max -format full_clock_expanded -digits 4 -fields {net cap slew input_pins fanout}
+    ```
  
 #### Basics of global and detail routing
   * Global route using `fast route` and Detailed route using `tritonRoute`
