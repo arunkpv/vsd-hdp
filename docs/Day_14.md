@@ -1014,8 +1014,24 @@ ________________________________________________________________________________
 ## Day 14.5: Final steps for RTL2GDS using tritonRoute and openSTA
 ###  14.5.1 Routing and Design Rule Check (DRC)
 #### Introduction to Maze Routing - Lee's Algorithm
+  * Lee's algorithm is one possible solution for maze routing problems based on breadth-first search.
+    * If a path exists between the source and target, this algorithm guarantees finding it.
+    * It always finds the shortest path between the source and target.
+  * <ins>**Steps**</ins>
+    1) The layout area is divided into a Routing grid with keep-off areas for the pre-placed macros and logical blockages for the I/O pad ring.
+    2) The next step is to identify the source pin (S) and target pin (T) of the cells in the grid
+    3) Now, based on the distance from the grid box "S", adjacent grid boxes (only horizontal and vertical grid boxes are considered adjacent and not the diagonal ones) are labelled as 1. Next, the grid boxes adjacent to those labelled 1 are now labelled as 2. This iterative process progresses until we hit the target pin's, "T" grid box.
+    * **Note**: The wave expansion marks only points in the routable area of the chip, not in the blocks or already wired parts.
+  * Routes with lower number of bends are preferred.
 
+  | **Lee's Routing Algorithm** <br>  **The blue route is preferred over the black one due to lower number of bends** <br>  ![D14.5_Lees_Routing_Algorithm_resized](/docs/images/D14.5_Lees_Routing_Algorithm_resized.png)
+  |:---|
+  
+  * This algorithm, however, has a high cost in term of both memory usage and run time.
+  * To overcome these short-comings, there are other more advanced algorithms like Line Search algorithm & Steiner tree algorithm.
 
+#### Design Rule Check during routing
+  * 
 
 
 <br>
