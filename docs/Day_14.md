@@ -1024,7 +1024,7 @@ ________________________________________________________________________________
     * **Note**: The wave expansion marks only points in the routable area of the chip, not in the blocks or already wired parts.
   * Routes with lower number of bends are preferred.
 
-  | **Lee's Routing Algorithm** <br>  **The blue route is preferred over the black one due to lower number of bends** <br>  ![D14.5_Lees_Routing_Algorithm_resized](/docs/images/D14.5_Lees_Routing_Algorithm_resized.png)
+  | **Lee's Routing Algorithm** <br>  ![D14.5_Lees_Routing_Algorithm_resized](/docs/images/D14.5_Lees_Routing_Algorithm_resized.png) <br>  **The blue route is preferred over the black one due to lower number of bends** |
   |:---|
   
   * This algorithm, however, has a high cost in term of both memory usage and run time.
