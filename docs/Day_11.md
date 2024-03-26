@@ -13,7 +13,10 @@ As the naming suggests, there is another method - Dynamic Timing Analysis (DTA) 
   * A trade-off could be to select the test vectors that exercise majority of the circuits, but this is usually not sufficient for sign-off as the coverage/ confidence obtained is only as exhaustive as the test vectors used and no 100% guarantee that the design will work across conditions.
 ## STA Basics
 STA can performed at various stages of the ASIC design flow, with the emphasis being on different aspects.
-![D11_STA_in_Design_Flow](/docs/images/D11_STA_in_Design_Flow.png)
+
+| ![D11_STA_in_Design_Flow_resized](/docs/images/D11_STA_in_Design_Flow_resized.png) |
+|:---|
+
 ### Timing Arcs
   1. Combinational arcs: Between input and output pin of a combinational block/ cell.
   2. Sequential arcs: Between the clock pin and either the input or output
@@ -85,10 +88,12 @@ Defines how the output changes for different types of transitions on the input.
       * `check_setup`: Perform sanity checks on the design
       * `report_checks`: Report paths in the desing based on the additional arguments/ filters provided
     
-|![D11_OpenSTA_sta_commands](/docs/images/D11_OpenSTA_sta_commands.png) |
-|-|
-|**Min path**<br>  ![D11_OpenSTA_min_delay](/docs/images/D11_OpenSTA_min_delay.png) |
-|**Max path**<br>  ![D11_OpenSTA_max_delay](/docs/images/D11_OpenSTA_max_delay.png) |
+| **OpenSTA commands to do STA** <br>  ![D11_OpenSTA_sta_commands](/docs/images/D11_OpenSTA_sta_commands.png) |
+|:---|
+
+| **Min path**<br>  ![D11_OpenSTA_min_delay](/docs/images/D11_OpenSTA_min_delay.png) | **Max path**<br>  ![D11_OpenSTA_max_delay](/docs/images/D11_OpenSTA_max_delay.png) |
+|:---:|:---:|
+
 
   * As can be seen from the OpenSTA log, the design has 3 unconstrained endpoints.
     ```
