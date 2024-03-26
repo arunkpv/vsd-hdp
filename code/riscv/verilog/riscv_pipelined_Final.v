@@ -68,7 +68,7 @@ wire [4-1:0] CPU_imem_rd_addr_a0;
 reg  [4-1:0] CPU_imem_rd_addr_a1;
 
 // For |cpu$imem_rd_data.
-wire [31:0] CPU_imem_rd_data_a1;
+(* keep *) wire [31:0] CPU_imem_rd_data_a1;
 
 // For |cpu$imem_rd_en.
 wire CPU_imem_rd_en_a0;
@@ -85,7 +85,7 @@ reg  [31:0] CPU_inc_pc_a2,
             CPU_inc_pc_a3;
 
 // For |cpu$instr.
-wire [31:0] CPU_instr_a1;
+(* keep *) wire [31:0] CPU_instr_a1;
 
 // For |cpu$is_add.
 wire CPU_is_add_a1;
@@ -395,7 +395,7 @@ wire [31:0] CPU_Dmem_value_a4 [15:0];
 reg  [31:0] CPU_Dmem_value_a5 [15:0];
 
 // For |cpu/imem$instr.
-wire [31:0] CPU_Imem_instr_a1 [11:0];
+(* keep *) wire [31:0] CPU_Imem_instr_a1 [11:0];
 
 // For |cpu/xreg$value.
 wire [31:0] CPU_Xreg_value_a3 [31:0];
@@ -644,223 +644,223 @@ reg  [31:0] CPU_Xreg_value_a4 [31:0],
 // Debug Signals
 //
 
-generate
-
-   if (1) begin : DEBUG_SIGS
-
-
-      //
-      // Scope: |cpu
-      //
-      if (1) begin : \|cpu 
-         wire [31:0] \/@2$br_tgt_pc ;
-         assign \/@2$br_tgt_pc = CPU_br_tgt_pc_a2;
-         wire [10:0] \/@1$dec_bits ;
-         assign \/@1$dec_bits = CPU_dec_bits_a1;
-         wire [3:0] \/@4$dmem_addr ;
-         assign \/@4$dmem_addr = CPU_dmem_addr_a4;
-         wire [31:0] \/?$dmem_rd_en@4$dmem_rd_data ;
-         assign \/?$dmem_rd_en@4$dmem_rd_data = CPU_dmem_rd_data_a4;
-         wire  \/@4$dmem_rd_en ;
-         assign \/@4$dmem_rd_en = CPU_dmem_rd_en_a4;
-         wire [31:0] \/@4$dmem_wr_data ;
-         assign \/@4$dmem_wr_data = CPU_dmem_wr_data_a4;
-         wire  \/@4$dmem_wr_en ;
-         assign \/@4$dmem_wr_en = CPU_dmem_wr_en_a4;
-         wire [2:0] \/?$funct3_valid@1$funct3 ;
-         assign \/?$funct3_valid@1$funct3 = CPU_funct3_a1;
-         wire  \/@1$funct3_valid ;
-         assign \/@1$funct3_valid = CPU_funct3_valid_a1;
-         wire [6:0] \/?$funct7_valid@1$funct7 ;
-         assign \/?$funct7_valid@1$funct7 = CPU_funct7_a1;
-         wire  \/@1$funct7_valid ;
-         assign \/@1$funct7_valid = CPU_funct7_valid_a1;
-         wire [4-1:0] \/@0$imem_rd_addr ;
-         assign \/@0$imem_rd_addr = CPU_imem_rd_addr_a0;
-         wire [31:0] \/?$imem_rd_en@1$imem_rd_data ;
-         assign \/?$imem_rd_en@1$imem_rd_data = CPU_imem_rd_data_a1;
-         wire  \/@0$imem_rd_en ;
-         assign \/@0$imem_rd_en = CPU_imem_rd_en_a0;
-         wire [31:0] \/@1$imm ;
-         assign \/@1$imm = CPU_imm_a1;
-         wire [31:0] \/@1$inc_pc ;
-         assign \/@1$inc_pc = CPU_inc_pc_a1;
-         wire [31:0] \/@1$instr ;
-         assign \/@1$instr = CPU_instr_a1;
-         wire  \/@1$is_add ;
-         assign \/@1$is_add = CPU_is_add_a1;
-         wire  \/@1$is_addi ;
-         assign \/@1$is_addi = CPU_is_addi_a1;
-         wire  \/@1$is_and ;
-         assign \/@1$is_and = CPU_is_and_a1;
-         wire  \/@1$is_andi ;
-         assign \/@1$is_andi = CPU_is_andi_a1;
-         wire  \/@1$is_auipc ;
-         assign \/@1$is_auipc = CPU_is_auipc_a1;
-         wire  \/@1$is_b_instr ;
-         assign \/@1$is_b_instr = CPU_is_b_instr_a1;
-         wire  \/@1$is_beq ;
-         assign \/@1$is_beq = CPU_is_beq_a1;
-         wire  \/@1$is_bge ;
-         assign \/@1$is_bge = CPU_is_bge_a1;
-         wire  \/@1$is_bgeu ;
-         assign \/@1$is_bgeu = CPU_is_bgeu_a1;
-         wire  \/@1$is_blt ;
-         assign \/@1$is_blt = CPU_is_blt_a1;
-         wire  \/@1$is_bltu ;
-         assign \/@1$is_bltu = CPU_is_bltu_a1;
-         wire  \/@1$is_bne ;
-         assign \/@1$is_bne = CPU_is_bne_a1;
-         wire  \/@1$is_i_instr ;
-         assign \/@1$is_i_instr = CPU_is_i_instr_a1;
-         wire  \/@1$is_j_instr ;
-         assign \/@1$is_j_instr = CPU_is_j_instr_a1;
-         wire  \/@1$is_jal ;
-         assign \/@1$is_jal = CPU_is_jal_a1;
-         wire  \/@1$is_jalr ;
-         assign \/@1$is_jalr = CPU_is_jalr_a1;
-         wire  \/@1$is_jump ;
-         assign \/@1$is_jump = CPU_is_jump_a1;
-         wire  \/@1$is_load ;
-         assign \/@1$is_load = CPU_is_load_a1;
-         wire  \/@1$is_lui ;
-         assign \/@1$is_lui = CPU_is_lui_a1;
-         wire  \/@1$is_or ;
-         assign \/@1$is_or = CPU_is_or_a1;
-         wire  \/@1$is_ori ;
-         assign \/@1$is_ori = CPU_is_ori_a1;
-         wire  \/@1$is_r_instr ;
-         assign \/@1$is_r_instr = CPU_is_r_instr_a1;
-         wire  \/@1$is_s_instr ;
-         assign \/@1$is_s_instr = CPU_is_s_instr_a1;
-         wire  \/@1$is_sb ;
-         assign \/@1$is_sb = CPU_is_sb_a1;
-         wire  \/@1$is_sh ;
-         assign \/@1$is_sh = CPU_is_sh_a1;
-         wire  \/@1$is_sll ;
-         assign \/@1$is_sll = CPU_is_sll_a1;
-         wire  \/@1$is_slli ;
-         assign \/@1$is_slli = CPU_is_slli_a1;
-         wire  \/@1$is_slt ;
-         assign \/@1$is_slt = CPU_is_slt_a1;
-         wire  \/@1$is_slti ;
-         assign \/@1$is_slti = CPU_is_slti_a1;
-         wire  \/@1$is_sltiu ;
-         assign \/@1$is_sltiu = CPU_is_sltiu_a1;
-         wire  \/@1$is_sltu ;
-         assign \/@1$is_sltu = CPU_is_sltu_a1;
-         wire  \/@1$is_sra ;
-         assign \/@1$is_sra = CPU_is_sra_a1;
-         wire  \/@1$is_srai ;
-         assign \/@1$is_srai = CPU_is_srai_a1;
-         wire  \/@1$is_srl ;
-         assign \/@1$is_srl = CPU_is_srl_a1;
-         wire  \/@1$is_srli ;
-         assign \/@1$is_srli = CPU_is_srli_a1;
-         wire  \/@1$is_sub ;
-         assign \/@1$is_sub = CPU_is_sub_a1;
-         wire  \/@1$is_sw ;
-         assign \/@1$is_sw = CPU_is_sw_a1;
-         wire  \/@1$is_u_instr ;
-         assign \/@1$is_u_instr = CPU_is_u_instr_a1;
-         wire  \/@1$is_xor ;
-         assign \/@1$is_xor = CPU_is_xor_a1;
-         wire  \/@1$is_xori ;
-         assign \/@1$is_xori = CPU_is_xori_a1;
-         wire [31:0] \/@3$jalr_tgt_pc ;
-         assign \/@3$jalr_tgt_pc = CPU_jalr_tgt_pc_a3;
-         wire [31:0] \/@5$ld_data ;
-         assign \/@5$ld_data = CPU_ld_data_a5;
-         wire [6:0] \/@1$opcode ;
-         assign \/@1$opcode = CPU_opcode_a1;
-         wire [31:0] \/@0$pc ;
-         assign \/@0$pc = CPU_pc_a0;
-         wire [4:0] \/?$rd_valid@1$rd ;
-         assign \/?$rd_valid@1$rd = CPU_rd_a1;
-         wire  \/@1$rd_valid ;
-         assign \/@1$rd_valid = CPU_rd_valid_a1;
-         wire  \/@0$reset ;
-         assign \/@0$reset = CPU_reset_a0;
-         wire [31:0] \/@3$result ;
-         assign \/@3$result = CPU_result_a3;
-         wire [31:0] \/?$rf_rd_en1@2$rf_rd_data1 ;
-         assign \/?$rf_rd_en1@2$rf_rd_data1 = CPU_rf_rd_data1_a2;
-         wire [31:0] \/?$rf_rd_en2@2$rf_rd_data2 ;
-         assign \/?$rf_rd_en2@2$rf_rd_data2 = CPU_rf_rd_data2_a2;
-         wire  \/@2$rf_rd_en1 ;
-         assign \/@2$rf_rd_en1 = CPU_rf_rd_en1_a2;
-         wire  \/@2$rf_rd_en2 ;
-         assign \/@2$rf_rd_en2 = CPU_rf_rd_en2_a2;
-         wire [4:0] \/@2$rf_rd_index1 ;
-         assign \/@2$rf_rd_index1 = CPU_rf_rd_index1_a2;
-         wire [4:0] \/@2$rf_rd_index2 ;
-         assign \/@2$rf_rd_index2 = CPU_rf_rd_index2_a2;
-         wire [31:0] \/@3$rf_wr_data ;
-         assign \/@3$rf_wr_data = CPU_rf_wr_data_a3;
-         wire  \/@3$rf_wr_en ;
-         assign \/@3$rf_wr_en = CPU_rf_wr_en_a3;
-         wire [4:0] \/@3$rf_wr_index ;
-         assign \/@3$rf_wr_index = CPU_rf_wr_index_a3;
-         wire [4:0] \/?$rs1_valid@1$rs1 ;
-         assign \/?$rs1_valid@1$rs1 = CPU_rs1_a1;
-         wire  \/@1$rs1_valid ;
-         assign \/@1$rs1_valid = CPU_rs1_valid_a1;
-         wire [4:0] \/?$rs2_valid@1$rs2 ;
-         assign \/?$rs2_valid@1$rs2 = CPU_rs2_a1;
-         wire  \/@1$rs2_valid ;
-         assign \/@1$rs2_valid = CPU_rs2_valid_a1;
-         wire [31:0] \/@3$sltiu_rslt ;
-         assign \/@3$sltiu_rslt = CPU_sltiu_rslt_a3;
-         wire [31:0] \/@3$sltu_rslt ;
-         assign \/@3$sltu_rslt = CPU_sltu_rslt_a3;
-         wire [31:0] \/@2$src1_value ;
-         assign \/@2$src1_value = CPU_src1_value_a2;
-         wire [31:0] \/@2$src2_value ;
-         assign \/@2$src2_value = CPU_src2_value_a2;
-         wire  \/@3$taken_br ;
-         assign \/@3$taken_br = CPU_taken_br_a3;
-         wire  \/@3$valid ;
-         assign \/@3$valid = CPU_valid_a3;
-         wire  \/@3$valid_jump ;
-         assign \/@3$valid_jump = CPU_valid_jump_a3;
-         wire  \/@3$valid_load ;
-         assign \/@3$valid_load = CPU_valid_load_a3;
-         wire  \/@3$valid_taken_br ;
-         assign \/@3$valid_taken_br = CPU_valid_taken_br_a3;
-
-         //
-         // Scope: /dmem[15:0]
-         //
-         for (dmem = 0; dmem <= 15; dmem=dmem+1) begin : \/dmem 
-            wire [31:0] \//@4$value ;
-            assign \//@4$value = CPU_Dmem_value_a4[dmem];
-            wire  \//@4$wr ;
-            assign \//@4$wr = L1_CPU_Dmem[dmem].L1_wr_a4;
-         end
-
-         //
-         // Scope: /imem[11:0]
-         //
-         for (imem = 0; imem <= 11; imem=imem+1) begin : \/imem 
-            wire [31:0] \//@1$instr ;
-            assign \//@1$instr = CPU_Imem_instr_a1[imem];
-         end
-
-         //
-         // Scope: /xreg[31:0]
-         //
-         for (xreg = 0; xreg <= 31; xreg=xreg+1) begin : \/xreg 
-            wire [31:0] \//@3$value ;
-            assign \//@3$value = CPU_Xreg_value_a3[xreg];
-            wire  \//@3$wr ;
-            assign \//@3$wr = L1_CPU_Xreg[xreg].L1_wr_a3;
-         end
-      end
-
-
-   end
-
-endgenerate
+//generate
+//
+//   if (1) begin : DEBUG_SIGS
+//
+//
+//      //
+//      // Scope: |cpu
+//      //
+//      if (1) begin : \|cpu 
+//         wire [31:0] \/@2$br_tgt_pc ;
+//         assign \/@2$br_tgt_pc = CPU_br_tgt_pc_a2;
+//         wire [10:0] \/@1$dec_bits ;
+//         assign \/@1$dec_bits = CPU_dec_bits_a1;
+//         wire [3:0] \/@4$dmem_addr ;
+//         assign \/@4$dmem_addr = CPU_dmem_addr_a4;
+//         wire [31:0] \/?$dmem_rd_en@4$dmem_rd_data ;
+//         assign \/?$dmem_rd_en@4$dmem_rd_data = CPU_dmem_rd_data_a4;
+//         wire  \/@4$dmem_rd_en ;
+//         assign \/@4$dmem_rd_en = CPU_dmem_rd_en_a4;
+//         wire [31:0] \/@4$dmem_wr_data ;
+//         assign \/@4$dmem_wr_data = CPU_dmem_wr_data_a4;
+//         wire  \/@4$dmem_wr_en ;
+//         assign \/@4$dmem_wr_en = CPU_dmem_wr_en_a4;
+//         wire [2:0] \/?$funct3_valid@1$funct3 ;
+//         assign \/?$funct3_valid@1$funct3 = CPU_funct3_a1;
+//         wire  \/@1$funct3_valid ;
+//         assign \/@1$funct3_valid = CPU_funct3_valid_a1;
+//         wire [6:0] \/?$funct7_valid@1$funct7 ;
+//         assign \/?$funct7_valid@1$funct7 = CPU_funct7_a1;
+//         wire  \/@1$funct7_valid ;
+//         assign \/@1$funct7_valid = CPU_funct7_valid_a1;
+//         wire [4-1:0] \/@0$imem_rd_addr ;
+//         assign \/@0$imem_rd_addr = CPU_imem_rd_addr_a0;
+//         wire [31:0] \/?$imem_rd_en@1$imem_rd_data ;
+//         assign \/?$imem_rd_en@1$imem_rd_data = CPU_imem_rd_data_a1;
+//         wire  \/@0$imem_rd_en ;
+//         assign \/@0$imem_rd_en = CPU_imem_rd_en_a0;
+//         wire [31:0] \/@1$imm ;
+//         assign \/@1$imm = CPU_imm_a1;
+//         wire [31:0] \/@1$inc_pc ;
+//         assign \/@1$inc_pc = CPU_inc_pc_a1;
+//         wire [31:0] \/@1$instr ;
+//         assign \/@1$instr = CPU_instr_a1;
+//         wire  \/@1$is_add ;
+//         assign \/@1$is_add = CPU_is_add_a1;
+//         wire  \/@1$is_addi ;
+//         assign \/@1$is_addi = CPU_is_addi_a1;
+//         wire  \/@1$is_and ;
+//         assign \/@1$is_and = CPU_is_and_a1;
+//         wire  \/@1$is_andi ;
+//         assign \/@1$is_andi = CPU_is_andi_a1;
+//         wire  \/@1$is_auipc ;
+//         assign \/@1$is_auipc = CPU_is_auipc_a1;
+//         wire  \/@1$is_b_instr ;
+//         assign \/@1$is_b_instr = CPU_is_b_instr_a1;
+//         wire  \/@1$is_beq ;
+//         assign \/@1$is_beq = CPU_is_beq_a1;
+//         wire  \/@1$is_bge ;
+//         assign \/@1$is_bge = CPU_is_bge_a1;
+//         wire  \/@1$is_bgeu ;
+//         assign \/@1$is_bgeu = CPU_is_bgeu_a1;
+//         wire  \/@1$is_blt ;
+//         assign \/@1$is_blt = CPU_is_blt_a1;
+//         wire  \/@1$is_bltu ;
+//         assign \/@1$is_bltu = CPU_is_bltu_a1;
+//         wire  \/@1$is_bne ;
+//         assign \/@1$is_bne = CPU_is_bne_a1;
+//         wire  \/@1$is_i_instr ;
+//         assign \/@1$is_i_instr = CPU_is_i_instr_a1;
+//         wire  \/@1$is_j_instr ;
+//         assign \/@1$is_j_instr = CPU_is_j_instr_a1;
+//         wire  \/@1$is_jal ;
+//         assign \/@1$is_jal = CPU_is_jal_a1;
+//         wire  \/@1$is_jalr ;
+//         assign \/@1$is_jalr = CPU_is_jalr_a1;
+//         wire  \/@1$is_jump ;
+//         assign \/@1$is_jump = CPU_is_jump_a1;
+//         wire  \/@1$is_load ;
+//         assign \/@1$is_load = CPU_is_load_a1;
+//         wire  \/@1$is_lui ;
+//         assign \/@1$is_lui = CPU_is_lui_a1;
+//         wire  \/@1$is_or ;
+//         assign \/@1$is_or = CPU_is_or_a1;
+//         wire  \/@1$is_ori ;
+//         assign \/@1$is_ori = CPU_is_ori_a1;
+//         wire  \/@1$is_r_instr ;
+//         assign \/@1$is_r_instr = CPU_is_r_instr_a1;
+//         wire  \/@1$is_s_instr ;
+//         assign \/@1$is_s_instr = CPU_is_s_instr_a1;
+//         wire  \/@1$is_sb ;
+//         assign \/@1$is_sb = CPU_is_sb_a1;
+//         wire  \/@1$is_sh ;
+//         assign \/@1$is_sh = CPU_is_sh_a1;
+//         wire  \/@1$is_sll ;
+//         assign \/@1$is_sll = CPU_is_sll_a1;
+//         wire  \/@1$is_slli ;
+//         assign \/@1$is_slli = CPU_is_slli_a1;
+//         wire  \/@1$is_slt ;
+//         assign \/@1$is_slt = CPU_is_slt_a1;
+//         wire  \/@1$is_slti ;
+//         assign \/@1$is_slti = CPU_is_slti_a1;
+//         wire  \/@1$is_sltiu ;
+//         assign \/@1$is_sltiu = CPU_is_sltiu_a1;
+//         wire  \/@1$is_sltu ;
+//         assign \/@1$is_sltu = CPU_is_sltu_a1;
+//         wire  \/@1$is_sra ;
+//         assign \/@1$is_sra = CPU_is_sra_a1;
+//         wire  \/@1$is_srai ;
+//         assign \/@1$is_srai = CPU_is_srai_a1;
+//         wire  \/@1$is_srl ;
+//         assign \/@1$is_srl = CPU_is_srl_a1;
+//         wire  \/@1$is_srli ;
+//         assign \/@1$is_srli = CPU_is_srli_a1;
+//         wire  \/@1$is_sub ;
+//         assign \/@1$is_sub = CPU_is_sub_a1;
+//         wire  \/@1$is_sw ;
+//         assign \/@1$is_sw = CPU_is_sw_a1;
+//         wire  \/@1$is_u_instr ;
+//         assign \/@1$is_u_instr = CPU_is_u_instr_a1;
+//         wire  \/@1$is_xor ;
+//         assign \/@1$is_xor = CPU_is_xor_a1;
+//         wire  \/@1$is_xori ;
+//         assign \/@1$is_xori = CPU_is_xori_a1;
+//         wire [31:0] \/@3$jalr_tgt_pc ;
+//         assign \/@3$jalr_tgt_pc = CPU_jalr_tgt_pc_a3;
+//         wire [31:0] \/@5$ld_data ;
+//         assign \/@5$ld_data = CPU_ld_data_a5;
+//         wire [6:0] \/@1$opcode ;
+//         assign \/@1$opcode = CPU_opcode_a1;
+//         wire [31:0] \/@0$pc ;
+//         assign \/@0$pc = CPU_pc_a0;
+//         wire [4:0] \/?$rd_valid@1$rd ;
+//         assign \/?$rd_valid@1$rd = CPU_rd_a1;
+//         wire  \/@1$rd_valid ;
+//         assign \/@1$rd_valid = CPU_rd_valid_a1;
+//         wire  \/@0$reset ;
+//         assign \/@0$reset = CPU_reset_a0;
+//         wire [31:0] \/@3$result ;
+//         assign \/@3$result = CPU_result_a3;
+//         wire [31:0] \/?$rf_rd_en1@2$rf_rd_data1 ;
+//         assign \/?$rf_rd_en1@2$rf_rd_data1 = CPU_rf_rd_data1_a2;
+//         wire [31:0] \/?$rf_rd_en2@2$rf_rd_data2 ;
+//         assign \/?$rf_rd_en2@2$rf_rd_data2 = CPU_rf_rd_data2_a2;
+//         wire  \/@2$rf_rd_en1 ;
+//         assign \/@2$rf_rd_en1 = CPU_rf_rd_en1_a2;
+//         wire  \/@2$rf_rd_en2 ;
+//         assign \/@2$rf_rd_en2 = CPU_rf_rd_en2_a2;
+//         wire [4:0] \/@2$rf_rd_index1 ;
+//         assign \/@2$rf_rd_index1 = CPU_rf_rd_index1_a2;
+//         wire [4:0] \/@2$rf_rd_index2 ;
+//         assign \/@2$rf_rd_index2 = CPU_rf_rd_index2_a2;
+//         wire [31:0] \/@3$rf_wr_data ;
+//         assign \/@3$rf_wr_data = CPU_rf_wr_data_a3;
+//         wire  \/@3$rf_wr_en ;
+//         assign \/@3$rf_wr_en = CPU_rf_wr_en_a3;
+//         wire [4:0] \/@3$rf_wr_index ;
+//         assign \/@3$rf_wr_index = CPU_rf_wr_index_a3;
+//         wire [4:0] \/?$rs1_valid@1$rs1 ;
+//         assign \/?$rs1_valid@1$rs1 = CPU_rs1_a1;
+//         wire  \/@1$rs1_valid ;
+//         assign \/@1$rs1_valid = CPU_rs1_valid_a1;
+//         wire [4:0] \/?$rs2_valid@1$rs2 ;
+//         assign \/?$rs2_valid@1$rs2 = CPU_rs2_a1;
+//         wire  \/@1$rs2_valid ;
+//         assign \/@1$rs2_valid = CPU_rs2_valid_a1;
+//         wire [31:0] \/@3$sltiu_rslt ;
+//         assign \/@3$sltiu_rslt = CPU_sltiu_rslt_a3;
+//         wire [31:0] \/@3$sltu_rslt ;
+//         assign \/@3$sltu_rslt = CPU_sltu_rslt_a3;
+//         wire [31:0] \/@2$src1_value ;
+//         assign \/@2$src1_value = CPU_src1_value_a2;
+//         wire [31:0] \/@2$src2_value ;
+//         assign \/@2$src2_value = CPU_src2_value_a2;
+//         wire  \/@3$taken_br ;
+//         assign \/@3$taken_br = CPU_taken_br_a3;
+//         wire  \/@3$valid ;
+//         assign \/@3$valid = CPU_valid_a3;
+//         wire  \/@3$valid_jump ;
+//         assign \/@3$valid_jump = CPU_valid_jump_a3;
+//         wire  \/@3$valid_load ;
+//         assign \/@3$valid_load = CPU_valid_load_a3;
+//         wire  \/@3$valid_taken_br ;
+//         assign \/@3$valid_taken_br = CPU_valid_taken_br_a3;
+//
+//         //
+//         // Scope: /dmem[15:0]
+//         //
+//         for (dmem = 0; dmem <= 15; dmem=dmem+1) begin : \/dmem 
+//            wire [31:0] \//@4$value ;
+//            assign \//@4$value = CPU_Dmem_value_a4[dmem];
+//            wire  \//@4$wr ;
+//            assign \//@4$wr = L1_CPU_Dmem[dmem].L1_wr_a4;
+//         end
+//
+//         //
+//         // Scope: /imem[11:0]
+//         //
+//         for (imem = 0; imem <= 11; imem=imem+1) begin : \/imem 
+//            wire [31:0] \//@1$instr ;
+//            assign \//@1$instr = CPU_Imem_instr_a1[imem];
+//         end
+//
+//         //
+//         // Scope: /xreg[31:0]
+//         //
+//         for (xreg = 0; xreg <= 31; xreg=xreg+1) begin : \/xreg 
+//            wire [31:0] \//@3$value ;
+//            assign \//@3$value = CPU_Xreg_value_a3[xreg];
+//            wire  \//@3$wr ;
+//            assign \//@3$wr = L1_CPU_Xreg[xreg].L1_wr_a3;
+//         end
+//      end
+//
+//
+//   end
+//
+//endgenerate
 
 // ---------- Generated Code Ends ----------
 //_\TLV
@@ -1163,10 +1163,9 @@ endgenerate
       //_\source /raw.githubusercontent.com/arunkpv/vsdhdp/main/code/riscv/verilog/include/riscvshelllib.tlv 20   // Instantiated from top.tlv, 321 as: m4+imem(@1)
          // Instruction Memory containing program defined by m4_asm(...) instantiations.
          //_@1
-            
             /*SV_plus*/
                // The program in an instruction memory.
-               wire [31:0] instrs [0:12-1];
+               (* keep *) wire [31:0] instrs [0:12-1];
                assign instrs[0] = {7'b0000000, 5'd0, 5'd0, 3'b000, 5'd10, 7'b0110011};
                assign instrs[1] = {7'b0000000, 5'd0, 5'd0, 3'b000, 5'd15, 7'b0110011};
                assign instrs[2] = {7'b0000000, 5'd0, 5'd0, 3'b000, 5'd14, 7'b0110011};
@@ -1179,7 +1178,7 @@ endgenerate
                assign instrs[9] = {7'b0000000, 5'd10, 5'd0, 3'b010, 5'b00100, 7'b0100011};
                assign instrs[10] = {12'b00100, 5'd0, 3'b010, 5'd15, 7'b0000011};
                assign instrs[11] = {1'b1, 10'b1111101010, 1'b1, 8'b11111111, 5'd7, 7'b1101111};
-               
+            
             generate for (imem = 0; imem <= 11; imem=imem+1) begin : L1_CPU_Imem //_/imem
                assign CPU_Imem_instr_a1[imem][31:0] = instrs[imem];
             end endgenerate
