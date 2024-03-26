@@ -29,27 +29,27 @@ genvar dmem, imem, xreg;
 //
 
 // For |cpu$br_tgt_pc.
-wire [31:0] CPU_br_tgt_pc_a2;
+(* keep *) wire [31:0] CPU_br_tgt_pc_a2;
 reg  [31:0] CPU_br_tgt_pc_a3;
 
 // For |cpu$dec_bits.
 wire [10:0] CPU_dec_bits_a1;
 
 // For |cpu$dmem_addr.
-wire [3:0] CPU_dmem_addr_a4;
+(* keep *) wire [3:0] CPU_dmem_addr_a4;
 
 // For |cpu$dmem_rd_data.
-wire [31:0] CPU_dmem_rd_data_a4;
+(* keep *) wire [31:0] CPU_dmem_rd_data_a4;
 reg  [31:0] CPU_dmem_rd_data_a5;
 
 // For |cpu$dmem_rd_en.
-wire CPU_dmem_rd_en_a4;
+(* keep *) wire CPU_dmem_rd_en_a4;
 
 // For |cpu$dmem_wr_data.
-wire [31:0] CPU_dmem_wr_data_a4;
+(* keep *) wire [31:0] CPU_dmem_wr_data_a4;
 
 // For |cpu$dmem_wr_en.
-wire CPU_dmem_wr_en_a4;
+(* keep *) wire CPU_dmem_wr_en_a4;
 
 // For |cpu$funct3.
 wire [2:0] CPU_funct3_a1;
@@ -64,18 +64,18 @@ wire [6:0] CPU_funct7_a1;
 wire CPU_funct7_valid_a1;
 
 // For |cpu$imem_rd_addr.
-wire [4-1:0] CPU_imem_rd_addr_a0;
+(* keep *) wire [4-1:0] CPU_imem_rd_addr_a0;
 reg  [4-1:0] CPU_imem_rd_addr_a1;
 
 // For |cpu$imem_rd_data.
 (* keep *) wire [31:0] CPU_imem_rd_data_a1;
 
 // For |cpu$imem_rd_en.
-wire CPU_imem_rd_en_a0;
+(* keep *) wire CPU_imem_rd_en_a0;
 reg  CPU_imem_rd_en_a1;
 
 // For |cpu$imm.
-wire [31:0] CPU_imm_a1;
+(* keep *) wire [31:0] CPU_imm_a1;
 reg  [31:0] CPU_imm_a2,
             CPU_imm_a3;
 
@@ -113,7 +113,7 @@ reg  CPU_is_auipc_a2,
      CPU_is_auipc_a3;
 
 // For |cpu$is_b_instr.
-wire CPU_is_b_instr_a1;
+(* keep *) wire CPU_is_b_instr_a1;
 
 // For |cpu$is_beq.
 wire CPU_is_beq_a1;
@@ -146,10 +146,10 @@ reg  CPU_is_bne_a2,
      CPU_is_bne_a3;
 
 // For |cpu$is_i_instr.
-wire CPU_is_i_instr_a1;
+(* keep *) wire CPU_is_i_instr_a1;
 
 // For |cpu$is_j_instr.
-wire CPU_is_j_instr_a1;
+(* keep *) wire CPU_is_j_instr_a1;
 
 // For |cpu$is_jal.
 wire CPU_is_jal_a1;
@@ -162,12 +162,12 @@ reg  CPU_is_jalr_a2,
      CPU_is_jalr_a3;
 
 // For |cpu$is_jump.
-wire CPU_is_jump_a1;
+(* keep *) wire CPU_is_jump_a1;
 reg  CPU_is_jump_a2,
      CPU_is_jump_a3;
 
 // For |cpu$is_load.
-wire CPU_is_load_a1;
+(* keep *) wire CPU_is_load_a1;
 reg  CPU_is_load_a2,
      CPU_is_load_a3;
 
@@ -187,10 +187,10 @@ reg  CPU_is_ori_a2,
      CPU_is_ori_a3;
 
 // For |cpu$is_r_instr.
-wire CPU_is_r_instr_a1;
+(* keep *) wire CPU_is_r_instr_a1;
 
 // For |cpu$is_s_instr.
-wire CPU_is_s_instr_a1;
+(* keep *) wire CPU_is_s_instr_a1;
 reg  CPU_is_s_instr_a2,
      CPU_is_s_instr_a3,
      CPU_is_s_instr_a4;
@@ -260,7 +260,7 @@ reg  CPU_is_sub_a2,
 wire CPU_is_sw_a1;
 
 // For |cpu$is_u_instr.
-wire CPU_is_u_instr_a1;
+(* keep *) wire CPU_is_u_instr_a1;
 
 // For |cpu$is_xor.
 wire CPU_is_xor_a1;
@@ -276,13 +276,13 @@ reg  CPU_is_xori_a2,
 wire [31:0] CPU_jalr_tgt_pc_a3;
 
 // For |cpu$ld_data.
-wire [31:0] CPU_ld_data_a5;
+(* keep *) wire [31:0] CPU_ld_data_a5;
 
 // For |cpu$opcode.
-wire [6:0] CPU_opcode_a1;
+(* keep *) wire [6:0] CPU_opcode_a1;
 
 // For |cpu$pc.
-wire [31:0] CPU_pc_a0;
+(* keep *) wire [31:0] CPU_pc_a0;
 reg  [31:0] CPU_pc_a1,
             CPU_pc_a2,
             CPU_pc_a3;
@@ -307,50 +307,50 @@ reg  CPU_reset_a1,
      CPU_reset_a4;
 
 // For |cpu$result.
-wire [31:0] CPU_result_a3;
+(* keep *) wire [31:0] CPU_result_a3;
 reg  [5:2] CPU_result_a4;
 
 // For |cpu$rf_rd_data1.
-wire [31:0] CPU_rf_rd_data1_a2;
+(* keep *) wire [31:0] CPU_rf_rd_data1_a2;
 
 // For |cpu$rf_rd_data2.
-wire [31:0] CPU_rf_rd_data2_a2;
+(* keep *) wire [31:0] CPU_rf_rd_data2_a2;
 
 // For |cpu$rf_rd_en1.
-wire CPU_rf_rd_en1_a2;
+(* keep *) wire CPU_rf_rd_en1_a2;
 
 // For |cpu$rf_rd_en2.
-wire CPU_rf_rd_en2_a2;
+(* keep *) wire CPU_rf_rd_en2_a2;
 
 // For |cpu$rf_rd_index1.
-wire [4:0] CPU_rf_rd_index1_a2;
+(* keep *) wire [4:0] CPU_rf_rd_index1_a2;
 
 // For |cpu$rf_rd_index2.
-wire [4:0] CPU_rf_rd_index2_a2;
+(* keep *) wire [4:0] CPU_rf_rd_index2_a2;
 
 // For |cpu$rf_wr_data.
-wire [31:0] CPU_rf_wr_data_a3;
+(* keep *) wire [31:0] CPU_rf_wr_data_a3;
 
 // For |cpu$rf_wr_en.
-wire CPU_rf_wr_en_a3;
+(* keep *) wire CPU_rf_wr_en_a3;
 
 // For |cpu$rf_wr_index.
-wire [4:0] CPU_rf_wr_index_a3;
+(* keep *) wire [4:0] CPU_rf_wr_index_a3;
 
 // For |cpu$rs1.
-wire [4:0] CPU_rs1_a1;
+(* keep *) wire [4:0] CPU_rs1_a1;
 reg  [4:0] CPU_rs1_a2;
 
 // For |cpu$rs1_valid.
-wire CPU_rs1_valid_a1;
+(* keep *) wire CPU_rs1_valid_a1;
 reg  CPU_rs1_valid_a2;
 
 // For |cpu$rs2.
-wire [4:0] CPU_rs2_a1;
+(* keep *) wire [4:0] CPU_rs2_a1;
 reg  [4:0] CPU_rs2_a2;
 
 // For |cpu$rs2_valid.
-wire CPU_rs2_valid_a1;
+(* keep *) wire CPU_rs2_valid_a1;
 reg  CPU_rs2_valid_a2;
 
 // For |cpu$sltiu_rslt.
@@ -360,11 +360,11 @@ wire [31:0] CPU_sltiu_rslt_a3;
 wire [31:0] CPU_sltu_rslt_a3;
 
 // For |cpu$src1_value.
-wire [31:0] CPU_src1_value_a2;
+(* keep *) wire [31:0] CPU_src1_value_a2;
 reg  [31:0] CPU_src1_value_a3;
 
 // For |cpu$src2_value.
-wire [31:0] CPU_src2_value_a2;
+(* keep *) wire [31:0] CPU_src2_value_a2;
 reg  [31:0] CPU_src2_value_a3,
             CPU_src2_value_a4;
 
@@ -372,26 +372,26 @@ reg  [31:0] CPU_src2_value_a3,
 wire CPU_taken_br_a3;
 
 // For |cpu$valid.
-wire CPU_valid_a3;
+(* keep *) wire CPU_valid_a3;
 reg  CPU_valid_a4;
 
 // For |cpu$valid_jump.
-wire CPU_valid_jump_a3;
+(* keep *) wire CPU_valid_jump_a3;
 reg  CPU_valid_jump_a4,
      CPU_valid_jump_a5;
 
 // For |cpu$valid_load.
-wire CPU_valid_load_a3;
+(* keep *) wire CPU_valid_load_a3;
 reg  CPU_valid_load_a4,
      CPU_valid_load_a5;
 
 // For |cpu$valid_taken_br.
-wire CPU_valid_taken_br_a3;
+(* keep *) wire CPU_valid_taken_br_a3;
 reg  CPU_valid_taken_br_a4,
      CPU_valid_taken_br_a5;
 
 // For |cpu/dmem$value.
-wire [31:0] CPU_Dmem_value_a4 [15:0];
+(* keep *) wire [31:0] CPU_Dmem_value_a4 [15:0];
 reg  [31:0] CPU_Dmem_value_a5 [15:0];
 
 // For |cpu/imem$instr.
