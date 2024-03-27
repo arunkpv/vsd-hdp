@@ -1,14 +1,13 @@
 [Back to TOC](../README.md)  
 [Prev: Day9](Day9.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 11](Day_11.md)  
 _________________________________________________________________________________________________________  
-# Day 10
-## GLS
+# Day 10 - GLS
 
   * The functional verification of the design has already been completed successfully in the Makerchip IDE itself.
   * To perform GLS of the implementation, we need to first convert the TL-Verilog code into synthesizable verilog and then perform the synthesis using Yosys.
 
 
-### 10.1 Conversion of TL-Verilog code to Verilog using Sandpiper
+## 10.1 Conversion of TL-Verilog code to Verilog using Sandpiper
 SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert TL-Verilog code to Verilog or SystemVerilog code. SandPiper-SaaS provides a command-line interface to run the SandPiper TL-Verilog compiler as a microservice in the cloud.  
 
   * Commonly used Sandpiper arguments:
@@ -32,7 +31,7 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
 
   * The Sandpiper arguments could be provided either in the source file as inline arguments or in the terminal while invoking sandpiper-saas.
 
-##### a) Providing the SandPiper arguments in the source file
+### a) Providing the SandPiper arguments in the source file
   * The first line of a TL-X file, called the **"File Format Line"**, must identify the TL-X File Format Version and HDL Language, as well as a URL to the language specification.  
     For example, for a TL-Verilog source file using m4 macro pre-processing language, the first line will look like as follows:  
     `\m4_TLV_version 1d: tl-x.org`
@@ -49,7 +48,7 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
     **NOTE:** Based on my observation, the argument `--iArgs` needs to be provided in the terminal itself for it to take effect for some reason.
     <br>
     
-##### b) Providing the SandPiper arguments in the command-line/ shell
+### b) Providing the SandPiper arguments in the command-line/ shell
   * The first line in the source file - i.e., the "File Format Line" can be kept as it is and all the required arguments to sandpiper can be provided in the terminal.  
     The first line will remain unchanged in the standard format as follows: `\m4_TLV_version 1d: tl-x.org`
     <br>
@@ -113,7 +112,7 @@ Additional Reference Links:
 
 <br>
     
-### 10.2 GLS of the implemented RISC-V CPU Core
+## 10.2 GLS of the implemented RISC-V CPU Core
 The TL-Verilog code of the RISC-V CPU core implementation was successfully converted to Verilog using Sandpiper-SaaS.  
   * To ensure that the flow is clean, I first tried GLS for a simple counter circuit:
     1) TL-V code of counter was verified in Makerchip IDE
