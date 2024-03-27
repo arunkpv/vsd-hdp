@@ -110,7 +110,7 @@ Defines how the output changes for different types of transitions on the input.
     * Min path: most probably due to the overly conservative/ pessimistic values of the clock source latencies used.
     * Max path: due to the conservative values of clock source latencies used and undefined fanout constraints. (Inverter instance `_10539_` of type **sky130_fd_sc_hd__clkinv_1** is having a fanout of 932)
 
-**UPDATE:**
+**<ins>UPDATE:</ins>**
   * The synthesis script was updated based on inputs from [**Yosys issue #4266**](https://github.com/YosysHQ/yosys/issues/4266).
     * The DFF with constant inputs have been taken care of.
     * The STA analysis of the new netlist is given below:
