@@ -1,0 +1,123 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Tue Mar 26 22:12:13 2024
+[*]
+[dumpfile] "/home/arun/vsd-hdp/edalize_sandpiper_example/top/postsynth_sim.vcd"
+[dumpfile_mtime] "Tue Mar 26 21:55:04 2024"
+[dumpfile_size] 6506731
+[savefile] "/home/arun/vsd-hdp/edalize_sandpiper_example/top/post_synth_with_more_signals.gtkw"
+[timestart] 0
+[size] 1920 869
+[pos] -96 -96
+*-15.779510 1331000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_riscv_core.
+[sst_width] 233
+[signals_width] 303
+[sst_expanded] 1
+[sst_vpaned_height] 244
+@200
+-Top Module Input/Outputs
+@28
+tb_riscv_core.clk
+tb_riscv_core.reset
+@23
+tb_riscv_core.out[9:0]
+@200
+-Instruction Fetch:
+@22
+tb_riscv_core.uut.CPU_pc_a0[31:0]
+@28
+tb_riscv_core.uut.CPU_imem_rd_en_a0
+@22
+tb_riscv_core.uut.CPU_imem_rd_addr_a0[3:0]
+@c00022
+tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+@28
+(0)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(1)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(2)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(3)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(4)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(5)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(6)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(7)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(8)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(9)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(10)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(11)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(12)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(13)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(14)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(15)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(16)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(17)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(18)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(19)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(20)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(21)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(22)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(23)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(24)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(25)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(26)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(27)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(28)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(29)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(30)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+(31)tb_riscv_core.uut.CPU_imem_rd_data_a1[31:0]
+@1401200
+-group_end
+@22
+tb_riscv_core.uut.CPU_instr_a1[31:0]
+@200
+-Decode:
+@22
+tb_riscv_core.uut.CPU_opcode_a1[6:0]
+tb_riscv_core.uut.CPU_imm_a1[31:0]
+@28
+tb_riscv_core.uut.CPU_is_r_instr_a1
+tb_riscv_core.uut.CPU_is_i_instr_a1
+tb_riscv_core.uut.CPU_is_s_instr_a1
+tb_riscv_core.uut.CPU_is_b_instr_a1
+tb_riscv_core.uut.CPU_is_u_instr_a1
+tb_riscv_core.uut.CPU_is_j_instr_a1
+tb_riscv_core.uut.CPU_is_load_a1
+tb_riscv_core.uut.CPU_is_jump_a1
+@200
+-Register File Read:
+@28
+tb_riscv_core.uut.CPU_rf_rd_en1_a2
+@22
+tb_riscv_core.uut.CPU_rf_rd_index1_a2[4:0]
+tb_riscv_core.uut.CPU_rf_rd_data1_a2[31:0]
+@28
+tb_riscv_core.uut.CPU_rf_rd_en2_a2
+@22
+tb_riscv_core.uut.CPU_rf_rd_index2_a2[4:0]
+tb_riscv_core.uut.CPU_rf_rd_data2_a2[31:0]
+@200
+-Execute:
+@22
+tb_riscv_core.uut.CPU_br_tgt_pc_a2[31:0]
+tb_riscv_core.uut.CPU_src1_value_a3[31:0]
+tb_riscv_core.uut.CPU_src2_value_a3[31:0]
+tb_riscv_core.uut.CPU_result_a3[31:0]
+@200
+-Register File Write:
+@28
+tb_riscv_core.uut.CPU_rf_wr_en_a3
+@22
+tb_riscv_core.uut.CPU_rf_wr_index_a3[4:0]
+tb_riscv_core.uut.CPU_rf_wr_data_a3[31:0]
+@200
+-DMEM Read/ Write:
+@22
+tb_riscv_core.uut.CPU_dmem_addr_a4[3:0]
+@28
+tb_riscv_core.uut.CPU_dmem_rd_en_a4
+tb_riscv_core.uut.CPU_dmem_wr_en_a4
+@22
+tb_riscv_core.uut.CPU_dmem_wr_data_a4[31:0]
+tb_riscv_core.uut.CPU_ld_data_a5[31:0]
+[pattern_trace] 1
+[pattern_trace] 0
