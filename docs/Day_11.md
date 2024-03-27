@@ -88,11 +88,11 @@ Defines how the output changes for different types of transitions on the input.
       * `check_setup`: Perform sanity checks on the design
       * `report_checks`: Report paths in the desing based on the additional arguments/ filters provided
     
-| **OpenSTA commands to do STA** <br>  ![D11_OpenSTA_sta_commands](/docs/images/D11_OpenSTA_sta_commands.png) |
-|:---|
+  | **OpenSTA commands to do STA** <br>  ![D11_OpenSTA_sta_commands](/docs/images/D11_OpenSTA_sta_commands.png) |
+  |:---|
 
-| **Min path**<br>  ![D11_OpenSTA_min_delay](/docs/images/D11_OpenSTA_min_delay.png) | **Max path**<br>  ![D11_OpenSTA_max_delay](/docs/images/D11_OpenSTA_max_delay.png) |
-|:---:|:---:|
+  | **(OLD) Min path**<br>  ![D11_OpenSTA_min_delay](/docs/images/D11_OpenSTA_min_delay.png) | (OLD) **Max path**<br>  ![D11_OpenSTA_max_delay](/docs/images/D11_OpenSTA_max_delay.png) |
+  |:---:|:---:|
 
 
   * As can be seen from the OpenSTA log, the design has 3 unconstrained endpoints.
@@ -109,6 +109,14 @@ Defines how the output changes for different types of transitions on the input.
   * The design also fails to meet the target timing requirements:
     * Min path: most probably due to the overly conservative/ pessimistic values of the clock source latencies used.
     * Max path: due to the conservative values of clock source latencies used and undefined fanout constraints. (Inverter instance `_10539_` of type **sky130_fd_sc_hd__clkinv_1** is having a fanout of 932)
+
+**UPDATE:**
+  * The synthesis script was updated based on inputs from [**Yosys issue #4266**](https://github.com/YosysHQ/yosys/issues/4266).
+    * The DFF with constant inputs have been taken care of.
+    * The STA analysis of the new netlist is given below:
+
+  | **Min path**<br>  ![D11_OpenSTA_min_delay](/docs/images/D11_OpenSTA_min_delay_New.png) | **Max path**<br>  ![D11_OpenSTA_max_delay](/docs/images/D11_OpenSTA_max_delay_New.png) |
+  |:---:|:---:|
 
 <br>
 
