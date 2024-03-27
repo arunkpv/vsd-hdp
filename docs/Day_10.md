@@ -8,7 +8,7 @@ ________________________________________________________________________________
   * To perform GLS of the implementation, we need to first convert the TL-Verilog code into synthesizable verilog and then perform the synthesis using Yosys.
 
 
-### Conversion of TL-Verilog code to Verilog using Sandpiper
+### 10.1 Conversion of TL-Verilog code to Verilog using Sandpiper
 SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert TL-Verilog code to Verilog or SystemVerilog code. SandPiper-SaaS provides a command-line interface to run the SandPiper TL-Verilog compiler as a microservice in the cloud.  
 
   * Commonly used Sandpiper arguments:
@@ -113,7 +113,7 @@ Additional Reference Links:
 
 <br>
     
-### GLS of the implemented RISC-V CPU Core
+### 10.2 GLS of the implemented RISC-V CPU Core
 The TL-Verilog code of the RISC-V CPU core implementation was successfully converted to Verilog using Sandpiper-SaaS.  
   * To ensure that the flow is clean, I first tried GLS for a simple counter circuit:
     1) TL-V code of counter was verified in Makerchip IDE
