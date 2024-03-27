@@ -276,7 +276,7 @@ ________________________________________________________________________________
 
  * [**(OLD) Generated netlist**](../code/riscv/verilog/riscv_pipelined_Final_netlist_OLD.v)
   
- * **(OLD) Statistics of synthesis output:**
+ * **<details><summary>(OLD) Statistics of synthesis output:</summary>**
     ```
     === riscv_core ===
     
@@ -334,6 +334,7 @@ ________________________________________________________________________________
          sky130_fd_sc_hd__xnor2_1       25
          sky130_fd_sc_hd__xor2_1        48
     ```
+    </details>
 
   * **(OLD) Comparison of Pre-synth and Post-synth simulation results**
     * The top module level input/ outputs are identical in both the Pre-Synth and Post-Synth simulation results.
