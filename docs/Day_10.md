@@ -141,8 +141,120 @@ iverilog -DFUNCTIONAL -DUNIT_DELAY=#1 ./lib/verilog_model/primitives.v ./lib/ver
 ./a.out
 gtkwave postsynth_sim.vcd &
 ```
-  
+
   * [**Yosys synthesis script**](../code/riscv/scripts/yosys.ys)
+    * The synthesis script was updated at a later point in time, based on the inputs obtained from the [Yosys issue raised for a problem found in post-synth STA](https://github.com/YosysHQ/yosys/issues/4266#).
+      * (* keep *) attributes were added to some of the wire declarations to prevent them from getting optimized out by Yosys, abc during synthesis.
+      * To avoid retaining DFF with constant inputs, the synthesis script was updated with two passes of abc.
+     
+    ```shell
+    read_liberty -lib ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+    read_verilog ./riscv_pipelined_Final2.v
+    
+    hierarchy -check -top riscv_core
+    synth -top riscv_core -flatten
+    opt
+    stat
+    
+    abc
+    opt
+    opt_clean -purge
+    stat
+    
+    dfflibmap -liberty ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+    
+    abc -liberty ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime,{D};strash;dch,-f;map,-M,1,{D}
+    setundef -undriven -init -zero
+    opt
+    opt_clean -purge
+    rename -enumerate
+    stat
+    
+    write_verilog -noattr ./synth/riscv_pipelined_Final_netlist.v
+    ```
+
+ * [**Generated netlist**](../code/riscv/verilog/riscv_pipelined_Final_netlist.v)
+  
+ * **Statistics of synthesis output:**
+    ```
+    === riscv_core ===
+    
+       Number of wires:               6845
+       Number of wire bits:          10386
+       Number of public wires:        6845
+       Number of public wire bits:   10386
+       Number of memories:               0
+       Number of memory bits:            0
+       Number of processes:              0
+       Number of cells:               9446
+         sky130_fd_sc_hd__a2111o_1       5
+         sky130_fd_sc_hd__a2111oi_0     21
+         sky130_fd_sc_hd__a211oi_1      11
+         sky130_fd_sc_hd__a21boi_0       1
+         sky130_fd_sc_hd__a21oi_1     1886
+         sky130_fd_sc_hd__a221oi_1     281
+         sky130_fd_sc_hd__a22o_2        30
+         sky130_fd_sc_hd__a22oi_1      307
+         sky130_fd_sc_hd__a31o_2         1
+         sky130_fd_sc_hd__a31oi_1      259
+         sky130_fd_sc_hd__a32o_1        23
+         sky130_fd_sc_hd__a32oi_1        2
+         sky130_fd_sc_hd__a41oi_1        1
+         sky130_fd_sc_hd__and2_2         6
+         sky130_fd_sc_hd__clkinv_1     847
+         sky130_fd_sc_hd__dfxtp_1     1907
+         sky130_fd_sc_hd__maj3_1         2
+         sky130_fd_sc_hd__nand2_1     1122
+         sky130_fd_sc_hd__nand3_1      115
+         sky130_fd_sc_hd__nand3b_1       7
+         sky130_fd_sc_hd__nand4_1      141
+         sky130_fd_sc_hd__nor2_1       546
+         sky130_fd_sc_hd__nor3_1        45
+         sky130_fd_sc_hd__nor3b_1        1
+         sky130_fd_sc_hd__nor4_1        14
+         sky130_fd_sc_hd__nor4b_1        1
+         sky130_fd_sc_hd__o2111a_1       3
+         sky130_fd_sc_hd__o2111ai_1      6
+         sky130_fd_sc_hd__o211ai_1      62
+         sky130_fd_sc_hd__o21a_1         5
+         sky130_fd_sc_hd__o21ai_0     1480
+         sky130_fd_sc_hd__o21bai_1       7
+         sky130_fd_sc_hd__o221ai_1       8
+         sky130_fd_sc_hd__o22ai_1      178
+         sky130_fd_sc_hd__o31ai_1        5
+         sky130_fd_sc_hd__o32ai_1        1
+         sky130_fd_sc_hd__o41ai_1        4
+         sky130_fd_sc_hd__or2_2          5
+         sky130_fd_sc_hd__or3_2          6
+         sky130_fd_sc_hd__or4_2         12
+         sky130_fd_sc_hd__xnor2_1       22
+         sky130_fd_sc_hd__xor2_1        60
+    ```
+
+  * **Comparison of Pre-synth and Post-synth simulation results**
+    * The top module level input/ outputs are identical in both the Pre-Synth and Post-Synth simulation results.
+    * The internal signals of relevance are also identical now that they are not optimized out due to using the (* keep *) attribute.
+      <br>
+
+    |  | _**Comparison of Top Module Input, Outputs:**_ |
+    |:---:|:---|
+    | Pre-Synth | ![D10_PreSynth_Simlation_Final_Output](/docs/images/D10_PreSynth_Simlation_Final_Output.png) |
+    | Post-Synth | ![D10_PostSynth_Simlation_Final_Output](/docs/images/D10_PostSynth_Simlation_Final_Output.png) |
+
+    |  | _**Simulation time: Reset De-assertion**_ |
+    |:---:|:---|
+    | Pre-Synth | ![D10_PreSynth_Simlation_Reset_Deassertion_Zoomed](/docs/images/D10_PreSynth_Simlation_Reset_Deassertion_Zoomed.png) |
+    | Post-Synth | ![D10_PostSynth_Simlation_Reset_Deassertion_Zoomed](/docs/images/D10_PostSynth_Simlation_Reset_Deassertion_Zoomed.png) |
+
+    |  | _**Simulation time: Test Program Final Output**_ |
+    |:---:|:---|
+    | Pre-Synth | ![D10_PreSynth_Simlation_Final_Output_Zoomed.png](/docs/images/D10_PreSynth_Simlation_Final_Output_Zoomed.png) |
+    | Post-Synth | ![D10_PostSynth_Simlation_Final_Output_Zoomed.png](/docs/images/D10_PostSynth_Simlation_Final_Output_Zoomed.png) |
+
+_________________________________________________________________________________________________________  
+_________________________________________________________________________________________________________  
+
+  * [**(OLD) Yosys synthesis script**](../code/riscv/scripts/yosys_OLD.ys)
     ```shell
     read_liberty -lib ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib
     read_verilog ./riscv_pipelined_Final.v
@@ -163,9 +275,9 @@ gtkwave postsynth_sim.vcd &
     write_verilog -noattr ./synth/riscv_pipelined_Final_netlist.v
     ```
 
- * [**Generated netlist**](../code/riscv/verilog/riscv_pipelined_Final_netlist.v)
+ * [**(OLD) Generated netlist**](../code/riscv/verilog/riscv_pipelined_Final_netlist_OLD.v)
   
- * **Statistics of synthesis output:**
+ * **(OLD) Statistics of synthesis output:**
     ```
     === riscv_core ===
     
@@ -224,23 +336,23 @@ gtkwave postsynth_sim.vcd &
          sky130_fd_sc_hd__xor2_1        48
     ```
 
-  * **Comparison of Pre-synth and Post-synth simulation results**  
-    The top module level input/ outputs are identical in both the Pre-Synth and Post-Synth simulation results.
-    
-    _**Comparison of Top Module Input, Outputs:**_
-    |**Pre-Synth simulation**<br>  ![D10_GLS_PreSynth](/docs/images/D10_GLS_PreSynth.png)|
-    |-|
-    |**Post-Synth simulation**<br>  ![D10_GLS_PostSynth](/docs/images/D10_GLS_PostSynth.png)|
-  
-  * However, on a closer look, due to the fact that we are hardcoding the test program in the RTL, the synthesis tools optimizes out some of the constant signals that are _**unused**_.  
-    Hence, the values of all of the interal signals may not necessarily match between Pre-Synth and Post-Synth simulation.
-      
-    For example, the signal **CPU_imem_rd_data_a1** is different in the two due to the fact that the instructions to be executed are hardcoded as constants and not all of the bits in the 32-bit Instruction are necessary for decoding.  
-    
-    _**Comparison of some Internal Signals:**_
-    |**Pre-Synth simulation**<br>  ![D10_GLS_PreSynth](/docs/images/D10_GLS_PreSynth_Zoomed.png)|
-    |-|
-    |**Post-Synth simulation**<br>  ![D10_GLS_PostSynth](/docs/images/D10_GLS_PostSynth_Zoomed.png)|
+  * **(OLD) Comparison of Pre-synth and Post-synth simulation results**
+    * The top module level input/ outputs are identical in both the Pre-Synth and Post-Synth simulation results.
+    * However, on a closer look, due to the fact that we are hardcoding the test program in the RTL, the synthesis tools optimizes out some of the constant signals that are _**unused**_.
+      Hence, the values of all of the interal signals may not necessarily match between Pre-Synth and Post-Synth simulation.  
+      <br>
+      For example, the signal **CPU_imem_rd_data_a1** is different in the two due to the fact that the instructions to be executed are hardcoded as constants and not all of the bits in the 32-bit Instruction are necessary for decoding.  
+      <br>
+
+    |  | _**(OLD) Comparison of Top Module Input, Outputs:**_ |
+    |:---:|:---:|
+    | Pre-Synth | ![D10_GLS_PreSynth](/docs/images/D10_GLS_PreSynth.png) |
+    | Post-Synth | ![D10_GLS_PostSynth](/docs/images/D10_GLS_PostSynth.png) |
+
+    |  | _**(OLD) Comparison of some Internal Signals:**_ |
+    |:---:|:---:|
+    | Pre-Synth | ![D10_GLS_PreSynth](/docs/images/D10_GLS_PreSynth_Zoomed.png) |
+    | Post-Synth | ![D10_GLS_PostSynth](/docs/images/D10_GLS_PostSynth_Zoomed.png) |
     
 _________________________________________________________________________________________________________  
 [Prev: Day9](Day9.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 11](Day_11.md)  
