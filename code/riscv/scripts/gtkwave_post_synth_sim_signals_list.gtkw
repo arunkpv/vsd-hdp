@@ -1,26 +1,26 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Tue Mar 26 22:12:13 2024
+[*] Thu Mar 28 00:39:13 2024
 [*]
 [dumpfile] "/home/arun/vsd-hdp/edalize_sandpiper_example/top/postsynth_sim.vcd"
-[dumpfile_mtime] "Tue Mar 26 21:55:04 2024"
-[dumpfile_size] 6506731
+[dumpfile_mtime] "Thu Mar 28 00:31:26 2024"
+[dumpfile_size] 10497208
 [savefile] "/home/arun/vsd-hdp/edalize_sandpiper_example/top/post_synth_with_more_signals.gtkw"
-[timestart] 0
+[timestart] 815300
 [size] 1920 869
 [pos] -96 -96
-*-15.779510 1331000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-15.779510 951000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb_riscv_core.
 [sst_width] 233
-[signals_width] 303
+[signals_width] 299
 [sst_expanded] 1
-[sst_vpaned_height] 244
+[sst_vpaned_height] 402
 @200
 -Top Module Input/Outputs
 @28
 tb_riscv_core.clk
 tb_riscv_core.reset
-@23
+@22
 tb_riscv_core.out[9:0]
 @200
 -Instruction Fetch:
@@ -72,7 +72,6 @@ tb_riscv_core.uut.CPU_instr_a1[31:0]
 @200
 -Decode:
 @22
-tb_riscv_core.uut.CPU_opcode_a1[6:0]
 tb_riscv_core.uut.CPU_imm_a1[31:0]
 @28
 tb_riscv_core.uut.CPU_is_r_instr_a1
@@ -97,6 +96,8 @@ tb_riscv_core.uut.CPU_rf_rd_index2_a2[4:0]
 tb_riscv_core.uut.CPU_rf_rd_data2_a2[31:0]
 @200
 -Execute:
+@28
+tb_riscv_core.uut.CPU_valid_a3
 @22
 tb_riscv_core.uut.CPU_br_tgt_pc_a2[31:0]
 tb_riscv_core.uut.CPU_src1_value_a3[31:0]
