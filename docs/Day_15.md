@@ -247,10 +247,24 @@ exit
 ## 15.4 Placement (Pre-CTS)
   * **Placement optimizations:**
     ```
-    Inserted 233 buffers in 70 nets.
-    Resized 9498 instances.
-    Inserted 513 tie sky130_fd_sc_hd__conb_1 instances.
-    Inserted 262 tie sky130_fd_sc_hd__conb_1 instances.
+    Reading design constraints file at '/openlane/scripts/base.sdc'…
+    [INFO]: Setting output delay to: 4.0
+    [INFO]: Setting input delay to: 4.0
+    [INFO]: Setting load to: 0.01765
+    [INFO]: Setting clock uncertainty to: 0.25
+    [INFO]: Setting clock transition to: 0.15
+    [INFO]: Setting timing derate to: 5.0 %
+    [INFO]: Setting RC values...
+    [INFO RSZ-0027] Inserted 1 input buffers.
+    [INFO RSZ-0028] Inserted 10 output buffers.
+    [INFO RSZ-0058] Using max wire length 8182um.
+    [INFO RSZ-0034] Found 56 slew violations.
+    [INFO RSZ-0035] Found 14 fanout violations.
+    [INFO RSZ-0036] Found 10 capacitance violations.
+    [INFO RSZ-0038] Inserted 233 buffers in 70 nets.
+    [INFO RSZ-0039] Resized 9498 instances.
+    [INFO RSZ-0042] Inserted 513 tie sky130_fd_sc_hd__conb_1 instances.
+    [INFO RSZ-0042] Inserted 262 tie sky130_fd_sc_hd__conb_1 instances.
     ```
   * **Design area**: `119232 u^2 36% utilization`
 
