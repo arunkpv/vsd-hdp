@@ -1,7 +1,7 @@
 [Back to TOC](../README.md)  
 [Prev: Day 14](Day_14.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 16](Day_16.md)  
 _________________________________________________________________________________________________________  
-# Day 15 - Post-placement STA analysis of your Design (RISC-V Myth Core)
+# Day 15 - Post-placement STA analysis of your Design (RISC-V Myth CPU Core)
 ## 15.1 OpenLANE Installation (latest stable version)
 For ease of installation, OpenLane uses Docker images, that include all the required applications, binaries and the flow scripts.  
 The [OpenLane Installation Documentation](https://openlane.readthedocs.io/en/latest/getting_started/installation/installation_ubuntu.html) page explains in detail the step to setup OpenLANE. A short summary of the necessary steps is given below:  
@@ -261,10 +261,12 @@ exit
 
 <br>
 
-|   |   |
-|:---:|:---:|
-| ![D15_riscv_core_synthesis_vs_post-placement_STA_wns_with_legend](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_wns_with_legend.png) | ![D15_riscv_core_synthesis_vs_post-placement_STA_tns_with_legend](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_tns_with_legend.png) |
-| ![D15_riscv_core_synthesis_vs_post-placement_STA_setup_slack_with_legend](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_setup_slack_with_legend.png) | ![D15_riscv_core_synthesis_vs_post-placement_STA_hold_slack_with_legend](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_hold_slack_with_legend.png) |
+|   |  
+|:---:|
+| ![D15_riscv_core_synthesis_vs_post-placement_STA_wns_with_legend](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_wns_with_legend.png) |
+| ![D15_riscv_core_synthesis_vs_post-placement_STA_tns_with_legend](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_tns_with_legend.png) |
+| ![D15_riscv_core_synthesis_vs_post-placement_STA_setup_slack_with_legend](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_setup_slack_with_legend.png) |
+| ![D15_riscv_core_synthesis_vs_post-placement_STA_hold_slack_with_legend](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_hold_slack_with_legend.png) |
 
 <br>
 
