@@ -254,7 +254,7 @@ exit
     ```
   * **Design area**: `119232 u^2 36% utilization`
 
-## 15.5 STA Comparison: Post-synthesis (Pre-CTS) vs. Post-Placement
+## 15.5 STA Comparison: Post-synthesis vs. Post-Placement (Pre-CTS)
 | Post-Synthesis | Post-Placement (Pre-CTS) |
 |:---:|:---:|
 | ![D15_riscv_core_post-synthesis_STA](/docs/images/D15_riscv_core_post-synthesis_STA.png) | ![D15_riscv_core_post-placement_STA](/docs/images/D15_riscv_core_post-placement_STA.png) |
