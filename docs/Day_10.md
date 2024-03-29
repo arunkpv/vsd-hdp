@@ -120,7 +120,8 @@ The TL-Verilog code of the RISC-V CPU core implementation was successfully conve
     3) Verify functionality using iverilog
     4) Perform synthesis using Ysosys
     5) Verify correctness by performing GLS using the synthesis output in iverilog
-  
+
+### Issues
   * All steps until (iv) are verified to be working fine, however, the GLS using the synthesis tool generated netlist is failing with all signals being "X".  
   
 This turned out to be due to known issues:  
@@ -141,6 +142,7 @@ iverilog -DFUNCTIONAL -DUNIT_DELAY=#1 ./lib/verilog_model/primitives.v ./lib/ver
 gtkwave postsynth_sim.vcd &
 ```
 
+### Results
   * [**Yosys synthesis script**](../code/riscv/scripts/yosys.ys)
     * The synthesis script was updated at a later point in time, based on the inputs obtained from the [Yosys issue raised for a problem found in post-synth STA](https://github.com/YosysHQ/yosys/issues/4266#).
       * (* keep *) attributes were added to some of the wire declarations to prevent them from getting optimized out by Yosys, abc during synthesis.
@@ -174,7 +176,7 @@ gtkwave postsynth_sim.vcd &
 
  * [**Generated netlist**](../code/riscv/verilog/riscv_pipelined_Final_netlist.v)
   
- * **Statistics of synthesis output:**
+ * **<details><summary>Statistics of synthesis output:</summary>**
     ```
     === riscv_core ===
     
@@ -229,6 +231,7 @@ gtkwave postsynth_sim.vcd &
          sky130_fd_sc_hd__xnor2_1       22
          sky130_fd_sc_hd__xor2_1        60
     ```
+    </details>
 
   * **Comparison of Pre-synth and Post-synth simulation results**
     * The top module level input/ outputs are identical in both the Pre-Synth and Post-Synth simulation results.
@@ -253,6 +256,7 @@ gtkwave postsynth_sim.vcd &
 _________________________________________________________________________________________________________  
 _________________________________________________________________________________________________________  
 
+### (OLD) Results
   * [**(OLD) Yosys synthesis script**](../code/riscv/scripts/yosys_OLD.ys)
     ```shell
     read_liberty -lib ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib
