@@ -21,7 +21,7 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |[Day 13](/docs/Day_13.md)| PVT Corner Analysis | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 14](/docs/Day_14.md)| Advanced Physical Design using OpenLANE/ Sky130 | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 15](/docs/Day_15.md)| Post-placement STA checks for your design <br>  * on ss,ff,tt corners <br>  * Compare with Post-synth | ![](https://progress-bar.dev/100/?title=done) |
-  |[Day 16](/docs/Day_16.md)| Post-CTS STA checks for your design <br>  * on ss,ff,tt corners <br>  * Compare with previous results | ![](https://progress-bar.dev/100/?title=done) |
+  |[Day 16](/docs/Day_16.md)| Post-CTS, Post-Routing STA checks for your design <br>  * on ss,ff,tt corners <br>  * Compare with previous results | ![](https://progress-bar.dev/100/?title=done) |
 
 <!--
 ## Day 0
