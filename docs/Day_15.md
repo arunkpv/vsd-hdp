@@ -247,7 +247,7 @@ exit
 ## 15.4 Placement (Pre-CTS)
   * **Placement optimizations:**
     ```
-    Reading design constraints file at '/openlane/scripts/base.sdc'…
+    Reading design constraints file at '/openlane/designs/riscv_core/src/riscv_base_post_cts.sdc'…
     [INFO]: Setting output delay to: 4.0
     [INFO]: Setting input delay to: 4.0
     [INFO]: Setting load to: 0.01765
@@ -258,15 +258,15 @@ exit
     [INFO RSZ-0027] Inserted 1 input buffers.
     [INFO RSZ-0028] Inserted 10 output buffers.
     [INFO RSZ-0058] Using max wire length 8182um.
-    [INFO RSZ-0034] Found 56 slew violations.
+    [INFO RSZ-0034] Found 80 slew violations.
     [INFO RSZ-0035] Found 14 fanout violations.
-    [INFO RSZ-0036] Found 10 capacitance violations.
-    [INFO RSZ-0038] Inserted 233 buffers in 70 nets.
-    [INFO RSZ-0039] Resized 9498 instances.
+    [INFO RSZ-0036] Found 11 capacitance violations.
+    [INFO RSZ-0038] Inserted 303 buffers in 94 nets.
+    [INFO RSZ-0039] Resized 9488 instances.
     [INFO RSZ-0042] Inserted 513 tie sky130_fd_sc_hd__conb_1 instances.
     [INFO RSZ-0042] Inserted 262 tie sky130_fd_sc_hd__conb_1 instances.
     ```
-  * **Design area**: `119232 u^2 36% utilization`
+  * **Design area**: `124358 u^2 33% utilization`
 
 ## 15.5 STA Comparison: Post-synthesis vs. Post-Placement (Pre-CTS)
 | Post-Synthesis | Post-Placement (Pre-CTS) |
@@ -277,10 +277,10 @@ exit
 
 |   |  
 |:---:|
-| ![D15_riscv_core_synthesis_vs_post-placement_STA_wns_with_legend](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_wns_with_legend.png) |
-| ![D15_riscv_core_synthesis_vs_post-placement_STA_tns_with_legend](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_tns_with_legend.png) |
-| ![D15_riscv_core_synthesis_vs_post-placement_STA_setup_slack_with_legend](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_setup_slack_with_legend.png) |
-| ![D15_riscv_core_synthesis_vs_post-placement_STA_hold_slack_with_legend](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_hold_slack_with_legend.png) |
+| ![D15_riscv_core_synthesis_vs_post-placement_STA_wns](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_wns.png) |
+| ![D15_riscv_core_synthesis_vs_post-placement_STA_tns](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_tns.png) |
+| ![D15_riscv_core_synthesis_vs_post-placement_STA_worst_setup_slack](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_worst_setup_slack.png) |
+| ![D15_riscv_core_synthesis_vs_post-placement_STA_worst_hold_slack](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_worst_hold_slack.png) |
 
 <br>
 
