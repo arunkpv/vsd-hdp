@@ -1,0 +1,46 @@
+./flow.tcl -interactive -verbose 2
+package require openlane 0.9
+prep -design riscv_core -verbose 1 -tag run10 -overwrite
+run_synthesis
+
+run_floorplan
+
+run_placement
+
+run_cts
+
+# write_verilog -def $::env(CURRENT_DEF) /openlane/designs/riscv_core/runs/run10/results/cts/riscv_core_cts.v
+
+run_routing
+
+/openlane/designs/riscv_core/makedir.sh $::env(RUN_TAG)
+
+sta /openlane/designs/riscv_core/sta_across_pvt.tcl
+
+openroad /openlane/designs/riscv_core/sta_across_pvt_pl.tcl
+
+openroad /openlane/designs/riscv_core/sta_across_pvt_cts.tcl
+
+openroad /openlane/designs/riscv_core/sta_across_pvt_route.tcl
+
+write_powered_verilog -output_def riscv_core_powered_verilog.def -output_nl $::env(routing_logs)/$::env(DESIGN_NAME).nl.v -output_pnl $::env(routing_logs)/$::env(DESIGN_NAME).powered.v
+
+set_netlist $::env(routing_logs)/$::env(DESIGN_NAME).powered.v
+
+
+
+==================================
+./flow.tcl -interactive -verbose 2
+package require openlane 0.9
+prep -design riscv_core -tag run9 -override_env CURRENT_STEP="placement",CURRENT_DEF="/openlane/designs/riscv_core/runs/run9/results/placement/riscv_core.def",CURRENT_GUIDE="0",CURRENT_NETLIST="/openlane/designs/riscv_core/runs/run9/results/placement/riscv_core.nl.v",CURRENT_POWERED_NETLIST="0",CURRENT_ODB="/openlane/designs/riscv_core/runs/run9/results/placement/riscv_core.odb"
+
+set ::env(CURRENT_INDEX) 11
+set ::env(CURRENT_DEF) /openlane/designs/riscv_core/runs/run9/results/placement/riscv_core.def
+set ::env(CURRENT_GUIDE) "0"
+set ::env(CURRENT_NETLIST) /openlane/designs/riscv_core/runs/run9/results/placement/riscv_core.nl.v
+set ::env(CURRENT_POWERED_NETLIST) "0"
+set ::env(CURRENT_ODB) /openlane/designs/riscv_core/runs/run9/results/placement/riscv_core.odb
+
+
+echo $::env(CURRENT_STEP)
+echo $::env(CURRENT_INDEX)
