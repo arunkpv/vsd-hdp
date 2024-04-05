@@ -22,6 +22,11 @@ ________________________________________________________________________________
 | ![D16_riscv_core_PostCTS_PostRoute_STA_worst_setup_slack](/docs/images/D16_riscv_core_PostCTS_PostRoute_STA_worst_setup_slack.png) |
 | ![D16_riscv_core_PostCTS_PostRoute_STA_worst_hold_slack](/docs/images/D16_riscv_core_PostCTS_PostRoute_STA_worst_hold_slack.png) |
 
+* **NOTE: Writing powered verilog netlist** 
+  ```
+  write_powered_verilog -output_def riscv_core_powered_verilog.def -output_nl $::env(routing_logs)/$::env(DESIGN_NAME).nl.v -output_pnl $::env(routing_logs)/$::env(DESIGN_NAME).powered.v
+  set_netlist $::env(routing_logs)/$::env(DESIGN_NAME).powered.v
+  ```
 <br>
 
 _________________________________________________________________________________________________________  
