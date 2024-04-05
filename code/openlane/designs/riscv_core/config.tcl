@@ -8,7 +8,7 @@ set ::env(CLOCK_PERIOD) 20.000
 set ::env(CLOCK_PORT) "clk"
 set ::env(CLOCK_NET) $::env(CLOCK_PORT)
 
-set ::env(BASE_SDC_FILE) "$::env(DESIGN_DIR)/src/riscv_base.sdc"
+set ::env(BASE_SDC_FILE) "$::env(DESIGN_DIR)/src/riscv_base_post_cts.sdc"
 
 # SYNTHESIS - Flow
 set ::env(SYNTH_AUTONAME) 0
@@ -26,14 +26,22 @@ set ::env(SYNTH_TIMING_DERATE) 0.05
 
 
 # FLOORPLAN
-set ::env(FP_PDN_MULTILAYER) {1}
-set ::env(FP_CORE_UTIL) 35
+set ::env(FP_CORE_UTIL) 30
 set ::env(FP_IO_MODE) 1
+set ::env(FP_PDN_MULTILAYER) {1}
 
 # PLACEMENT
+#set ::env(PL_TARGET_DENSITY) ($::env(FP_CORE_UTIL) + 10 + (5 * $::env(GPL_CELL_PADDING)) ) / 100.0
+set ::env(PL_TARGET_DENSITY) 0.32
 set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.10
 set ::env(PL_RESIZER_SETUP_SLACK_MARGIN) 0.10
-set ::env(GRT_ADJUSTMENT) 1
+
+# CTS
+set ::env(CTS_TOLERANCE) 5
+
+# ROUTING
+#set ::env(GRT_ADJUSTMENT) 1
+
 
 # Standard Cell Library specific variables
 # SCL: Modifiable
