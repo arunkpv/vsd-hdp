@@ -13,6 +13,10 @@ ________________________________________________________________________________
 |:---:|:---:|
 | **Post-Routing** <br>  ![D16_riscv_core_post-Route_STA](/docs/images/D16_riscv_core_post-Route_STA.png) | **Post-CTS** <br>  ![D16_riscv_core_post-CTS_STA](/docs/images/D16_riscv_core_post-CTS_STA.png) |
 
+| **Post-Synthesis** <br>  ![D16_riscv_core_post-synthesis_STA2](/docs/images/D16_riscv_core_post-synthesis_STA2.png) | **Post-Placement (Pre-CTS)** <br>  ![D16_riscv_core_post-placement_STA2](/docs/images/D16_riscv_core_post-placement_STA2.png) |
+|:---:|:---:|
+| **Post-Routing** <br>  ![D16_riscv_core_post-Route_STA2](/docs/images/D16_riscv_core_post-Route_STA2.png) | **Post-CTS** <br>  ![D16_riscv_core_post-CTS_STA2](/docs/images/D16_riscv_core_post-CTS_STA2.png) |
+
 <br>
 
 |   |  
