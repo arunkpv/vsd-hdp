@@ -4,7 +4,10 @@ ________________________________________________________________________________
 # Day 16 - Post-CTS, Post-Routing STA analysis of your Design
 
 ## 16.1 STA Comparison
-* **Post-CTS Design area**: `129960 u^2 34% utilization`
+* **Design Area**
+  * **Synthesis**: `115293.075200`
+  * **Placement**: `124358 u^2 33% utilization`
+  * **CTS**: `129960 u^2 34% utilization`
 
 | **Post-Synthesis** <br>  ![D16_riscv_core_post-synthesis_STA](/docs/images/D16_riscv_core_post-synthesis_STA.png) | **Post-Placement (Pre-CTS)** <br>  ![D16_riscv_core_post-placement_STA](/docs/images/D16_riscv_core_post-placement_STA.png) |
 |:---:|:---:|
