@@ -23,7 +23,7 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |[Day 15](/docs/Day_15.md)| Post-placement STA checks for your design <br>  * on ss,ff,tt corners <br>  * Compare with Post-synth | ![](https://progress-bar.dev/100/?title=done) |
   |[Day 16](/docs/Day_16.md)| Post-CTS, Post-Routing STA checks for your design <br>  * on ss,ff,tt corners <br>  * Compare with previous results | ![](https://progress-bar.dev/100/?title=done) |
 
-# Day 0
+# Day 0 - Setting up the working environment
 ## System Setup
 The program uses Open Source EDA tools and thus a linux OS environment is preferred.
 <br />  
@@ -80,7 +80,7 @@ We will be building Yosys from the source using gcc, the instructions for which 
      ![day0_gtkwave](/docs/images/day0_gtkwave.png)
      
 _________________________________________________________________________________________________________  
-# Day 1
+# Day 1 - Introduction to RTL Design and Synthesis
 ## Labs 1,2: Functional Simulation of RTL design using iverilog and gktwave
 In this lab, we clone the gihthub repo - [sky130RTLDesignAndSynthesisWorkshop](https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop) - and use one of the example RTL design sources together with its corresponding testbench to get familiarised with the functional simulation of an RTL design using iverilog and gtkwave.   
 <br />
@@ -206,8 +206,7 @@ _Logic realized by the synthesis tool in the above example:_
 ![day1_lab3_2input_mux_synth_logical_diagram](/docs/images/day1_lab3_2input_mux_synth_logical_diagram.png)
 _________________________________________________________________________________________________________  
 
-
-# Day 2
+# Day 2 - Timing lib files, Hierarchical vs. Flat Synthesis and Flip-flop coding styles
 ## Lab 4: Familiarization of the .lib file structure and various timing models (QTMs/ETMs)
 1. Open up the **sky130_fd_sc_hd__tt_025C_1v80.lib** library file and get familiarized with the overall structure and the various parameters defined like:
 <ul>
@@ -528,7 +527,7 @@ Here, we will take a look at the synthesis of two special cases of multipliers w
   ![mult8](/docs/images/mult8.png)  
 _________________________________________________________________________________________________________  
 
-# Day 3
+# Day 3 - Combinational and Sequential Optimizations
 ## Combinational Logic Optimizations  
 The combinational logic is simplified to the most optimized form which is efficient in terms of area & power savings.  
 **1. Constant Propagation** : This is a direct optimization method wherein the Boolean expression of the synthesized logic is simplified if any of the inputs are "a constant" and subsequently some of the logic gate outputs also propagate a constant value always.  
@@ -901,7 +900,7 @@ So when this design is synthesized, we expect 3 DFF instantiations to be present
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 4
+# Day 4 - Gate Level Simulation and Pre- & Post-Synthesis Simulation Mismatch
 ## Gate Level Simulation (GLS)
   * _Gate Level_ refers to the netlist view of a design after the synthesis has been performed.
   * RTL simulations are pre-synthesis, while GLS is post-synthesis - i.e., in RTL simulations, the Device Under Test (DUT) is the RTL design itself while in GLS, the DUT is the netlist generated after synthesis.
@@ -1019,8 +1018,8 @@ Assuming we wanted to implement just a combinational logic with output, d = (a +
 
 _________________________________________________________________________________________________________  
 
-# Day 5
-## Introduction to RISC-V ISA and GNU Compiler Toolchain
+# Day 5 - Introduction to RISC-V ISA and GNU Compiler Toolchain
+## Introduction to RISC-V ISA
 
 RISC-V is an open standard instruction set architecture based on established reduced instruction set computer(RISC) principles. It was first started by Prof. Krste Asanović and graduate students Yunsup Lee and Andrew Waterman in May 2010 as part of the Parallel Computing Laboratory, at UC Berkeley. Unlike most other ISA designs, the RISC-V ISA is provided under open source licenses that do not require fees to use, which provides it a huge edge over other commercially available ISAs. It is a simple, stable, small standard base ISA with extensible ISA support, that has been redefining the flexibility, scalability, extensibility, and modularity of chip designs.  
 
@@ -1041,6 +1040,7 @@ References:
   2) [RISC-V Technical Specifications](https://wiki.riscv.org/display/HOME/RISC-V+Technical+Specifications)
   3) [RISC-V MYTH Workshop](https://github.com/RISCV-MYTH-WORKSHOP/RISC-V-CPU-Core-using-TL-Verilog/blob/master/README.md#introduction-to-risc-v-isa)
 
+##  RISC-V GNU Compiler Toolchain
 ### RISC-V ISA Simulator and Compiler toolchain setup
   * The RISC-V ISA simulator & GNU Compiler toolchain can be installed by running the following script from the terminal:
     [run.sh](https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh)
@@ -1156,8 +1156,8 @@ h                                 Alias for help
 Note: Hitting enter is the same as: run 1
 ```
 _________________________________________________________________________________________________________  
-# Day 6
-## Introduction to ABI and basic verification flow
+# Day 6 - Introduction to ABI and basic verification flow
+## Introduction to ABI
 In computer software, an application binary interface (ABI) is an interface between two binary program modules. Often, one of these modules is a library or operating system facility, and the other is a program that is being run by a user.
 An ABI defines how data structures or computational routines are accessed in machine code, which is a low-level, hardware-dependent format.  
 _Reference:_ [Application binary interface](https://en.wikipedia.org/wiki/Application_binary_interface)  
@@ -1169,7 +1169,7 @@ RISC-V CPU architecture has 32 registers. Application programmer, can access eac
 
 For more detailed information, refer to the [RISC-V ABI Specification v1.0](https://drive.google.com/file/d/1Ja_Tpp_5Me583CGVD-BIZMlgGBnlKU4R/view)  
 
-## Lab 1: Rewrite the program to find the sum of first N natural numbers utilizing ABI function calls
+### Lab 1: Rewrite the program to find the sum of first N natural numbers utilizing ABI function calls
 
 C Program: 1to9_custom.c
 ```C
@@ -1215,7 +1215,8 @@ Disassembly of object code of above progam:
 ![D6_ABI_load_loop_subroutines](/docs/images/D6_ABI_load_loop_subroutines.png)
 <br>
 
-## Lab 2: Run the above C program on a RISC-V CPU
+## Basic Verification Flow
+### Lab 2: Run the above C program on a RISC-V CPU
 For this exercise, we will use the design files from the following GitHub repository: [https://github.com/kunalg123/riscv_workshop_collaterals.git](https://github.com/kunalg123/riscv_workshop_collaterals.git)  
 Execute the following file from shell:  
 
@@ -1254,8 +1255,7 @@ Basically what we are doing here is:
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 7
-## Digital Logic with TL-Verilog and Makerchip
+# Day 7 - Digital Logic Design with TL-Verilog and Makerchip
   
 **TL-Verilog**  
 Transaction-Level Verilog (TL-Verilog) is an extension to SystemVerilog that supports a new design methodology, called transaction-level design. A transaction, in this methodology, is an entity that moves through structures like pipelines, arbiters, and queues. A transaction might be a machine instruction, a flit of a packet, or a memory read/write. Transaction logic, like packet header decode or instruction execution, that operates on the transaction can be placed anywhere along the transaction’s flow. Tools produce the logic to carry signals through their flows to stitch the transaction logic.  
@@ -1279,7 +1279,7 @@ In this session, we will learn the concepts and syntax of TL-Verilog by implemen
   3) Pipelined logic
   4) Validity
   
-### Combinational Logic
+## Combinational Logic
 Implemented basic combinational logic elements and circuits like gates, muxes, vector adder, combinational calculator etc. using TL-Verilog in Makerchip.  
   1) AND2 Gate
      |![D7_AND2_Gate](/docs/images/D7_AND2_Gate.png)|
@@ -1294,7 +1294,7 @@ Implemented basic combinational logic elements and circuits like gates, muxes, v
      |![D7_Combinational_Calculator](/docs/images/D7_Combinational_Calculator.png)|
      |-|
 
-### Sequential Logic
+## Sequential Logic
   1) Fibonacci Series
      |![D7_Fibonacci_Series](/docs/images/D7_Fibonacci_Series.png)|
      |-|
@@ -1306,7 +1306,7 @@ Implemented basic combinational logic elements and circuits like gates, muxes, v
      |-|
      |![D7_Sequential_Calculator](/docs/images/D7_Sequential_Calculator.png)|
 
-### Pipelined Logic
+## Pipelined Logic
   1) Pythagorus Theorem with 3-stage pipeline
      |![D7_Pipelined_Pythagorus](/docs/images/D7_Pipelined_Pythagorus.png)|
      |-|
@@ -1321,7 +1321,7 @@ Implemented basic combinational logic elements and circuits like gates, muxes, v
      |-|
      |![D7_2-Cycle_Calculator](/docs/images/D7_2-Cycle_Calculator.png)|
 
-### Validity
+## Validity
 Using validity makes the design cleaner. Debugging and error checking also becomes easier.    
   1) 2-Cycle Calculator with Validity
      |![D7_2-Cycle_Calculator_with_Validity_Diagram](/docs/images/D7_2-Cycle_Calculator_with_Validity_Diagram.png)|
@@ -1332,8 +1332,8 @@ Using validity makes the design cleaner. Debugging and error checking also becom
      |-|
      |![D7_Calculator_with_SingleValue_Memory](/docs/images/D7_Calculator_with_SingleValue_Memory.png)|
 _________________________________________________________________________________________________________  
-# Day 8
-## Basic RISC-V CPU Microarchitecture
+# Day 8 - Implmentation of a Basic RISC-V CPU Microarchitecture
+
 Our objective is to implement a basic RISC-V CPU core (RV32I Base Instruction set except the instructions - FENCE, ECALL & EBREAK).  
 The following diagrams show the general block diagram of the CPU and the initial implementation pipeline diagram using TL-Verilog:  
 |**CPU Block Diagram**<br>  ![D8_CPU_BlockDiagram](/docs/images/D8_CPU_BlockDiagram.png)|
@@ -1380,8 +1380,8 @@ Immediate Value Decoding <br>  ![D8_ImmediateValue_Decoding](/docs/images/D8_Imm
 |**Branch Instruction Logic added**<br>  ![D8_Basic_RISC-V_CPU_Unpipelined](/docs/images/D8_Basic_RISC-V_CPU_Unpipelined.png)|
 |-|
 _________________________________________________________________________________________________________  
-# Day 9
-## Complete Pipelined RISC-V CPU Microarchitecture
+# Day 9 -  Implementation of the complete Pipelined RISC-V CPU Microarchitecture
+
 Our RISC-V core from the previous day is still incomplete w.r.t the instructions implemented, and additionally we need to do pipelining and handling of the pipeline hazards.  
 We need to do the following to complete the CPU Design:
   1) Pipeline the CPU, taking care of the data dependency & control flow hazards
@@ -1393,7 +1393,7 @@ We need to do the following to complete the CPU Design:
 |-|
 <br>
 
-### Pipelining the CPU: Using 3-Cycle $valid signal
+## Pipelining the CPU: Using 3-Cycle $valid signal
 First, we will implement with a simplified 3-stage pipeline with using a 3-Cycle valid signal, the various stages being:  
   * PC
   * Instruction Fetch + Decode
@@ -1411,8 +1411,8 @@ This implementation would have an IPC of only ~1/3 as the valid signal is active
 |-|
 <br>
 
-### Pipelining the CPU: Solving the data & control hazards
-#### 1) Data Hazard: Read-After-Write (RAW) in the Refister File
+## Pipelining the CPU: Solving the data & control hazards
+### 1) Data Hazard: Read-After-Write (RAW) in the Refister File
   * There is a 2-cycle delay (by design) between RF Read and Write operations.
   * Hence we have a Read-After-Write (RAW) data hazard if the current instruction in the pipe is trying to read from the Register File (RF) when the previous instruction had written to the same RF index.
   * To solve this, we need to add a Register File Bypass Mux at the input of the ALU and select the previous ALU output if the previous instruction was writing to the RF index accessed in the current instruction.
@@ -1421,31 +1421,31 @@ This implementation would have an IPC of only ~1/3 as the valid signal is active
   |-|
   |**Register File Bypass TL-V Implementation**<br>  ![D9_RF_Bypass_TLV_Diagram](/docs/images/D9_RF_Bypass_TLV_Diagram.png)|
 
-####  2) Control Hazard: Branch Instructions
+###  2) Control Hazard: Branch Instructions
   * We have control flow hazards when a branch is taken.
   * The PC logic is updated to handle the case when a branch is taken or not.
   
   |**Branch Instruction Control Hazard**<br>  ![D9_Branch_Hazard](/docs/images/D9_Branch_Hazard.png)|
   |-|
 
-### Complete the ALU
+## Complete the ALU
 The Instruction Decoder is updated to decode all the instructions and the complete ALU is implemented.
 Note: All load instructions are treated as the same as the LW instruction. 
 
-### DMEM & Load, Store Instructions
-#### DMEM
+## DMEM & Load, Store Instructions
+### DMEM
   * The DMEM is a single-port R/W memory with 16 entries, 32-bit wide.  
   * The DMEM is placed in the 4th pipeline stage.
     |**DMEM**<br>  ![D9_DMEM](/docs/images/D9_DMEM.png)|
     |-|
 
-#### LOAD (LW, LH, LB, LHU, LBU) Instructions
+### LOAD (LW, LH, LB, LHU, LBU) Instructions
   * LOAD rd, imm(rs1)  
   * Loads the data from the DMEM address given by (rs1 + imm) to destination register provided by rd.
     i.e., rd <= DMEM(rs1 + imm)
     <br>
 
-#### STORE (SW, SH, LB) Instructions
+### STORE (SW, SH, LB) Instructions
   * STORE rs2, imm(rs1)  
   * Stores the data from rs2 to the DMEM address given by (rs1 + imm).
     i.e., rd <= DMEM(rs1 + imm)
@@ -1467,14 +1467,14 @@ Muxes need to be placed at the inputs of RF write index ($rf_wr_index) and RF wr
 
 Additionally, the Program Counter logic has to be updated for load redirects.
 
-### Unconditional Jump (JAL, JALR) Instructions
+## Unconditional Jump (JAL, JALR) Instructions
   * JAL : Jump to (PC + IMM), equivalent to an unconditional branch w.r.t the calculation of the target address.
   * JALR: Jump to (SRC1 + IMM)
 
 The logic to calculate the branch target for JALR needs to be implemented.  
 The Program Counter logic also needs to be modified to handle the jumps.  
 
-### Complete Pipelined RISC-V CPU Core Implementation in Makerchip
+## Complete Pipelined RISC-V CPU Core Implementation in Makerchip
 <!--[**Link to SVG file of the RISC-V Core Block Diagram**](https://htmlpreview.github.io/?https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/docs/html/riscv.html)  -->
 Click on the image below to open up the interactive svg file:  
 [![D9_Complete_Pipelined_RISCV_Core](/docs/images/D9_Complete_Pipelined_RISCV_Core.png)](https://htmlpreview.github.io/?https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/docs/html/riscv.html)  
@@ -1562,11 +1562,10 @@ In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU 
                         ? >>1$rf_wr_data : $rf_rd_data2;
     ```
 _________________________________________________________________________________________________________  
-# Day 10 - GLS
+# Day 10 - GLS of the Implemented RISC-V CPU
 
   * The functional verification of the design has already been completed successfully in the Makerchip IDE itself.
   * To perform GLS of the implementation, we need to first convert the TL-Verilog code into synthesizable verilog and then perform the synthesis using Yosys.
-
 
 ## 10.1 Conversion of TL-Verilog code to Verilog using Sandpiper
 SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert TL-Verilog code to Verilog or SystemVerilog code. SandPiper-SaaS provides a command-line interface to run the SandPiper TL-Verilog compiler as a microservice in the cloud.  
@@ -1920,7 +1919,7 @@ ________________________________________________________________________________
     | Post-Synth | ![D10_GLS_PostSynth](/docs/images/D10_GLS_PostSynth_Zoomed.png) |
     
 _________________________________________________________________________________________________________  
-# Day 11
+# Day 11 - STA Basics
 
 Static Timing Analysis (STA) is a method of validating the timing performance of a design by checking all possible paths for timing violations.
   * The design is broken down into timing paths having start and endpoints, the signal propagation delay along each path is calculated, and checked for violations of timing constraints inside the design and at the input/output interfaces.
@@ -2040,7 +2039,18 @@ Defines how the output changes for different types of transitions on the input.
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 12
+# Day 12 - Advanced SDC Constraints
+
+<br>
+
+_________________________________________________________________________________________________________  
+_________________________________________________________________________________________________________  
+# Day 13 - STA using OpenSTA
+
+<br>
+
+_________________________________________________________________________________________________________  
+# Day 14 - CMOS Fundamentals
 ## To-Do: Complete documentation of theory
 
 ## sky130 Labs
@@ -2052,7 +2062,56 @@ ________________________________________________________________________________
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 13
+# Day 15 - Velocity Saturation and CMOS Inverter VTC
+## To-Do: Complete documentation of theory
+
+## sky130 Labs
+### Lab 1
+### Lab 2
+### Lab 3
+
+
+<br>
+
+_________________________________________________________________________________________________________  
+# Day 16 - CMOS Inverter Switching Threshols and Dynamic Simulations 
+## To-Do: Complete documentation of theory
+
+## sky130 Labs
+### Lab 1
+### Lab 2
+### Lab 3
+
+
+<br>
+
+_________________________________________________________________________________________________________  
+# Day 17 - CMOS Noise Margin Robustness Evaluation
+## To-Do: Complete documentation of theory
+
+## sky130 Labs
+### Lab 1
+### Lab 2
+### Lab 3
+
+
+<br>
+
+_________________________________________________________________________________________________________  
+# Day 18 - CMOS Power Supply and Device Variation Robustness Evaluation
+## To-Do: Complete documentation of theory
+
+## sky130 Labs
+### Lab 1
+### Lab 2
+### Lab 3
+
+
+<br>
+
+_________________________________________________________________________________________________________  
+
+# Day 19 - PVT Corner Analysis of the RISC-V CPU Design
 ## PVT Corner Analysis
 The STA checks are performed across all the corners to confirm the design meets the target timing requirements.
   * The worst max path (Setup-critical) corners in the sub-40nm process nodes are usually: ss_LowTemp_LowVolt, ss_HighTemp_LowVolt (Slowest corners)
@@ -2105,7 +2164,7 @@ The STA checks are performed across all the corners to confirm the design meets 
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 14 - Advanced Physical Design using OpenLANE/ Sky130
+# Day 20 - Advanced Physical Design using OpenLANE/ Sky130
 
 ## Day 14.1: Inception of open-source EDA, OpenLANE and Sky130 PDK
 
@@ -3212,7 +3271,7 @@ ________________________________________________________________________________
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 15 - Post-placement STA analysis of your Design (RISC-V Myth CPU Core)
+# Day 21 - Post-placement STA analysis of your Design (RISC-V Myth CPU Core)
 ## 15.1 OpenLANE Installation (latest stable version)
 For ease of installation, OpenLane uses Docker images, that include all the required applications, binaries and the flow scripts.  
 The [OpenLane Installation Documentation](https://openlane.readthedocs.io/en/latest/getting_started/installation/installation_ubuntu.html) page explains in detail the step to setup OpenLANE. A short summary of the necessary steps is given below:  
@@ -3496,7 +3555,7 @@ exit
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 16 - Post-CTS, Post-Routing STA analysis of your Design
+# Day 22 - Post-CTS, Post-Routing STA analysis of your Design
 
 ## 16.1 STA Comparison
 **OpenLane Configuration:**
