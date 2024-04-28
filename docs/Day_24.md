@@ -15,7 +15,7 @@ ________________________________________________________________________________
     * **Note**: The wave expansion marks only points in the routable area of the chip, not in the blocks or already wired parts.
   * Routes with lower number of bends are preferred.
 
-  | **Lee's Routing Algorithm** <br>  ![D14.5_Lees_Routing_Algorithm_resized](/docs/images/D14.5_Lees_Routing_Algorithm_resized.png) <br>  **The blue route is preferred over the black one due to lower number of bends** |
+  | **Lee's Routing Algorithm** <br>  ![D24_Lees_Routing_Algorithm_resized](/docs/images/D24_Lees_Routing_Algorithm_resized.png) <br>  **The blue route is preferred over the black one due to lower number of bends** |
   |:---|
   
   * This algorithm, however, has a high cost in term of both memory usage and run time.
@@ -25,12 +25,12 @@ ________________________________________________________________________________
   * While performing routing, the router tool needs to follow the DRC rules related to routing provided by the PDK.
   * Basically, the origin of these DRCs come from the manufacturing process used like photolithography or others, that for example, define the minimum wire width that can be manufactured, the minimum spacing between two wire in a metal layer etc.
 
-  | **Typical DRC rules for wires like width, spacing and pitch** <br>  ![D14.5_Routing_DRC_Typical_Rules_about_wire](/docs/images/D14.5_Routing_DRC_Typical_Rules_about_wire.png) |
+  | **Typical DRC rules for wires like width, spacing and pitch** <br>  ![D24_Routing_DRC_Typical_Rules_about_wire](/docs/images/D24_Routing_DRC_Typical_Rules_about_wire.png) |
   |:---|
 
   * Check out the DRC rules related to the local interconnect and the metal layers for [sky130 PDK DRC](https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#li).
 
-  | **A Signal short during route** <br>  **Fixing it using other metal layers gives rise to new DRC checks related to VIAs** <br>  ![D14.5_Routing_DRC_Check_Examples_2](/docs/images/D14.5_Routing_DRC_Check_Examples_2.png) |
+  | **A Signal short during route** <br>  **Fixing it using other metal layers gives rise to new DRC checks related to VIAs** <br>  ![D24_Routing_DRC_Check_Examples_2](/docs/images/D24_Routing_DRC_Check_Examples_2.png) |
   |:---|
 
 ## 24.2 Power Distribution Network and Routing
@@ -46,25 +46,25 @@ ________________________________________________________________________________
                      |--> Macro Power Ring
     ```
 
-  | ![D14.5_Power_Distribution_Network_resized](/docs/images/D14.5_Power_Distribution_Network_resized.png) |
+  | ![D24_Power_Distribution_Network_resized](/docs/images/D24_Power_Distribution_Network_resized.png) |
   |:---|
   | _**Source:**_ [Power Distribution Network](https://vlsibyjim.blogspot.com/2015/03/power-planning.html) |
 
   * Command to generate PDN in openLANE: `run_power_grid_generation`
 
-  | **Layout after PDN generation** <br>  ![D14.5_Layout_after_PDN_Generation](/docs/images/D14.5_Layout_after_PDN_Generation.png) |
+  | **Layout after PDN generation** <br>  ![D24_Layout_after_PDN_Generation](/docs/images/D24_Layout_after_PDN_Generation.png) |
   |:---|
-  | **Layout zoomed** <br>  ![D14.5_Layout_after_PDN_Generation_Zoomed](/docs/images/D14.5_Layout_after_PDN_Generation_Zoomed.png) |
+  | **Layout zoomed** <br>  ![D24_Layout_after_PDN_Generation_Zoomed](/docs/images/D24_Layout_after_PDN_Generation_Zoomed.png) |
 
 
 ### Lab: Steps to perform routing
   * To run the routing in OpenLANE, execute: `run_routing`
 
-  | **No DRC violations after routing** <br> ![D14.5_Detailed_Routing_No_DRC_Viols](/docs/images/D14.5_Detailed_Routing_No_DRC_Viols.png) |
+  | **No DRC violations after routing** <br> ![D24_Detailed_Routing_No_DRC_Viols](/docs/images/D24_Detailed_Routing_No_DRC_Viols.png) |
   |:---|
-  | **No Timing violations at TYPICAL corner** <br> ![D14.5_STA_for_typical_after_routing](/docs/images/D14.5_STA_for_typical_after_routing.png) |
-  | **Layout after routing (KLayout)** <br>  ![D14.5_Layout_after_routing_in_klayout](/docs/images/D14.5_Layout_after_routing_in_klayout.png) |
-  | **Layout after routing - Zoomed (Magic)** <br>  ![D14.5_Layout_after_Routing](/docs/images/D14.5_Layout_after_Routing.png) |
+  | **No Timing violations at TYPICAL corner** <br> ![D24_STA_for_typical_after_routing](/docs/images/D24_STA_for_typical_after_routing.png) |
+  | **Layout after routing (KLayout)** <br>  ![D24_Layout_after_routing_in_klayout](/docs/images/D24_Layout_after_routing_in_klayout.png) |
+  | **Layout after routing - Zoomed (Magic)** <br>  ![D24_Layout_after_Routing](/docs/images/D24_Layout_after_Routing.png) |
   
   * **Post-route STA**
     ```
