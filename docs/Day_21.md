@@ -42,7 +42,7 @@ ________________________________________________________________________________
 ### Lab: Run floorplan using OpenLANE and review the layout in Magic
   * To run the floorplan creation, execute the following command from the OpenLANE shell: `run_floorplan`
        
-  <kbd> ![D14.2_Lab_3a_run_floorplan](/docs/images/D14.2_Lab_3a_run_floorplan.png) </kbd>
+  <kbd> ![D21_Lab_3a_run_floorplan](/docs/images/D21_Lab_3a_run_floorplan.png) </kbd>
 
   * To view the floor plan in Magic: 
     ```
@@ -50,11 +50,11 @@ ________________________________________________________________________________
     2) magic -T $PDK_ROOT/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read ./picorv32a.floorplan.def &
     ```
 
-| **Floorplan view in Magic<br>  (FP_IO_MODE=1, Random equidistant mode)**<br>  ![D14.2_Lab_3b_floorplan_in_Magic](/docs/images/D14.2_Lab_3b_floorplan_in_Magic.png) |
+| **Floorplan view in Magic<br>  (FP_IO_MODE=1, Random equidistant mode)**<br>  ![D21_Lab_3b_floorplan_in_Magic](/docs/images/D21_Lab_3b_floorplan_in_Magic.png) |
 |:---|
-| **Floorplan Zoomed in at (0,0)** <br>  ![D14.2_Lab_3c_floorplan_in_Magic_Cells_at_0_0](/docs/images/D14.2_Lab_3c_floorplan_in_Magic_Cells_at_0_0.png) |
-| **FP_IO_MODE=0<br>  (Matching mode)** <br>  ![D14.2_Lab_3d_floorplan_in_Magic_FP_IO_Mode_0](/docs/images/D14.2_Lab_3d_floorplan_in_Magic_FP_IO_Mode_0.png) |
-| **FP_IO_MODE=1 Zoomed**<br>  ![D14.2_Lab_3d_floorplan_in_Magic_FP_IO_Mode_1_Zoomed](/docs/images/D14.2_Lab_3d_floorplan_in_Magic_FP_IO_Mode_1_Zoomed.png) |
+| **Floorplan Zoomed in at (0,0)** <br>  ![D21_Lab_3c_floorplan_in_Magic_Cells_at_0_0](/docs/images/D21_Lab_3c_floorplan_in_Magic_Cells_at_0_0.png) |
+| **FP_IO_MODE=0<br>  (Matching mode)** <br>  ![D21_Lab_3d_floorplan_in_Magic_FP_IO_Mode_0](/docs/images/D21_Lab_3d_floorplan_in_Magic_FP_IO_Mode_0.png) |
+| **FP_IO_MODE=1 Zoomed**<br>  ![D21_Lab_3d_floorplan_in_Magic_FP_IO_Mode_1_Zoomed](/docs/images/D21_Lab_3d_floorplan_in_Magic_FP_IO_Mode_1_Zoomed.png) |
 
 
 ## 21.2 Placement and Routing
@@ -80,10 +80,10 @@ ________________________________________________________________________________
   * First the global placement happens, where the main objective is to reduce the wire length. Algorithm used is Half-Parameter Wire Length (HPWL).
   * Then detailed placement is performed to legalize the globally placed components.
 
-| **run_placement**<br>  ![D14.2_Lab_4a_run_placement](/docs/images/D14.2_Lab_4a_run_placement.png) |
+| **run_placement**<br>  ![D21_Lab_4a_run_placement](/docs/images/D21_Lab_4a_run_placement.png) |
 |:---|
-| **Layout after placement**<br>  ![D14.2_Lab_4b_run_placement_Magic](/docs/images/D14.2_Lab_4b_run_placement_Magic.png) |
-| **Layout after placement (Zoomed)** <br>  ![D14.2_Lab_4b_run_placement_Magic_zoomed](/docs/images/D14.2_Lab_4b_run_placement_Magic_zoomed.png) |
+| **Layout after placement**<br>  ![D21_Lab_4b_run_placement_Magic](/docs/images/D21_Lab_4b_run_placement_Magic.png) |
+| **Layout after placement (Zoomed)** <br>  ![D21_Lab_4b_run_placement_Magic_zoomed](/docs/images/D21_Lab_4b_run_placement_Magic_zoomed.png) |
 
 ## 21.3 Cell Design Flow
 **Library**
@@ -93,7 +93,7 @@ ________________________________________________________________________________
     * threshold voltages
 
 **Stages**  
-<kbd> ![D14.2_Cell_Design_Flow](/docs/images/D14.2_Cell_Design_Flow.png) </kbd>
+<kbd> ![D21_Cell_Design_Flow](/docs/images/D21_Cell_Design_Flow.png) </kbd>
   1) **Inputs for Cell Design Flow**  
      From foundry, PDKs:  
        * DRC, LVS rules (eg: lambda-based design rules)
