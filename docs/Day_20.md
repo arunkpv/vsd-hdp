@@ -1,9 +1,9 @@
 [Back to TOC](../README.md)  
 [Prev: Day 19](Day_19.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 21](Day_21.md)  
 _________________________________________________________________________________________________________  
-# Day 20 - Advanced Physical Design using OpenLANE/ Sky130
+# Days 20-24 - Advanced Physical Design using OpenLANE/ Sky130
 
-## Day 20.1: Inception of open-source EDA, OpenLANE and Sky130 PDK
+# Day 20: Inception of open-source EDA, OpenLANE and Sky130 PDK
 
   * **IC terminologies**
     * Chip Package
@@ -11,12 +11,12 @@ ________________________________________________________________________________
     * Core, die
     * IPs, Macros
 
-### [**20.1.1 Overview of ASIC Design Flow using OpenLane**](http://ef.content.s3.amazonaws.com/OpenLane-DialUp-MohamedShalan.pdf)
+## [**20.1 Overview of ASIC Design Flow using OpenLane**](http://ef.content.s3.amazonaws.com/OpenLane-DialUp-MohamedShalan.pdf)
   * ASIC implementation consists of numerous steps involving lots of detailed sub-processes at each step.
   * A **design methodology** is needed for a successful ASIC implementation without any hiccups.
   * The methodology is implemented through a **flow** that pieces together different tools to carry out the different steps of the design process from RTL to GDSII tapeout.
 
-#### 20.1.1.1 Simplified RTL to GDSII ASIC Design Flow
+### 20.1.1 Simplified RTL to GDSII ASIC Design Flow
 | ![Simplified Flow](/docs/images/D14.1_Simplified_Flow.png) |
 |---|
 
@@ -42,7 +42,7 @@ ________________________________________________________________________________
      * Timing Verification
        * Static Timing Analysis (STA)
 
-#### 20.1.1.2 OpenLANE ASIC Design Flow
+### 20.1.2 OpenLANE ASIC Design Flow
 Main requirements of Digital ASIC Design:
   * RTL Design
   * EDA Tools
@@ -137,7 +137,7 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
   <kbd> ![D14.1_AntennaRules_FakeDiode_RealDiode](/docs/images/D14.1_AntennaRules_FakeDiode_RealDiode.png) </kbd>
 
 
-#### Lab: Familiarize with OpenLANE flow
+### Lab: Familiarize with OpenLANE flow
 
 **Objectives**:  
 Using an existing design provided in the OpenLANE package to:

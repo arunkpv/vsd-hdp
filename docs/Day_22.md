@@ -2,12 +2,12 @@
 [Prev: Day 21](Day_21.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 23](Day_23.md)  
 _________________________________________________________________________________________________________  
   
-## Day 22: Design library cell using Magic layout tool and characterization using ngspice
+# Day 22: Design library cell using Magic layout tool and characterization using ngspice
 
-### 22.1 16-Mask CMOS Process
+## 22.1 16-Mask CMOS Process
 TODO: Documentation
 
-### Lab: Introduction to Sky130 basic layers layout and LEF using inverter
+## Lab: Introduction to Sky130 basic layers layout and LEF using inverter
   * Clone a custom standard cell design from the following github repo for this exercise
     [https://github.com/nickson-jose/vsdstdcelldesign.git](https://github.com/nickson-jose/vsdstdcelldesign.git)
   * To open the design in magic: `magic -T sky130A.tech sky130_inv.mag`
@@ -18,7 +18,7 @@ TODO: Documentation
   | **sky130 Layers in Magic for an Inverter**<br>  ![D14.3_Lab_Magic_sky130_Layers](/docs/images/D14.3_Lab_Magic_sky130_Layers.png) |
   |:---|
 
-### Lab: Create the Inverter Standard Cell layout and extract the SPICE netlist
+## Lab: Create the Inverter Standard Cell layout and extract the SPICE netlist
   * The steps to layout a custom inverter standard cell in Magic is explained in this github repo: [vsdstdcelldesign](https://github.com/nickson-jose/vsdstdcelldesign?tab=readme-ov-file#standard-cell-layout-design-in-magic)
     * Magic has an interactive DRC engine - DRC violations are updated continuously in Magic every time we make a change (draw, erase, move) in the layout.
     * When we make small changes to an existing layout, we can find out immediately if we have introduced errors, without having to completely recheck the entire layout.
@@ -33,7 +33,7 @@ TODO: Documentation
     * Include the SPICE models for sky130 short-channel PMOS and NMOS.
     * Change the PMOS and NMOS model names to match the ones in the included model files - `pshort_model.0, nshort_model.0`.
 
-### Lab: Create a SPICE deck to run a simple transient simulation using ngspice
+## Lab: Create a SPICE deck to run a simple transient simulation using ngspice
   * Modify the spice file to run a sample transient simulation using ngspice:
     * Add VDD and GND:
       ```
@@ -48,7 +48,7 @@ TODO: Documentation
     |:---|
     | **Trans sim results with Waveforms**<br>  ![D14.3_Inverter_Extracted_SPICE_trans_sim_waveform](/docs/images/D14.3_Inverter_Extracted_SPICE_trans_sim_waveform.png) |
 
-### Lab: Introduction to DRC using Magic tool
+## Lab: Introduction to DRC using Magic tool
   * Obtain the tutorial files for DRC labs from the following link:
     ```
     wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
@@ -56,7 +56,7 @@ TODO: Documentation
     ```
   * The Design Rules for Skywater 130nm technology can be found here: [**https://skywater-pdk.readthedocs.io/en/main/rules.html**](https://skywater-pdk.readthedocs.io/en/main/rules.html)
 
-#### <ins>DRC Lab 1: met3.mag</ins>
+### <ins>DRC Lab 1: met3.mag</ins>
   * To open Magic using OpenGL or Cairo graphical interfaces, invoke magic using the `-d` option:
     * For OpenGL: `magic -d XR &`
     * For Cairo: `magic -d OGL &`
@@ -83,7 +83,7 @@ TODO: Documentation
     | **Rule M3.4: Via2 must be enclosed by Met3 by at least 0.065µm**<br>  ![D14.3_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2](/docs/images/D14.3_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2.png) |
     |:---|
 
-#### <ins>DRC Lab 2: poly.mag - Exercise to fix poly.9 error in Sky130 tech-file</ins>
+### <ins>DRC Lab 2: poly.mag - Exercise to fix poly.9 error in Sky130 tech-file</ins>
   * [https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#poly](https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#poly)
   * **poly.9**: Poly resistor spacing to poly or spacing (no overlap) to diff/tap 0.480 µm
   * This exercise deals with fixing an incomplete DRC rule in the `sky130A.tech` file
@@ -116,7 +116,7 @@ TODO: Documentation
     | **Magic DRC engine now shows the poly resistor to poly spacing error**<br>  ![D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_4](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_4.png) |
     |:---|
 
-#### <ins>DRC Lab 3: poly.mag - Exercise to implement poly resistor spacing to diff and tap</ins>
+### <ins>DRC Lab 3: poly.mag - Exercise to implement poly resistor spacing to diff and tap</ins>
   * The additions we made for the poly.9 DRC rule are still not complete. We can check this by creating two copies of the three resistors (`npolyres, ppolyres and xhrpolyres`)
   * We will add `ndiffussion, pdiffusion, nsubstratendiff & psubstratepdiff` around the two copies of the three poly resistors as shown.
   * Also draw an `nwell` under the pdiffusion and N-tap (nsubstratendiff) to avoid the flagging of any diffusion-related DRC errors since we are not interested in them for this exercise.
@@ -129,7 +129,7 @@ TODO: Documentation
   |  <pre>spacing npres *nsd 480 touching_illegal \ <br>   "poly.resistor spacing to N-tap < %d (poly.9)"</pre> | <pre>spacing npres alldiff 480 touching_illegal \ <br>   "poly.resistor spacing to N-tap < %d (poly.9)"</pre> |
   | ![D14.3_sky130_DRC_Lab_poly.9_Diffusion_1](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Diffusion_1.png) | ![D14.3_sky130_DRC_Lab_poly.9_Diffusion_2](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Diffusion_2.png) |
 
-#### <ins>DRC Lab 4: nwell.mag - Challenge exercise to describe DRC error as geometrical construct</ins>
+### <ins>DRC Lab 4: nwell.mag - Challenge exercise to describe DRC error as geometrical construct</ins>
   * [https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#nwell](https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#nwell)
   * **nwell.5**: Deep nwell must be enclosed by nwell by atleast… 0.400µm.  
      Exempted inside UHVI or areaid.lw Nwells can merge over deep nwell if spacing too small (as in rule nwell.2)
@@ -175,7 +175,7 @@ TODO: Documentation
       * `drc full`: will check everything. As long as the layout is relatively small, it can be enabled during interactive layout without everything turning sluggish.
       * Switch between the two using: `drc style drc(fast)`, `drc style drc(full)`
 
-#### <ins>DRC Lab 5: nwell.mag - Challenge  to find missing or incorrect rules and fix them</ins>
+### <ins>DRC Lab 5: nwell.mag - Challenge  to find missing or incorrect rules and fix them</ins>
   * **nwell.4**: All n-wells will contain metal-contacted tap (rule checks only for licon on tap) . Rule exempted from high voltage cells inside UHVI.
   * Every nwell must have an n-tap layer contact inside it, which is called `nsubstratencontact` or `nsc`.
   * Since there is no distance/ spacing associated with this rule, it is not possible to write this as an edge-based DRC rule. But it can be written as a cifoutput rule.

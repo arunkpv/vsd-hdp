@@ -2,9 +2,9 @@
 [Prev: Day 22](Day_22.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 24](Day_24.md)  
 _________________________________________________________________________________________________________  
   
-## Day 23: Pre-layout timing analysis and importance of good clock tree
+# Day 23: Pre-layout timing analysis and importance of good clock tree
 
-### Lab: Steps to convert grid info to track info
+## Lab: Steps to convert grid info to track info
   * **Objective**: Extract LEF file for the sky130_inv.mag and plug this custom std cell into OpenLANE flow
   
   * From PnR point of view, we only need the following information: PnR boundary of the standard cell, the power and ground rails, and finally the input & output ports.
@@ -39,7 +39,7 @@ ________________________________________________________________________________
 
   * Now the LEF file can be written from the **console window** by the following command: `lef write`
 
-### Lab: Adding the extracted LEF file into OpenLANE flow for picorv32a design
+## Lab: Adding the extracted LEF file into OpenLANE flow for picorv32a design
   * Copy the LEF file into the `openlane/designs/picorv32a/src` directory.
   * Now we need to have the cell characterized and added to the technology library.
     * This particular cell - **sky130_vsdinv** - it has already been characterized and added to the `sky130_fd_sc_hd__*.lib` files.
@@ -88,7 +88,7 @@ ________________________________________________________________________________
       detailed_placement_or
       ```
 
-### 14.4.1 Introduction to Delay Tables
+## 23.1 Introduction to Delay Tables
   * Gate/ Cell delay is a function of the input transition (slew) time and the output load capacitance, Cload
   * Cell delay is calculated using Non-Linear Delay Models (NLDM). NLDM is highly accurate as it is derived from SPICE characterizations.
     The delay is a function of the input transition time (i.e. slew) of the cell, the wire capacitance and the pin capacitance of the driven cells.
@@ -112,7 +112,7 @@ ________________________________________________________________________________
   | Example Interpolation algorithm in NLDM Delay table <br> _Ref: STA for Nanometer Designs - J. Bhasker, Rakesh Chadha_ <br> <br>  ![D14.4_NLDM_Interpolation](/docs/images/D14.4_NLDM_Interpolation.png) |
   |:---|
 
-### Lab: Configure synthesis settings to fix the timing violations and improve slack
+## Lab: Configure synthesis settings to fix the timing violations and improve slack
   * The synthesis results with the present settings has a huge wns slack of -26.53ns and tns of -3232.44. To obtain timing closure in post-route STA, this negative slack needs to be reduced in synthesis.
      
   * Read back the Synthesis configuration variables that could be potentitally wrecking the timing:
@@ -130,11 +130,11 @@ ________________________________________________________________________________
 
     The wns and tns values look much better and easier to fix later on.
 
-### 14.4.2 Timing analysis with ideal clocks using openSTA
+## 23.2 Timing analysis with ideal clocks using openSTA
 
 **Note**: We have already gone through STA basics previously. We will capture the important essentials once again here.  
 
-#### Setup timing analysis and introduction to flip-flop setup time
+### Setup timing analysis and introduction to flip-flop setup time
 <!---
 | _**Ref: Digital Integrated Circuits: A Design Perspective by J. Rabaey et al.**_ | |
 |:---|:---|
@@ -173,7 +173,7 @@ ________________________________________________________________________________
     | ![D14.4_Setup_Uncertainty](/docs/images/D14.4_Setup_Uncertainty.png) |
     |:---|
 
-#### Lab: Configure OpenSTA for Post-synth timing analysis
+### Lab: Configure OpenSTA for Post-synth timing analysis
   * During the PnR flow, it is very much possible that some timing violations may get fixed, some violations will get better, some worse and new violations could also be introduced.
   * In any PnR flow, the separate timing tool (like PrimeTime) is usually invoked outside of the automated flow for performing the timing analysis and timing ECO generation.
   * In the OpenLANE flow, we use OpenSTA tool for Post-synthesis timing analysis.
@@ -234,7 +234,7 @@ ________________________________________________________________________________
   * Invoke OpenSTA from another terminal and provide above config file as the input:
     ```sta pre_sta.conf```
 
-#### Lab: Optimize Synthesis to reduce setup violations
+### Lab: Optimize Synthesis to reduce setup violations
   * In addition to the synthesis configuration variables that we have seen before, there are a few more that we can use to optimize synthesis to improve setup slack.
   * If there are setup timing violations (and possible slew & max cap violations) from nets with high fanout, we can limit the fanout to improve hte delay using:  
     ```
@@ -245,7 +245,7 @@ ________________________________________________________________________________
     report_net -connections <net_name>
     ```
 
-#### Lab: Steps to do basic Timing ECO
+### Lab: Steps to do basic Timing ECO
   * From analysing the setup violations in OpenSTA, we will be able to infer the possible reasons for the violations
   * One common reason could a large output slew for a net due to large capacitance load/ fanout which the synthesis tool could not optimize further.
     In this case, we can **upsize** the cell (i.e., replace the cell instance with a higher drive strength version of it) to reduce the delay using the `replace_cell` command.
@@ -273,7 +273,7 @@ ________________________________________________________________________________
     * Now the STA engineer(s) will take the new data and perform STA analysis again and provide new timing ECOs for the new violations.
     * This "spinning" process goes on till all voilations are rectified.
 
-### 14.4.3 Clock Tree Synthesis using TritonCTS and Signal Integrity
+## 23.3 Clock Tree Synthesis using TritonCTS and Signal Integrity
 Clock Tree Synthesis is the process of connecting the clocks to the clock pins of all sequential elements in the design by using inverters/ buffers in order to balance the skew and to minimize the insertion delay.
 
 | **Ideal Clock Tree before CTS** <br>  ![D14.4_Ideal_clock_tree_before_CTS](/docs/images/D14.4_Ideal_clock_tree_before_CTS.png) | **Real Clock tree (H-tree) after CTS** <br>  ![D14.4_Real_clock_tree_(H-tree)_after_CTS](/docs/images/D14.4_Real_clock_tree_(H-tree)_after_CTS.png)
@@ -290,7 +290,7 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
     4) Duty Cycle: Unequal rise and fall times of the clock buffers is the primary cause of duty cycle distortion in a clock tree. Usually inverters are used instead of buffers to reduce DCD in a clock tree.
     5) Pulse Width: Usually SRAMs, flip-flops and latches will have minimum pulse width requirements to meet their internal timing. There will be minimum pulse width requirements for both the high and low times of a clock period. 
 
-#### Clock tree routing and buffering using H-Tree algorithm
+### Clock tree routing and buffering using H-Tree algorithm
   * **H-Tree algorithm**
     * This is a clock tree routing algorithm that tries to minimize the skew by minimizing the routing length.
     * The clock routing taked place in the shape of the capital letter **"H"**
@@ -309,7 +309,7 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
     * To ensure the clock signal reaching each sink pin is having the required target slew/ transition time, we need to add clock repeaters or clock buffers at multiple points of the distribution network, ensuring the RC wire load is split across multiple levels of buffers.
     * To reduce Duty Cycle Distortion (DCD), clock buffers need to have equal rise and fall times. Usually it is very difficult to design buffers with equal rise and fall times and in a long clock tree with multiple levels of buffering, this can often lead to DCD. Hence instead of clock buffers, clock inverters are used in clock trees to reduce the introduction of DCD.
 
-#### Clock Signal Integrity: Crosstalk and Clock Net Shielding
+### Clock Signal Integrity: Crosstalk and Clock Net Shielding
   * **Crosstalk Glitch**
     * If a high slew net is somehow routed near to the clock net, a transition on this agressor net can cause a glitch on the the clock net while the clock net is at a logic LOW or HIGH level.
     * This happens due to the capacitive coupling between the nets and can cause the signal level on the clock net to temporarily go above the VIH or VIL level resulting in a spurious unwanted high/ low pulse on this clock net.
@@ -336,14 +336,14 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
       The shielding nets are connected to either VDD or GND (either both of them to VDD (or GND), or one of them to VDD & the other to GND).
       (Basically the shielding nets need to be connected to a non-transitioning net, low impedance upon which an aggressor has no effect).
 
-#### Lab: Steps to run CTS using TritonCTS
+### Lab: Steps to run CTS using TritonCTS
   * Command to run cts: `run_cts`
   * After CTS, a new netlist **<design_name>.synthesis_cts.v** will be created in the `runs/<tag>/results/synthesis/` folder that includes the information on the generated clock clock tree and the newly instanced clock buffers.
 
   | ![D14.4_New_netlist_after_CTS](/docs/images/D14.4_New_netlist_after_CTS.png) |
   |---|
 
-#### Lab: Steps to verify CTS runs
+### Lab: Steps to verify CTS runs
   * CTS configuration variables to verify:
 
   | Configuration Variable | Details |
@@ -354,13 +354,13 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
   | `LIB_CTS` | The liberty file used for CTS. By default, this is the `LIB_SYNTH_COMPLETE` minus the cells with drc errors. |
   | `CTS_MAX_CAP` | Defines the maximum capacitance for clock tree synthesis in the design in pF. |
 
-### 14.4.4 Timing Analysis with real clocks using OpenSTA
+## 23.4 Timing Analysis with real clocks using OpenSTA
 
-#### Setup timing analysis using real clocks
+### Setup timing analysis using real clocks
 
-#### Hold timing analysis using real clocks
+### Hold timing analysis using real clocks
 
-#### Lab: Steps to analyze timing with real clocks (Post-CTS STA) using OpenSTA
+### Lab: Steps to analyze timing with real clocks (Post-CTS STA) using OpenSTA
   * In OpenRoad, the timing analysis is performed by creating a db file using the LEF and DEF files of the design.
   * db creation is a one-time process (unless the def changes).
     To create the db, invoke OpenRoad from within the OpenLANE shell using `openroad`. And then from within the OpenRoad shell execute the following commands:  
@@ -384,7 +384,7 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
   * Be sure to perform the timing analysis with the correct library file which was used for CTS (which was the LIB_SYNTH_COMPLETE or the LIB_TYPICAL in our case). 
   * **Note:** As of now, CTS does not support multi-corner optimization.
 
-#### Lab: Steps to observe impact of bigger CTS buffers on setup and hold timing
+### Lab: Steps to observe impact of bigger CTS buffers on setup and hold timing
   * Modify the `CTS_CLK_BUFFER_LIST` variable to exclude the `sky130_fd_sc_hd__clkbuf_1` cell and re-run CTS again.
   * Be sure to modify the `CURRENT_DEF` variable to point to the DEF file after placement before triggering the CTS run.
     ```

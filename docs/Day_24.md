@@ -2,9 +2,9 @@
 [Prev: Day 23](Day_23.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 25](Day_25.md)  
 _________________________________________________________________________________________________________  
 
-## Day 14.5: Final steps for RTL2GDS using tritonRoute and openSTA
-###  14.5.1 Routing and Design Rule Check (DRC)
-#### Introduction to Maze Routing - Lee's Algorithm
+# Day 24: Final steps for RTL2GDS using tritonRoute and openSTA
+##  24.1 Routing and Design Rule Check (DRC)
+### Introduction to Maze Routing - Lee's Algorithm
   * Lee's algorithm is one possible solution for maze routing problems based on breadth-first search.
     * If a path exists between the source and target, this algorithm guarantees finding it.
     * It always finds the shortest path between the source and target.
@@ -21,7 +21,7 @@ ________________________________________________________________________________
   * This algorithm, however, has a high cost in term of both memory usage and run time.
   * To overcome these short-comings, there are other more advanced algorithms like Line Search algorithm & Steiner tree algorithm.
 
-#### Design Rule Check during routing
+### Design Rule Check during routing
   * While performing routing, the router tool needs to follow the DRC rules related to routing provided by the PDK.
   * Basically, the origin of these DRCs come from the manufacturing process used like photolithography or others, that for example, define the minimum wire width that can be manufactured, the minimum spacing between two wire in a metal layer etc.
 
@@ -33,8 +33,8 @@ ________________________________________________________________________________
   | **A Signal short during route** <br>  **Fixing it using other metal layers gives rise to new DRC checks related to VIAs** <br>  ![D14.5_Routing_DRC_Check_Examples_2](/docs/images/D14.5_Routing_DRC_Check_Examples_2.png) |
   |:---|
 
-### 14.5.2 Power Distribution Network and Routing
-#### Lab: Steps to build Power Distribution Network
+## 24.2 Power Distribution Network and Routing
+### Lab: Steps to build Power Distribution Network
   * Levels of Power distribution
     ```
     > VDD, VSS pins/ balls
@@ -57,7 +57,7 @@ ________________________________________________________________________________
   | **Layout zoomed** <br>  ![D14.5_Layout_after_PDN_Generation_Zoomed](/docs/images/D14.5_Layout_after_PDN_Generation_Zoomed.png) |
 
 
-#### Lab: Steps to perform routing
+### Lab: Steps to perform routing
   * To run the routing in OpenLANE, execute: `run_routing`
 
   | **No DRC violations after routing** <br> ![D14.5_Detailed_Routing_No_DRC_Viols](/docs/images/D14.5_Detailed_Routing_No_DRC_Viols.png) |
@@ -85,12 +85,12 @@ ________________________________________________________________________________
     report_checks -path_delay min_max -format full_clock_expanded -digits 4 -fields {net cap slew input_pins fanout}
     ```
  
-#### Basics of global and detail routing
+### Basics of global and detail routing
   * Global route using `fast route` and Detailed route using `tritonRoute`
   * Global route provides a routing guide.
   * In Detailed route, algorithms are used to find the best possible connectivity using the routing guides from global route.
 
-#### TritonRoute Features
+### TritonRoute Features
   * Performs initial detail route
   * Honors the preprocessed route guides (obtained after global route) - i.e., attempts as much as possible to route within route guides.
   * Assumes route guides for each net satisfy inter-guide connectivity.
