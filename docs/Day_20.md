@@ -137,7 +137,7 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
   <kbd> ![D14.1_AntennaRules_FakeDiode_RealDiode](/docs/images/D14.1_AntennaRules_FakeDiode_RealDiode.png) </kbd>
 
 
-### Lab: Familiarize with OpenLANE flow
+### [Lab]: Familiarize with OpenLANE flow
 
 **Objectives**:  
 Using an existing design provided in the OpenLANE package to:
