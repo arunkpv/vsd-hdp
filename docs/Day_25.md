@@ -1,8 +1,8 @@
 [Back to TOC](../README.md)  
-[Prev: Day 14](Day_14.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 16](Day_16.md)  
+[Prev: Day 24](Day_24.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 26](Day_26.md)  
 _________________________________________________________________________________________________________  
-# Day 15 - Post-placement STA analysis of your Design (RISC-V Myth CPU Core)
-## 15.1 OpenLANE Installation (latest stable version)
+# Day 25 - Post-placement STA analysis of your Design (RISC-V Myth CPU Core)
+## 25.1 OpenLANE Installation (latest stable version)
 For ease of installation, OpenLane uses Docker images, that include all the required applications, binaries and the flow scripts.  
 The [OpenLane Installation Documentation](https://openlane.readthedocs.io/en/latest/getting_started/installation/installation_ubuntu.html) page explains in detail the step to setup OpenLANE. A short summary of the necessary steps is given below:  
   * Install the required dependencies:
@@ -61,8 +61,8 @@ The [OpenLane Installation Documentation](https://openlane.readthedocs.io/en/lat
     ```
     Basic test passed
     ```
-## 15.2 Basic Usage
-### 15.2.1 Invoking the OpenLane Docker session:
+## 25.2 Basic Usage
+### 25.2.1 Invoking the OpenLane Docker session:
 ```
 cd to the OpenLane folder
 
@@ -73,7 +73,7 @@ make mount
 exit
 ```
 
-### 15.2.2 [Adding Your Designs](https://openlane.readthedocs.io/en/latest/usage/designs.html)
+### 25.2.2 [Adding Your Designs](https://openlane.readthedocs.io/en/latest/usage/designs.html)
   * To add a new design, the following command creates a configuration file for your design:
     ```
     # JSON Configuration File
@@ -96,7 +96,7 @@ exit
     │   ├── design.v
     ```
 
-### 15.2.3 Running the flow for the design:
+### 25.2.3 Running the flow for the design:
   * To run the automated flow:
     ```
     ./flow.tcl -design <design_name>
@@ -127,7 +127,7 @@ exit
     12. run_antenna_check
     ```
 
-### 15.2.4 Some FYI Notes:
+### 25.2.4 Some FYI Notes:
   * [Command-Line Arguments that can be passed to flow.tcl](https://openlane.readthedocs.io/en/latest/reference/cli.html)
 
   | Argument | Description |
@@ -145,7 +145,7 @@ exit
     * When running the flow in interactive mode, use the `-verbose <level>` flag with the `prep -design <design_name>` command to set the verbose output level (2 and greater outputs everything including tool outputs).
       Example: `prep -design riscv_core -tag run1 -overwrite -verbose 2`
 
-## 15.3 Synthesis Results
+## 25.3 Synthesis Results
   * Some synthesis settings modified:
     ```
     set ::env(SYNTH_STRATEGY) "DELAY 0"
@@ -244,7 +244,7 @@ exit
 
   * **Chip area for module** `'\riscv_core': 115293.075200`
 
-## 15.4 Placement (Pre-CTS)
+## 25.4 Placement (Pre-CTS)
   * **Placement optimizations:**
     ```
     Reading design constraints file at '/openlane/designs/riscv_core/src/riscv_base_post_cts.sdc'…
@@ -268,19 +268,19 @@ exit
     ```
   * **Design area**: `124358 u^2 33% utilization`
 
-## 15.5 STA Comparison: Post-synthesis vs. Post-Placement (Pre-CTS)
+## 25.5 STA Comparison: Post-synthesis vs. Post-Placement (Pre-CTS)
 | Post-Synthesis | Post-Placement (Pre-CTS) |
 |:---:|:---:|
-| ![D15_riscv_core_post-synthesis_STA](/docs/images/D15_riscv_core_post-synthesis_STA.png) | ![D15_riscv_core_post-placement_STA](/docs/images/D15_riscv_core_post-placement_STA.png) |
+| ![D25_riscv_core_post-synthesis_STA](/docs/images/D25_riscv_core_post-synthesis_STA.png) | ![D25_riscv_core_post-placement_STA](/docs/images/D25_riscv_core_post-placement_STA.png) |
 
 <br>
 
 |   |  
 |:---:|
-| ![D15_riscv_core_synthesis_vs_post-placement_STA_wns](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_wns.png) |
-| ![D15_riscv_core_synthesis_vs_post-placement_STA_tns](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_tns.png) |
-| ![D15_riscv_core_synthesis_vs_post-placement_STA_worst_setup_slack](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_worst_setup_slack.png) |
-| ![D15_riscv_core_synthesis_vs_post-placement_STA_worst_hold_slack](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_worst_hold_slack.png) |
+| ![D25_riscv_core_synthesis_vs_post-placement_STA_wns](/docs/images/D25_riscv_core_synthesis_vs_post-placement_STA_wns.png) |
+| ![D25_riscv_core_synthesis_vs_post-placement_STA_tns](/docs/images/D25_riscv_core_synthesis_vs_post-placement_STA_tns.png) |
+| ![D25_riscv_core_synthesis_vs_post-placement_STA_worst_setup_slack](/docs/images/D25_riscv_core_synthesis_vs_post-placement_STA_worst_setup_slack.png) |
+| ![D25_riscv_core_synthesis_vs_post-placement_STA_worst_hold_slack](/docs/images/D25_riscv_core_synthesis_vs_post-placement_STA_worst_hold_slack.png) |
 
 <br>
 
