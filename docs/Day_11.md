@@ -1,8 +1,9 @@
 [Back to TOC](../README.md)  
 [Prev: Day 10](Day_10.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 12](Day_12.md)  
 _________________________________________________________________________________________________________  
-# Day 11
+# Days 11-13: Advanced Synthesis and STA
 
+# Day 11: Introduction to STA
 Static Timing Analysis (STA) is a method of validating the timing performance of a design by checking all possible paths for timing violations.
   * The design is broken down into timing paths having start and endpoints, the signal propagation delay along each path is calculated, and checked for violations of timing constraints inside the design and at the input/output interfaces.
   * The STA analysis is the static type - i.e., the timing analysis is carried out statically and does not depend upon the data values being applied at the input pins.  
