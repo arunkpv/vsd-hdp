@@ -15,7 +15,7 @@ TODO: Documentation
   * To get the details about any drawn element in the layout, hover the mouse pointer over it and press `s` to select it (pressing multiple times selects the elements hierarchically).
     Then, from the **tkcon shell**, use the command `what` to print the details:
     
-  | **sky130 Layers in Magic for an Inverter**<br>  ![D14.3_Lab_Magic_sky130_Layers](/docs/images/D14.3_Lab_Magic_sky130_Layers.png) |
+  | **sky130 Layers in Magic for an Inverter**<br>  ![D22_Lab_Magic_sky130_Layers](/docs/images/D22_Lab_Magic_sky130_Layers.png) |
   |:---|
 
 ## Lab: Create the Inverter Standard Cell layout and extract the SPICE netlist
@@ -44,9 +44,9 @@ TODO: Documentation
     * Transient simulation: `.tran 1n 20n`
     * Finally, for some weird reasons, ngspice throws an **unknown subckt** error with transistor instance names starting with `X`. So, modify the instance names to M0 and M1
 
-    | **SPICE deck to run trans sim using the extracted netlist**<br>  ![D14.3_Inverter_Extracted_SPICE_netlist_trans_sim](/docs/images/D14.3_Inverter_Extracted_SPICE_netlist_trans_sim.png) |
+    | **SPICE deck to run trans sim using the extracted netlist**<br>  ![D22_Inverter_Extracted_SPICE_netlist_trans_sim](/docs/images/D22_Inverter_Extracted_SPICE_netlist_trans_sim.png) |
     |:---|
-    | **Trans sim results with Waveforms**<br>  ![D14.3_Inverter_Extracted_SPICE_trans_sim_waveform](/docs/images/D14.3_Inverter_Extracted_SPICE_trans_sim_waveform.png) |
+    | **Trans sim results with Waveforms**<br>  ![D22_Inverter_Extracted_SPICE_trans_sim_waveform](/docs/images/D22_Inverter_Extracted_SPICE_trans_sim_waveform.png) |
 
 ## Lab: Introduction to DRC using Magic tool
   * Obtain the tutorial files for DRC labs from the following link:
@@ -68,7 +68,7 @@ TODO: Documentation
     * For example, to view the DRC error for the m3.2 section, position the cursor box around it and type: `:drc why`
     * The **console** window will now display the DRC rule that is being violated
   
-    | **Rule M3.2: Spacing of metal 3 to metal 3 - 0.300µm**<br>  ![D14.3_sky130_DRC_Lab_M3.2](/docs/images/D14.3_sky130_DRC_Lab_M3.2.png) |
+    | **Rule M3.2: Spacing of metal 3 to metal 3 - 0.300µm**<br>  ![D22_sky130_DRC_Lab_M3.2](/docs/images/D22_sky130_DRC_Lab_M3.2.png) |
     |:---|
 <br>
 
@@ -80,7 +80,7 @@ TODO: Documentation
     * As a sidenote, rules like these will always be correct by design and can be confirmed by measuring the distance from the contact cut to the edge of M3 contact by drawing a cursor box.
       *  To align the cursor box to the edge of the via shown in the CIF view, use the `snap int` command.
   
-    | **Rule M3.4: Via2 must be enclosed by Met3 by at least 0.065µm**<br>  ![D14.3_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2](/docs/images/D14.3_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2.png) |
+    | **Rule M3.4: Via2 must be enclosed by Met3 by at least 0.065µm**<br>  ![D22_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2](/docs/images/D22_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2.png) |
     |:---|
 
 ### <ins>DRC Lab 2: poly.mag - Exercise to fix poly.9 error in Sky130 tech-file</ins>
@@ -89,14 +89,14 @@ TODO: Documentation
   * This exercise deals with fixing an incomplete DRC rule in the `sky130A.tech` file
   * The section shown below is violating the poly.9 DRC rule, but it is not reported as a DRC violation due to the rule being incompletely implemented in the `sky130A.tech` file
 
-    | **Rule poly.9: Poly resistor spacing to poly or spacing (no overlap) to diff/tap 0.480µm**<br>  ![D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_1](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_1.png) |
+    | **Rule poly.9: Poly resistor spacing to poly or spacing (no overlap) to diff/tap 0.480µm**<br>  ![D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_1](/docs/images/D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_1.png) |
     |:---|
   * In the `sky130A.tech` file:
     * The rules for poly resistor spacing to alldiffusion and nsd (nsubstratediff or N-tap) are implemented. So we need to implement the missing poly resistor spacing to poly rules.
 
     | **sky130A.tech** | |
     |:---|:---|
-    | ![D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_2](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_2.png) | ![D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_3](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_3.png) |
+    | ![D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_2](/docs/images/D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_2.png) | ![D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_3](/docs/images/D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_3.png) |
 
   * 
     * If we look at the aliases, we can see that there is a definition for allpolyres as follows:
@@ -113,7 +113,7 @@ TODO: Documentation
   * Now, from the console window, reload the tech file: `tech load sky130A.tech`
   * The DRC checks needs to be run again, by executing: `drc check`
 
-    | **Magic DRC engine now shows the poly resistor to poly spacing error**<br>  ![D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_4](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_4.png) |
+    | **Magic DRC engine now shows the poly resistor to poly spacing error**<br>  ![D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_4](/docs/images/D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_4.png) |
     |:---|
 
 ### <ins>DRC Lab 3: poly.mag - Exercise to implement poly resistor spacing to diff and tap</ins>
@@ -127,7 +127,7 @@ TODO: Documentation
   | Before | After |
   |:---|:---|
   |  <pre>spacing npres *nsd 480 touching_illegal \ <br>   "poly.resistor spacing to N-tap < %d (poly.9)"</pre> | <pre>spacing npres alldiff 480 touching_illegal \ <br>   "poly.resistor spacing to N-tap < %d (poly.9)"</pre> |
-  | ![D14.3_sky130_DRC_Lab_poly.9_Diffusion_1](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Diffusion_1.png) | ![D14.3_sky130_DRC_Lab_poly.9_Diffusion_2](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Diffusion_2.png) |
+  | ![D22_sky130_DRC_Lab_poly.9_Diffusion_1](/docs/images/D22_sky130_DRC_Lab_poly.9_Diffusion_1.png) | ![D22_sky130_DRC_Lab_poly.9_Diffusion_2](/docs/images/D22_sky130_DRC_Lab_poly.9_Diffusion_2.png) |
 
 ### <ins>DRC Lab 4: nwell.mag - Challenge exercise to describe DRC error as geometrical construct</ins>
   * [https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#nwell](https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#nwell)
@@ -136,7 +136,7 @@ TODO: Documentation
   * **nwell.6**: Min enclosure of nwell hole by deep nwell outside UHVI 1.030µm
   * Relevant DRC rules in `sky130A.tech` file
 
-  | ![D14.3_sky130_DRC_Lab_nwell.5_0](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_0.png) | ![D14.3_sky130_DRC_Lab_nwell.5_1](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_1.png) |
+  | ![D22_sky130_DRC_Lab_nwell.5_0](/docs/images/D22_sky130_DRC_Lab_nwell.5_0.png) | ![D22_sky130_DRC_Lab_nwell.5_1](/docs/images/D22_sky130_DRC_Lab_nwell.5_1.png) |
   |:---|:---|
   
   * Everything in the cifoutput DRC style is implemented as a templayer and not an actual layer.
@@ -163,9 +163,9 @@ TODO: Documentation
     cif see nwell_missing
     ```
 
-  | **nwell.6 drawing <br>**  ![D14.3_sky130_DRC_Lab_nwell.5_2](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_2.png) | **cif ostyle drc <br>cif see dnwell_shrink** <br>  ![D14.3_sky130_DRC_Lab_nwell.5_3](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_3.png) |
+  | **nwell.6 drawing <br>**  ![D22_sky130_DRC_Lab_nwell.5_2](/docs/images/D22_sky130_DRC_Lab_nwell.5_2.png) | **cif ostyle drc <br>cif see dnwell_shrink** <br>  ![D22_sky130_DRC_Lab_nwell.5_3](/docs/images/D22_sky130_DRC_Lab_nwell.5_3.png) |
   |:---|:---|
-  | **feed clear <br>cif see nwell_missing** <br>  ![D14.3_sky130_DRC_Lab_nwell.5_4](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_4.png) | |
+  | **feed clear <br>cif see nwell_missing** <br>  ![D22_sky130_DRC_Lab_nwell.5_4](/docs/images/D22_sky130_DRC_Lab_nwell.5_4.png) | |
   
   * **NOTE**:
     * Any edge based rules could be implemented using cifoutput operators but generating these layers is highly compute-intensive.
@@ -193,7 +193,7 @@ TODO: Documentation
       templayer nwell_untapped nwell   # Now, create a second templayer nwell_untapped that starts with allnwell geometries
       and-not nwell_tapped             # and subtract all nwell_tapped geometries
       ```
-  | **untapped nwell being flagged for DRC violn. <br>**  ![D14.3_sky130_DRC_Lab_nwell.4_1](/docs/images/D14.3_sky130_DRC_Lab_nwell.4_1.png) | **tapped nwell showing no DRC violn.** <br>  ![D14.3_sky130_DRC_Lab_nwell.4_2](/docs/images/D14.3_sky130_DRC_Lab_nwell.4_2.png) |
+  | **untapped nwell being flagged for DRC violn. <br>**  ![D22_sky130_DRC_Lab_nwell.4_1](/docs/images/D22_sky130_DRC_Lab_nwell.4_1.png) | **tapped nwell showing no DRC violn.** <br>  ![D22_sky130_DRC_Lab_nwell.4_2](/docs/images/D22_sky130_DRC_Lab_nwell.4_2.png) |
   |:---|:---|
 
 
