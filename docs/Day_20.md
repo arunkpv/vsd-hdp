@@ -1,7 +1,7 @@
 [Back to TOC](../README.md)  
 [Prev: Day 19](Day_19.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 21](Day_21.md)  
 _________________________________________________________________________________________________________  
-# Days 20-24 - Advanced Physical Design using OpenLANE/ Sky130
+# Days 20-24: Advanced Physical Design using OpenLANE/ Sky130
 
 # Day 20: Inception of open-source EDA, OpenLANE and Sky130 PDK
 
