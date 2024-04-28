@@ -61,9 +61,9 @@ ________________________________________________________________________________
     add_lefs -src $lefs
     ```
 
-  | * Synthesis result shows the sky130_vsdinv being instanced 1537 times. <br>  ![D14.4_Add_sky130_vsdinv_to_flow_run_synthesis](/docs/images/D14.4_Add_sky130_vsdinv_to_flow_run_synthesis.png) |
+  | * Synthesis result shows the sky130_vsdinv being instanced 1537 times. <br>  ![D23_Add_sky130_vsdinv_to_flow_run_synthesis](/docs/images/D23_Add_sky130_vsdinv_to_flow_run_synthesis.png) |
   |:---|
-  | **Layout showing sky130_vsdinv after placement stage** <br>  ![D14.4_picorv32a_Layout_after_Placement_showing_sky130_vsdinv](/docs/images/D14.4_picorv32a_Layout_after_Placement_showing_sky130_vsdinv.png) |
+  | **Layout showing sky130_vsdinv after placement stage** <br>  ![D23_picorv32a_Layout_after_Placement_showing_sky130_vsdinv](/docs/images/D23_picorv32a_Layout_after_Placement_showing_sky130_vsdinv.png) |
 
   * **Note**:
     * The `run_floorplan` command gave an error saying `Cannot find any macros in the design` after including the sky130_vsdinv cell.
@@ -97,7 +97,7 @@ ________________________________________________________________________________
   * Similar to the NLDM table for cell delay, there is an corresponding table in the library to calculate output transition as well.
   * Table models are usually two-dimensional to allow lookups based on the input slew and the output load (Cload).
 
-  | * Delay table for sky130_vsdinv @tt corner <br>  ![D14.4_NLDM_Delay_Table](/docs/images/D14.4_NLDM_Delay_Table.png) |
+  | * Delay table for sky130_vsdinv @tt corner <br>  ![D23_NLDM_Delay_Table](/docs/images/D23_NLDM_Delay_Table.png) |
   |:---|
 
   *
@@ -109,7 +109,7 @@ ________________________________________________________________________________
   * **Case 2:** Output load values doesn't match with table index values
     * Interpolation is performed using the nearest available table indices to calculate the approximate delay value.
   
-  | Example Interpolation algorithm in NLDM Delay table <br> _Ref: STA for Nanometer Designs - J. Bhasker, Rakesh Chadha_ <br> <br>  ![D14.4_NLDM_Interpolation](/docs/images/D14.4_NLDM_Interpolation.png) |
+  | Example Interpolation algorithm in NLDM Delay table <br> _Ref: STA for Nanometer Designs - J. Bhasker, Rakesh Chadha_ <br> <br>  ![D23_NLDM_Interpolation](/docs/images/D23_NLDM_Interpolation.png) |
   |:---|
 
 ## Lab: Configure synthesis settings to fix the timing violations and improve slack
@@ -138,8 +138,8 @@ ________________________________________________________________________________
 <!---
 | _**Ref: Digital Integrated Circuits: A Design Perspective by J. Rabaey et al.**_ | |
 |:---|:---|
-| **Single-Cycle Path Timing (Ideal Clock)** <br>  ![D14.4_Synchronous_Timing_Basics_Ideal_Clocks](/docs/images/D14.4_Synchronous_Timing_Basics_Ideal_Clocks.png) | **Origin of Flip-flop setup time** <br>  <br>  ![D14.4_Positive-Edge_Triggered_MS_DFF](/docs/images/D14.4_Positive-Edge_Triggered_MS_DFF.png) |
-| | **Example DFF Implementation using TG-Muxes** <br>  ![D14.4_Positive-Edge_Triggered_MS_DFF_using_TG-based_Muxes](/docs/images/D14.4_Positive-Edge_Triggered_MS_DFF_using_TG-based_Muxes.png) |
+| **Single-Cycle Path Timing (Ideal Clock)** <br>  ![D23_Synchronous_Timing_Basics_Ideal_Clocks](/docs/images/D23_Synchronous_Timing_Basics_Ideal_Clocks.png) | **Origin of Flip-flop setup time** <br>  <br>  ![D23_Positive-Edge_Triggered_MS_DFF](/docs/images/D23_Positive-Edge_Triggered_MS_DFF.png) |
+| | **Example DFF Implementation using TG-Muxes** <br>  ![D23_Positive-Edge_Triggered_MS_DFF_using_TG-based_Muxes](/docs/images/D23_Positive-Edge_Triggered_MS_DFF_using_TG-based_Muxes.png) |
 --->
   * Considering Ideal clocks, the condition to meet the setup timing for a single-cycle path (using same clock at launch and capture flops) is:
     T_clk > tc_q + t_comb + t_setup
@@ -153,7 +153,7 @@ ________________________________________________________________________________
     * The minimum time required for the relevant internal nodes of the Flip-Flop circuit to capture the value at the "D" input pin, before the arrival of the clock triggering edge.
     * The exact values depend on the FF implementation style. If we consider a Mux/ Latch-based implementation of an edge-triggerted FF (where a negative latch is followed by a positive latch), the setup time is the time required for the 'D' input to reach the internal node, QM (i.e., the delay of the first Mux/ Latch)
 
-    | ![D14.4_Positive-Edge_Triggered_MS-DFF](/docs/images/D14.4_Positive-Edge_Triggered_MS-DFF.png) |
+    | ![D23_Positive-Edge_Triggered_MS-DFF](/docs/images/D23_Positive-Edge_Triggered_MS-DFF.png) |
     |:---|
 
   * **Clock Jitter**
@@ -170,7 +170,7 @@ ________________________________________________________________________________
     * Clock uncertainty specifies a window within which a clock edge can occur.
     * With respect to setup timing, we specify a new parameter called _**setup uncertainty**_ to model several factors like clock jitter, additional margins and clock skew (at pre-cts stage).
 
-    | ![D14.4_Setup_Uncertainty](/docs/images/D14.4_Setup_Uncertainty.png) |
+    | ![D23_Setup_Uncertainty](/docs/images/D23_Setup_Uncertainty.png) |
     |:---|
 
 ### Lab: Configure OpenSTA for Post-synth timing analysis
@@ -276,7 +276,7 @@ ________________________________________________________________________________
 ## 23.3 Clock Tree Synthesis using TritonCTS and Signal Integrity
 Clock Tree Synthesis is the process of connecting the clocks to the clock pins of all sequential elements in the design by using inverters/ buffers in order to balance the skew and to minimize the insertion delay.
 
-| **Ideal Clock Tree before CTS** <br>  ![D14.4_Ideal_clock_tree_before_CTS](/docs/images/D14.4_Ideal_clock_tree_before_CTS.png) | **Real Clock tree (H-tree) after CTS** <br>  ![D14.4_Real_clock_tree_(H-tree)_after_CTS](/docs/images/D14.4_Real_clock_tree_(H-tree)_after_CTS.png)
+| **Ideal Clock Tree before CTS** <br>  ![D23_Ideal_clock_tree_before_CTS](/docs/images/D23_Ideal_clock_tree_before_CTS.png) | **Real Clock tree (H-tree) after CTS** <br>  ![D23_Real_clock_tree_(H-tree)_after_CTS](/docs/images/D23_Real_clock_tree_(H-tree)_after_CTS.png)
 |---|---|
 
 **Image courtesy:** [_https://www.physicaldesign4u.com/2020/02/clock-tree-synthesis.html_](https://www.physicaldesign4u.com/2020/02/clock-tree-synthesis.html)
@@ -303,7 +303,7 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
       6) Repeat this algorithm till the time we reach the flop clock pin.
     * This is demonstrated in the following GIF file from [wikipedia page](https://en.wikipedia.org/wiki/H_tree):
 
-    | ![D14.4_H_tree_Algorithm](/docs/images/D14.4_H_tree_Algorithm.gif) |
+    | ![D23_H_tree_Algorithm](/docs/images/D23_H_tree_Algorithm.gif) |
     |:---|
   * **Clock buffering**
     * To ensure the clock signal reaching each sink pin is having the required target slew/ transition time, we need to add clock repeaters or clock buffers at multiple points of the distribution network, ensuring the RC wire load is split across multiple levels of buffers.
@@ -340,7 +340,7 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
   * Command to run cts: `run_cts`
   * After CTS, a new netlist **<design_name>.synthesis_cts.v** will be created in the `runs/<tag>/results/synthesis/` folder that includes the information on the generated clock clock tree and the newly instanced clock buffers.
 
-  | ![D14.4_New_netlist_after_CTS](/docs/images/D14.4_New_netlist_after_CTS.png) |
+  | ![D23_New_netlist_after_CTS](/docs/images/D23_New_netlist_after_CTS.png) |
   |---|
 
 ### Lab: Steps to verify CTS runs
