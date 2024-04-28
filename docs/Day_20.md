@@ -17,7 +17,7 @@ ________________________________________________________________________________
   * The methodology is implemented through a **flow** that pieces together different tools to carry out the different steps of the design process from RTL to GDSII tapeout.
 
 ### 20.1.1 Simplified RTL to GDSII ASIC Design Flow
-| ![Simplified Flow](/docs/images/D14.1_Simplified_Flow.png) |
+| ![Simplified Flow](/docs/images/D20.1_Simplified_Flow.png) |
 |---|
 
   1) **Synthesis**: Converts RTL to a circuit using components from the Standard Cell Library (SCL)
@@ -48,7 +48,7 @@ Main requirements of Digital ASIC Design:
   * EDA Tools
   * PDK
 
-| ![D14.1_OpenSource_ASIC_Design](/docs/images/D14.1_OpenSource_ASIC_Design.png) |
+| ![D20.1_OpenSource_ASIC_Design](/docs/images/D20.1_OpenSource_ASIC_Design.png) |
 |---|
   
 Open Source RTL IPs and competitive EDA tools have been available.  
@@ -75,7 +75,7 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
   * OpenLANE project GitHub Page: [OpenLANE](https://github.com/efabless/openlane)
   * [OpenLANE ReadMe](https://openlane.readthedocs.io/en/latest/flow_overview.html)
 
-  <kbd> ![OpenLANE Flow](/docs/images/D14.1_OpenLANE_Flow.png) </kbd>
+  <kbd> ![OpenLANE Flow](/docs/images/D20.1_OpenLANE_Flow.png) </kbd>
   <br>
   
   1) Synthesis
@@ -123,9 +123,9 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
   * When a metal wire segment is fabricated, it can act as an antenna.
     * Reactive ion etching causes charge to accumulate on the wire.
     * Transistor gates can be damaged during fabrication  
-    <kbd> ![Antenna_Rules](/docs/images/D14.1_AntennaRules_1.png) </kbd>
+    <kbd> ![Antenna_Rules](/docs/images/D20.1_AntennaRules_1.png) </kbd>
   * _**Two solutions:**_  
-  <kbd> ![Antenna_Rules_Soln](/docs/images/D14.1_AntennaRules_Soln.png) </kbd>
+  <kbd> ![Antenna_Rules_Soln](/docs/images/D20.1_AntennaRules_Soln.png) </kbd>
     * Bridging attaches a higher layer intermediary
       * Requires Router awareness (not there yet!)
     * Add antenna diode cell to leak away charges
@@ -134,7 +134,7 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
     * Add a Fake Antenna Diode next to every cell input after placement
     * Run the Antenna Checker (Magic) on the routed layout
     * If the checker reports a violation on the cell input pin, replace the Fake Diode cell by a real one
-  <kbd> ![D14.1_AntennaRules_FakeDiode_RealDiode](/docs/images/D14.1_AntennaRules_FakeDiode_RealDiode.png) </kbd>
+  <kbd> ![D20.1_AntennaRules_FakeDiode_RealDiode](/docs/images/D20.1_AntennaRules_FakeDiode_RealDiode.png) </kbd>
 
 
 ### Lab: Familiarize with OpenLANE flow
@@ -172,12 +172,12 @@ Using an existing design provided in the OpenLANE package to:
        prep -design picorv32a
        run_synthesis
        ```  
-| ![D14.1_Lab1_OpenLANE_InteractiveMode](/docs/images/D14.1_Lab1_OpenLANE_InteractiveMode.png) |
+| ![D20.1_Lab1_OpenLANE_InteractiveMode](/docs/images/D20.1_Lab1_OpenLANE_InteractiveMode.png) |
 |-|
 
    * **Synthesis Result:**
 
-| ![D14.1_Lab2_run_synthesis](/docs/images/D14.1_Lab2_run_synthesis.png) |
+| ![D20.1_Lab2_run_synthesis](/docs/images/D20.1_Lab2_run_synthesis.png) |
 |-|
 
        === picorv32a ===
