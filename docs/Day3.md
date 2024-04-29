@@ -42,7 +42,7 @@ endmodule
 <br>
 
 Synthesis Result:  
-![opt_check](/docs/images/opt_check.png)  
+![D3_opt_check](/docs/images/D3_opt_check.png)  
 <br>
 _________________________________________________________________________________________________________  
 
@@ -64,7 +64,7 @@ endmodule
 
 Synthesis Result:  
 _The cell library already seems to have an OR gate available as the synthesis result is an OR gate itself and not a NAND-realization of the OR to avoid the stacked PMOS as shown in the demo videos_  
-![opt_check2](/docs/images/opt_check2.png)  
+![D3_opt_check2](/docs/images/D3_opt_check2.png)  
 <br>
 _________________________________________________________________________________________________________  
 
@@ -82,7 +82,7 @@ endmodule
 <br>
 
 Synthesis Result:  
-![opt_check3](/docs/images/opt_check3.png)  
+![D3_opt_check3](/docs/images/D3_opt_check3.png)  
 <br>
 _________________________________________________________________________________________________________  
 
@@ -103,7 +103,7 @@ endmodule
 <br>
 
 Synthesis Result:  
-![opt_check4](/docs/images/opt_check4.png)  
+![D3_opt_check4](/docs/images/D3_opt_check4.png)  
 <br>
 _________________________________________________________________________________________________________  
 
@@ -130,7 +130,7 @@ endmodule
 <br>
 
 Synthesis Result:  
-![multiple_module_opt](/docs/images/multiple_module_opt.png)  
+![D3_multiple_module_opt](/docs/images/D3_multiple_module_opt.png)  
 <br>
 _________________________________________________________________________________________________________  
 
@@ -152,7 +152,7 @@ endmodule
 <br>
 
 Synthesis Result:  
-![multiple_module_opt2](/docs/images/multiple_module_opt2.png)  
+![D3_multiple_module_opt2](/docs/images/D3_multiple_module_opt2.png)  
 <br>
 
 _________________________________________________________________________________________________________  
@@ -195,9 +195,9 @@ In this example, no optimization is possible as the flop output, q changes.
 
 <br>
 
-| Behavioral Simulation | ![dff_const1_waves](/docs/images/dff_const1_waves.png)  |
+| Behavioral Simulation | ![D3_dff_const1_waves](/docs/images/D3_dff_const1_waves.png)  |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const1](/docs/images/dff_const1.png) |  
+| **Synthesis Result** | ![D3_dff_const1](/docs/images/D3_dff_const1.png) |  
 <br>
 
 _________________________________________________________________________________________________________
@@ -219,9 +219,9 @@ Thus the realization does not need any cells and q is connected to 1'b1.
 
 <br>
 
-| Behavioral Simulation | ![dff_const2_waves](/docs/images/dff_const2_waves.png) |
+| Behavioral Simulation | ![D3_dff_const2_waves](/docs/images/D3_dff_const2_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const2](/docs/images/dff_const2.png) |
+| **Synthesis Result** | ![D3_dff_const2](/docs/images/D3_dff_const2.png) |
 <br>
 
 _________________________________________________________________________________________________________  
@@ -250,9 +250,9 @@ Here, both q1 & q have transitions and thus cannot be optimized further.
 So the design will have two DFFs.  
 <br>
 
-| Behavioral Simulation | ![dff_const3_waves](/docs/images/dff_const3_waves.png) |
+| Behavioral Simulation | ![D3_dff_const3_waves](/docs/images/D3_dff_const3_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const3](/docs/images/dff_const3.png) |
+| **Synthesis Result** | ![D3_dff_const3](/docs/images/D3_dff_const3.png) |
 <br>
 
 _________________________________________________________________________________________________________  
@@ -281,9 +281,9 @@ In this example, both q1 & q remain constant at 1'b1.
 Thus, the design can be optimized to have only wires. Further, q1 being an internal net can also be removed.  
 <br>
 
-| Behavioral Simulation | ![dff_const4_waves](/docs/images/dff_const4_waves.png) |
+| Behavioral Simulation | ![D3_dff_const4_waves](/docs/images/D3_dff_const4_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const4](/docs/images/dff_const4.png) |
+| **Synthesis Result** | ![D3_dff_const4](/docs/images/D3_dff_const4.png) |
 <br>
 
 _________________________________________________________________________________________________________  
@@ -310,9 +310,9 @@ endmodule
 ```
 <br>
 
-| Behavioral Simulation | ![dff_const5_waves](/docs/images/dff_const5_waves.png) |
+| Behavioral Simulation | ![D3_dff_const5_waves](/docs/images/D3_dff_const5_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const5](/docs/images/dff_const5.png) |
+| **Synthesis Result** | ![D3_dff_const5](/docs/images/D3_dff_const5.png) |
 <br>
 
 _________________________________________________________________________________________________________  
@@ -338,10 +338,10 @@ Since count[0:0] toggles every clock cycle, there really is a need for only one 
 In other words, the synthesis output does not have a 3-bit up counter and its associated count incrementing logic.  
 <br>
 
-| Behavioral Simulation | ![counter_opt_waves](/docs/images/counter_opt_waves.png) |
+| Behavioral Simulation | ![D3_counter_opt_waves](/docs/images/D3_counter_opt_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result w/o opt_clean switch** | ![counter_opt_without_optimization](/docs/images/counter_opt_without_optimization.png) |
-| **Synthesis Result with opt_clean switch** | ![counter_opt](/docs/images/counter_opt.png) |
+| **Synthesis Result w/o opt_clean switch** | ![D3_counter_opt_without_optimization](/docs/images/D3_counter_opt_without_optimization.png) |
+| **Synthesis Result with opt_clean switch** | ![D3_counter_opt](/docs/images/D3_counter_opt.png) |
 
 <br>
 
@@ -368,9 +368,9 @@ So when this design is synthesized, we expect 3 DFF instantiations to be present
 
 <br>
 
-| Behavioral Simulation | ![counter_opt2_waves](/docs/images/counter_opt2_waves.png) |
+| Behavioral Simulation | ![D3_counter_opt2_waves](/docs/images/D3_counter_opt2_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![counter_opt2_with_optimizations](/docs/images/counter_opt2_with_optimizations.png) |
+| **Synthesis Result** | ![D3_counter_opt2_with_optimizations](/docs/images/D3_counter_opt2_with_optimizations.png) |
 <br>
 
 _________________________________________________________________________________________________________  

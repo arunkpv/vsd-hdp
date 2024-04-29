@@ -16,7 +16,7 @@ GLS can be run in different delay modes:
 
 **GLS using iverilog**  
 The following block diagram shows the GLS flow using iverilog:  
-|![Day4_GLS_using_iverilog](/docs/images/Day4_GLS_using_iverilog.png)|
+|![D4_GLS_using_iverilog](/docs/images/D4_GLS_using_iverilog.png)|
 |-|
 
 <br>
@@ -50,10 +50,10 @@ endmodule
 ```
 <br>
 
-| RTL Simulation | ![ternary_operator_mux_waves](/docs/images/ternary_operator_mux_waves.png) |
+| RTL Simulation | ![D4_ternary_operator_mux_waves](/docs/images/D4_ternary_operator_mux_waves.png) |
 |-----------------------|------------------|
-| **GLS** | ![ternary_operator_mux_waves_GLS](/docs/images/ternary_operator_mux_waves_GLS.png) |
-| **Synthesis Result** | ![ternary_operator_mux](/docs/images/ternary_operator_mux.png) |
+| **GLS** | ![D4_ternary_operator_mux_waves_GLS](/docs/images/D4_ternary_operator_mux_waves_GLS.png) |
+| **Synthesis Result** | ![D4_ternary_operator_mux](/docs/images/D4_ternary_operator_mux.png) |
 <br>
 
 _________________________________________________________________________________________________________  
@@ -72,10 +72,10 @@ endmodule
 ```
 <br>
 
-| RTL Simulation | ![bad_mux_rtl_waves](/docs/images/bad_mux_rtl_waves.png) |
+| RTL Simulation | ![D4_bad_mux_rtl_waves](/docs/images/D4_bad_mux_rtl_waves.png) |
 |-----------------------|------------------|
-| **GLS** | ![bad_mux_waves_GLS](/docs/images/bad_mux_waves_GLS.png) |
-| **Synthesis Result** | ![bad_mux_rtl](/docs/images/bad_mux_rtl.png) |
+| **GLS** | ![D4_bad_mux_waves_GLS](/docs/images/D4_bad_mux_waves_GLS.png) |
+| **Synthesis Result** | ![D4_bad_mux_rtl](/docs/images/D4_bad_mux_rtl.png) |
 <br>
 
 In this case, we can clearly see that there is a mismatch in the simulation between pre and post-synthesis.  
@@ -85,7 +85,7 @@ In fact, yosys actually throws a warning message about the possible omission of 
 <br>
 
 _Yosys warning about missing signals in sensitivity list_  
-![yosys_read_verilog_message](/docs/images/yosys_read_verilog_message.png)
+![yosys_read_verilog_message](/docs/images/D4_yosys_read_verilog_message.png)
 <br>
 
 _________________________________________________________________________________________________________  
@@ -110,10 +110,10 @@ Assuming we wanted to implement just a combinational logic with output, d = (a +
   * In the RTL sim, the blocking assignments make it seem as if there is a flop in the design.
   * While in the GLS, the design is synthesized to a O2A1 gate implementing d = (a + b) * c, with no flops inferred, thus resulting in the mismatch.
   
-| RTL Simulation | ![blocking_caveat_waves_RTL](/docs/images/blocking_caveat_waves_RTL.png) |
+| RTL Simulation | ![D4_blocking_caveat_waves_RTL](/docs/images/D4_blocking_caveat_waves_RTL.png) |
 |-----------------------|------------------|
-| **GLS** | ![blocking_caveat_waves_GLS](/docs/images/blocking_caveat_waves_GLS.png) |
-| **Synthesis Result** | ![blocking_caveat](/docs/images/blocking_caveat.png) |
+| **GLS** | ![D4_blocking_caveat_waves_GLS](/docs/images/D4_blocking_caveat_waves_GLS.png) |
+| **Synthesis Result** | ![D4_blocking_caveat](/docs/images/D4_blocking_caveat.png) |
 
 <br>
 

@@ -9,7 +9,7 @@ _Reference:_ [Application binary interface](https://en.wikipedia.org/wiki/Applic
 <br>
 
 RISC-V CPU architecture has 32 registers. Application programmer, can access each of these 32 registers through its ABI name; for example, if we need to move the stack pointer, the command ```addi sp, sp, -16``` will decrement the SP by 0x10, where "sp" is the ABI name of stack pointer. The following table shows the ABI Integer register calling convention :  
-![RV64I_IntegerRegisterConvention](/docs/images/RV64I_IntegerRegisterConvention.png)
+![RV64I_IntegerRegisterConvention](/docs/images/D6_RV64I_IntegerRegisterConvention.png)
 <br>
 
 For more detailed information, refer to the [RISC-V ABI Specification v1.0](https://drive.google.com/file/d/1Ja_Tpp_5Me583CGVD-BIZMlgGBnlKU4R/view)  

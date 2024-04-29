@@ -37,7 +37,7 @@ We will be building Yosys from the source using gcc, the instructions for which 
     ```
     
   - Invoke from shell:  
-    ![day0_yosys](/docs/images/day0_yosys.png)
+    ![D0_yosys](/docs/images/D0_yosys.png)
   
  **2. iverilog - Icarus Verilog**  
    - Install from official Ubuntu repository:
@@ -46,7 +46,7 @@ We will be building Yosys from the source using gcc, the instructions for which 
      ```
      
    - Invoke from shell:  
-     ![day0_iverilog](/docs/images/day0_iverilog.png)
+     ![D0_iverilog](/docs/images/D0_iverilog.png)
   
  **3. GTKWave**
    - Install from official Ubuntu repository:
@@ -55,7 +55,7 @@ We will be building Yosys from the source using gcc, the instructions for which 
      ```
      
    - Invoke from shell:  
-     ![day0_gtkwave](/docs/images/day0_gtkwave.png)  
+     ![D0_gtkwave](/docs/images/D0_gtkwave.png)  
 
 _________________________________________________________________________________________________________  
 

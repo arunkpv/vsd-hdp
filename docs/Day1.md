@@ -34,7 +34,7 @@ vvp good_mux
 gtkwave tb_good_mux.vcd
 ```
 _Snapshot of the waves from the above simulation in gtkwave:_
-![day1_lab1_2input_mux_iverilog_gktwave](/docs/images/day1_lab1_2input_mux_iverilog_gktwave.png)
+![D1_lab1_2input_mux_iverilog_gktwave](/docs/images/D1_lab1_2input_mux_iverilog_gktwave.png)
 <br />
 <br />
 ## Lab 3: Synthesis of RTL design using Yosys with sky130 library as target
@@ -124,7 +124,7 @@ endmodule
 ```
   
 _Logic realized by the synthesis tool in the above example:_
-![day1_lab3_2input_mux_synth_logical_diagram](/docs/images/day1_lab3_2input_mux_synth_logical_diagram.png)
+![D1_lab3_2input_mux_synth_logical_diagram](/docs/images/D1_lab3_2input_mux_synth_logical_diagram.png)
 _________________________________________________________________________________________________________  
 
 [Prev: Day0](Day0.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day2](Day2.md)  

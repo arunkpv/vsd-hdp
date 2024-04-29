@@ -37,7 +37,7 @@ For this example, we will use the design file, multiple_modules.v, which contain
   ```
   
   Synthesis result preserving the design hierarchy:  
-  ![day2_multiple_modules_hier](/docs/images/day2_multiple_modules_hier.png)
+  ![D2_multiple_modules_hier](/docs/images/D2_multiple_modules_hier.png)
   <br />
   <br />
 <!---
@@ -118,7 +118,7 @@ endmodule
   ```
     
   Synthesis result after flattening:  
-  ![day2_multiple_modules_flat](/docs/images/day2_multiple_modules_flat.png)
+  ![D2_multiple_modules_flat](/docs/images/D2_multiple_modules_flat.png)
   <br />
   <br />
 <!---
@@ -176,7 +176,7 @@ endmodule
 -->
 
   **Comparing the netlist generated for hierarchical and flat synthesis:**  
-  ![multiple_modules_hierarchical_vs_flat](/docs/images/multiple_modules_hierarchical_vs_flat.png)
+  ![D2_multiple_modules_hierarchical_vs_flat](/docs/images/D2_multiple_modules_hierarchical_vs_flat.png)
 ________________________________________________________________________________________________________________________
   
 ## Lab 6: Various Flip-Flop Designs
@@ -213,10 +213,10 @@ library specified in the given liberty file.
   **Behavioral Simulation:**  
   | Reset Deassertion | Reset Assertion |
   |-------------------|-----------------|
-  | ![dff_asyncres_reset_deassertion](/docs/images/dff_asyncres_reset_deassertion.png) | ![dff_asyncres_reset_asserted](/docs/images/dff_asyncres_reset_asserted.png) |
+  | ![D2_dff_asyncres_reset_deassertion](/docs/images/D2_dff_asyncres_reset_deassertion.png) | ![D2_dff_asyncres_reset_asserted](/docs/images/D2_dff_asyncres_reset_asserted.png) |
   
   **Synthesis Result:**
-  ![dff_asyncres](/docs/images/dff_asyncres.png)  
+  ![D2_dff_asyncres](/docs/images/D2_dff_asyncres.png)  
   
 ### 2. DFF with Synchronous Reset
   ```verilog
@@ -234,10 +234,10 @@ library specified in the given liberty file.
   **Behavioral Simulation:**  
   | Reset Deassertion | Reset Assertion |
   |-------------------|-----------------|
-  | ![dff_syncres_reset_deassertion](/docs/images/dff_syncres_reset_deassertion.png) | ![dff_syncres_reset_assertion](/docs/images/dff_syncres_reset_assertion.png) |
+  | ![D2_dff_syncres_reset_deassertion](/docs/images/D2_dff_syncres_reset_deassertion.png) | ![D2_dff_syncres_reset_assertion](/docs/images/D2_dff_syncres_reset_assertion.png) |
     
   **Synthesis Result:**
-  ![dff_syncres](/docs/images/dff_syncres.png)  
+  ![D2_dff_syncres](/docs/images/D2_dff_syncres.png)  
   
 ### 3. DFF with both Asynchronous & Synchronous Reset
   ```verilog
@@ -255,11 +255,11 @@ library specified in the given liberty file.
   ```
     
   **Behavioral Simulation:**  
-  ![dff_asyncres_syncres_waves](/docs/images/dff_asyncres_syncres_waves.png)
+  ![D2_dff_asyncres_syncres_waves](/docs/images/D2_dff_asyncres_syncres_waves.png)
 
     
   **Synthesis Result:**
-  ![dff_asyncres_syncres](/docs/images/dff_asyncres_syncres.png)
+  ![D2_dff_asyncres_syncres](/docs/images/D2_dff_asyncres_syncres.png)
 _________________________________________________________________________________________________________  
   
 ## Lab 7: Some interesting synthesis optimizations involving multipliers  
@@ -291,7 +291,7 @@ Here, we will take a look at the synthesis of two special cases of multipliers w
   ```
 
   Synthesis result:  
-  ![mult_2](/docs/images/mult_2.png)  
+  ![D2_mult_2](/docs/images/D2_mult_2.png)  
 
 ### 2. Multiply a 3-bit number by 9
   The input is a 3-bit binary number and the output is defined to be 9 * input.  
@@ -320,7 +320,7 @@ Here, we will take a look at the synthesis of two special cases of multipliers w
 
 
   Synthesis result:  
-  ![mult8](/docs/images/mult8.png)  
+  ![D2_mult8](/docs/images/D2_mult8.png)  
 _________________________________________________________________________________________________________  
 
 [Prev: Day1](Day1.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day3](Day3.md)  
