@@ -41,7 +41,9 @@ References:
       3) [https://five-embeddev.com/toolchain/2019/06/26/gcc-targets/](https://five-embeddev.com/toolchain/2019/06/26/gcc-targets/)
       4) [https://github.com/riscv-non-isa/riscv-toolchain-conventions](https://github.com/riscv-non-isa/riscv-toolchain-conventions)
 
-### 5.3.1 Lab: Write a C program to compute the sum of first N natural numbers, compile using RISC-V GCC, simulate using Spike RISC-V ISA Simulator and disassemble to view the assembly code
+### 5.3.1 Lab: RISC-V program simulation using Spike RISC-V ISA Simulator
+
+>Write a C program to compute the sum of first N natural numbers, compile using RISC-V GCC, simulate using Spike RISC-V ISA Simulator and disassemble to view the assembly code
 
 **C Program:**
 ```C
@@ -85,7 +87,9 @@ Comparing the generated assembly code for main function with -O1 vs -Ofast compi
 | ![D5_disassemble_sum1toN_O1](/docs/images/D5_disassemble_sum1toN_O1.png) | ![D5_disassemble_sum1toN_Ofast](/docs/images/D5_disassemble_sum1toN_Ofast.png) |
 <br>
 
-### 5.3.2 Lab: Use the Interactive Debug mode in Spike RISC-V ISA sim to observe the execution of the program with -Ofast flag
+### 5.3.2 Lab: Interactive Debug mode in Spike RISC-V ISA Simulator
+
+>Use the Interactive Debug mode in Spike RISC-V ISA sim to observe the execution of the program with -Ofast flag
 
 A small example of how to use the debug mode can be found in the following page: [Interactive Debug Mode](https://github.com/riscv-software-src/riscv-isa-sim#interactive-debug-mode)  
 
