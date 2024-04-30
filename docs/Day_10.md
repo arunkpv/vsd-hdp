@@ -56,9 +56,8 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
   * The sandpiper-saas command-line now needs to include all the required arguments.
   * To specify the target HDL language, either the project (`-p`) argument or the target HDL (`--hdl`) argument can be used.
     * When the `-p verilog` argument is used, it needs to be provided as the last item in the command-line to avoid some issue with the argument interpretation by the tool.
-<br>
 
-#### 10.1.2.1 <ins>Method 1:</ins> Using the Makerchip IDE
+#### **<ins>Method 1:</ins> Using the Makerchip IDE**
   * The Makerchip IDE provides within itself indirect access to Sandpiper - i.e., the compilation output result files can be accessed via the IDE's Editor ("E") dropdown menu.
   * If the design is relatively small and not spread across multiple files, it is easier to use the [Makerchip IDE](https://makerchip.com/sandbox/#) itself to convert the TL-Verilog code to Verilog/ SystemVerilog.
   * In this case, as we do not have direct access to "terminal/ shell", all the sandpiper arguments need to be provided in the source file.
@@ -78,9 +77,8 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
     * This will open up a new webpage that shows the last compiled SystemVerilog results, along with some statistics about your TL-Verilog and SystemVerilog code.
       |![D10_TLV_to_Verilog_using_MakerChipIDE_2](/docs/images/D10_TLV_to_Verilog_using_MakerChipIDE_2.png)|
       |-|
-<br>
 
-#### 10.1.2.2 <ins>Method 2:</ins> Using Sandpiper-SaaS
+#### **<ins>Method 2:</ins> Using Sandpiper-SaaS**
   * Install Sandpiper-SaaS by following the steps in the following link: [https://pypi.org/project/sandpiper-saas/](https://pypi.org/project/sandpiper-saas/)
   * Usage Examples:  
     ```shell
@@ -99,9 +97,8 @@ git clone https://gitlab.com/arunkumarpv/sandpiper-saas.git
 cd sandpiper-saas
 pip3 install .
 ```
-<br>
 
-#### 10.1.2.3 <ins>Method 3:</ins> Using Sandpiper-SaaS with Edalize, FuseSoc
+#### **<ins>Method 3:</ins> Using Sandpiper-SaaS with Edalize, FuseSoc**
   * Sandpiper-SaaS supports the Flow API and thus allowing sandpiper-saas to be used as a "frontend" to convert TL-Verilog to SystemVerilog/Verilog for any flow.
   * An example of how to use sandpiper-saas with Edalize or Fusesoc in various contexts - viz. standalone tool, frontend to Vivado, in a Custom flow) is available here:<br>
     [edalize_sandpiper_example](https://github.com/shariethernet/edalize_sandpiper_example)  
@@ -109,9 +106,8 @@ pip3 install .
 Additional Reference Links:  
   1) [Edalize](https://github.com/olofk/edalize.git)
   2) [Fusesoc](https://fusesoc.readthedocs.io/en/stable/user/installation.html)
-
-<br>
     
+
 ## 10.2 GLS of the implemented RISC-V CPU Core
 The TL-Verilog code of the RISC-V CPU core implementation was successfully converted to Verilog using Sandpiper-SaaS.  
   * To ensure that the flow is clean, I first tried GLS for a simple counter circuit:
