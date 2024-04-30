@@ -1,15 +1,24 @@
 [Back to TOC](../README.md)  
 [Prev: Day2](Day2.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day4](Day4.md)  
 _________________________________________________________________________________________________________  
-# Day 3
-## Combinational Logic Optimizations  
-The combinational logic is simplified to the most optimized form which is efficient in terms of area & power savings.  
-**1. Constant Propagation** : This is a direct optimization method wherein the Boolean expression of the synthesized logic is simplified if any of the inputs are "a constant" and subsequently some of the logic gate outputs also propagate a constant value always.  
-**2. Boolean Logic Optimization** : The various Boolean expression optimization techniques like K-maps (graphical), Quine-McLusky, reduction to standard SOP/ POS forms best suited for the cell library/ technology etc.  
-<br>
+# Day 3: Logic Optimization
+Logic optimization is a process of finding an equivalent representation of the specified logic circuit under one or more specified constraints. The goal of logic optimization of a given circuit is to obtain the smallest logic circuit that evaluates to the same values as the original one.
 
-**NOTE :** The command to perform logic optimization in Yosys is ```opt_clean```.  
-Additionally, for a hierarchical design involving multiple sub-modules, the design must be flattened by running the ```flatten``` command before executing the ```opt_clean``` command.
+In terms of Boolean algebra, the optimization of a complex Boolean expression is a process of finding a simpler one, which would upon evaluation ultimately produce the same results as the original one.
+
+## 3.1 Combinational Logic Optimizations  
+The combinational logic is simplified to the most optimized form which is efficient in terms of area & power savings.
+
+### 3.1.1 Constant Propagation
+This is a direct optimization method wherein the Boolean expression of the synthesized logic is simplified if any of the inputs are "a constant" and subsequently some of the logic gate outputs also propagate a constant value always.  
+
+### 3.1.2 Boolean Logic Optimization
+The various Boolean expression optimization techniques like K-maps (graphical), Quine-McLusky, reduction to standard SOP/ POS forms best suited for the cell library/ technology etc.  
+
+**Note:**  
+  - The command to perform logic optimization in Yosys is `opt_clean`.  
+  - Additionally, for a hierarchical design involving multiple sub-modules, the design must be flattened by running the `flatten` command before executing the `opt_clean` command.
+
 ```shell
 USAGE:
 After the synth -top <module_name> command is executed, do:
@@ -18,6 +27,7 @@ After the synth -top <module_name> command is executed, do:
 This command identifies wires and cells that are unused and removes them.
 The additional switch, purge also removes the internal nets if they have a public name.
 ```
+
 ```shell
 # Example showing the sequence of commands to perform combinational logic optimization using Yosys
 # on module opt_check in opt_check.v:
@@ -29,7 +39,7 @@ The additional switch, purge also removes the internal nets if they have a publi
     show
 ```
 
-### Lab 8: Example 1: opt_check.v 
+### 3.1.3 Lab 1: opt_check.v
 ```verilog
 module opt_check (input a , input b , output y);
     assign y = a?b:0;
@@ -46,7 +56,7 @@ Synthesis Result:
 <br>
 _________________________________________________________________________________________________________  
 
-### Lab 8: Example 2: opt_check2.v
+### 3.1.3 Lab 2: opt_check2.v
 ```verilog
 module opt_check2 (input a , input b , output y);
     assign y = a?1:b;
@@ -68,7 +78,7 @@ _The cell library already seems to have an OR gate available as the synthesis re
 <br>
 _________________________________________________________________________________________________________  
 
-### Lab 8: Example 3: opt_check3.v
+### 3.1.3 Lab 3: opt_check3.v
 ```verilog
 module opt_check3 (input a , input b, input c , output y);
     assign y = a?(c?b:0):0;
@@ -86,7 +96,7 @@ Synthesis Result:
 <br>
 _________________________________________________________________________________________________________  
 
-### Lab 8: Example 4: opt_check4.v
+### 3.1.3 Lab 4: opt_check4.v
 ```verilog
 module opt_check4 (input a , input b , input c , output y);
     assign y = a?(b?(a & c):c):(!c);
@@ -107,7 +117,7 @@ Synthesis Result:
 <br>
 _________________________________________________________________________________________________________  
 
-### Lab 8: Example 5: multiple_module_opt.v
+### 3.1.3 Lab 5: multiple_module_opt.v
 ```verilog
 module sub_module1(input a , input b , output y);
     assign y = a & b;
@@ -134,7 +144,7 @@ Synthesis Result:
 <br>
 _________________________________________________________________________________________________________  
 
-### Lab 8: Example 6: multiple_module_opt2.v
+### 3.1.3 Lab 6: multiple_module_opt2.v
 ```verilog
 module sub_module(input a , input b , output y);
     assign y = a & b;
@@ -157,14 +167,22 @@ Synthesis Result:
 
 _________________________________________________________________________________________________________  
 
-## Sequential Logic Optimizations
-**1. Constant Propagation** : Optimization technique used when a constant value is propagated through a flip-flop -- i.e., irrespective of the state of the triggering signals (CLK, Reset, Set), there are no transitions in the flip-flop output.  
+## 3.2 Sequential Logic Optimizations
+
+### 3.2.1 Constant Propagation
+Optimization technique used when a constant value is propagated through a flip-flop -- i.e., irrespective of the state of the triggering signals (CLK, Reset, Set), there are no transitions in the flip-flop output.  
 <br>
 
 ***[Other Advanced optimization methods not covered by examples in detail:]***  
-**2. State optimization** : Unused states in the sequential design are optimized and/or the total states needed in the FSM are minimized.  
-**3. Cloning** : This is a physically-aware (PnR-aware) optimization method where some of the flops in the design are cloned/ duplicated so that the timing can be met post-PnR for the timing arcs involved (provided there is already some minimum positive slack available).  
-**4. Retming** : The pipelining flops in the design are placed optimally so that the combinational delay at each pipeline stage is more or less equalized so that the maximum clock frequency can be increased.  
+
+### 3.2.2 State optimization
+Unused states in the sequential design are optimized and/or the total states needed in the FSM are minimized.  
+
+### 3.2.3 Cloning
+This is a physically-aware (PnR-aware) optimization method where some of the flops in the design are cloned/ duplicated so that the timing can be met post-PnR for the timing arcs involved (provided there is already some minimum positive slack available).  
+
+### 3.2.4. Retming
+The pipelining flops in the design are placed optimally so that the combinational delay at each pipeline stage is more or less equalized so that the maximum clock frequency can be increased.  
 <br>
 
 ```shell
@@ -179,7 +197,7 @@ ________________________________________________________________________________
     show
 ```
 
-### Lab 9: Example 1: dff_const1.v
+### 3.2.5 Lab 1: dff_const1.v
 ```verilog
 module dff_const1(input clk, input reset, output reg q);
     always @(posedge clk, posedge reset)
@@ -202,7 +220,7 @@ In this example, no optimization is possible as the flop output, q changes.
 
 _________________________________________________________________________________________________________
 
-### Lab 9: Example 2: dff_const2.v
+### 3.2.5 Lab 2: dff_const2.v
 ```verilog
 module dff_const2(input clk, input reset, output reg q);
     always @(posedge clk, posedge reset)
@@ -226,7 +244,7 @@ Thus the realization does not need any cells and q is connected to 1'b1.
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 3: dff_const3.v
+### 3.2.5 Lab 3: dff_const3.v
 ```verilog
 module dff_const3(input clk, input reset, output reg q);
     reg q1;
@@ -257,7 +275,7 @@ So the design will have two DFFs.
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 4: dff_const4.v
+### 3.2.5 Lab 4: dff_const4.v
 ```verilog
 module dff_const4(input clk, input reset, output reg q);
     reg q1;
@@ -288,7 +306,7 @@ Thus, the design can be optimized to have only wires. Further, q1 being an inter
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 5: dff_const5.v
+### 3.2.5 Lab 5: dff_const5.v
 ```verilog
 module dff_const5(input clk, input reset, output reg q);
     reg q1;
@@ -317,7 +335,7 @@ endmodule
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 6: counter_opt.v
+### 3.2.5 Lab 6: counter_opt.v
 ```verilog
 module counter_opt (input clk , input reset , output q);
     reg [2:0] count;
@@ -347,7 +365,7 @@ In other words, the synthesis output does not have a 3-bit up counter and its as
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 7: counter_opt2.v
+### 3.2.5 Lab 7: counter_opt2.v
 ```verilog
 module counter_opt (input clk , input reset , output q);
     reg [2:0] count;
