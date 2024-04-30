@@ -1,8 +1,9 @@
 [Back to TOC](../README.md)  
 [Prev: Day3](Day3.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day5](Day5.md)  
 _________________________________________________________________________________________________________  
-# Day 4
-## Gate Level Simulation (GLS)
+# Day 4: GLS and Synthesis-Simulation mismatch
+
+## 4.1 Gate Level Simulation (GLS)
   * _Gate Level_ refers to the netlist view of a design after the synthesis has been performed.
   * RTL simulations are pre-synthesis, while GLS is post-synthesis - i.e., in RTL simulations, the Device Under Test (DUT) is the RTL design itself while in GLS, the DUT is the netlist generated after synthesis.
   * The RTL code and the generated netlist are logically equivalent (well, supposed to be!)  and hence the same testbenches can be used to verify both.
@@ -14,7 +15,7 @@ GLS can be run in different delay modes:
    2. Full Timing validation: if the Gate level verilog models have the necessary timing information, both the functional correctness and the timing behaviour can be verified by GLS.  
 <br>
 
-**GLS using iverilog**  
+### 4.1.1 GLS using iverilog
 The following block diagram shows the GLS flow using iverilog:  
 |![D4_GLS_using_iverilog](/docs/images/D4_GLS_using_iverilog.png)|
 |-|
@@ -31,7 +32,7 @@ Example using ternary_operator_mux_netlist.v:
 ```
 <br>
 
-## Synthesis - Simulation mismatch
+## 4.2 Synthesis - Simulation mismatch
 Some of the common reasons for Synthesis - Simulation mismatch (mismatch between pre- and post-synthesis simulations) :  
   * Incomplete sensitivity list
   * Use of blocking assignments inside always block vs. non-blocking assignments
@@ -42,7 +43,7 @@ Some of the common reasons for Synthesis - Simulation mismatch (mismatch between
   * Non-standard verilog coding
 <br>
 
-### Lab 10: GLS Synthesis - Sumulation mismatch - Example 1: ternary_operator_mux.v
+### 4.2.1 Lab: Example 1: ternary_operator_mux.v
 ```verilog
 module ternary_operator_mux (input i0 , input i1 , input sel , output y);
     assign y = sel ? i1 : i0;
@@ -58,7 +59,7 @@ endmodule
 
 _________________________________________________________________________________________________________  
 
-### Lab 10: GLS Synthesis - Sumulation mismatch - Example 2: bad_mux.v
+### 4.2.2 Lab: Example 2: bad_mux.v
 ```verilog
 module bad_mux (input i0 , input i1 , input sel , output reg y);
     always @ (sel)
@@ -90,7 +91,7 @@ _Yosys warning about missing signals in sensitivity list_
 
 _________________________________________________________________________________________________________  
 
-### Lab 10: GLS Synthesis - Sumulation mismatch - Example 3: blocking_caveat.v
+### 4.2.3 Lab: Example 3: blocking_caveat.v
 ```verilog
 module blocking_caveat (input a , input b , input  c, output reg d);
     reg x;
