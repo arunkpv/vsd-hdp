@@ -2,8 +2,9 @@
 [Prev: Day1](Day1.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day3](Day3.md)  
 _________________________________________________________________________________________________________  
 
-# Day 2
-## Lab 4: Familiarization of the .lib file structure and various timing models (QTMs/ETMs)
+# Day 2: Timing libs, Hierarchical vs. Flat Synthesis, Flip-Flop coding styles
+
+## 2.1 Familiarization of the .lib file structure and various timing models (QTMs/ETMs)
 1. Open up the **sky130_fd_sc_hd__tt_025C_1v80.lib** library file and get familiarized with the overall structure and the various parameters defined like:
 <ul>
  <li>PVT corner for which the lib file is defined</li>
@@ -19,11 +20,11 @@ Ref:
   [3]: [https://asic-pd.blogspot.com/2011/08/basic-of-timing-analysis-in-physical_22.html](https://asic-pd.blogspot.com/2011/08/basic-of-timing-analysis-in-physical_22.html)
 <br />
   
-## Lab 5: Hierarchical vs. Flat Synthesis
+## 2.2 Lab: Hierarchical vs. Flat Synthesis
 In this experiment, we will take a look at how the Yosys tool performs the synthesis and generates the netlst for a multi-module design with and without preserving the design hierarchy.  
-For this example, we will use the design file, multiple_modules.v, which contains some logic implementation using two sub-modules.  
+For this example, we will use the design file, `multiple_modules.v`, which contains some logic implementation using two sub-modules.  
 
-### 1. Hierarchical
+### 2.2.1 Hierarchical
   Perform the hierarchical synthesis from the Yosys shell using the following commands:  
   ```shell
   read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
@@ -40,7 +41,8 @@ For this example, we will use the design file, multiple_modules.v, which contain
   ![D2_multiple_modules_hier](/docs/images/D2_multiple_modules_hier.png)
   <br />
   <br />
-<!---
+
+<!--
   Corresponding Netlist - multiple_modules_hier.v:  
   ```verilog
   /* multiple_modules_hier.v
@@ -108,8 +110,8 @@ module sub_module2(a, b, y);
 endmodule
   ```
 -->
-  
-### 2. Flattened
+
+### 2.2.2 Flattened
   To flatten the hierarchical design, the command **flatten** is used following which we can write the netlist, as shown below:  
   ```shell
   flatten
@@ -121,7 +123,8 @@ endmodule
   ![D2_multiple_modules_flat](/docs/images/D2_multiple_modules_flat.png)
   <br />
   <br />
-<!---
+
+<!--
   Corresponding Netlist - multiple_modules_flat.v:  
   ```verilog
   /* multiple_modules_flat.v
@@ -175,14 +178,15 @@ endmodule
   ```
 -->
 
-  **Comparing the netlist generated for hierarchical and flat synthesis:**  
+**Comparing the netlist generated for hierarchical and flat synthesis:**  
   ![D2_multiple_modules_hierarchical_vs_flat](/docs/images/D2_multiple_modules_hierarchical_vs_flat.png)
 ________________________________________________________________________________________________________________________
   
-## Lab 6: Various Flip-Flop Designs
+## 2.3 Lab: Various Flip-Flop Designs
 Here, we will take a look at the simulation and synthesis of different flip-flops.  
 <br>
-### 1. DFF with Asynchronous Reset
+
+### 2.3.1 DFF with Asynchronous Reset
   ```verilog
   module dff_asyncres ( input clk ,  input async_reset , input d , output reg q );
   always @ (posedge clk , posedge async_reset)
@@ -196,7 +200,7 @@ Here, we will take a look at the simulation and synthesis of different flip-flop
   ```
   
   **NOTE :**
-    To synthesize flip-flops using Ysosys, we need to provide an additional command ```dfflibmap``` so as to map the internal flip-flop cells to the flip-flop cells in the technology
+    To synthesize flip-flops using Ysosys, we need to provide an additional command `dfflibmap` so as to map the internal flip-flop cells to the flip-flop cells in the technology
 library specified in the given liberty file.  
   
   ```shell
@@ -218,7 +222,7 @@ library specified in the given liberty file.
   **Synthesis Result:**
   ![D2_dff_asyncres](/docs/images/D2_dff_asyncres.png)  
   
-### 2. DFF with Synchronous Reset
+### 2.3.2 DFF with Synchronous Reset
   ```verilog
   module dff_syncres ( input clk , input async_reset , input sync_reset , input d , output reg q );
   always @ (posedge clk )
@@ -239,7 +243,7 @@ library specified in the given liberty file.
   **Synthesis Result:**
   ![D2_dff_syncres](/docs/images/D2_dff_syncres.png)  
   
-### 3. DFF with both Asynchronous & Synchronous Reset
+### 2.3.3 DFF with both Asynchronous & Synchronous Reset
   ```verilog
   module dff_asyncres_syncres ( input clk , input async_reset , input sync_reset , input d , output reg q );
   always @ (posedge clk , posedge async_reset)
@@ -262,14 +266,13 @@ library specified in the given liberty file.
   ![D2_dff_asyncres_syncres](/docs/images/D2_dff_asyncres_syncres.png)
 _________________________________________________________________________________________________________  
   
-## Lab 7: Some interesting synthesis optimizations involving multipliers  
-<br>
-Here, we will take a look at the synthesis of two special cases of multipliers where no cells are used at all.  
-<br>  
-<br>
+## 2.4: Some interesting synthesis optimizations involving multipliers
 
-### 1. Multiply by 2
-  The input is an n-bit binary number and the output is twice the input.  
+Here, we will take a look at the synthesis of two special cases of multipliers where no cells are used at all.  
+
+### 2.4.1 Multiply by 2
+
+The input is an n-bit binary number and the output is twice the input.  
   ```
   i.e., output[n:0] = 2 * input[n-1 : 0]
 
@@ -293,8 +296,9 @@ Here, we will take a look at the synthesis of two special cases of multipliers w
   Synthesis result:  
   ![D2_mult_2](/docs/images/D2_mult_2.png)  
 
-### 2. Multiply a 3-bit number by 9
-  The input is a 3-bit binary number and the output is defined to be 9 * input.  
+### 2.4.2 Multiply a 3-bit number by 9
+
+The input is a 3-bit binary number and the output is defined to be 9 * input.  
   ```
   i.e., output[5:0] = 9 * input[2:0]
 

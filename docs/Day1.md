@@ -1,8 +1,9 @@
 [Back to TOC](../README.md)  
 [Prev: Day0](Day0.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day2](Day2.md)  
 _________________________________________________________________________________________________________  
-# Day 1
-## Labs 1,2: Functional Simulation of RTL design using iverilog and gktwave
+# Day 1: Introduction to Verilog RTL design and Synthesis
+
+## 1.1 Lab: Functional Simulation of RTL design using iverilog and gktwave
 In this lab, we clone the gihthub repo - [sky130RTLDesignAndSynthesisWorkshop](https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop) - and use one of the example RTL design sources together with its corresponding testbench to get familiarised with the functional simulation of an RTL design using iverilog and gtkwave.   
 <br />
 1. Clone the github repo with the RTL design examples and sky130*.lib files
@@ -33,13 +34,16 @@ vvp good_mux
 
 gtkwave tb_good_mux.vcd
 ```
+
 _Snapshot of the waves from the above simulation in gtkwave:_
 ![D1_lab1_2input_mux_iverilog_gktwave](/docs/images/D1_lab1_2input_mux_iverilog_gktwave.png)
 <br />
 <br />
-## Lab 3: Synthesis of RTL design using Yosys with sky130 library as target
+
+## 1.2 Lab: Synthesis of RTL design using Yosys with sky130 library as target
 In this lab, we will perform gate-level synthesis of the example RTL design simulated in the previous session using Yosys and sky130 as the target library.
 <br />
+
 ```
 # 1. Invoke the yosys shell (since we are doing each step manually this time around)
 yosys
@@ -124,7 +128,7 @@ endmodule
 ```
   
 _Logic realized by the synthesis tool in the above example:_
-![D1_lab3_2input_mux_synth_logical_diagram](/docs/images/D1_lab3_2input_mux_synth_logical_diagram.png)
+![D1_lab3_2input_mux_synth_logical_diagram](/docs/images/D1_lab1_2input_mux_synth_logical_diagram.png)
 _________________________________________________________________________________________________________  
 
 [Prev: Day0](Day0.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day2](Day2.md)  

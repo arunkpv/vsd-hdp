@@ -1,8 +1,9 @@
 [Back to TOC](../README.md)  
 [Prev: TOC](../README.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day1](Day1.md)  
 _________________________________________________________________________________________________________  
-# Day 0
-## System Setup
+# Day 0: GitHub repo creation, System/ Tools Environment Setup
+
+## 0.1 System Setup
 The program uses Open Source EDA tools and thus a linux OS environment is preferred.
 <br />  
 __Virtual Machine Requirements:__
@@ -11,8 +12,8 @@ __Virtual Machine Requirements:__
   - HDD: 50GB or above
   - CPU cores: 4 vCPUs or more
   
-## Tools Setup
- **1. yosys – Yosys Open SYnthesis Suite**  
+## 0.2 Tools Setup
+### 0.2.1 yosys – Yosys Open SYnthesis Suite
 We will be building Yosys from the source using gcc, the instructions for which are available in the official README for yosys in its GitHub repo.
 [Build Yosys from source](https://github.com/YosysHQ/yosys#building-from-source)
 <br />
@@ -39,7 +40,7 @@ We will be building Yosys from the source using gcc, the instructions for which 
   - Invoke from shell:  
     ![D0_yosys](/docs/images/D0_yosys.png)
   
- **2. iverilog - Icarus Verilog**  
+### 0.2.2 iverilog - Icarus Verilog
    - Install from official Ubuntu repository:
      ```shell
      sudo apt-get install iverilog
@@ -48,7 +49,7 @@ We will be building Yosys from the source using gcc, the instructions for which 
    - Invoke from shell:  
      ![D0_iverilog](/docs/images/D0_iverilog.png)
   
- **3. GTKWave**
+### 0.2.3 GTKWave
    - Install from official Ubuntu repository:
      ```shell
      sudo apt-get install gtkwave
