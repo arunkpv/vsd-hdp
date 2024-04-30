@@ -1,7 +1,7 @@
 [Back to TOC](../README.md)  
 [Prev: Day9](Day9.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 11](Day_11.md)  
 _________________________________________________________________________________________________________  
-# Day 10 - GLS
+# Day 10: GLS of the implemented RISC-V CPU Core
 
   * The functional verification of the design has already been completed successfully in the Makerchip IDE itself.
   * To perform GLS of the implementation, we need to first convert the TL-Verilog code into synthesizable verilog and then perform the synthesis using Yosys.
@@ -31,7 +31,7 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
 
   * The Sandpiper arguments could be provided either in the source file as inline arguments or in the terminal while invoking sandpiper-saas.
 
-### a) Providing the SandPiper arguments in the source file
+### 10.1.1 Providing the SandPiper arguments in the source file
   * The first line of a TL-X file, called the **"File Format Line"**, must identify the TL-X File Format Version and HDL Language, as well as a URL to the language specification.  
     For example, for a TL-Verilog source file using m4 macro pre-processing language, the first line will look like as follows:  
     `\m4_TLV_version 1d: tl-x.org`
@@ -48,7 +48,7 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
     **NOTE:** Based on my observation, the argument `--iArgs` needs to be provided in the terminal itself for it to take effect for some reason.
     <br>
     
-### b) Providing the SandPiper arguments in the command-line/ shell
+### 10.1.2 Providing the SandPiper arguments in the command-line/ shell
   * The first line in the source file - i.e., the "File Format Line" can be kept as it is and all the required arguments to sandpiper can be provided in the terminal.  
     The first line will remain unchanged in the standard format as follows: `\m4_TLV_version 1d: tl-x.org`
     <br>
@@ -58,7 +58,7 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
     * When the `-p verilog` argument is used, it needs to be provided as the last item in the command-line to avoid some issue with the argument interpretation by the tool.
 <br>
 
-#### <ins>Method 1:</ins> Using the Makerchip IDE
+#### 10.1.2.1 <ins>Method 1:</ins> Using the Makerchip IDE
   * The Makerchip IDE provides within itself indirect access to Sandpiper - i.e., the compilation output result files can be accessed via the IDE's Editor ("E") dropdown menu.
   * If the design is relatively small and not spread across multiple files, it is easier to use the [Makerchip IDE](https://makerchip.com/sandbox/#) itself to convert the TL-Verilog code to Verilog/ SystemVerilog.
   * In this case, as we do not have direct access to "terminal/ shell", all the sandpiper arguments need to be provided in the source file.
@@ -80,7 +80,7 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
       |-|
 <br>
 
-#### <ins>Method 2:</ins> Using Sandpiper-SaaS
+#### 10.1.2.2 <ins>Method 2:</ins> Using Sandpiper-SaaS
   * Install Sandpiper-SaaS by following the steps in the following link: [https://pypi.org/project/sandpiper-saas/](https://pypi.org/project/sandpiper-saas/)
   * Usage Examples:  
     ```shell
@@ -101,7 +101,7 @@ pip3 install .
 ```
 <br>
 
-#### <ins>Method 3:</ins> Using Sandpiper-SaaS with Edalize, FuseSoc
+#### 10.1.2.3 <ins>Method 3:</ins> Using Sandpiper-SaaS with Edalize, FuseSoc
   * Sandpiper-SaaS supports the Flow API and thus allowing sandpiper-saas to be used as a "frontend" to convert TL-Verilog to SystemVerilog/Verilog for any flow.
   * An example of how to use sandpiper-saas with Edalize or Fusesoc in various contexts - viz. standalone tool, frontend to Vivado, in a Custom flow) is available here:<br>
     [edalize_sandpiper_example](https://github.com/shariethernet/edalize_sandpiper_example)  
@@ -121,7 +121,7 @@ The TL-Verilog code of the RISC-V CPU core implementation was successfully conve
     4) Perform synthesis using Ysosys
     5) Verify correctness by performing GLS using the synthesis output in iverilog
 
-### Issues
+### 10.2.1 Issues
   * All steps until (iv) are verified to be working fine, however, the GLS using the synthesis tool generated netlist is failing with all signals being "X".  
   
 This turned out to be due to known issues:  
@@ -142,7 +142,7 @@ iverilog -DFUNCTIONAL -DUNIT_DELAY=#1 ./lib/verilog_model/primitives.v ./lib/ver
 gtkwave postsynth_sim.vcd &
 ```
 
-### Results
+## 10.3 Results
   * [**Yosys synthesis script**](../code/riscv/scripts/yosys.ys)
     * The synthesis script was updated at a later point in time, based on the inputs obtained from the [Yosys issue raised for a problem found in post-synth STA](https://github.com/YosysHQ/yosys/issues/4266#).
       * (* keep *) attributes were added to some of the wire declarations to prevent them from getting optimized out by Yosys, abc during synthesis.

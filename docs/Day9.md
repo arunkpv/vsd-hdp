@@ -107,7 +107,8 @@ ________________________________________________________________________________
 
 In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU core that we have designed following the steps in the lecture videos and slides, I noticed [two issues](/docs/videos/D9_Bug_Video.mp4):  
 
-### 9.7.1 During the execution of the LW instruction, the DMEM address gets written to destination register in the first cycle.
+### 9.7.1 Issue #1
+>During the execution of the LW instruction, the DMEM address gets written to destination register in the first cycle.
 
 **(NOTE: This is a benign issue and not a concern)**  
   - Since LW is an I-type (Immediate-type instruction), the **$rd** (Destination Register) is valid during this phase and thus **$rf_wr_en** (Register File Write Enable).
@@ -138,7 +139,10 @@ In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU 
     $rf_wr_en = (!$valid_load && !>>1$valid_load) && ($rd_valid && ($rd != 5'b0) && $valid) || >>2$valid_load;
     ```
   
-### 9.7.2 The instruction immediately following the LW instruction gets the wrong **$src1_value** and **$src2_value**
+### 9.7.2 Issue #2
+
+>The instruction immediately following the LW instruction gets the wrong **$src1_value** and **$src2_value**
+
 **(NOTE: This is an actual BUG and breaks functionality)**  
 
   - This bug was found while checking if the above issue was causing any RAW hazards if the instruction immediately following the LW instruction accesses the destination register of the LW instruction.
