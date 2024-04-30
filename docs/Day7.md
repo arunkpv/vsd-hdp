@@ -1,14 +1,13 @@
 [Back to TOC](../README.md)  
 [Prev: Day6](Day6.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day8](Day8.md)  
 _________________________________________________________________________________________________________  
-# Day 7
-## Digital Logic with TL-Verilog and Makerchip
+# Day 7: Digital Logic with TL-Verilog and Makerchip
   
-**TL-Verilog**  
+## 7.1 TL-Verilog
 Transaction-Level Verilog (TL-Verilog) is an extension to SystemVerilog that supports a new design methodology, called transaction-level design. A transaction, in this methodology, is an entity that moves through structures like pipelines, arbiters, and queues. A transaction might be a machine instruction, a flit of a packet, or a memory read/write. Transaction logic, like packet header decode or instruction execution, that operates on the transaction can be placed anywhere along the transaction’s flow. Tools produce the logic to carry signals through their flows to stitch the transaction logic.  
 <br>
 
-**Makerchip Platform**  
+## 7.2 Makerchip Platform
 Makerchip is a free online environment provided by Redwood EDA for developing integrated circuits. The online platform can be used to code, compile, simulate and debug Verilog designs from a web browser. In addition to Verilog and synthesizable SystemVerilog, the platform provides support for Transaction-Level Verilog (TL-Verilog).  
 
 The Makerchip IDE also provides various tutorials and examples (inside Learn menu in the main window) to help learn the new concepts and constructs in TL-Verilog quickly.  
@@ -21,12 +20,12 @@ _References:_
   5) [Makerchip IDE Documentation](https://github.com/RISCV-MYTH-WORKSHOP/RISC-V-CPU-Core-using-TL-Verilog/tree/master/Documentation/Makerchip_IDE)
 
 In this session, we will learn the concepts and syntax of TL-Verilog by implementing basic combinational and sequential logic using the same in Makerchip.
-  1) Combinational logic
-  2) Sequential logic
-  3) Pipelined logic
-  4) Validity
+  1) [Combinational logic](#721-combinational-logic)
+  2) [Sequential logic](#722-sequential-logic)
+  3) [Pipelined logic](#723-pipelined-logic)
+  4) [Validity](#724-validity)
   
-### Combinational Logic
+### 7.2.1 Combinational Logic
 Implemented basic combinational logic elements and circuits like gates, muxes, vector adder, combinational calculator etc. using TL-Verilog in Makerchip.  
   1) AND2 Gate
      |![D7_AND2_Gate](/docs/images/D7_AND2_Gate.png)|
@@ -41,7 +40,7 @@ Implemented basic combinational logic elements and circuits like gates, muxes, v
      |![D7_Combinational_Calculator](/docs/images/D7_Combinational_Calculator.png)|
      |-|
 
-### Sequential Logic
+### 7.2.2 Sequential Logic
   1) Fibonacci Series
      |![D7_Fibonacci_Series](/docs/images/D7_Fibonacci_Series.png)|
      |-|
@@ -53,7 +52,7 @@ Implemented basic combinational logic elements and circuits like gates, muxes, v
      |-|
      |![D7_Sequential_Calculator](/docs/images/D7_Sequential_Calculator.png)|
 
-### Pipelined Logic
+### 7.2.3 Pipelined Logic
   1) Pythagorus Theorem with 3-stage pipeline
      |![D7_Pipelined_Pythagorus](/docs/images/D7_Pipelined_Pythagorus.png)|
      |-|
@@ -68,7 +67,7 @@ Implemented basic combinational logic elements and circuits like gates, muxes, v
      |-|
      |![D7_2-Cycle_Calculator](/docs/images/D7_2-Cycle_Calculator.png)|
 
-### Validity
+### 7.2.4 Validity
 Using validity makes the design cleaner. Debugging and error checking also becomes easier.    
   1) 2-Cycle Calculator with Validity
      |![D7_2-Cycle_Calculator_with_Validity_Diagram](/docs/images/D7_2-Cycle_Calculator_with_Validity_Diagram.png)|

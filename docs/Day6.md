@@ -1,8 +1,7 @@
 [Back to TOC](../README.md)  
 [Prev: Day5](Day5.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day7](Day7.md)  
 _________________________________________________________________________________________________________  
-# Day 6
-## Introduction to ABI and basic verification flow
+# Day 6: Introduction to ABI and basic verification flow
 In computer software, an application binary interface (ABI) is an interface between two binary program modules. Often, one of these modules is a library or operating system facility, and the other is a program that is being run by a user.
 An ABI defines how data structures or computational routines are accessed in machine code, which is a low-level, hardware-dependent format.  
 _Reference:_ [Application binary interface](https://en.wikipedia.org/wiki/Application_binary_interface)  
@@ -14,7 +13,7 @@ RISC-V CPU architecture has 32 registers. Application programmer, can access eac
 
 For more detailed information, refer to the [RISC-V ABI Specification v1.0](https://drive.google.com/file/d/1Ja_Tpp_5Me583CGVD-BIZMlgGBnlKU4R/view)  
 
-## Lab 1: Rewrite the program to find the sum of first N natural numbers utilizing ABI function calls
+## 6.1 Lab: Rewrite the program to find the sum of first N natural numbers utilizing ABI function calls
 
 C Program: 1to9_custom.c
 ```C
@@ -60,7 +59,7 @@ Disassembly of object code of above progam:
 ![D6_ABI_load_loop_subroutines](/docs/images/D6_ABI_load_loop_subroutines.png)
 <br>
 
-## Lab 2: Run the above C program on a RISC-V CPU
+## 6.2 Lab: Simulate the above C program on a RISC-V CPU
 For this exercise, we will use the design files from the following GitHub repository: [https://github.com/kunalg123/riscv_workshop_collaterals.git](https://github.com/kunalg123/riscv_workshop_collaterals.git)  
 Execute the following file from shell:  
 

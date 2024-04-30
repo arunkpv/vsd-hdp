@@ -1,8 +1,8 @@
 [Back to TOC](../README.md)  
 [Prev: Day8](Day8.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 10](Day_10.md)  
 _________________________________________________________________________________________________________  
-# Day 9
-## Complete Pipelined RISC-V CPU Microarchitecture
+# Day 9: Complete Pipelined RISC-V CPU Microarchitecture
+
 Our RISC-V core from the previous day is still incomplete w.r.t the instructions implemented, and additionally we need to do pipelining and handling of the pipeline hazards.  
 We need to do the following to complete the CPU Design:
   1) Pipeline the CPU, taking care of the data dependency & control flow hazards
@@ -10,11 +10,11 @@ We need to do the following to complete the CPU Design:
   3) Implement DMEM & Load, Store instructions
   4) Implement the Unconditional Jump (JAL, JALR) instructions
 
-|**Pipelining the RISC-V CPU Core ![D9_RISCV_Pipelined](/docs/images/D9_RISCV_Pipelined.png)|
-|-|
+|**Pipelining the RISC-V CPU Core** ![D9_RISCV_Pipelined](/docs/images/D9_RISCV_Pipelined.png)|
+|:---:|
 <br>
 
-### Pipelining the CPU: Using 3-Cycle $valid signal
+## 9.1 Pipelining the CPU: Using 3-Cycle $valid signal
 First, we will implement with a simplified 3-stage pipeline with using a 3-Cycle valid signal, the various stages being:  
   * PC
   * Instruction Fetch + Decode
@@ -32,8 +32,8 @@ This implementation would have an IPC of only ~1/3 as the valid signal is active
 |-|
 <br>
 
-### Pipelining the CPU: Solving the data & control hazards
-#### 1) Data Hazard: Read-After-Write (RAW) in the Refister File
+## 9.2 Pipelining the CPU: Solving the data & control hazards
+### 9.2.1 Data Hazard: Read-After-Write (RAW) in the Refister File
   * There is a 2-cycle delay (by design) between RF Read and Write operations.
   * Hence we have a Read-After-Write (RAW) data hazard if the current instruction in the pipe is trying to read from the Register File (RF) when the previous instruction had written to the same RF index.
   * To solve this, we need to add a Register File Bypass Mux at the input of the ALU and select the previous ALU output if the previous instruction was writing to the RF index accessed in the current instruction.
@@ -42,31 +42,31 @@ This implementation would have an IPC of only ~1/3 as the valid signal is active
   |-|
   |**Register File Bypass TL-V Implementation**<br>  ![D9_RF_Bypass_TLV_Diagram](/docs/images/D9_RF_Bypass_TLV_Diagram.png)|
 
-####  2) Control Hazard: Branch Instructions
+### 9.2.2 Control Hazard: Branch Instructions
   * We have control flow hazards when a branch is taken.
   * The PC logic is updated to handle the case when a branch is taken or not.
   
   |**Branch Instruction Control Hazard**<br>  ![D9_Branch_Hazard](/docs/images/D9_Branch_Hazard.png)|
   |-|
 
-### Complete the ALU
+## 9.3 Complete the ALU
 The Instruction Decoder is updated to decode all the instructions and the complete ALU is implemented.
 Note: All load instructions are treated as the same as the LW instruction. 
 
-### DMEM & Load, Store Instructions
-#### DMEM
+## 9.4 DMEM & Load, Store Instructions
+### 9.4.1 DMEM
   * The DMEM is a single-port R/W memory with 16 entries, 32-bit wide.  
   * The DMEM is placed in the 4th pipeline stage.
     |**DMEM**<br>  ![D9_DMEM](/docs/images/D9_DMEM.png)|
     |-|
 
-#### LOAD (LW, LH, LB, LHU, LBU) Instructions
+### 9.4.2 LOAD (LW, LH, LB, LHU, LBU) Instructions
   * LOAD rd, imm(rs1)  
   * Loads the data from the DMEM address given by (rs1 + imm) to destination register provided by rd.
     i.e., rd <= DMEM(rs1 + imm)
     <br>
 
-#### STORE (SW, SH, LB) Instructions
+### 9.4.3 STORE (SW, SH, LB) Instructions
   * STORE rs2, imm(rs1)  
   * Stores the data from rs2 to the DMEM address given by (rs1 + imm).
     i.e., rd <= DMEM(rs1 + imm)
@@ -88,24 +88,27 @@ Muxes need to be placed at the inputs of RF write index ($rf_wr_index) and RF wr
 
 Additionally, the Program Counter logic has to be updated for load redirects.
 
-### Unconditional Jump (JAL, JALR) Instructions
+## 9.5 Unconditional Jump (JAL, JALR) Instructions
   * JAL : Jump to (PC + IMM), equivalent to an unconditional branch w.r.t the calculation of the target address.
   * JALR: Jump to (SRC1 + IMM)
 
 The logic to calculate the branch target for JALR needs to be implemented.  
 The Program Counter logic also needs to be modified to handle the jumps.  
 
-### Complete Pipelined RISC-V CPU Core Implementation in Makerchip
+## 9.6 Complete Pipelined RISC-V CPU Core Implementation in Makerchip
 <!--[**Link to SVG file of the RISC-V Core Block Diagram**](https://htmlpreview.github.io/?https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/docs/html/riscv.html)  -->
 Click on the image below to open up the interactive svg file:  
 [![D9_Complete_Pipelined_RISCV_Core](/docs/images/D9_Complete_Pipelined_RISCV_Core.png)](https://htmlpreview.github.io/?https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/docs/html/riscv.html)  
 
 _________________________________________________________________________________________________________  
-## Bug with the LW instruction and RF Read Bypass
-**Original Code:** [riscv_pipelined_with_LW_Bug.tlv](../code/riscv/verilog/rf_rd_bug/riscv_pipelined_with_LW_Bug.tlv)
+## 9.7 Bug found with the LW instruction and RF Read Bypass
+
+**Original Code:** [riscv_pipelined_with_LW_Bug.tlv](../code/riscv/verilog/rf_rd_bug/riscv_pipelined_with_LW_Bug.tlv)  
+
 In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU core that we have designed following the steps in the lecture videos and slides, I noticed [two issues](/docs/videos/D9_Bug_Video.mp4):  
 
-###  1) During the execution of the LW instruction, the DMEM address gets written to destination register in the first cycle.  
+### 9.7.1 During the execution of the LW instruction, the DMEM address gets written to destination register in the first cycle.
+
 **(NOTE: This is a benign issue and not a concern)**  
   - Since LW is an I-type (Immediate-type instruction), the **$rd** (Destination Register) is valid during this phase and thus **$rf_wr_en** (Register File Write Enable).
       ```
@@ -135,7 +138,7 @@ In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU 
     $rf_wr_en = (!$valid_load && !>>1$valid_load) && ($rd_valid && ($rd != 5'b0) && $valid) || >>2$valid_load;
     ```
   
-###  2) The instruction immediately following the LW instruction gets the wrong **$src1_value** and **$src2_value**
+### 9.7.2 The instruction immediately following the LW instruction gets the wrong **$src1_value** and **$src2_value**
 **(NOTE: This is an actual BUG and breaks functionality)**  
 
   - This bug was found while checking if the above issue was causing any RAW hazards if the instruction immediately following the LW instruction accesses the destination register of the LW instruction.

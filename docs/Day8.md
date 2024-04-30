@@ -1,8 +1,9 @@
 [Back to TOC](../README.md)  
 [Prev: Day7](Day7.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day9](Day9.md)  
 _________________________________________________________________________________________________________  
-# Day 8
-## Basic RISC-V CPU Microarchitecture
+
+# Day 8: Basic RISC-V CPU Microarchitecture
+
 Our objective is to implement a basic RISC-V CPU core (RV32I Base Instruction set except the instructions - FENCE, ECALL & EBREAK).  
 The following diagrams show the general block diagram of the CPU and the initial implementation pipeline diagram using TL-Verilog:  
 |**CPU Block Diagram**<br>  ![D8_CPU_BlockDiagram](/docs/images/D8_CPU_BlockDiagram.png)|
@@ -24,10 +25,12 @@ The implementation is done stage-by-stage verifying the functionality at each st
   * Branch Instructions
     * (Modifying PC logic and adding additional logic to handle the Branch instructions)
 
+## 8.1 Program Counter + Instruction Fetch
 |**Program Counter + Intruction Fetch**<br> ![D8_Instruction_Fetch](/docs/images/D8_Instruction_Fetch.png)|
 |-|
 |![D8_PC_+_InstrFetch](/docs/images/D8_PC_+_InstrFetch.png)|
 
+## 8.2 Instruction Decoder
 |**Instruction Decoder**<br>  ![D8_InstrDecoder](/docs/images/D8_InstrDecoder.png)|
 |-|
 |RISC-V Opcode Map <br>  ![D8_RISC-V_OpcodeMap](/docs/images/D8_RISC-V_OpcodeMap.png)  <br>  
@@ -36,16 +39,20 @@ RV32I ISA Encoding <br>  ![D8_RISCV_RV32I_ISA_Encoding](/docs/images/D8_RISCV_RV
 Instruction Type Decoding <br>  ![D8_RV32I_InstructionType_Decode](/docs/images/D8_RV32I_InstructionType_Decode.png)  <br>  
 Immediate Value Decoding <br>  ![D8_ImmediateValue_Decoding](/docs/images/D8_ImmediateValue_Decoding.png)  <br>|
 
+## 8.3 Register File Read
 |**Register File Read**<br>  ![D8_RF_Read](/docs/images/D8_RF_Read.png)|
 |-|
 |Register File module interface <br>  ![D8_RF_Interface](/docs/images/D8_RF_Interface.png)  <br>|
 
+## 8.4 ALU
 |**ALU (only ADD, ADDI implemented for now)**  <br>  ![D8_ALU](/docs/images/D8_ALU.png)|
 |-|
 
+## 8.5 Register File Write
 |**Register File Write**<br>  ![D8_RF_Write](/docs/images/D8_RF_Write.png)|
 |-|
 
+## 8.6 Branch Instruction Logic
 |**Branch Instruction Logic added**<br>  ![D8_Basic_RISC-V_CPU_Unpipelined](/docs/images/D8_Basic_RISC-V_CPU_Unpipelined.png)|
 |-|
 _________________________________________________________________________________________________________  
