@@ -1960,8 +1960,9 @@ ________________________________________________________________________________
     | Post-Synth | ![D10_GLS_PostSynth](/docs/images/D10_GLS_PostSynth_Zoomed.png) |
     
 _________________________________________________________________________________________________________  
-# Day 11 - STA Basics
+# Days 11-13: Advanced Synthesis and STA
 
+# Day 11: Introduction to STA
 Static Timing Analysis (STA) is a method of validating the timing performance of a design by checking all possible paths for timing violations.
   * The design is broken down into timing paths having start and endpoints, the signal propagation delay along each path is calculated, and checked for violations of timing constraints inside the design and at the input/output interfaces.
   * The STA analysis is the static type - i.e., the timing analysis is carried out statically and does not depend upon the data values being applied at the input pins.  
@@ -2080,80 +2081,51 @@ Defines how the output changes for different types of transitions on the input.
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 12 - Advanced SDC Constraints
+# Day 12: Advanced SDC Constraints
 
 <br>
 
 _________________________________________________________________________________________________________  
-_________________________________________________________________________________________________________  
-# Day 13 - STA using OpenSTA
+# Day 13: STA using OpenSTA
 
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 14 - CMOS Fundamentals
-## To-Do: Complete documentation of theory
+# Days 14-18: Circuit Design using SKY130 PDK
 
-## sky130 Labs
-### Lab 1
-### Lab 2
-### Lab 3
+# Day 14: CMOS Fundamentals
 
 
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 15 - Velocity Saturation and CMOS Inverter VTC
-## To-Do: Complete documentation of theory
-
-## sky130 Labs
-### Lab 1
-### Lab 2
-### Lab 3
+# Day 15: Velocity Saturation and CMOS Inverter VTC
 
 
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 16 - CMOS Inverter Switching Threshols and Dynamic Simulations 
-## To-Do: Complete documentation of theory
-
-## sky130 Labs
-### Lab 1
-### Lab 2
-### Lab 3
+# Day 16: CMOS Switching Threshold and Dynamic Simulations
 
 
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 17 - CMOS Noise Margin Robustness Evaluation
-## To-Do: Complete documentation of theory
-
-## sky130 Labs
-### Lab 1
-### Lab 2
-### Lab 3
+# Day 17: CMOS Noise Margin Robustness Evaluation
 
 
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 18 - CMOS Power Supply and Device Variation Robustness Evaluation
-## To-Do: Complete documentation of theory
-
-## sky130 Labs
-### Lab 1
-### Lab 2
-### Lab 3
+# Day 18: CMOS Power Supply and Device Variation Robustness Evaluation
 
 
 <br>
 
 _________________________________________________________________________________________________________  
 
-# Day 19 - PVT Corner Analysis of the RISC-V CPU Design
-## PVT Corner Analysis
+# Day 19 - PVT Corner Analysis (Post-Synthesis Timing) of the RISC-V CPU Design
+
 The STA checks are performed across all the corners to confirm the design meets the target timing requirements.
   * The worst max path (Setup-critical) corners in the sub-40nm process nodes are usually: ss_LowTemp_LowVolt, ss_HighTemp_LowVolt (Slowest corners)
   * The worst min path (Hold-critical) corners being: ff_LowTemp_HighVolt,ff_HighTemp_HighVolt (Fastest corners)
@@ -2195,19 +2167,19 @@ The STA checks are performed across all the corners to confirm the design meets 
     report_wns -digits {4} >> ./sta_output/sta_wns.txt
     }
     ```
-| ![D13_riscv_core_sta_across_pvt](/docs/images/D13_riscv_core_sta_across_pvt.png)|
+| ![D19_riscv_core_sta_across_pvt](/docs/images/D19_riscv_core_sta_across_pvt.png)|
 |-|
-| ![D13_worst_setup_slack](/docs/images/D13_worst_setup_slack.png)|
-| ![D13_worst_hold_slack](/docs/images/D13_worst_hold_slack.png)|
-| ![D13_wns](/docs/images/D13_wns.png)|
-| ![D13_tns](/docs/images/D13_tns.png)|
+| ![D19_worst_setup_slack](/docs/images/D19_worst_setup_slack.png)|
+| ![D19_worst_hold_slack](/docs/images/D19_worst_hold_slack.png)|
+| ![D19_wns](/docs/images/D19_wns.png)|
+| ![D19_tns](/docs/images/D19_tns.png)|
 
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 20 - Advanced Physical Design using OpenLANE/ Sky130
+# Days 20-24: Advanced Physical Design using OpenLANE/ Sky130
 
-## Day 14.1: Inception of open-source EDA, OpenLANE and Sky130 PDK
+# Day 20: Inception of open-source EDA, OpenLANE and Sky130 PDK
 
   * **IC terminologies**
     * Chip Package
@@ -2215,13 +2187,13 @@ ________________________________________________________________________________
     * Core, die
     * IPs, Macros
 
-### [**14.1.1 Overview of ASIC Design Flow using OpenLane**](http://ef.content.s3.amazonaws.com/OpenLane-DialUp-MohamedShalan.pdf)
+## [**20.1 Overview of ASIC Design Flow using OpenLane**](http://ef.content.s3.amazonaws.com/OpenLane-DialUp-MohamedShalan.pdf)
   * ASIC implementation consists of numerous steps involving lots of detailed sub-processes at each step.
   * A **design methodology** is needed for a successful ASIC implementation without any hiccups.
   * The methodology is implemented through a **flow** that pieces together different tools to carry out the different steps of the design process from RTL to GDSII tapeout.
 
-#### 14.1.1.1 Simplified RTL to GDSII ASIC Design Flow
-| ![Simplified Flow](/docs/images/D14.1_Simplified_Flow.png) |
+### 20.1.1 Simplified RTL to GDSII ASIC Design Flow
+| ![Simplified Flow](/docs/images/D20_Simplified_Flow.png) |
 |---|
 
   1) **Synthesis**: Converts RTL to a circuit using components from the Standard Cell Library (SCL)
@@ -2246,13 +2218,13 @@ ________________________________________________________________________________
      * Timing Verification
        * Static Timing Analysis (STA)
 
-#### 14.1.1.2 OpenLANE ASIC Design Flow
+### 20.1.2 OpenLANE ASIC Design Flow
 Main requirements of Digital ASIC Design:
   * RTL Design
   * EDA Tools
   * PDK
 
-| ![D14.1_OpenSource_ASIC_Design](/docs/images/D14.1_OpenSource_ASIC_Design.png) |
+| ![D20_OpenSource_ASIC_Design](/docs/images/D20_OpenSource_ASIC_Design.png) |
 |---|
   
 Open Source RTL IPs and competitive EDA tools have been available.  
@@ -2279,7 +2251,7 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
   * OpenLANE project GitHub Page: [OpenLANE](https://github.com/efabless/openlane)
   * [OpenLANE ReadMe](https://openlane.readthedocs.io/en/latest/flow_overview.html)
 
-  <kbd> ![OpenLANE Flow](/docs/images/D14.1_OpenLANE_Flow.png) </kbd>
+  <kbd> ![OpenLANE Flow](/docs/images/D20_OpenLANE_Flow.png) </kbd>
   <br>
   
   1) Synthesis
@@ -2327,9 +2299,9 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
   * When a metal wire segment is fabricated, it can act as an antenna.
     * Reactive ion etching causes charge to accumulate on the wire.
     * Transistor gates can be damaged during fabrication  
-    <kbd> ![Antenna_Rules](/docs/images/D14.1_AntennaRules_1.png) </kbd>
+    <kbd> ![Antenna_Rules](/docs/images/D20_AntennaRules_1.png) </kbd>
   * _**Two solutions:**_  
-  <kbd> ![Antenna_Rules_Soln](/docs/images/D14.1_AntennaRules_Soln.png) </kbd>
+  <kbd> ![Antenna_Rules_Soln](/docs/images/D20_AntennaRules_Soln.png) </kbd>
     * Bridging attaches a higher layer intermediary
       * Requires Router awareness (not there yet!)
     * Add antenna diode cell to leak away charges
@@ -2338,10 +2310,10 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
     * Add a Fake Antenna Diode next to every cell input after placement
     * Run the Antenna Checker (Magic) on the routed layout
     * If the checker reports a violation on the cell input pin, replace the Fake Diode cell by a real one
-  <kbd> ![D14.1_AntennaRules_FakeDiode_RealDiode](/docs/images/D14.1_AntennaRules_FakeDiode_RealDiode.png) </kbd>
+  <kbd> ![D20_AntennaRules_FakeDiode_RealDiode](/docs/images/D20_AntennaRules_FakeDiode_RealDiode.png) </kbd>
 
 
-#### Lab: Familiarize with OpenLANE flow
+### Lab: Familiarize with OpenLANE flow
 
 **Objectives**:  
 Using an existing design provided in the OpenLANE package to:
@@ -2376,12 +2348,12 @@ Using an existing design provided in the OpenLANE package to:
        prep -design picorv32a
        run_synthesis
        ```  
-| ![D14.1_Lab1_OpenLANE_InteractiveMode](/docs/images/D14.1_Lab1_OpenLANE_InteractiveMode.png) |
+| ![D20_Lab1_OpenLANE_InteractiveMode](/docs/images/D20_Lab1_OpenLANE_InteractiveMode.png) |
 |-|
 
    * **Synthesis Result:**
 
-| ![D14.1_Lab2_run_synthesis](/docs/images/D14.1_Lab2_run_synthesis.png) |
+| ![D20_Lab2_run_synthesis](/docs/images/D20_Lab2_run_synthesis.png) |
 |-|
 
        === picorv32a ===
@@ -2470,9 +2442,9 @@ Using an existing design provided in the OpenLANE package to:
     * openlane/designs/<design-name>/sky130A_sky130_fd_sc_hd_config.tcl
 _________________________________________________________________________________________________________  
 
-## Day 14.2: Floorplan considerations, Placement, Library Cells
+# Day 21: Floorplan considerations, Placement, Library Cells
 
-### 14.2.1 Floorplan considerations
+## 21.1 Floorplan considerations
   1) Utilization factor and aspect ratio
        * Define W, H of core and die
            * Utilization Factor = (Area occupied by netlist)/(Total area of the core)
@@ -2508,10 +2480,10 @@ ________________________________________________________________________________
 
 **Now Floorplan is ready for PnR**
 
-#### Lab: Run floorplan using OpenLANE and review the layout in Magic
+### Lab: Run floorplan using OpenLANE and review the layout in Magic
   * To run the floorplan creation, execute the following command from the OpenLANE shell: `run_floorplan`
        
-  <kbd> ![D14.2_Lab_3a_run_floorplan](/docs/images/D14.2_Lab_3a_run_floorplan.png) </kbd>
+  <kbd> ![D21_Lab_3a_run_floorplan](/docs/images/D21_Lab_3a_run_floorplan.png) </kbd>
 
   * To view the floor plan in Magic: 
     ```
@@ -2519,14 +2491,14 @@ ________________________________________________________________________________
     2) magic -T $PDK_ROOT/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read ./picorv32a.floorplan.def &
     ```
 
-| **Floorplan view in Magic<br>  (FP_IO_MODE=1, Random equidistant mode)**<br>  ![D14.2_Lab_3b_floorplan_in_Magic](/docs/images/D14.2_Lab_3b_floorplan_in_Magic.png) |
+| **Floorplan view in Magic<br>  (FP_IO_MODE=1, Random equidistant mode)**<br>  ![D21_Lab_3b_floorplan_in_Magic](/docs/images/D21_Lab_3b_floorplan_in_Magic.png) |
 |:---|
-| **Floorplan Zoomed in at (0,0)** <br>  ![D14.2_Lab_3c_floorplan_in_Magic_Cells_at_0_0](/docs/images/D14.2_Lab_3c_floorplan_in_Magic_Cells_at_0_0.png) |
-| **FP_IO_MODE=0<br>  (Matching mode)** <br>  ![D14.2_Lab_3d_floorplan_in_Magic_FP_IO_Mode_0](/docs/images/D14.2_Lab_3d_floorplan_in_Magic_FP_IO_Mode_0.png) |
-| **FP_IO_MODE=1 Zoomed**<br>  ![D14.2_Lab_3d_floorplan_in_Magic_FP_IO_Mode_1_Zoomed](/docs/images/D14.2_Lab_3d_floorplan_in_Magic_FP_IO_Mode_1_Zoomed.png) |
+| **Floorplan Zoomed in at (0,0)** <br>  ![D21_Lab_3c_floorplan_in_Magic_Cells_at_0_0](/docs/images/D21_Lab_3c_floorplan_in_Magic_Cells_at_0_0.png) |
+| **FP_IO_MODE=0<br>  (Matching mode)** <br>  ![D21_Lab_3d_floorplan_in_Magic_FP_IO_Mode_0](/docs/images/D21_Lab_3d_floorplan_in_Magic_FP_IO_Mode_0.png) |
+| **FP_IO_MODE=1 Zoomed**<br>  ![D21_Lab_3d_floorplan_in_Magic_FP_IO_Mode_1_Zoomed](/docs/images/D21_Lab_3d_floorplan_in_Magic_FP_IO_Mode_1_Zoomed.png) |
 
 
-### 14.2.2 Placement and Routing
+## 21.2 Placement and Routing
   1) Bind netlist with physical cells
      * Library files
        * Shape, dimension info, power & timing/ delay info
@@ -2544,17 +2516,17 @@ ________________________________________________________________________________
   4) Congestion aware placement using RePlAce followed by detailed placement using OpenDP
      * Global placement: HPWL (Half-Parameter Wire Length) based
 
-#### Lab: Run placement
+### Lab: Run placement
   * The `run_placement` command runs the global placement followed by detailed placement.
   * First the global placement happens, where the main objective is to reduce the wire length. Algorithm used is Half-Parameter Wire Length (HPWL).
   * Then detailed placement is performed to legalize the globally placed components.
 
-| **run_placement**<br>  ![D14.2_Lab_4a_run_placement](/docs/images/D14.2_Lab_4a_run_placement.png) |
+| **run_placement**<br>  ![D21_Lab_4a_run_placement](/docs/images/D21_Lab_4a_run_placement.png) |
 |:---|
-| **Layout after placement**<br>  ![D14.2_Lab_4b_run_placement_Magic](/docs/images/D14.2_Lab_4b_run_placement_Magic.png) |
-| **Layout after placement (Zoomed)** <br>  ![D14.2_Lab_4b_run_placement_Magic_zoomed](/docs/images/D14.2_Lab_4b_run_placement_Magic_zoomed.png) |
+| **Layout after placement**<br>  ![D21_Lab_4b_run_placement_Magic](/docs/images/D21_Lab_4b_run_placement_Magic.png) |
+| **Layout after placement (Zoomed)** <br>  ![D21_Lab_4b_run_placement_Magic_zoomed](/docs/images/D21_Lab_4b_run_placement_Magic_zoomed.png) |
 
-### 14.2.3 Cell Design Flow
+## 21.3 Cell Design Flow
 **Library**
   * Std cells of different:
     * logic functionality
@@ -2562,7 +2534,7 @@ ________________________________________________________________________________
     * threshold voltages
 
 **Stages**  
-<kbd> ![D14.2_Cell_Design_Flow](/docs/images/D14.2_Cell_Design_Flow.png) </kbd>
+<kbd> ![D21_Cell_Design_Flow](/docs/images/D21_Cell_Design_Flow.png) </kbd>
   1) **Inputs for Cell Design Flow**  
      From foundry, PDKs:  
        * DRC, LVS rules (eg: lambda-based design rules)
@@ -2621,13 +2593,13 @@ ________________________________________________________________________________
      * t_fall = time(slew_low_fall_thr) - time(slew_high_fall_thr)
   
 _________________________________________________________________________________________________________  
-  
-## Day 14.3: Design library cell using Magic layout tool and characterization using ngspice
 
-### 14.3.1 16-Mask CMOS Process
+# Day 22: Library Cell design using Magic and Characterization using Ngspice
+
+## 22.1 16-Mask CMOS Process
 TODO: Documentation
 
-### Lab: Introduction to Sky130 basic layers layout and LEF using inverter
+## Lab: Introduction to Sky130 basic layers layout and LEF using inverter
   * Clone a custom standard cell design from the following github repo for this exercise
     [https://github.com/nickson-jose/vsdstdcelldesign.git](https://github.com/nickson-jose/vsdstdcelldesign.git)
   * To open the design in magic: `magic -T sky130A.tech sky130_inv.mag`
@@ -2635,10 +2607,10 @@ TODO: Documentation
   * To get the details about any drawn element in the layout, hover the mouse pointer over it and press `s` to select it (pressing multiple times selects the elements hierarchically).
     Then, from the **tkcon shell**, use the command `what` to print the details:
     
-  | **sky130 Layers in Magic for an Inverter**<br>  ![D14.3_Lab_Magic_sky130_Layers](/docs/images/D14.3_Lab_Magic_sky130_Layers.png) |
+  | **sky130 Layers in Magic for an Inverter**<br>  ![D22_Lab_Magic_sky130_Layers](/docs/images/D22_Lab_Magic_sky130_Layers.png) |
   |:---|
 
-### Lab: Create the Inverter Standard Cell layout and extract the SPICE netlist
+## Lab: Create the Inverter Standard Cell layout and extract the SPICE netlist
   * The steps to layout a custom inverter standard cell in Magic is explained in this github repo: [vsdstdcelldesign](https://github.com/nickson-jose/vsdstdcelldesign?tab=readme-ov-file#standard-cell-layout-design-in-magic)
     * Magic has an interactive DRC engine - DRC violations are updated continuously in Magic every time we make a change (draw, erase, move) in the layout.
     * When we make small changes to an existing layout, we can find out immediately if we have introduced errors, without having to completely recheck the entire layout.
@@ -2653,7 +2625,7 @@ TODO: Documentation
     * Include the SPICE models for sky130 short-channel PMOS and NMOS.
     * Change the PMOS and NMOS model names to match the ones in the included model files - `pshort_model.0, nshort_model.0`.
 
-### Lab: Create a SPICE deck to run a simple transient simulation using ngspice
+## Lab: Create a SPICE deck to run a simple transient simulation using ngspice
   * Modify the spice file to run a sample transient simulation using ngspice:
     * Add VDD and GND:
       ```
@@ -2664,11 +2636,11 @@ TODO: Documentation
     * Transient simulation: `.tran 1n 20n`
     * Finally, for some weird reasons, ngspice throws an **unknown subckt** error with transistor instance names starting with `X`. So, modify the instance names to M0 and M1
 
-    | **SPICE deck to run trans sim using the extracted netlist**<br>  ![D14.3_Inverter_Extracted_SPICE_netlist_trans_sim](/docs/images/D14.3_Inverter_Extracted_SPICE_netlist_trans_sim.png) |
+    | **SPICE deck to run trans sim using the extracted netlist**<br>  ![D22_Inverter_Extracted_SPICE_netlist_trans_sim](/docs/images/D22_Inverter_Extracted_SPICE_netlist_trans_sim.png) |
     |:---|
-    | **Trans sim results with Waveforms**<br>  ![D14.3_Inverter_Extracted_SPICE_trans_sim_waveform](/docs/images/D14.3_Inverter_Extracted_SPICE_trans_sim_waveform.png) |
+    | **Trans sim results with Waveforms**<br>  ![D22_Inverter_Extracted_SPICE_trans_sim_waveform](/docs/images/D22_Inverter_Extracted_SPICE_trans_sim_waveform.png) |
 
-### Lab: Introduction to DRC using Magic tool
+## Lab: Introduction to DRC using Magic tool
   * Obtain the tutorial files for DRC labs from the following link:
     ```
     wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
@@ -2676,7 +2648,7 @@ TODO: Documentation
     ```
   * The Design Rules for Skywater 130nm technology can be found here: [**https://skywater-pdk.readthedocs.io/en/main/rules.html**](https://skywater-pdk.readthedocs.io/en/main/rules.html)
 
-#### <ins>DRC Lab 1: met3.mag</ins>
+### <ins>DRC Lab 1: met3.mag</ins>
   * To open Magic using OpenGL or Cairo graphical interfaces, invoke magic using the `-d` option:
     * For OpenGL: `magic -d XR &`
     * For Cairo: `magic -d OGL &`
@@ -2688,7 +2660,7 @@ TODO: Documentation
     * For example, to view the DRC error for the m3.2 section, position the cursor box around it and type: `:drc why`
     * The **console** window will now display the DRC rule that is being violated
   
-    | **Rule M3.2: Spacing of metal 3 to metal 3 - 0.300µm**<br>  ![D14.3_sky130_DRC_Lab_M3.2](/docs/images/D14.3_sky130_DRC_Lab_M3.2.png) |
+    | **Rule M3.2: Spacing of metal 3 to metal 3 - 0.300µm**<br>  ![D22_sky130_DRC_Lab_M3.2](/docs/images/D22_sky130_DRC_Lab_M3.2.png) |
     |:---|
 <br>
 
@@ -2700,23 +2672,23 @@ TODO: Documentation
     * As a sidenote, rules like these will always be correct by design and can be confirmed by measuring the distance from the contact cut to the edge of M3 contact by drawing a cursor box.
       *  To align the cursor box to the edge of the via shown in the CIF view, use the `snap int` command.
   
-    | **Rule M3.4: Via2 must be enclosed by Met3 by at least 0.065µm**<br>  ![D14.3_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2](/docs/images/D14.3_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2.png) |
+    | **Rule M3.4: Via2 must be enclosed by Met3 by at least 0.065µm**<br>  ![D22_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2](/docs/images/D22_sky130_DRC_Lab_M3.4_M3ContactCut_VIA2.png) |
     |:---|
 
-#### <ins>DRC Lab 2: poly.mag - Exercise to fix poly.9 error in Sky130 tech-file</ins>
+### <ins>DRC Lab 2: poly.mag - Exercise to fix poly.9 error in Sky130 tech-file</ins>
   * [https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#poly](https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#poly)
   * **poly.9**: Poly resistor spacing to poly or spacing (no overlap) to diff/tap 0.480 µm
   * This exercise deals with fixing an incomplete DRC rule in the `sky130A.tech` file
   * The section shown below is violating the poly.9 DRC rule, but it is not reported as a DRC violation due to the rule being incompletely implemented in the `sky130A.tech` file
 
-    | **Rule poly.9: Poly resistor spacing to poly or spacing (no overlap) to diff/tap 0.480µm**<br>  ![D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_1](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_1.png) |
+    | **Rule poly.9: Poly resistor spacing to poly or spacing (no overlap) to diff/tap 0.480µm**<br>  ![D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_1](/docs/images/D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_1.png) |
     |:---|
   * In the `sky130A.tech` file:
     * The rules for poly resistor spacing to alldiffusion and nsd (nsubstratediff or N-tap) are implemented. So we need to implement the missing poly resistor spacing to poly rules.
 
     | **sky130A.tech** | |
     |:---|:---|
-    | ![D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_2](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_2.png) | ![D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_3](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_3.png) |
+    | ![D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_2](/docs/images/D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_2.png) | ![D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_3](/docs/images/D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_3.png) |
 
   * 
     * If we look at the aliases, we can see that there is a definition for allpolyres as follows:
@@ -2733,10 +2705,10 @@ TODO: Documentation
   * Now, from the console window, reload the tech file: `tech load sky130A.tech`
   * The DRC checks needs to be run again, by executing: `drc check`
 
-    | **Magic DRC engine now shows the poly resistor to poly spacing error**<br>  ![D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_4](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Missing_DRC_rule_4.png) |
+    | **Magic DRC engine now shows the poly resistor to poly spacing error**<br>  ![D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_4](/docs/images/D22_sky130_DRC_Lab_poly.9_Missing_DRC_rule_4.png) |
     |:---|
 
-#### <ins>DRC Lab 3: poly.mag - Exercise to implement poly resistor spacing to diff and tap</ins>
+### <ins>DRC Lab 3: poly.mag - Exercise to implement poly resistor spacing to diff and tap</ins>
   * The additions we made for the poly.9 DRC rule are still not complete. We can check this by creating two copies of the three resistors (`npolyres, ppolyres and xhrpolyres`)
   * We will add `ndiffussion, pdiffusion, nsubstratendiff & psubstratepdiff` around the two copies of the three poly resistors as shown.
   * Also draw an `nwell` under the pdiffusion and N-tap (nsubstratendiff) to avoid the flagging of any diffusion-related DRC errors since we are not interested in them for this exercise.
@@ -2747,16 +2719,16 @@ TODO: Documentation
   | Before | After |
   |:---|:---|
   |  <pre>spacing npres *nsd 480 touching_illegal \ <br>   "poly.resistor spacing to N-tap < %d (poly.9)"</pre> | <pre>spacing npres alldiff 480 touching_illegal \ <br>   "poly.resistor spacing to N-tap < %d (poly.9)"</pre> |
-  | ![D14.3_sky130_DRC_Lab_poly.9_Diffusion_1](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Diffusion_1.png) | ![D14.3_sky130_DRC_Lab_poly.9_Diffusion_2](/docs/images/D14.3_sky130_DRC_Lab_poly.9_Diffusion_2.png) |
+  | ![D22_sky130_DRC_Lab_poly.9_Diffusion_1](/docs/images/D22_sky130_DRC_Lab_poly.9_Diffusion_1.png) | ![D22_sky130_DRC_Lab_poly.9_Diffusion_2](/docs/images/D22_sky130_DRC_Lab_poly.9_Diffusion_2.png) |
 
-#### <ins>DRC Lab 4: nwell.mag - Challenge exercise to describe DRC error as geometrical construct</ins>
+### <ins>DRC Lab 4: nwell.mag - Challenge exercise to describe DRC error as geometrical construct</ins>
   * [https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#nwell](https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#nwell)
   * **nwell.5**: Deep nwell must be enclosed by nwell by atleast… 0.400µm.  
      Exempted inside UHVI or areaid.lw Nwells can merge over deep nwell if spacing too small (as in rule nwell.2)
   * **nwell.6**: Min enclosure of nwell hole by deep nwell outside UHVI 1.030µm
   * Relevant DRC rules in `sky130A.tech` file
 
-  | ![D14.3_sky130_DRC_Lab_nwell.5_0](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_0.png) | ![D14.3_sky130_DRC_Lab_nwell.5_1](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_1.png) |
+  | ![D22_sky130_DRC_Lab_nwell.5_0](/docs/images/D22_sky130_DRC_Lab_nwell.5_0.png) | ![D22_sky130_DRC_Lab_nwell.5_1](/docs/images/D22_sky130_DRC_Lab_nwell.5_1.png) |
   |:---|:---|
   
   * Everything in the cifoutput DRC style is implemented as a templayer and not an actual layer.
@@ -2783,9 +2755,9 @@ TODO: Documentation
     cif see nwell_missing
     ```
 
-  | **nwell.6 drawing <br>**  ![D14.3_sky130_DRC_Lab_nwell.5_2](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_2.png) | **cif ostyle drc <br>cif see dnwell_shrink** <br>  ![D14.3_sky130_DRC_Lab_nwell.5_3](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_3.png) |
+  | **nwell.6 drawing <br>**  ![D22_sky130_DRC_Lab_nwell.5_2](/docs/images/D22_sky130_DRC_Lab_nwell.5_2.png) | **cif ostyle drc <br>cif see dnwell_shrink** <br>  ![D22_sky130_DRC_Lab_nwell.5_3](/docs/images/D22_sky130_DRC_Lab_nwell.5_3.png) |
   |:---|:---|
-  | **feed clear <br>cif see nwell_missing** <br>  ![D14.3_sky130_DRC_Lab_nwell.5_4](/docs/images/D14.3_sky130_DRC_Lab_nwell.5_4.png) | |
+  | **feed clear <br>cif see nwell_missing** <br>  ![D22_sky130_DRC_Lab_nwell.5_4](/docs/images/D22_sky130_DRC_Lab_nwell.5_4.png) | |
   
   * **NOTE**:
     * Any edge based rules could be implemented using cifoutput operators but generating these layers is highly compute-intensive.
@@ -2795,7 +2767,7 @@ TODO: Documentation
       * `drc full`: will check everything. As long as the layout is relatively small, it can be enabled during interactive layout without everything turning sluggish.
       * Switch between the two using: `drc style drc(fast)`, `drc style drc(full)`
 
-#### <ins>DRC Lab 5: nwell.mag - Challenge  to find missing or incorrect rules and fix them</ins>
+### <ins>DRC Lab 5: nwell.mag - Challenge  to find missing or incorrect rules and fix them</ins>
   * **nwell.4**: All n-wells will contain metal-contacted tap (rule checks only for licon on tap) . Rule exempted from high voltage cells inside UHVI.
   * Every nwell must have an n-tap layer contact inside it, which is called `nsubstratencontact` or `nsc`.
   * Since there is no distance/ spacing associated with this rule, it is not possible to write this as an edge-based DRC rule. But it can be written as a cifoutput rule.
@@ -2813,14 +2785,14 @@ TODO: Documentation
       templayer nwell_untapped nwell   # Now, create a second templayer nwell_untapped that starts with allnwell geometries
       and-not nwell_tapped             # and subtract all nwell_tapped geometries
       ```
-  | **untapped nwell being flagged for DRC violn. <br>**  ![D14.3_sky130_DRC_Lab_nwell.4_1](/docs/images/D14.3_sky130_DRC_Lab_nwell.4_1.png) | **tapped nwell showing no DRC violn.** <br>  ![D14.3_sky130_DRC_Lab_nwell.4_2](/docs/images/D14.3_sky130_DRC_Lab_nwell.4_2.png) |
+  | **untapped nwell being flagged for DRC violn. <br>**  ![D22_sky130_DRC_Lab_nwell.4_1](/docs/images/D22_sky130_DRC_Lab_nwell.4_1.png) | **tapped nwell showing no DRC violn.** <br>  ![D22_sky130_DRC_Lab_nwell.4_2](/docs/images/D22_sky130_DRC_Lab_nwell.4_2.png) |
   |:---|:---|
 
 _________________________________________________________________________________________________________  
-  
-## Day 14.4: Pre-layout timing analysis and importance of good clock tree
 
-### Lab: Steps to convert grid info to track info
+# Day 23: Pre-layout timing analysis and importance of good clock tree
+
+## Lab: Steps to convert grid info to track info
   * **Objective**: Extract LEF file for the sky130_inv.mag and plug this custom std cell into OpenLANE flow
   
   * From PnR point of view, we only need the following information: PnR boundary of the standard cell, the power and ground rails, and finally the input & output ports.
@@ -2855,7 +2827,7 @@ ________________________________________________________________________________
 
   * Now the LEF file can be written from the **console window** by the following command: `lef write`
 
-### Lab: Adding the extracted LEF file into OpenLANE flow for picorv32a design
+## Lab: Adding the extracted LEF file into OpenLANE flow for picorv32a design
   * Copy the LEF file into the `openlane/designs/picorv32a/src` directory.
   * Now we need to have the cell characterized and added to the technology library.
     * This particular cell - **sky130_vsdinv** - it has already been characterized and added to the `sky130_fd_sc_hd__*.lib` files.
@@ -2874,12 +2846,12 @@ ________________________________________________________________________________
   * Now invoke OpenLANE in interactive mode and after the `prep -design picorv32a` command is executed, run the following two commands to merge the custom cell(s)' LEF file(s) to the existing processed LEF files.
     ```
     lefs [glob $::env(DESIGN_DIR)/src/*.lef]
-    add_lefs -src $lefs
+    add_lefs -src $lefs
     ```
 
-  | * Synthesis result shows the sky130_vsdinv being instanced 1537 times. <br>  ![D14.4_Add_sky130_vsdinv_to_flow_run_synthesis](/docs/images/D14.4_Add_sky130_vsdinv_to_flow_run_synthesis.png) |
+  | * Synthesis result shows the sky130_vsdinv being instanced 1537 times. <br>  ![D23_Add_sky130_vsdinv_to_flow_run_synthesis](/docs/images/D23_Add_sky130_vsdinv_to_flow_run_synthesis.png) |
   |:---|
-  | **Layout showing sky130_vsdinv after placement stage** <br>  ![D14.4_picorv32a_Layout_after_Placement_showing_sky130_vsdinv](/docs/images/D14.4_picorv32a_Layout_after_Placement_showing_sky130_vsdinv.png) |
+  | **Layout showing sky130_vsdinv after placement stage** <br>  ![D23_picorv32a_Layout_after_Placement_showing_sky130_vsdinv](/docs/images/D23_picorv32a_Layout_after_Placement_showing_sky130_vsdinv.png) |
 
   * **Note**:
     * The `run_floorplan` command gave an error saying `Cannot find any macros in the design` after including the sky130_vsdinv cell.
@@ -2904,7 +2876,7 @@ ________________________________________________________________________________
       detailed_placement_or
       ```
 
-### 14.4.1 Introduction to Delay Tables
+## 23.1 Introduction to Delay Tables
   * Gate/ Cell delay is a function of the input transition (slew) time and the output load capacitance, Cload
   * Cell delay is calculated using Non-Linear Delay Models (NLDM). NLDM is highly accurate as it is derived from SPICE characterizations.
     The delay is a function of the input transition time (i.e. slew) of the cell, the wire capacitance and the pin capacitance of the driven cells.
@@ -2913,7 +2885,7 @@ ________________________________________________________________________________
   * Similar to the NLDM table for cell delay, there is an corresponding table in the library to calculate output transition as well.
   * Table models are usually two-dimensional to allow lookups based on the input slew and the output load (Cload).
 
-  | * Delay table for sky130_vsdinv @tt corner <br>  ![D14.4_NLDM_Delay_Table](/docs/images/D14.4_NLDM_Delay_Table.png) |
+  | * Delay table for sky130_vsdinv @tt corner <br>  ![D23_NLDM_Delay_Table](/docs/images/D23_NLDM_Delay_Table.png) |
   |:---|
 
   *
@@ -2925,10 +2897,10 @@ ________________________________________________________________________________
   * **Case 2:** Output load values doesn't match with table index values
     * Interpolation is performed using the nearest available table indices to calculate the approximate delay value.
   
-  | Example Interpolation algorithm in NLDM Delay table <br> _Ref: STA for Nanometer Designs - J. Bhasker, Rakesh Chadha_ <br> <br>  ![D14.4_NLDM_Interpolation](/docs/images/D14.4_NLDM_Interpolation.png) |
+  | Example Interpolation algorithm in NLDM Delay table <br> _Ref: STA for Nanometer Designs - J. Bhasker, Rakesh Chadha_ <br> <br>  ![D23_NLDM_Interpolation](/docs/images/D23_NLDM_Interpolation.png) |
   |:---|
 
-### Lab: Configure synthesis settings to fix the timing violations and improve slack
+## Lab: Configure synthesis settings to fix the timing violations and improve slack
   * The synthesis results with the present settings has a huge wns slack of -26.53ns and tns of -3232.44. To obtain timing closure in post-route STA, this negative slack needs to be reduced in synthesis.
      
   * Read back the Synthesis configuration variables that could be potentitally wrecking the timing:
@@ -2946,16 +2918,16 @@ ________________________________________________________________________________
 
     The wns and tns values look much better and easier to fix later on.
 
-### 14.4.2 Timing analysis with ideal clocks using openSTA
+## 23.2 Timing analysis with ideal clocks using openSTA
 
 **Note**: We have already gone through STA basics previously. We will capture the important essentials once again here.  
 
-#### Setup timing analysis and introduction to flip-flop setup time
+### Setup timing analysis and introduction to flip-flop setup time
 <!---
 | _**Ref: Digital Integrated Circuits: A Design Perspective by J. Rabaey et al.**_ | |
 |:---|:---|
-| **Single-Cycle Path Timing (Ideal Clock)** <br>  ![D14.4_Synchronous_Timing_Basics_Ideal_Clocks](/docs/images/D14.4_Synchronous_Timing_Basics_Ideal_Clocks.png) | **Origin of Flip-flop setup time** <br>  <br>  ![D14.4_Positive-Edge_Triggered_MS_DFF](/docs/images/D14.4_Positive-Edge_Triggered_MS_DFF.png) |
-| | **Example DFF Implementation using TG-Muxes** <br>  ![D14.4_Positive-Edge_Triggered_MS_DFF_using_TG-based_Muxes](/docs/images/D14.4_Positive-Edge_Triggered_MS_DFF_using_TG-based_Muxes.png) |
+| **Single-Cycle Path Timing (Ideal Clock)** <br>  ![D23_Synchronous_Timing_Basics_Ideal_Clocks](/docs/images/D23_Synchronous_Timing_Basics_Ideal_Clocks.png) | **Origin of Flip-flop setup time** <br>  <br>  ![D23_Positive-Edge_Triggered_MS_DFF](/docs/images/D23_Positive-Edge_Triggered_MS_DFF.png) |
+| | **Example DFF Implementation using TG-Muxes** <br>  ![D23_Positive-Edge_Triggered_MS_DFF_using_TG-based_Muxes](/docs/images/D23_Positive-Edge_Triggered_MS_DFF_using_TG-based_Muxes.png) |
 --->
   * Considering Ideal clocks, the condition to meet the setup timing for a single-cycle path (using same clock at launch and capture flops) is:
     T_clk > tc_q + t_comb + t_setup
@@ -2969,7 +2941,7 @@ ________________________________________________________________________________
     * The minimum time required for the relevant internal nodes of the Flip-Flop circuit to capture the value at the "D" input pin, before the arrival of the clock triggering edge.
     * The exact values depend on the FF implementation style. If we consider a Mux/ Latch-based implementation of an edge-triggerted FF (where a negative latch is followed by a positive latch), the setup time is the time required for the 'D' input to reach the internal node, QM (i.e., the delay of the first Mux/ Latch)
 
-    | ![D14.4_Positive-Edge_Triggered_MS-DFF](/docs/images/D14.4_Positive-Edge_Triggered_MS-DFF.png) |
+    | ![D23_Positive-Edge_Triggered_MS-DFF](/docs/images/D23_Positive-Edge_Triggered_MS-DFF.png) |
     |:---|
 
   * **Clock Jitter**
@@ -2986,10 +2958,10 @@ ________________________________________________________________________________
     * Clock uncertainty specifies a window within which a clock edge can occur.
     * With respect to setup timing, we specify a new parameter called _**setup uncertainty**_ to model several factors like clock jitter, additional margins and clock skew (at pre-cts stage).
 
-    | ![D14.4_Setup_Uncertainty](/docs/images/D14.4_Setup_Uncertainty.png) |
+    | ![D23_Setup_Uncertainty](/docs/images/D23_Setup_Uncertainty.png) |
     |:---|
 
-#### Lab: Configure OpenSTA for Post-synth timing analysis
+### Lab: Configure OpenSTA for Post-synth timing analysis
   * During the PnR flow, it is very much possible that some timing violations may get fixed, some violations will get better, some worse and new violations could also be introduced.
   * In any PnR flow, the separate timing tool (like PrimeTime) is usually invoked outside of the automated flow for performing the timing analysis and timing ECO generation.
   * In the OpenLANE flow, we use OpenSTA tool for Post-synthesis timing analysis.
@@ -3050,7 +3022,7 @@ ________________________________________________________________________________
   * Invoke OpenSTA from another terminal and provide above config file as the input:
     ```sta pre_sta.conf```
 
-#### Lab: Optimize Synthesis to reduce setup violations
+### Lab: Optimize Synthesis to reduce setup violations
   * In addition to the synthesis configuration variables that we have seen before, there are a few more that we can use to optimize synthesis to improve setup slack.
   * If there are setup timing violations (and possible slew & max cap violations) from nets with high fanout, we can limit the fanout to improve hte delay using:  
     ```
@@ -3061,7 +3033,7 @@ ________________________________________________________________________________
     report_net -connections <net_name>
     ```
 
-#### Lab: Steps to do basic Timing ECO
+### Lab: Steps to do basic Timing ECO
   * From analysing the setup violations in OpenSTA, we will be able to infer the possible reasons for the violations
   * One common reason could a large output slew for a net due to large capacitance load/ fanout which the synthesis tool could not optimize further.
     In this case, we can **upsize** the cell (i.e., replace the cell instance with a higher drive strength version of it) to reduce the delay using the `replace_cell` command.
@@ -3089,10 +3061,10 @@ ________________________________________________________________________________
     * Now the STA engineer(s) will take the new data and perform STA analysis again and provide new timing ECOs for the new violations.
     * This "spinning" process goes on till all voilations are rectified.
 
-### 14.4.3 Clock Tree Synthesis using TritonCTS and Signal Integrity
+## 23.3 Clock Tree Synthesis using TritonCTS and Signal Integrity
 Clock Tree Synthesis is the process of connecting the clocks to the clock pins of all sequential elements in the design by using inverters/ buffers in order to balance the skew and to minimize the insertion delay.
 
-| **Ideal Clock Tree before CTS** <br>  ![D14.4_Ideal_clock_tree_before_CTS](/docs/images/D14.4_Ideal_clock_tree_before_CTS.png) | **Real Clock tree (H-tree) after CTS** <br>  ![D14.4_Real_clock_tree_(H-tree)_after_CTS](/docs/images/D14.4_Real_clock_tree_(H-tree)_after_CTS.png)
+| **Ideal Clock Tree before CTS** <br>  ![D23_Ideal_clock_tree_before_CTS](/docs/images/D23_Ideal_clock_tree_before_CTS.png) | **Real Clock tree (H-tree) after CTS** <br>  ![D23_Real_clock_tree_(H-tree)_after_CTS](/docs/images/D23_Real_clock_tree_(H-tree)_after_CTS.png)
 |---|---|
 
 **Image courtesy:** [_https://www.physicaldesign4u.com/2020/02/clock-tree-synthesis.html_](https://www.physicaldesign4u.com/2020/02/clock-tree-synthesis.html)
@@ -3106,7 +3078,7 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
     4) Duty Cycle: Unequal rise and fall times of the clock buffers is the primary cause of duty cycle distortion in a clock tree. Usually inverters are used instead of buffers to reduce DCD in a clock tree.
     5) Pulse Width: Usually SRAMs, flip-flops and latches will have minimum pulse width requirements to meet their internal timing. There will be minimum pulse width requirements for both the high and low times of a clock period. 
 
-#### Clock tree routing and buffering using H-Tree algorithm
+### Clock tree routing and buffering using H-Tree algorithm
   * **H-Tree algorithm**
     * This is a clock tree routing algorithm that tries to minimize the skew by minimizing the routing length.
     * The clock routing taked place in the shape of the capital letter **"H"**
@@ -3119,13 +3091,13 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
       6) Repeat this algorithm till the time we reach the flop clock pin.
     * This is demonstrated in the following GIF file from [wikipedia page](https://en.wikipedia.org/wiki/H_tree):
 
-    | ![D14.4_H_tree_Algorithm](/docs/images/D14.4_H_tree_Algorithm.gif) |
+    | ![D23_H_tree_Algorithm](/docs/images/D23_H_tree_Algorithm.gif) |
     |:---|
   * **Clock buffering**
     * To ensure the clock signal reaching each sink pin is having the required target slew/ transition time, we need to add clock repeaters or clock buffers at multiple points of the distribution network, ensuring the RC wire load is split across multiple levels of buffers.
     * To reduce Duty Cycle Distortion (DCD), clock buffers need to have equal rise and fall times. Usually it is very difficult to design buffers with equal rise and fall times and in a long clock tree with multiple levels of buffering, this can often lead to DCD. Hence instead of clock buffers, clock inverters are used in clock trees to reduce the introduction of DCD.
 
-#### Clock Signal Integrity: Crosstalk and Clock Net Shielding
+### Clock Signal Integrity: Crosstalk and Clock Net Shielding
   * **Crosstalk Glitch**
     * If a high slew net is somehow routed near to the clock net, a transition on this agressor net can cause a glitch on the the clock net while the clock net is at a logic LOW or HIGH level.
     * This happens due to the capacitive coupling between the nets and can cause the signal level on the clock net to temporarily go above the VIH or VIL level resulting in a spurious unwanted high/ low pulse on this clock net.
@@ -3152,14 +3124,14 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
       The shielding nets are connected to either VDD or GND (either both of them to VDD (or GND), or one of them to VDD & the other to GND).
       (Basically the shielding nets need to be connected to a non-transitioning net, low impedance upon which an aggressor has no effect).
 
-#### Lab: Steps to run CTS using TritonCTS
+### Lab: Steps to run CTS using TritonCTS
   * Command to run cts: `run_cts`
   * After CTS, a new netlist **<design_name>.synthesis_cts.v** will be created in the `runs/<tag>/results/synthesis/` folder that includes the information on the generated clock clock tree and the newly instanced clock buffers.
 
-  | ![D14.4_New_netlist_after_CTS](/docs/images/D14.4_New_netlist_after_CTS.png) |
+  | ![D23_New_netlist_after_CTS](/docs/images/D23_New_netlist_after_CTS.png) |
   |---|
 
-#### Lab: Steps to verify CTS runs
+### Lab: Steps to verify CTS runs
   * CTS configuration variables to verify:
 
   | Configuration Variable | Details |
@@ -3170,13 +3142,13 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
   | `LIB_CTS` | The liberty file used for CTS. By default, this is the `LIB_SYNTH_COMPLETE` minus the cells with drc errors. |
   | `CTS_MAX_CAP` | Defines the maximum capacitance for clock tree synthesis in the design in pF. |
 
-### 14.4.4 Timing Analysis with real clocks using OpenSTA
+## 23.4 Timing Analysis with real clocks using OpenSTA
 
-#### Setup timing analysis using real clocks
+### Setup timing analysis using real clocks
 
-#### Hold timing analysis using real clocks
+### Hold timing analysis using real clocks
 
-#### Lab: Steps to analyze timing with real clocks (Post-CTS STA) using OpenSTA
+### Lab: Steps to analyze timing with real clocks (Post-CTS STA) using OpenSTA
   * In OpenRoad, the timing analysis is performed by creating a db file using the LEF and DEF files of the design.
   * db creation is a one-time process (unless the def changes).
     To create the db, invoke OpenRoad from within the OpenLANE shell using `openroad`. And then from within the OpenRoad shell execute the following commands:  
@@ -3200,7 +3172,7 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
   * Be sure to perform the timing analysis with the correct library file which was used for CTS (which was the LIB_SYNTH_COMPLETE or the LIB_TYPICAL in our case). 
   * **Note:** As of now, CTS does not support multi-corner optimization.
 
-#### Lab: Steps to observe impact of bigger CTS buffers on setup and hold timing
+### Lab: Steps to observe impact of bigger CTS buffers on setup and hold timing
   * Modify the `CTS_CLK_BUFFER_LIST` variable to exclude the `sky130_fd_sc_hd__clkbuf_1` cell and re-run CTS again.
   * Be sure to modify the `CURRENT_DEF` variable to point to the DEF file after placement before triggering the CTS run.
     ```
@@ -3215,9 +3187,10 @@ Clock Tree Synthesis is the process of connecting the clocks to the clock pins o
   * We will be able to see the setup and hold slacks having some amount of improvement, but do note that this comes with a potentially large area & power penalty due to the larger clock buffers used.
 _________________________________________________________________________________________________________  
 
-## Day 14.5: Final steps for RTL2GDS using tritonRoute and openSTA
-###  14.5.1 Routing and Design Rule Check (DRC)
-#### Introduction to Maze Routing - Lee's Algorithm
+# Day 24: Final steps for RTL2GDS using tritonRoute and openSTA
+
+##  24.1 Routing and Design Rule Check (DRC)
+### Introduction to Maze Routing - Lee's Algorithm
   * Lee's algorithm is one possible solution for maze routing problems based on breadth-first search.
     * If a path exists between the source and target, this algorithm guarantees finding it.
     * It always finds the shortest path between the source and target.
@@ -3228,26 +3201,26 @@ ________________________________________________________________________________
     * **Note**: The wave expansion marks only points in the routable area of the chip, not in the blocks or already wired parts.
   * Routes with lower number of bends are preferred.
 
-  | **Lee's Routing Algorithm** <br>  ![D14.5_Lees_Routing_Algorithm_resized](/docs/images/D14.5_Lees_Routing_Algorithm_resized.png) <br>  **The blue route is preferred over the black one due to lower number of bends** |
+  | **Lee's Routing Algorithm** <br>  ![D24_Lees_Routing_Algorithm_resized](/docs/images/D24_Lees_Routing_Algorithm_resized.png) <br>  **The blue route is preferred over the black one due to lower number of bends** |
   |:---|
   
   * This algorithm, however, has a high cost in term of both memory usage and run time.
   * To overcome these short-comings, there are other more advanced algorithms like Line Search algorithm & Steiner tree algorithm.
 
-#### Design Rule Check during routing
+### Design Rule Check during routing
   * While performing routing, the router tool needs to follow the DRC rules related to routing provided by the PDK.
   * Basically, the origin of these DRCs come from the manufacturing process used like photolithography or others, that for example, define the minimum wire width that can be manufactured, the minimum spacing between two wire in a metal layer etc.
 
-  | **Typical DRC rules for wires like width, spacing and pitch** <br>  ![D14.5_Routing_DRC_Typical_Rules_about_wire](/docs/images/D14.5_Routing_DRC_Typical_Rules_about_wire.png) |
+  | **Typical DRC rules for wires like width, spacing and pitch** <br>  ![D24_Routing_DRC_Typical_Rules_about_wire](/docs/images/D24_Routing_DRC_Typical_Rules_about_wire.png) |
   |:---|
 
   * Check out the DRC rules related to the local interconnect and the metal layers for [sky130 PDK DRC](https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#li).
 
-  | **A Signal short during route** <br>  **Fixing it using other metal layers gives rise to new DRC checks related to VIAs** <br>  ![D14.5_Routing_DRC_Check_Examples_2](/docs/images/D14.5_Routing_DRC_Check_Examples_2.png) |
+  | **A Signal short during route** <br>  **Fixing it using other metal layers gives rise to new DRC checks related to VIAs** <br>  ![D24_Routing_DRC_Check_Examples_2](/docs/images/D24_Routing_DRC_Check_Examples_2.png) |
   |:---|
 
-### 14.5.2 Power Distribution Network and Routing
-#### Lab: Steps to build Power Distribution Network
+## 24.2 Power Distribution Network and Routing
+### Lab: Steps to build Power Distribution Network
   * Levels of Power distribution
     ```
     > VDD, VSS pins/ balls
@@ -3259,25 +3232,25 @@ ________________________________________________________________________________
                      |--> Macro Power Ring
     ```
 
-  | ![D14.5_Power_Distribution_Network_resized](/docs/images/D14.5_Power_Distribution_Network_resized.png) |
+  | ![D24_Power_Distribution_Network_resized](/docs/images/D24_Power_Distribution_Network_resized.png) |
   |:---|
   | _**Source:**_ [Power Distribution Network](https://vlsibyjim.blogspot.com/2015/03/power-planning.html) |
 
   * Command to generate PDN in openLANE: `run_power_grid_generation`
 
-  | **Layout after PDN generation** <br>  ![D14.5_Layout_after_PDN_Generation](/docs/images/D14.5_Layout_after_PDN_Generation.png) |
+  | **Layout after PDN generation** <br>  ![D24_Layout_after_PDN_Generation](/docs/images/D24_Layout_after_PDN_Generation.png) |
   |:---|
-  | **Layout zoomed** <br>  ![D14.5_Layout_after_PDN_Generation_Zoomed](/docs/images/D14.5_Layout_after_PDN_Generation_Zoomed.png) |
+  | **Layout zoomed** <br>  ![D24_Layout_after_PDN_Generation_Zoomed](/docs/images/D24_Layout_after_PDN_Generation_Zoomed.png) |
 
 
-#### Lab: Steps to perform routing
+### Lab: Steps to perform routing
   * To run the routing in OpenLANE, execute: `run_routing`
 
-  | **No DRC violations after routing** <br> ![D14.5_Detailed_Routing_No_DRC_Viols](/docs/images/D14.5_Detailed_Routing_No_DRC_Viols.png) |
+  | **No DRC violations after routing** <br> ![D24_Detailed_Routing_No_DRC_Viols](/docs/images/D24_Detailed_Routing_No_DRC_Viols.png) |
   |:---|
-  | **No Timing violations at TYPICAL corner** <br> ![D14.5_STA_for_typical_after_routing](/docs/images/D14.5_STA_for_typical_after_routing.png) |
-  | **Layout after routing (KLayout)** <br>  ![D14.5_Layout_after_routing_in_klayout](/docs/images/D14.5_Layout_after_routing_in_klayout.png) |
-  | **Layout after routing - Zoomed (Magic)** <br>  ![D14.5_Layout_after_Routing](/docs/images/D14.5_Layout_after_Routing.png) |
+  | **No Timing violations at TYPICAL corner** <br> ![D24_STA_for_typical_after_routing](/docs/images/D24_STA_for_typical_after_routing.png) |
+  | **Layout after routing (KLayout)** <br>  ![D24_Layout_after_routing_in_klayout](/docs/images/D24_Layout_after_routing_in_klayout.png) |
+  | **Layout after routing - Zoomed (Magic)** <br>  ![D24_Layout_after_Routing](/docs/images/D24_Layout_after_Routing.png) |
   
   * **Post-route STA**
     ```
@@ -3298,12 +3271,12 @@ ________________________________________________________________________________
     report_checks -path_delay min_max -format full_clock_expanded -digits 4 -fields {net cap slew input_pins fanout}
     ```
  
-#### Basics of global and detail routing
+### Basics of global and detail routing
   * Global route using `fast route` and Detailed route using `tritonRoute`
   * Global route provides a routing guide.
   * In Detailed route, algorithms are used to find the best possible connectivity using the routing guides from global route.
 
-#### TritonRoute Features
+### TritonRoute Features
   * Performs initial detail route
   * Honors the preprocessed route guides (obtained after global route) - i.e., attempts as much as possible to route within route guides.
   * Assumes route guides for each net satisfy inter-guide connectivity.
@@ -3312,8 +3285,8 @@ ________________________________________________________________________________
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 21 - Post-placement STA analysis of your Design (RISC-V Myth CPU Core)
-## 15.1 OpenLANE Installation (latest stable version)
+# Day 25 - Post-placement STA analysis of your Design (RISC-V Myth CPU Core)
+## 25.1 OpenLANE Installation (latest stable version)
 For ease of installation, OpenLane uses Docker images, that include all the required applications, binaries and the flow scripts.  
 The [OpenLane Installation Documentation](https://openlane.readthedocs.io/en/latest/getting_started/installation/installation_ubuntu.html) page explains in detail the step to setup OpenLANE. A short summary of the necessary steps is given below:  
   * Install the required dependencies:
@@ -3372,8 +3345,8 @@ The [OpenLane Installation Documentation](https://openlane.readthedocs.io/en/lat
     ```
     Basic test passed
     ```
-## 15.2 Basic Usage
-### 15.2.1 Invoking the OpenLane Docker session:
+## 25.2 Basic Usage
+### 25.2.1 Invoking the OpenLane Docker session:
 ```
 cd to the OpenLane folder
 
@@ -3384,7 +3357,7 @@ make mount
 exit
 ```
 
-### 15.2.2 [Adding Your Designs](https://openlane.readthedocs.io/en/latest/usage/designs.html)
+### 25.2.2 [Adding Your Designs](https://openlane.readthedocs.io/en/latest/usage/designs.html)
   * To add a new design, the following command creates a configuration file for your design:
     ```
     # JSON Configuration File
@@ -3407,7 +3380,7 @@ exit
     │   ├── design.v
     ```
 
-### 15.2.3 Running the flow for the design:
+### 25.2.3 Running the flow for the design:
   * To run the automated flow:
     ```
     ./flow.tcl -design <design_name>
@@ -3438,7 +3411,7 @@ exit
     12. run_antenna_check
     ```
 
-### 15.2.4 Some FYI Notes:
+### 25.2.4 Some FYI Notes:
   * [Command-Line Arguments that can be passed to flow.tcl](https://openlane.readthedocs.io/en/latest/reference/cli.html)
 
   | Argument | Description |
@@ -3456,7 +3429,7 @@ exit
     * When running the flow in interactive mode, use the `-verbose <level>` flag with the `prep -design <design_name>` command to set the verbose output level (2 and greater outputs everything including tool outputs).
       Example: `prep -design riscv_core -tag run1 -overwrite -verbose 2`
 
-## 15.3 Synthesis Results
+## 25.3 Synthesis Results
   * Some synthesis settings modified:
     ```
     set ::env(SYNTH_STRATEGY) "DELAY 0"
@@ -3555,7 +3528,7 @@ exit
 
   * **Chip area for module** `'\riscv_core': 115293.075200`
 
-## 15.4 Placement (Pre-CTS)
+## 25.4 Placement (Pre-CTS)
   * **Placement optimizations:**
     ```
     Reading design constraints file at '/openlane/designs/riscv_core/src/riscv_base_post_cts.sdc'…
@@ -3579,26 +3552,26 @@ exit
     ```
   * **Design area**: `124358 u^2 33% utilization`
 
-## 15.5 STA Comparison: Post-synthesis vs. Post-Placement (Pre-CTS)
+## 25.5 STA Comparison: Post-synthesis vs. Post-Placement (Pre-CTS)
 | Post-Synthesis | Post-Placement (Pre-CTS) |
 |:---:|:---:|
-| ![D15_riscv_core_post-synthesis_STA](/docs/images/D15_riscv_core_post-synthesis_STA.png) | ![D15_riscv_core_post-placement_STA](/docs/images/D15_riscv_core_post-placement_STA.png) |
+| ![D25_riscv_core_post-synthesis_STA](/docs/images/D25_riscv_core_post-synthesis_STA.png) | ![D25_riscv_core_post-placement_STA](/docs/images/D25_riscv_core_post-placement_STA.png) |
 
 <br>
 
 |   |  
 |:---:|
-| ![D15_riscv_core_synthesis_vs_post-placement_STA_wns](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_wns.png) |
-| ![D15_riscv_core_synthesis_vs_post-placement_STA_tns](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_tns.png) |
-| ![D15_riscv_core_synthesis_vs_post-placement_STA_worst_setup_slack](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_worst_setup_slack.png) |
-| ![D15_riscv_core_synthesis_vs_post-placement_STA_worst_hold_slack](/docs/images/D15_riscv_core_synthesis_vs_post-placement_STA_worst_hold_slack.png) |
+| ![D25_riscv_core_synthesis_vs_post-placement_STA_wns](/docs/images/D25_riscv_core_synthesis_vs_post-placement_STA_wns.png) |
+| ![D25_riscv_core_synthesis_vs_post-placement_STA_tns](/docs/images/D25_riscv_core_synthesis_vs_post-placement_STA_tns.png) |
+| ![D25_riscv_core_synthesis_vs_post-placement_STA_worst_setup_slack](/docs/images/D25_riscv_core_synthesis_vs_post-placement_STA_worst_setup_slack.png) |
+| ![D25_riscv_core_synthesis_vs_post-placement_STA_worst_hold_slack](/docs/images/D25_riscv_core_synthesis_vs_post-placement_STA_worst_hold_slack.png) |
 
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 22 - Post-CTS, Post-Routing STA analysis of your Design
+# Day 26 - Post-CTS, Post-Routing STA analysis of your Design
 
-## 16.1 STA Comparison
+## 26.1 STA Comparison
 **OpenLane Configuration:**
   * [config.tcl](/code/openlane/designs/riscv_core/config.tcl)
   * [sky130A_sky130_fd_sc_hd_config.tcl](/code/openlane/designs/riscv_core/sky130A_sky130_fd_sc_hd_config.tcl)
@@ -3610,16 +3583,16 @@ ________________________________________________________________________________
   * **Placement**: `124358 u^2 33% utilization`
   * **CTS**: `129960 u^2 34% utilization`
 
-| **Post-Synthesis** <br>  ![D16_riscv_core_post-synthesis_STA](/docs/images/D16_riscv_core_post-synthesis_STA.png) | **Post-Placement (Pre-CTS)** <br>  ![D16_riscv_core_post-placement_STA](/docs/images/D16_riscv_core_post-placement_STA.png) |
+| **Post-Synthesis** <br>  ![D26_riscv_core_post-synthesis_STA](/docs/images/D26_riscv_core_post-synthesis_STA.png) | **Post-Placement (Pre-CTS)** <br>  ![D26_riscv_core_post-placement_STA](/docs/images/D26_riscv_core_post-placement_STA.png) |
 |:---:|:---:|
-| **Post-Routing** <br>  ![D16_riscv_core_post-Route_STA](/docs/images/D16_riscv_core_post-Route_STA.png) | **Post-CTS** <br>  ![D16_riscv_core_post-CTS_STA](/docs/images/D16_riscv_core_post-CTS_STA.png) |
+| **Post-Routing** <br>  ![D26_riscv_core_post-Route_STA](/docs/images/D26_riscv_core_post-Route_STA.png) | **Post-CTS** <br>  ![D26_riscv_core_post-CTS_STA](/docs/images/D26_riscv_core_post-CTS_STA.png) |
 
 |   |  
 |:---:|
-| ![D16_riscv_core_PostCTS_PostRoute_STA_wns](/docs/images/D16_riscv_core_PostCTS_PostRoute_STA_wns.png) |
-| ![D16_riscv_core_PostCTS_PostRoute_STA_tns](/docs/images/D16_riscv_core_PostCTS_PostRoute_STA_tns.png) |
-| ![D16_riscv_core_PostCTS_PostRoute_STA_worst_setup_slack](/docs/images/D16_riscv_core_PostCTS_PostRoute_STA_worst_setup_slack.png) |
-| ![D16_riscv_core_PostCTS_PostRoute_STA_worst_hold_slack](/docs/images/D16_riscv_core_PostCTS_PostRoute_STA_worst_hold_slack.png) |
+| ![D26_riscv_core_PostCTS_PostRoute_STA_wns](/docs/images/D26_riscv_core_PostCTS_PostRoute_STA_wns.png) |
+| ![D26_riscv_core_PostCTS_PostRoute_STA_tns](/docs/images/D26_riscv_core_PostCTS_PostRoute_STA_tns.png) |
+| ![D26_riscv_core_PostCTS_PostRoute_STA_worst_setup_slack](/docs/images/D26_riscv_core_PostCTS_PostRoute_STA_worst_setup_slack.png) |
+| ![D26_riscv_core_PostCTS_PostRoute_STA_worst_hold_slack](/docs/images/D26_riscv_core_PostCTS_PostRoute_STA_worst_hold_slack.png) |
 
 **NOTE:** Writing powered verilog netlist
   ```
@@ -3628,9 +3601,9 @@ ________________________________________________________________________________
   ```
 
 <!--
-  | **Post-Synthesis** <br>  ![D16_riscv_core_post-synthesis_STA2](/docs/images/D16_riscv_core_post-synthesis_STA2.png) | **Post-Placement (Pre-CTS)** <br>  ![D16_riscv_core_post-placement_STA2](/docs/images/D16_riscv_core_post-placement_STA2.png) |
+  | **Post-Synthesis** <br>  ![D26_riscv_core_post-synthesis_STA2](/docs/images/D26_riscv_core_post-synthesis_STA2.png) | **Post-Placement (Pre-CTS)** <br>  ![D26_riscv_core_post-placement_STA2](/docs/images/D26_riscv_core_post-placement_STA2.png) |
   |:---:|:---:|
-  | **Post-Routing** <br>  ![D16_riscv_core_post-Route_STA2](/docs/images/D16_riscv_core_post-Route_STA2.png) | **Post-CTS** <br>  ![D16_riscv_core_post-CTS_STA2](/docs/images/D16_riscv_core_post-CTS_STA2.png) |
+  | **Post-Routing** <br>  ![D26_riscv_core_post-Route_STA2](/docs/images/D26_riscv_core_post-Route_STA2.png) | **Post-CTS** <br>  ![D26_riscv_core_post-CTS_STA2](/docs/images/D26_riscv_core_post-CTS_STA2.png) |
 -->
 
 

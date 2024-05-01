@@ -1,8 +1,8 @@
 [Back to TOC](../README.md)  
 [Prev: Day 18](Day_18.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 20](Day_20.md)  
 _________________________________________________________________________________________________________  
-# Day 19
-## PVT Corner Analysis
+# Day 19 - PVT Corner Analysis (Post-Synthesis Timing) of the RISC-V CPU Design
+
 The STA checks are performed across all the corners to confirm the design meets the target timing requirements.
   * The worst max path (Setup-critical) corners in the sub-40nm process nodes are usually: ss_LowTemp_LowVolt, ss_HighTemp_LowVolt (Slowest corners)
   * The worst min path (Hold-critical) corners being: ff_LowTemp_HighVolt,ff_HighTemp_HighVolt (Fastest corners)

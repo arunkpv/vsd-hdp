@@ -3,6 +3,7 @@
 _________________________________________________________________________________________________________  
 
 # Day 24: Final steps for RTL2GDS using tritonRoute and openSTA
+
 ##  24.1 Routing and Design Rule Check (DRC)
 ### Introduction to Maze Routing - Lee's Algorithm
   * Lee's algorithm is one possible solution for maze routing problems based on breadth-first search.
