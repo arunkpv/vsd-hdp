@@ -128,7 +128,8 @@ endmodule
 ```
   
 _Logic realized by the synthesis tool in the above example:_
-![D1_lab3_2input_mux_synth_logical_diagram](/docs/images/D1_lab1_2input_mux_synth_logical_diagram.png)
+![D1_lab3_2input_mux_synth_logical_diagram](/docs/images/D1_lab1_2input_mux_synth_logical_diagram.png)  
+
 _________________________________________________________________________________________________________  
 
 [Prev: Day0](Day0.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day2](Day2.md)  

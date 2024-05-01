@@ -2,7 +2,7 @@
 [Prev: Day 21](Day_21.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 23](Day_23.md)  
 _________________________________________________________________________________________________________  
   
-# Day 22: Design library cell using Magic layout tool and characterization using ngspice
+# Day 22: Library Cell design using Magic and Characterization using Ngspice
 
 ## 22.1 16-Mask CMOS Process
 TODO: Documentation

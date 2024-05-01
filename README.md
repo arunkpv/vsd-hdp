@@ -23,8 +23,9 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |[Day 25](/docs/Day_25.md)| Post-placement STA analysis of your Design (RISC-V Myth CPU Core) <br>  * on ss,ff,tt corners <br>  * Compare with Post-synth | ![](https://progress-bar.dev/100/?title=done) |
   |[Day 26](/docs/Day_26.md)| Post-CTS, Post-Routing STA analysis of your Design <br>  * on ss,ff,tt corners <br>  * Compare with previous results | ![](https://progress-bar.dev/100/?title=done) |
 
-# Day 0 - Setting up the working environment
-## System Setup
+# Day 0: GitHub repo creation, System/ Tools Environment Setup
+
+## 0.1 System Setup
 The program uses Open Source EDA tools and thus a linux OS environment is preferred.
 <br />  
 __Virtual Machine Requirements:__
@@ -33,8 +34,8 @@ __Virtual Machine Requirements:__
   - HDD: 50GB or above
   - CPU cores: 4 vCPUs or more
   
-## Tools Setup
- **1. yosys – Yosys Open SYnthesis Suite**  
+## 0.2 Tools Setup
+### 0.2.1 yosys – Yosys Open SYnthesis Suite
 We will be building Yosys from the source using gcc, the instructions for which are available in the official README for yosys in its GitHub repo.
 [Build Yosys from source](https://github.com/YosysHQ/yosys#building-from-source)
 <br />
@@ -59,29 +60,31 @@ We will be building Yosys from the source using gcc, the instructions for which 
     ```
     
   - Invoke from shell:  
-    ![day0_yosys](/docs/images/day0_yosys.png)
+    ![D0_yosys](/docs/images/D0_yosys.png)
   
- **2. iverilog - Icarus Verilog**  
+### 0.2.2 iverilog - Icarus Verilog
    - Install from official Ubuntu repository:
      ```shell
      sudo apt-get install iverilog
      ```
      
    - Invoke from shell:  
-     ![day0_iverilog](/docs/images/day0_iverilog.png)
+     ![D0_iverilog](/docs/images/D0_iverilog.png)
   
- **3. GTKWave**
+### 0.2.3 GTKWave
    - Install from official Ubuntu repository:
      ```shell
      sudo apt-get install gtkwave
      ```
      
    - Invoke from shell:  
-     ![day0_gtkwave](/docs/images/day0_gtkwave.png)
+     ![D0_gtkwave](/docs/images/D0_gtkwave.png)  
+
      
 _________________________________________________________________________________________________________  
-# Day 1 - Introduction to RTL Design and Synthesis
-## Labs 1,2: Functional Simulation of RTL design using iverilog and gktwave
+# Day 1: Introduction to Verilog RTL design and Synthesis
+
+## 1.1 Lab: Functional Simulation of RTL design using iverilog and gktwave
 In this lab, we clone the gihthub repo - [sky130RTLDesignAndSynthesisWorkshop](https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop) - and use one of the example RTL design sources together with its corresponding testbench to get familiarised with the functional simulation of an RTL design using iverilog and gtkwave.   
 <br />
 1. Clone the github repo with the RTL design examples and sky130*.lib files
@@ -112,13 +115,16 @@ vvp good_mux
 
 gtkwave tb_good_mux.vcd
 ```
+
 _Snapshot of the waves from the above simulation in gtkwave:_
-![day1_lab1_2input_mux_iverilog_gktwave](/docs/images/day1_lab1_2input_mux_iverilog_gktwave.png)
+![D1_lab1_2input_mux_iverilog_gktwave](/docs/images/D1_lab1_2input_mux_iverilog_gktwave.png)
 <br />
 <br />
-## Lab 3: Synthesis of RTL design using Yosys with sky130 library as target
+
+## 1.2 Lab: Synthesis of RTL design using Yosys with sky130 library as target
 In this lab, we will perform gate-level synthesis of the example RTL design simulated in the previous session using Yosys and sky130 as the target library.
 <br />
+
 ```
 # 1. Invoke the yosys shell (since we are doing each step manually this time around)
 yosys
@@ -203,11 +209,12 @@ endmodule
 ```
   
 _Logic realized by the synthesis tool in the above example:_
-![day1_lab3_2input_mux_synth_logical_diagram](/docs/images/day1_lab3_2input_mux_synth_logical_diagram.png)
+![D1_lab3_2input_mux_synth_logical_diagram](/docs/images/D1_lab1_2input_mux_synth_logical_diagram.png)  
 _________________________________________________________________________________________________________  
 
-# Day 2 - Timing lib files, Hierarchical vs. Flat Synthesis and Flip-flop coding styles
-## Lab 4: Familiarization of the .lib file structure and various timing models (QTMs/ETMs)
+# Day 2: Timing libs, Hierarchical vs. Flat Synthesis, Flip-Flop coding styles
+
+## 2.1 Familiarization of the .lib file structure and various timing models (QTMs/ETMs)
 1. Open up the **sky130_fd_sc_hd__tt_025C_1v80.lib** library file and get familiarized with the overall structure and the various parameters defined like:
 <ul>
  <li>PVT corner for which the lib file is defined</li>
@@ -223,11 +230,11 @@ Ref:
   [3]: [https://asic-pd.blogspot.com/2011/08/basic-of-timing-analysis-in-physical_22.html](https://asic-pd.blogspot.com/2011/08/basic-of-timing-analysis-in-physical_22.html)
 <br />
   
-## Lab 5: Hierarchical vs. Flat Synthesis
+## 2.2 Lab: Hierarchical vs. Flat Synthesis
 In this experiment, we will take a look at how the Yosys tool performs the synthesis and generates the netlst for a multi-module design with and without preserving the design hierarchy.  
-For this example, we will use the design file, multiple_modules.v, which contains some logic implementation using two sub-modules.  
+For this example, we will use the design file, `multiple_modules.v`, which contains some logic implementation using two sub-modules.  
 
-### 1. Hierarchical
+### 2.2.1 Hierarchical
   Perform the hierarchical synthesis from the Yosys shell using the following commands:  
   ```shell
   read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
@@ -241,10 +248,11 @@ For this example, we will use the design file, multiple_modules.v, which contain
   ```
   
   Synthesis result preserving the design hierarchy:  
-  ![day2_multiple_modules_hier](/docs/images/day2_multiple_modules_hier.png)
+  ![D2_multiple_modules_hier](/docs/images/D2_multiple_modules_hier.png)
   <br />
   <br />
-<!---
+
+<!--
   Corresponding Netlist - multiple_modules_hier.v:  
   ```verilog
   /* multiple_modules_hier.v
@@ -312,8 +320,8 @@ module sub_module2(a, b, y);
 endmodule
   ```
 -->
-  
-### 2. Flattened
+
+### 2.2.2 Flattened
   To flatten the hierarchical design, the command **flatten** is used following which we can write the netlist, as shown below:  
   ```shell
   flatten
@@ -322,10 +330,11 @@ endmodule
   ```
     
   Synthesis result after flattening:  
-  ![day2_multiple_modules_flat](/docs/images/day2_multiple_modules_flat.png)
+  ![D2_multiple_modules_flat](/docs/images/D2_multiple_modules_flat.png)
   <br />
   <br />
-<!---
+
+<!--
   Corresponding Netlist - multiple_modules_flat.v:  
   ```verilog
   /* multiple_modules_flat.v
@@ -379,14 +388,15 @@ endmodule
   ```
 -->
 
-  **Comparing the netlist generated for hierarchical and flat synthesis:**  
-  ![multiple_modules_hierarchical_vs_flat](/docs/images/multiple_modules_hierarchical_vs_flat.png)
+**Comparing the netlist generated for hierarchical and flat synthesis:**  
+  ![D2_multiple_modules_hierarchical_vs_flat](/docs/images/D2_multiple_modules_hierarchical_vs_flat.png)
 ________________________________________________________________________________________________________________________
   
-## Lab 6: Various Flip-Flop Designs
+## 2.3 Lab: Various Flip-Flop Designs
 Here, we will take a look at the simulation and synthesis of different flip-flops.  
 <br>
-### 1. DFF with Asynchronous Reset
+
+### 2.3.1 DFF with Asynchronous Reset
   ```verilog
   module dff_asyncres ( input clk ,  input async_reset , input d , output reg q );
   always @ (posedge clk , posedge async_reset)
@@ -400,7 +410,7 @@ Here, we will take a look at the simulation and synthesis of different flip-flop
   ```
   
   **NOTE :**
-    To synthesize flip-flops using Ysosys, we need to provide an additional command ```dfflibmap``` so as to map the internal flip-flop cells to the flip-flop cells in the technology
+    To synthesize flip-flops using Ysosys, we need to provide an additional command `dfflibmap` so as to map the internal flip-flop cells to the flip-flop cells in the technology
 library specified in the given liberty file.  
   
   ```shell
@@ -417,12 +427,12 @@ library specified in the given liberty file.
   **Behavioral Simulation:**  
   | Reset Deassertion | Reset Assertion |
   |-------------------|-----------------|
-  | ![dff_asyncres_reset_deassertion](/docs/images/dff_asyncres_reset_deassertion.png) | ![dff_asyncres_reset_asserted](/docs/images/dff_asyncres_reset_asserted.png) |
+  | ![D2_dff_asyncres_reset_deassertion](/docs/images/D2_dff_asyncres_reset_deassertion.png) | ![D2_dff_asyncres_reset_asserted](/docs/images/D2_dff_asyncres_reset_asserted.png) |
   
   **Synthesis Result:**
-  ![dff_asyncres](/docs/images/dff_asyncres.png)  
+  ![D2_dff_asyncres](/docs/images/D2_dff_asyncres.png)  
   
-### 2. DFF with Synchronous Reset
+### 2.3.2 DFF with Synchronous Reset
   ```verilog
   module dff_syncres ( input clk , input async_reset , input sync_reset , input d , output reg q );
   always @ (posedge clk )
@@ -438,12 +448,12 @@ library specified in the given liberty file.
   **Behavioral Simulation:**  
   | Reset Deassertion | Reset Assertion |
   |-------------------|-----------------|
-  | ![dff_syncres_reset_deassertion](/docs/images/dff_syncres_reset_deassertion.png) | ![dff_syncres_reset_assertion](/docs/images/dff_syncres_reset_assertion.png) |
+  | ![D2_dff_syncres_reset_deassertion](/docs/images/D2_dff_syncres_reset_deassertion.png) | ![D2_dff_syncres_reset_assertion](/docs/images/D2_dff_syncres_reset_assertion.png) |
     
   **Synthesis Result:**
-  ![dff_syncres](/docs/images/dff_syncres.png)  
+  ![D2_dff_syncres](/docs/images/D2_dff_syncres.png)  
   
-### 3. DFF with both Asynchronous & Synchronous Reset
+### 2.3.3 DFF with both Asynchronous & Synchronous Reset
   ```verilog
   module dff_asyncres_syncres ( input clk , input async_reset , input sync_reset , input d , output reg q );
   always @ (posedge clk , posedge async_reset)
@@ -459,21 +469,20 @@ library specified in the given liberty file.
   ```
     
   **Behavioral Simulation:**  
-  ![dff_asyncres_syncres_waves](/docs/images/dff_asyncres_syncres_waves.png)
+  ![D2_dff_asyncres_syncres_waves](/docs/images/D2_dff_asyncres_syncres_waves.png)
 
     
   **Synthesis Result:**
-  ![dff_asyncres_syncres](/docs/images/dff_asyncres_syncres.png)
+  ![D2_dff_asyncres_syncres](/docs/images/D2_dff_asyncres_syncres.png)
 _________________________________________________________________________________________________________  
   
-## Lab 7: Some interesting synthesis optimizations involving multipliers  
-<br>
-Here, we will take a look at the synthesis of two special cases of multipliers where no cells are used at all.  
-<br>  
-<br>
+## 2.4: Some interesting synthesis optimizations involving multipliers
 
-### 1. Multiply by 2
-  The input is an n-bit binary number and the output is twice the input.  
+Here, we will take a look at the synthesis of two special cases of multipliers where no cells are used at all.  
+
+### 2.4.1 Multiply by 2
+
+The input is an n-bit binary number and the output is twice the input.  
   ```
   i.e., output[n:0] = 2 * input[n-1 : 0]
 
@@ -495,10 +504,11 @@ Here, we will take a look at the synthesis of two special cases of multipliers w
   ```
 
   Synthesis result:  
-  ![mult_2](/docs/images/mult_2.png)  
+  ![D2_mult_2](/docs/images/D2_mult_2.png)  
 
-### 2. Multiply a 3-bit number by 9
-  The input is a 3-bit binary number and the output is defined to be 9 * input.  
+### 2.4.2 Multiply a 3-bit number by 9
+
+The input is a 3-bit binary number and the output is defined to be 9 * input.  
   ```
   i.e., output[5:0] = 9 * input[2:0]
 
@@ -524,18 +534,27 @@ Here, we will take a look at the synthesis of two special cases of multipliers w
 
 
   Synthesis result:  
-  ![mult8](/docs/images/mult8.png)  
+  ![D2_mult8](/docs/images/D2_mult8.png)  
 _________________________________________________________________________________________________________  
 
-# Day 3 - Combinational and Sequential Optimizations
-## Combinational Logic Optimizations  
-The combinational logic is simplified to the most optimized form which is efficient in terms of area & power savings.  
-**1. Constant Propagation** : This is a direct optimization method wherein the Boolean expression of the synthesized logic is simplified if any of the inputs are "a constant" and subsequently some of the logic gate outputs also propagate a constant value always.  
-**2. Boolean Logic Optimization** : The various Boolean expression optimization techniques like K-maps (graphical), Quine-McLusky, reduction to standard SOP/ POS forms best suited for the cell library/ technology etc.  
-<br>
+# Day 3: Logic Optimization
+Logic optimization is a process of finding an equivalent representation of the specified logic circuit under one or more specified constraints. The goal of logic optimization of a given circuit is to obtain the smallest logic circuit that evaluates to the same values as the original one.
 
-**NOTE :** The command to perform logic optimization in Yosys is ```opt_clean```.  
-Additionally, for a hierarchical design involving multiple sub-modules, the design must be flattened by running the ```flatten``` command before executing the ```opt_clean``` command.
+In terms of Boolean algebra, the optimization of a complex Boolean expression is a process of finding a simpler one, which would upon evaluation ultimately produce the same results as the original one.
+
+## 3.1 Combinational Logic Optimizations  
+The combinational logic is simplified to the most optimized form which is efficient in terms of area & power savings.
+
+### 3.1.1 Constant Propagation
+This is a direct optimization method wherein the Boolean expression of the synthesized logic is simplified if any of the inputs are "a constant" and subsequently some of the logic gate outputs also propagate a constant value always.  
+
+### 3.1.2 Boolean Logic Optimization
+The various Boolean expression optimization techniques like K-maps (graphical), Quine-McLusky, reduction to standard SOP/ POS forms best suited for the cell library/ technology etc.  
+
+**Note:**  
+  - The command to perform logic optimization in Yosys is `opt_clean`.  
+  - Additionally, for a hierarchical design involving multiple sub-modules, the design must be flattened by running the `flatten` command before executing the `opt_clean` command.
+
 ```shell
 USAGE:
 After the synth -top <module_name> command is executed, do:
@@ -544,6 +563,7 @@ After the synth -top <module_name> command is executed, do:
 This command identifies wires and cells that are unused and removes them.
 The additional switch, purge also removes the internal nets if they have a public name.
 ```
+
 ```shell
 # Example showing the sequence of commands to perform combinational logic optimization using Yosys
 # on module opt_check in opt_check.v:
@@ -555,7 +575,7 @@ The additional switch, purge also removes the internal nets if they have a publi
     show
 ```
 
-### Lab 8: Example 1: opt_check.v 
+### 3.1.3 Lab 1: opt_check.v
 ```verilog
 module opt_check (input a , input b , output y);
     assign y = a?b:0;
@@ -568,11 +588,11 @@ endmodule
 <br>
 
 Synthesis Result:  
-![opt_check](/docs/images/opt_check.png)  
+![D3_opt_check](/docs/images/D3_opt_check.png)  
 <br>
 _________________________________________________________________________________________________________  
 
-### Lab 8: Example 2: opt_check2.v
+### 3.1.3 Lab 2: opt_check2.v
 ```verilog
 module opt_check2 (input a , input b , output y);
     assign y = a?1:b;
@@ -590,11 +610,11 @@ endmodule
 
 Synthesis Result:  
 _The cell library already seems to have an OR gate available as the synthesis result is an OR gate itself and not a NAND-realization of the OR to avoid the stacked PMOS as shown in the demo videos_  
-![opt_check2](/docs/images/opt_check2.png)  
+![D3_opt_check2](/docs/images/D3_opt_check2.png)  
 <br>
 _________________________________________________________________________________________________________  
 
-### Lab 8: Example 3: opt_check3.v
+### 3.1.3 Lab 3: opt_check3.v
 ```verilog
 module opt_check3 (input a , input b, input c , output y);
     assign y = a?(c?b:0):0;
@@ -608,11 +628,11 @@ endmodule
 <br>
 
 Synthesis Result:  
-![opt_check3](/docs/images/opt_check3.png)  
+![D3_opt_check3](/docs/images/D3_opt_check3.png)  
 <br>
 _________________________________________________________________________________________________________  
 
-### Lab 8: Example 4: opt_check4.v
+### 3.1.3 Lab 4: opt_check4.v
 ```verilog
 module opt_check4 (input a , input b , input c , output y);
     assign y = a?(b?(a & c):c):(!c);
@@ -629,11 +649,11 @@ endmodule
 <br>
 
 Synthesis Result:  
-![opt_check4](/docs/images/opt_check4.png)  
+![D3_opt_check4](/docs/images/D3_opt_check4.png)  
 <br>
 _________________________________________________________________________________________________________  
 
-### Lab 8: Example 5: multiple_module_opt.v
+### 3.1.3 Lab 5: multiple_module_opt.v
 ```verilog
 module sub_module1(input a , input b , output y);
     assign y = a & b;
@@ -656,11 +676,11 @@ endmodule
 <br>
 
 Synthesis Result:  
-![multiple_module_opt](/docs/images/multiple_module_opt.png)  
+![D3_multiple_module_opt](/docs/images/D3_multiple_module_opt.png)  
 <br>
 _________________________________________________________________________________________________________  
 
-### Lab 8: Example 6: multiple_module_opt2.v
+### 3.1.3 Lab 6: multiple_module_opt2.v
 ```verilog
 module sub_module(input a , input b , output y);
     assign y = a & b;
@@ -678,19 +698,27 @@ endmodule
 <br>
 
 Synthesis Result:  
-![multiple_module_opt2](/docs/images/multiple_module_opt2.png)  
+![D3_multiple_module_opt2](/docs/images/D3_multiple_module_opt2.png)  
 <br>
 
 _________________________________________________________________________________________________________  
 
-## Sequential Logic Optimizations
-**1. Constant Propagation** : Optimization technique used when a constant value is propagated through a flip-flop -- i.e., irrespective of the state of the triggering signals (CLK, Reset, Set), there are no transitions in the flip-flop output.  
+## 3.2 Sequential Logic Optimizations
+
+### 3.2.1 Constant Propagation
+Optimization technique used when a constant value is propagated through a flip-flop -- i.e., irrespective of the state of the triggering signals (CLK, Reset, Set), there are no transitions in the flip-flop output.  
 <br>
 
 ***[Other Advanced optimization methods not covered by examples in detail:]***  
-**2. State optimization** : Unused states in the sequential design are optimized and/or the total states needed in the FSM are minimized.  
-**3. Cloning** : This is a physically-aware (PnR-aware) optimization method where some of the flops in the design are cloned/ duplicated so that the timing can be met post-PnR for the timing arcs involved (provided there is already some minimum positive slack available).  
-**4. Retming** : The pipelining flops in the design are placed optimally so that the combinational delay at each pipeline stage is more or less equalized so that the maximum clock frequency can be increased.  
+
+### 3.2.2 State optimization
+Unused states in the sequential design are optimized and/or the total states needed in the FSM are minimized.  
+
+### 3.2.3 Cloning
+This is a physically-aware (PnR-aware) optimization method where some of the flops in the design are cloned/ duplicated so that the timing can be met post-PnR for the timing arcs involved (provided there is already some minimum positive slack available).  
+
+### 3.2.4. Retming
+The pipelining flops in the design are placed optimally so that the combinational delay at each pipeline stage is more or less equalized so that the maximum clock frequency can be increased.  
 <br>
 
 ```shell
@@ -705,7 +733,7 @@ ________________________________________________________________________________
     show
 ```
 
-### Lab 9: Example 1: dff_const1.v
+### 3.2.5 Lab 1: dff_const1.v
 ```verilog
 module dff_const1(input clk, input reset, output reg q);
     always @(posedge clk, posedge reset)
@@ -721,14 +749,14 @@ In this example, no optimization is possible as the flop output, q changes.
 
 <br>
 
-| Behavioral Simulation | ![dff_const1_waves](/docs/images/dff_const1_waves.png)  |
+| Behavioral Simulation | ![D3_dff_const1_waves](/docs/images/D3_dff_const1_waves.png)  |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const1](/docs/images/dff_const1.png) |  
+| **Synthesis Result** | ![D3_dff_const1](/docs/images/D3_dff_const1.png) |  
 <br>
 
 _________________________________________________________________________________________________________
 
-### Lab 9: Example 2: dff_const2.v
+### 3.2.5 Lab 2: dff_const2.v
 ```verilog
 module dff_const2(input clk, input reset, output reg q);
     always @(posedge clk, posedge reset)
@@ -745,14 +773,14 @@ Thus the realization does not need any cells and q is connected to 1'b1.
 
 <br>
 
-| Behavioral Simulation | ![dff_const2_waves](/docs/images/dff_const2_waves.png) |
+| Behavioral Simulation | ![D3_dff_const2_waves](/docs/images/D3_dff_const2_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const2](/docs/images/dff_const2.png) |
+| **Synthesis Result** | ![D3_dff_const2](/docs/images/D3_dff_const2.png) |
 <br>
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 3: dff_const3.v
+### 3.2.5 Lab 3: dff_const3.v
 ```verilog
 module dff_const3(input clk, input reset, output reg q);
     reg q1;
@@ -776,14 +804,14 @@ Here, both q1 & q have transitions and thus cannot be optimized further.
 So the design will have two DFFs.  
 <br>
 
-| Behavioral Simulation | ![dff_const3_waves](/docs/images/dff_const3_waves.png) |
+| Behavioral Simulation | ![D3_dff_const3_waves](/docs/images/D3_dff_const3_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const3](/docs/images/dff_const3.png) |
+| **Synthesis Result** | ![D3_dff_const3](/docs/images/D3_dff_const3.png) |
 <br>
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 4: dff_const4.v
+### 3.2.5 Lab 4: dff_const4.v
 ```verilog
 module dff_const4(input clk, input reset, output reg q);
     reg q1;
@@ -807,14 +835,14 @@ In this example, both q1 & q remain constant at 1'b1.
 Thus, the design can be optimized to have only wires. Further, q1 being an internal net can also be removed.  
 <br>
 
-| Behavioral Simulation | ![dff_const4_waves](/docs/images/dff_const4_waves.png) |
+| Behavioral Simulation | ![D3_dff_const4_waves](/docs/images/D3_dff_const4_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const4](/docs/images/dff_const4.png) |
+| **Synthesis Result** | ![D3_dff_const4](/docs/images/D3_dff_const4.png) |
 <br>
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 5: dff_const5.v
+### 3.2.5 Lab 5: dff_const5.v
 ```verilog
 module dff_const5(input clk, input reset, output reg q);
     reg q1;
@@ -836,14 +864,14 @@ endmodule
 ```
 <br>
 
-| Behavioral Simulation | ![dff_const5_waves](/docs/images/dff_const5_waves.png) |
+| Behavioral Simulation | ![D3_dff_const5_waves](/docs/images/D3_dff_const5_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![dff_const5](/docs/images/dff_const5.png) |
+| **Synthesis Result** | ![D3_dff_const5](/docs/images/D3_dff_const5.png) |
 <br>
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 6: counter_opt.v
+### 3.2.5 Lab 6: counter_opt.v
 ```verilog
 module counter_opt (input clk , input reset , output q);
     reg [2:0] count;
@@ -864,16 +892,16 @@ Since count[0:0] toggles every clock cycle, there really is a need for only one 
 In other words, the synthesis output does not have a 3-bit up counter and its associated count incrementing logic.  
 <br>
 
-| Behavioral Simulation | ![counter_opt_waves](/docs/images/counter_opt_waves.png) |
+| Behavioral Simulation | ![D3_counter_opt_waves](/docs/images/D3_counter_opt_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result w/o opt_clean switch** | ![counter_opt_without_optimization](/docs/images/counter_opt_without_optimization.png) |
-| **Synthesis Result with opt_clean switch** | ![counter_opt](/docs/images/counter_opt.png) |
+| **Synthesis Result w/o opt_clean switch** | ![D3_counter_opt_without_optimization](/docs/images/D3_counter_opt_without_optimization.png) |
+| **Synthesis Result with opt_clean switch** | ![D3_counter_opt](/docs/images/D3_counter_opt.png) |
 
 <br>
 
 _________________________________________________________________________________________________________  
 
-### Lab 9: Example 7: counter_opt2.v
+### 3.2.5 Lab 7: counter_opt2.v
 ```verilog
 module counter_opt (input clk , input reset , output q);
     reg [2:0] count;
@@ -894,14 +922,15 @@ So when this design is synthesized, we expect 3 DFF instantiations to be present
 
 <br>
 
-| Behavioral Simulation | ![counter_opt2_waves](/docs/images/counter_opt2_waves.png) |
+| Behavioral Simulation | ![D3_counter_opt2_waves](/docs/images/D3_counter_opt2_waves.png) |
 |-----------------------|------------------|
-| **Synthesis Result** | ![counter_opt2_with_optimizations](/docs/images/counter_opt2_with_optimizations.png) |
+| **Synthesis Result** | ![D3_counter_opt2_with_optimizations](/docs/images/D3_counter_opt2_with_optimizations.png) |
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 4 - Gate Level Simulation and Pre- & Post-Synthesis Simulation Mismatch
-## Gate Level Simulation (GLS)
+# Day 4: Gate Level Simulation (GLS) and Synthesis-Simulation mismatch
+
+## 4.1 Gate Level Simulation (GLS)
   * _Gate Level_ refers to the netlist view of a design after the synthesis has been performed.
   * RTL simulations are pre-synthesis, while GLS is post-synthesis - i.e., in RTL simulations, the Device Under Test (DUT) is the RTL design itself while in GLS, the DUT is the netlist generated after synthesis.
   * The RTL code and the generated netlist are logically equivalent (well, supposed to be!)  and hence the same testbenches can be used to verify both.
@@ -913,9 +942,9 @@ GLS can be run in different delay modes:
    2. Full Timing validation: if the Gate level verilog models have the necessary timing information, both the functional correctness and the timing behaviour can be verified by GLS.  
 <br>
 
-**GLS using iverilog**  
+### 4.1.1 GLS using iverilog
 The following block diagram shows the GLS flow using iverilog:  
-|![Day4_GLS_using_iverilog](/docs/images/Day4_GLS_using_iverilog.png)|
+|![D4_GLS_using_iverilog](/docs/images/D4_GLS_using_iverilog.png)|
 |-|
 
 <br>
@@ -930,7 +959,7 @@ Example using ternary_operator_mux_netlist.v:
 ```
 <br>
 
-## Synthesis - Simulation mismatch
+## 4.2 Synthesis - Simulation mismatch
 Some of the common reasons for Synthesis - Simulation mismatch (mismatch between pre- and post-synthesis simulations) :  
   * Incomplete sensitivity list
   * Use of blocking assignments inside always block vs. non-blocking assignments
@@ -941,7 +970,7 @@ Some of the common reasons for Synthesis - Simulation mismatch (mismatch between
   * Non-standard verilog coding
 <br>
 
-### Lab 10: GLS Synthesis - Sumulation mismatch - Example 1: ternary_operator_mux.v
+### 4.2.1 Lab: Example 1: ternary_operator_mux.v
 ```verilog
 module ternary_operator_mux (input i0 , input i1 , input sel , output y);
     assign y = sel ? i1 : i0;
@@ -949,15 +978,15 @@ endmodule
 ```
 <br>
 
-| RTL Simulation | ![ternary_operator_mux_waves](/docs/images/ternary_operator_mux_waves.png) |
+| RTL Simulation | ![D4_ternary_operator_mux_waves](/docs/images/D4_ternary_operator_mux_waves.png) |
 |-----------------------|------------------|
-| **GLS** | ![ternary_operator_mux_waves_GLS](/docs/images/ternary_operator_mux_waves_GLS.png) |
-| **Synthesis Result** | ![ternary_operator_mux](/docs/images/ternary_operator_mux.png) |
+| **GLS** | ![D4_ternary_operator_mux_waves_GLS](/docs/images/D4_ternary_operator_mux_waves_GLS.png) |
+| **Synthesis Result** | ![D4_ternary_operator_mux](/docs/images/D4_ternary_operator_mux.png) |
 <br>
 
 _________________________________________________________________________________________________________  
 
-### Lab 10: GLS Synthesis - Sumulation mismatch - Example 2: bad_mux.v
+### 4.2.2 Lab: Example 2: bad_mux.v
 ```verilog
 module bad_mux (input i0 , input i1 , input sel , output reg y);
     always @ (sel)
@@ -971,10 +1000,10 @@ endmodule
 ```
 <br>
 
-| RTL Simulation | ![bad_mux_rtl_waves](/docs/images/bad_mux_rtl_waves.png) |
+| RTL Simulation | ![D4_bad_mux_rtl_waves](/docs/images/D4_bad_mux_rtl_waves.png) |
 |-----------------------|------------------|
-| **GLS** | ![bad_mux_waves_GLS](/docs/images/bad_mux_waves_GLS.png) |
-| **Synthesis Result** | ![bad_mux_rtl](/docs/images/bad_mux_rtl.png) |
+| **GLS** | ![D4_bad_mux_waves_GLS](/docs/images/D4_bad_mux_waves_GLS.png) |
+| **Synthesis Result** | ![D4_bad_mux_rtl](/docs/images/D4_bad_mux_rtl.png) |
 <br>
 
 In this case, we can clearly see that there is a mismatch in the simulation between pre and post-synthesis.  
@@ -984,12 +1013,12 @@ In fact, yosys actually throws a warning message about the possible omission of 
 <br>
 
 _Yosys warning about missing signals in sensitivity list_  
-![yosys_read_verilog_message](/docs/images/yosys_read_verilog_message.png)
+![yosys_read_verilog_message](/docs/images/D4_yosys_read_verilog_message.png)
 <br>
 
 _________________________________________________________________________________________________________  
 
-### Lab 10: GLS Synthesis - Sumulation mismatch - Example 3: blocking_caveat.v
+### 4.2.3 Lab: Example 3: blocking_caveat.v
 ```verilog
 module blocking_caveat (input a , input b , input  c, output reg d);
     reg x;
@@ -1009,21 +1038,20 @@ Assuming we wanted to implement just a combinational logic with output, d = (a +
   * In the RTL sim, the blocking assignments make it seem as if there is a flop in the design.
   * While in the GLS, the design is synthesized to a O2A1 gate implementing d = (a + b) * c, with no flops inferred, thus resulting in the mismatch.
   
-| RTL Simulation | ![blocking_caveat_waves_RTL](/docs/images/blocking_caveat_waves_RTL.png) |
+| RTL Simulation | ![D4_blocking_caveat_waves_RTL](/docs/images/D4_blocking_caveat_waves_RTL.png) |
 |-----------------------|------------------|
-| **GLS** | ![blocking_caveat_waves_GLS](/docs/images/blocking_caveat_waves_GLS.png) |
-| **Synthesis Result** | ![blocking_caveat](/docs/images/blocking_caveat.png) |
+| **GLS** | ![D4_blocking_caveat_waves_GLS](/docs/images/D4_blocking_caveat_waves_GLS.png) |
+| **Synthesis Result** | ![D4_blocking_caveat](/docs/images/D4_blocking_caveat.png) |
 
 <br>
 
 _________________________________________________________________________________________________________  
 
-# Day 5 - Introduction to RISC-V ISA and GNU Compiler Toolchain
-## Introduction to RISC-V ISA
+# Day 5: Introduction to RISC-V ISA and GNU Compiler Toolchain
 
 RISC-V is an open standard instruction set architecture based on established reduced instruction set computer(RISC) principles. It was first started by Prof. Krste Asanović and graduate students Yunsup Lee and Andrew Waterman in May 2010 as part of the Parallel Computing Laboratory, at UC Berkeley. Unlike most other ISA designs, the RISC-V ISA is provided under open source licenses that do not require fees to use, which provides it a huge edge over other commercially available ISAs. It is a simple, stable, small standard base ISA with extensible ISA support, that has been redefining the flexibility, scalability, extensibility, and modularity of chip designs.  
 
-### ISA base and extensions
+## 5.1 RISC-V ISA base and extensions
 RISC-V has a modular design, consisting of alternative base parts, with added optional extensions. The ISA base and its extensions are developed in a collective effort between industry, the research community and educational institutions. The base specifies instructions (and their encoding), control flow, registers (and their sizes), memory and addressing, logic (i.e., integer) manipulation, and ancillaries. The base alone can implement a simplified general-purpose computer, with full software support, including a general-purpose compiler.  
 
 The standard extensions are specified to work with all of the standard bases, and with each other without conflict.  
@@ -1032,7 +1060,7 @@ The standard extensions are specified to work with all of the standard bases, an
 
 The RISC-V ISA is defined as a Base integer ISA, which is the basic necessity for the implemetation of any CPU core. In addition to that it also has optional extensions to the base ISA. The base RISC-V ISA has a little-endian memory system. The standard is maintained by the RISC-V foundation.  
 
-### RISC-V Instruction Formats
+## 5.2 RISC-V Instruction Formats
 ![D5_32-bit_RISC-V_instruction_formats](/docs/images/D5_32-bit_RISC-V_instruction_formats.png)  
 
 References:
@@ -1040,8 +1068,7 @@ References:
   2) [RISC-V Technical Specifications](https://wiki.riscv.org/display/HOME/RISC-V+Technical+Specifications)
   3) [RISC-V MYTH Workshop](https://github.com/RISCV-MYTH-WORKSHOP/RISC-V-CPU-Core-using-TL-Verilog/blob/master/README.md#introduction-to-risc-v-isa)
 
-##  RISC-V GNU Compiler Toolchain
-### RISC-V ISA Simulator and Compiler toolchain setup
+## 5.3 RISC-V ISA Simulator and Compiler toolchain setup
   * The RISC-V ISA simulator & GNU Compiler toolchain can be installed by running the following script from the terminal:
     [run.sh](https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh)
     <br>
@@ -1060,7 +1087,10 @@ References:
       3) [https://five-embeddev.com/toolchain/2019/06/26/gcc-targets/](https://five-embeddev.com/toolchain/2019/06/26/gcc-targets/)
       4) [https://github.com/riscv-non-isa/riscv-toolchain-conventions](https://github.com/riscv-non-isa/riscv-toolchain-conventions)
 
-## Labs 1,2: Write a C program to compute the sum of first N natural numbers, compile using RISC-V GCC, simulate using Spike RISC-V ISA Simulator and disassemble to view the assembly code  
+### 5.3.1 Lab: RISC-V program simulation using Spike RISC-V ISA Simulator
+
+>Write a C program to compute the sum of first N natural numbers, compile using RISC-V GCC, simulate using Spike RISC-V ISA Simulator and disassemble to view the assembly code
+
 **C Program:**
 ```C
 #include <stdio.h>
@@ -1103,7 +1133,10 @@ Comparing the generated assembly code for main function with -O1 vs -Ofast compi
 | ![D5_disassemble_sum1toN_O1](/docs/images/D5_disassemble_sum1toN_O1.png) | ![D5_disassemble_sum1toN_Ofast](/docs/images/D5_disassemble_sum1toN_Ofast.png) |
 <br>
 
-## Lab 3: Use the Interactive Debug mode in Spike RISC-V ISA sim to observe the execution of the program with -Ofast flag  
+### 5.3.2 Lab: Interactive Debug mode in Spike RISC-V ISA Simulator
+
+>Use the Interactive Debug mode in Spike RISC-V ISA sim to observe the execution of the program with -Ofast flag
+
 A small example of how to use the debug mode can be found in the following page: [Interactive Debug Mode](https://github.com/riscv-software-src/riscv-isa-sim#interactive-debug-mode)  
 
 To enter the interactive debug mode, launch spike with ```-d``` option:  
@@ -1156,20 +1189,19 @@ h                                 Alias for help
 Note: Hitting enter is the same as: run 1
 ```
 _________________________________________________________________________________________________________  
-# Day 6 - Introduction to ABI and basic verification flow
-## Introduction to ABI
+# Day 6: Introduction to ABI and basic verification flow
 In computer software, an application binary interface (ABI) is an interface between two binary program modules. Often, one of these modules is a library or operating system facility, and the other is a program that is being run by a user.
 An ABI defines how data structures or computational routines are accessed in machine code, which is a low-level, hardware-dependent format.  
 _Reference:_ [Application binary interface](https://en.wikipedia.org/wiki/Application_binary_interface)  
 <br>
 
 RISC-V CPU architecture has 32 registers. Application programmer, can access each of these 32 registers through its ABI name; for example, if we need to move the stack pointer, the command ```addi sp, sp, -16``` will decrement the SP by 0x10, where "sp" is the ABI name of stack pointer. The following table shows the ABI Integer register calling convention :  
-![RV64I_IntegerRegisterConvention](/docs/images/RV64I_IntegerRegisterConvention.png)
+![RV64I_IntegerRegisterConvention](/docs/images/D6_RV64I_IntegerRegisterConvention.png)
 <br>
 
 For more detailed information, refer to the [RISC-V ABI Specification v1.0](https://drive.google.com/file/d/1Ja_Tpp_5Me583CGVD-BIZMlgGBnlKU4R/view)  
 
-### Lab 1: Rewrite the program to find the sum of first N natural numbers utilizing ABI function calls
+## 6.1 Lab: Rewrite the program to find the sum of first N natural numbers utilizing ABI function calls
 
 C Program: 1to9_custom.c
 ```C
@@ -1215,8 +1247,7 @@ Disassembly of object code of above progam:
 ![D6_ABI_load_loop_subroutines](/docs/images/D6_ABI_load_loop_subroutines.png)
 <br>
 
-## Basic Verification Flow
-### Lab 2: Run the above C program on a RISC-V CPU
+## 6.2 Lab: Simulate the above C program on a RISC-V CPU
 For this exercise, we will use the design files from the following GitHub repository: [https://github.com/kunalg123/riscv_workshop_collaterals.git](https://github.com/kunalg123/riscv_workshop_collaterals.git)  
 Execute the following file from shell:  
 
@@ -1255,13 +1286,13 @@ Basically what we are doing here is:
 <br>
 
 _________________________________________________________________________________________________________  
-# Day 7 - Digital Logic Design with TL-Verilog and Makerchip
+# Day 7: Digital Logic with TL-Verilog and Makerchip
   
-**TL-Verilog**  
+## 7.1 TL-Verilog
 Transaction-Level Verilog (TL-Verilog) is an extension to SystemVerilog that supports a new design methodology, called transaction-level design. A transaction, in this methodology, is an entity that moves through structures like pipelines, arbiters, and queues. A transaction might be a machine instruction, a flit of a packet, or a memory read/write. Transaction logic, like packet header decode or instruction execution, that operates on the transaction can be placed anywhere along the transaction’s flow. Tools produce the logic to carry signals through their flows to stitch the transaction logic.  
 <br>
 
-**Makerchip Platform**  
+## 7.2 Makerchip Platform
 Makerchip is a free online environment provided by Redwood EDA for developing integrated circuits. The online platform can be used to code, compile, simulate and debug Verilog designs from a web browser. In addition to Verilog and synthesizable SystemVerilog, the platform provides support for Transaction-Level Verilog (TL-Verilog).  
 
 The Makerchip IDE also provides various tutorials and examples (inside Learn menu in the main window) to help learn the new concepts and constructs in TL-Verilog quickly.  
@@ -1274,12 +1305,12 @@ _References:_
   5) [Makerchip IDE Documentation](https://github.com/RISCV-MYTH-WORKSHOP/RISC-V-CPU-Core-using-TL-Verilog/tree/master/Documentation/Makerchip_IDE)
 
 In this session, we will learn the concepts and syntax of TL-Verilog by implementing basic combinational and sequential logic using the same in Makerchip.
-  1) Combinational logic
-  2) Sequential logic
-  3) Pipelined logic
-  4) Validity
+  1) [Combinational logic](#721-combinational-logic)
+  2) [Sequential logic](#722-sequential-logic)
+  3) [Pipelined logic](#723-pipelined-logic)
+  4) [Validity](#724-validity)
   
-## Combinational Logic
+### 7.2.1 Combinational Logic
 Implemented basic combinational logic elements and circuits like gates, muxes, vector adder, combinational calculator etc. using TL-Verilog in Makerchip.  
   1) AND2 Gate
      |![D7_AND2_Gate](/docs/images/D7_AND2_Gate.png)|
@@ -1294,7 +1325,7 @@ Implemented basic combinational logic elements and circuits like gates, muxes, v
      |![D7_Combinational_Calculator](/docs/images/D7_Combinational_Calculator.png)|
      |-|
 
-## Sequential Logic
+### 7.2.2 Sequential Logic
   1) Fibonacci Series
      |![D7_Fibonacci_Series](/docs/images/D7_Fibonacci_Series.png)|
      |-|
@@ -1306,7 +1337,7 @@ Implemented basic combinational logic elements and circuits like gates, muxes, v
      |-|
      |![D7_Sequential_Calculator](/docs/images/D7_Sequential_Calculator.png)|
 
-## Pipelined Logic
+### 7.2.3 Pipelined Logic
   1) Pythagorus Theorem with 3-stage pipeline
      |![D7_Pipelined_Pythagorus](/docs/images/D7_Pipelined_Pythagorus.png)|
      |-|
@@ -1321,7 +1352,7 @@ Implemented basic combinational logic elements and circuits like gates, muxes, v
      |-|
      |![D7_2-Cycle_Calculator](/docs/images/D7_2-Cycle_Calculator.png)|
 
-## Validity
+### 7.2.4 Validity
 Using validity makes the design cleaner. Debugging and error checking also becomes easier.    
   1) 2-Cycle Calculator with Validity
      |![D7_2-Cycle_Calculator_with_Validity_Diagram](/docs/images/D7_2-Cycle_Calculator_with_Validity_Diagram.png)|
@@ -1332,7 +1363,7 @@ Using validity makes the design cleaner. Debugging and error checking also becom
      |-|
      |![D7_Calculator_with_SingleValue_Memory](/docs/images/D7_Calculator_with_SingleValue_Memory.png)|
 _________________________________________________________________________________________________________  
-# Day 8 - Implmentation of a Basic RISC-V CPU Microarchitecture
+# Day 8: Basic RISC-V CPU Microarchitecture
 
 Our objective is to implement a basic RISC-V CPU core (RV32I Base Instruction set except the instructions - FENCE, ECALL & EBREAK).  
 The following diagrams show the general block diagram of the CPU and the initial implementation pipeline diagram using TL-Verilog:  
@@ -1355,10 +1386,12 @@ The implementation is done stage-by-stage verifying the functionality at each st
   * Branch Instructions
     * (Modifying PC logic and adding additional logic to handle the Branch instructions)
 
+## 8.1 Program Counter + Instruction Fetch
 |**Program Counter + Intruction Fetch**<br> ![D8_Instruction_Fetch](/docs/images/D8_Instruction_Fetch.png)|
 |-|
 |![D8_PC_+_InstrFetch](/docs/images/D8_PC_+_InstrFetch.png)|
 
+## 8.2 Instruction Decoder
 |**Instruction Decoder**<br>  ![D8_InstrDecoder](/docs/images/D8_InstrDecoder.png)|
 |-|
 |RISC-V Opcode Map <br>  ![D8_RISC-V_OpcodeMap](/docs/images/D8_RISC-V_OpcodeMap.png)  <br>  
@@ -1367,20 +1400,24 @@ RV32I ISA Encoding <br>  ![D8_RISCV_RV32I_ISA_Encoding](/docs/images/D8_RISCV_RV
 Instruction Type Decoding <br>  ![D8_RV32I_InstructionType_Decode](/docs/images/D8_RV32I_InstructionType_Decode.png)  <br>  
 Immediate Value Decoding <br>  ![D8_ImmediateValue_Decoding](/docs/images/D8_ImmediateValue_Decoding.png)  <br>|
 
+## 8.3 Register File Read
 |**Register File Read**<br>  ![D8_RF_Read](/docs/images/D8_RF_Read.png)|
 |-|
 |Register File module interface <br>  ![D8_RF_Interface](/docs/images/D8_RF_Interface.png)  <br>|
 
+## 8.4 ALU
 |**ALU (only ADD, ADDI implemented for now)**  <br>  ![D8_ALU](/docs/images/D8_ALU.png)|
 |-|
 
+## 8.5 Register File Write
 |**Register File Write**<br>  ![D8_RF_Write](/docs/images/D8_RF_Write.png)|
 |-|
 
+## 8.6 Branch Instruction Logic
 |**Branch Instruction Logic added**<br>  ![D8_Basic_RISC-V_CPU_Unpipelined](/docs/images/D8_Basic_RISC-V_CPU_Unpipelined.png)|
 |-|
 _________________________________________________________________________________________________________  
-# Day 9 -  Implementation of the complete Pipelined RISC-V CPU Microarchitecture
+# Day 9: Complete Pipelined RISC-V CPU Microarchitecture
 
 Our RISC-V core from the previous day is still incomplete w.r.t the instructions implemented, and additionally we need to do pipelining and handling of the pipeline hazards.  
 We need to do the following to complete the CPU Design:
@@ -1389,11 +1426,11 @@ We need to do the following to complete the CPU Design:
   3) Implement DMEM & Load, Store instructions
   4) Implement the Unconditional Jump (JAL, JALR) instructions
 
-|**Pipelining the RISC-V CPU Core ![D9_RISCV_Pipelined](/docs/images/D9_RISCV_Pipelined.png)|
-|-|
+|**Pipelining the RISC-V CPU Core** ![D9_RISCV_Pipelined](/docs/images/D9_RISCV_Pipelined.png)|
+|:---:|
 <br>
 
-## Pipelining the CPU: Using 3-Cycle $valid signal
+## 9.1 Pipelining the CPU: Using 3-Cycle $valid signal
 First, we will implement with a simplified 3-stage pipeline with using a 3-Cycle valid signal, the various stages being:  
   * PC
   * Instruction Fetch + Decode
@@ -1411,8 +1448,8 @@ This implementation would have an IPC of only ~1/3 as the valid signal is active
 |-|
 <br>
 
-## Pipelining the CPU: Solving the data & control hazards
-### 1) Data Hazard: Read-After-Write (RAW) in the Refister File
+## 9.2 Pipelining the CPU: Solving the data & control hazards
+### 9.2.1 Data Hazard: Read-After-Write (RAW) in the Refister File
   * There is a 2-cycle delay (by design) between RF Read and Write operations.
   * Hence we have a Read-After-Write (RAW) data hazard if the current instruction in the pipe is trying to read from the Register File (RF) when the previous instruction had written to the same RF index.
   * To solve this, we need to add a Register File Bypass Mux at the input of the ALU and select the previous ALU output if the previous instruction was writing to the RF index accessed in the current instruction.
@@ -1421,31 +1458,31 @@ This implementation would have an IPC of only ~1/3 as the valid signal is active
   |-|
   |**Register File Bypass TL-V Implementation**<br>  ![D9_RF_Bypass_TLV_Diagram](/docs/images/D9_RF_Bypass_TLV_Diagram.png)|
 
-###  2) Control Hazard: Branch Instructions
+### 9.2.2 Control Hazard: Branch Instructions
   * We have control flow hazards when a branch is taken.
   * The PC logic is updated to handle the case when a branch is taken or not.
   
   |**Branch Instruction Control Hazard**<br>  ![D9_Branch_Hazard](/docs/images/D9_Branch_Hazard.png)|
   |-|
 
-## Complete the ALU
+## 9.3 Complete the ALU
 The Instruction Decoder is updated to decode all the instructions and the complete ALU is implemented.
 Note: All load instructions are treated as the same as the LW instruction. 
 
-## DMEM & Load, Store Instructions
-### DMEM
+## 9.4 DMEM & Load, Store Instructions
+### 9.4.1 DMEM
   * The DMEM is a single-port R/W memory with 16 entries, 32-bit wide.  
   * The DMEM is placed in the 4th pipeline stage.
     |**DMEM**<br>  ![D9_DMEM](/docs/images/D9_DMEM.png)|
     |-|
 
-### LOAD (LW, LH, LB, LHU, LBU) Instructions
+### 9.4.2 LOAD (LW, LH, LB, LHU, LBU) Instructions
   * LOAD rd, imm(rs1)  
   * Loads the data from the DMEM address given by (rs1 + imm) to destination register provided by rd.
     i.e., rd <= DMEM(rs1 + imm)
     <br>
 
-### STORE (SW, SH, LB) Instructions
+### 9.4.3 STORE (SW, SH, LB) Instructions
   * STORE rs2, imm(rs1)  
   * Stores the data from rs2 to the DMEM address given by (rs1 + imm).
     i.e., rd <= DMEM(rs1 + imm)
@@ -1467,24 +1504,28 @@ Muxes need to be placed at the inputs of RF write index ($rf_wr_index) and RF wr
 
 Additionally, the Program Counter logic has to be updated for load redirects.
 
-## Unconditional Jump (JAL, JALR) Instructions
+## 9.5 Unconditional Jump (JAL, JALR) Instructions
   * JAL : Jump to (PC + IMM), equivalent to an unconditional branch w.r.t the calculation of the target address.
   * JALR: Jump to (SRC1 + IMM)
 
 The logic to calculate the branch target for JALR needs to be implemented.  
 The Program Counter logic also needs to be modified to handle the jumps.  
 
-## Complete Pipelined RISC-V CPU Core Implementation in Makerchip
+## 9.6 Complete Pipelined RISC-V CPU Core Implementation in Makerchip
 <!--[**Link to SVG file of the RISC-V Core Block Diagram**](https://htmlpreview.github.io/?https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/docs/html/riscv.html)  -->
 Click on the image below to open up the interactive svg file:  
 [![D9_Complete_Pipelined_RISCV_Core](/docs/images/D9_Complete_Pipelined_RISCV_Core.png)](https://htmlpreview.github.io/?https://raw.githubusercontent.com/arunkpv/vsd-hdp/main/docs/html/riscv.html)  
 
 _________________________________________________________________________________________________________  
-## Bug with the LW instruction and RF Read Bypass
-**Original Code:** [riscv_pipelined_with_LW_Bug.tlv](../code/riscv/verilog/rf_rd_bug/riscv_pipelined_with_LW_Bug.tlv)
+## 9.7 Bug found with the LW instruction and RF Read Bypass
+
+**Original Code:** [riscv_pipelined_with_LW_Bug.tlv](../code/riscv/verilog/rf_rd_bug/riscv_pipelined_with_LW_Bug.tlv)  
+
 In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU core that we have designed following the steps in the lecture videos and slides, I noticed [two issues](/docs/videos/D9_Bug_Video.mp4):  
 
-###  1) During the execution of the LW instruction, the DMEM address gets written to destination register in the first cycle.  
+### 9.7.1 Issue #1
+>During the execution of the LW instruction, the DMEM address gets written to destination register in the first cycle.
+
 **(NOTE: This is a benign issue and not a concern)**  
   - Since LW is an I-type (Immediate-type instruction), the **$rd** (Destination Register) is valid during this phase and thus **$rf_wr_en** (Register File Write Enable).
       ```
@@ -1514,7 +1555,10 @@ In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU 
     $rf_wr_en = (!$valid_load && !>>1$valid_load) && ($rd_valid && ($rd != 5'b0) && $valid) || >>2$valid_load;
     ```
   
-###  2) The instruction immediately following the LW instruction gets the wrong **$src1_value** and **$src2_value**
+### 9.7.2 Issue #2
+
+>The instruction immediately following the LW instruction gets the wrong **$src1_value** and **$src2_value**
+
 **(NOTE: This is an actual BUG and breaks functionality)**  
 
   - This bug was found while checking if the above issue was causing any RAW hazards if the instruction immediately following the LW instruction accesses the destination register of the LW instruction.
@@ -1562,10 +1606,11 @@ In the functional simulation of the RTL code in MakerChip IDE of the RISC-V CPU 
                         ? >>1$rf_wr_data : $rf_rd_data2;
     ```
 _________________________________________________________________________________________________________  
-# Day 10 - GLS of the Implemented RISC-V CPU
+# Day 10: GLS of the implemented RISC-V CPU Core
 
   * The functional verification of the design has already been completed successfully in the Makerchip IDE itself.
   * To perform GLS of the implementation, we need to first convert the TL-Verilog code into synthesizable verilog and then perform the synthesis using Yosys.
+
 
 ## 10.1 Conversion of TL-Verilog code to Verilog using Sandpiper
 SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert TL-Verilog code to Verilog or SystemVerilog code. SandPiper-SaaS provides a command-line interface to run the SandPiper TL-Verilog compiler as a microservice in the cloud.  
@@ -1591,7 +1636,7 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
 
   * The Sandpiper arguments could be provided either in the source file as inline arguments or in the terminal while invoking sandpiper-saas.
 
-### a) Providing the SandPiper arguments in the source file
+### 10.1.1 Providing the SandPiper arguments in the source file
   * The first line of a TL-X file, called the **"File Format Line"**, must identify the TL-X File Format Version and HDL Language, as well as a URL to the language specification.  
     For example, for a TL-Verilog source file using m4 macro pre-processing language, the first line will look like as follows:  
     `\m4_TLV_version 1d: tl-x.org`
@@ -1608,7 +1653,7 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
     **NOTE:** Based on my observation, the argument `--iArgs` needs to be provided in the terminal itself for it to take effect for some reason.
     <br>
     
-### b) Providing the SandPiper arguments in the command-line/ shell
+### 10.1.2 Providing the SandPiper arguments in the command-line/ shell
   * The first line in the source file - i.e., the "File Format Line" can be kept as it is and all the required arguments to sandpiper can be provided in the terminal.  
     The first line will remain unchanged in the standard format as follows: `\m4_TLV_version 1d: tl-x.org`
     <br>
@@ -1616,9 +1661,8 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
   * The sandpiper-saas command-line now needs to include all the required arguments.
   * To specify the target HDL language, either the project (`-p`) argument or the target HDL (`--hdl`) argument can be used.
     * When the `-p verilog` argument is used, it needs to be provided as the last item in the command-line to avoid some issue with the argument interpretation by the tool.
-<br>
 
-#### <ins>Method 1:</ins> Using the Makerchip IDE
+#### **<ins>Method 1:</ins> Using the Makerchip IDE**
   * The Makerchip IDE provides within itself indirect access to Sandpiper - i.e., the compilation output result files can be accessed via the IDE's Editor ("E") dropdown menu.
   * If the design is relatively small and not spread across multiple files, it is easier to use the [Makerchip IDE](https://makerchip.com/sandbox/#) itself to convert the TL-Verilog code to Verilog/ SystemVerilog.
   * In this case, as we do not have direct access to "terminal/ shell", all the sandpiper arguments need to be provided in the source file.
@@ -1638,9 +1682,8 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
     * This will open up a new webpage that shows the last compiled SystemVerilog results, along with some statistics about your TL-Verilog and SystemVerilog code.
       |![D10_TLV_to_Verilog_using_MakerChipIDE_2](/docs/images/D10_TLV_to_Verilog_using_MakerChipIDE_2.png)|
       |-|
-<br>
 
-#### <ins>Method 2:</ins> Using Sandpiper-SaaS
+#### **<ins>Method 2:</ins> Using Sandpiper-SaaS**
   * Install Sandpiper-SaaS by following the steps in the following link: [https://pypi.org/project/sandpiper-saas/](https://pypi.org/project/sandpiper-saas/)
   * Usage Examples:  
     ```shell
@@ -1659,9 +1702,8 @@ git clone https://gitlab.com/arunkumarpv/sandpiper-saas.git
 cd sandpiper-saas
 pip3 install .
 ```
-<br>
 
-#### <ins>Method 3:</ins> Using Sandpiper-SaaS with Edalize, FuseSoc
+#### **<ins>Method 3:</ins> Using Sandpiper-SaaS with Edalize, FuseSoc**
   * Sandpiper-SaaS supports the Flow API and thus allowing sandpiper-saas to be used as a "frontend" to convert TL-Verilog to SystemVerilog/Verilog for any flow.
   * An example of how to use sandpiper-saas with Edalize or Fusesoc in various contexts - viz. standalone tool, frontend to Vivado, in a Custom flow) is available here:<br>
     [edalize_sandpiper_example](https://github.com/shariethernet/edalize_sandpiper_example)  
@@ -1669,9 +1711,8 @@ pip3 install .
 Additional Reference Links:  
   1) [Edalize](https://github.com/olofk/edalize.git)
   2) [Fusesoc](https://fusesoc.readthedocs.io/en/stable/user/installation.html)
-
-<br>
     
+
 ## 10.2 GLS of the implemented RISC-V CPU Core
 The TL-Verilog code of the RISC-V CPU core implementation was successfully converted to Verilog using Sandpiper-SaaS.  
   * To ensure that the flow is clean, I first tried GLS for a simple counter circuit:
@@ -1681,7 +1722,7 @@ The TL-Verilog code of the RISC-V CPU core implementation was successfully conve
     4) Perform synthesis using Ysosys
     5) Verify correctness by performing GLS using the synthesis output in iverilog
 
-### Issues
+### 10.2.1 Issues
   * All steps until (iv) are verified to be working fine, however, the GLS using the synthesis tool generated netlist is failing with all signals being "X".  
   
 This turned out to be due to known issues:  
@@ -1702,7 +1743,7 @@ iverilog -DFUNCTIONAL -DUNIT_DELAY=#1 ./lib/verilog_model/primitives.v ./lib/ver
 gtkwave postsynth_sim.vcd &
 ```
 
-### Results
+## 10.3 Results
   * [**Yosys synthesis script**](../code/riscv/scripts/yosys.ys)
     * The synthesis script was updated at a later point in time, based on the inputs obtained from the [Yosys issue raised for a problem found in post-synth STA](https://github.com/YosysHQ/yosys/issues/4266#).
       * (* keep *) attributes were added to some of the wire declarations to prevent them from getting optimized out by Yosys, abc during synthesis.

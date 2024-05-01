@@ -1,7 +1,7 @@
 [Back to TOC](../README.md)  
 [Prev: Day3](Day3.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day5](Day5.md)  
 _________________________________________________________________________________________________________  
-# Day 4: GLS and Synthesis-Simulation mismatch
+# Day 4: Gate Level Simulation (GLS) and Synthesis-Simulation mismatch
 
 ## 4.1 Gate Level Simulation (GLS)
   * _Gate Level_ refers to the netlist view of a design after the synthesis has been performed.
