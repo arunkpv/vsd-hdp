@@ -7,21 +7,21 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |---|---|---|
  |[Day 0](/docs/Day0.md) | GitHub repo creation, System/ Tools Setup | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 1](/docs/Day1.md) | Introduction to Verilog RTL design and Synthesis | ![](https://progress-bar.dev/100/?title=done) |
- |[Day 2](/docs/Day2.md) | <ol><li>Familiarization of .lib file structure and various timing models (QTMs/ETMs)</li><li>Hierarchical vs. Flat synthesis</li><li>Various Flip-Flop designs</li></ol> | ![](https://progress-bar.dev/100/?title=done) |
- |[Day 3](/docs/Day3.md) | Logic Synthesis Optimizations<ol><li>Combinational</li><li>Sequential</li></ol> | ![](https://progress-bar.dev/100/?title=done) |
- |[Day 4](/docs/Day4.md) | <ol><li>Gate Level Simulation</li><li>Synthesis-Simulation mismatch</li></ol> | ![](https://progress-bar.dev/100/?title=done) |
+ |[Day 2](/docs/Day2.md) | <ol> <li>Familiarization of .lib file structure and various timing models (QTMs/ETMs)</li> <li>Hierarchical vs. Flat synthesis</li><li>Various Flip-Flop designs</li> </ol> | ![](https://progress-bar.dev/100/?title=done) |
+ |[Day 3](/docs/Day3.md) | Logic Synthesis Optimizations<ol><li>Combinational Logic Optimizations</li><li>Sequential Logic Optimizations</li></ol> | ![](https://progress-bar.dev/100/?title=done) |
+ |[Day 4](/docs/Day4.md) | Gate Level Simulation (GLS) and Synthesis-Simulation mismatch | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 5](/docs/Day5.md) | Introduction to RISC-V ISA and GNU Compiler Toolchain | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 6](/docs/Day6.md) | Introduction to ABI and basic verification flow | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 7](/docs/Day7.md) | Digital Logic with TL-Verilog and Makerchip | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 8](/docs/Day8.md) | Basic RISC-V CPU Microarchitecture | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 9](/docs/Day9.md) | Complete Pipelined RISC-V CPU Microarchitecture | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 10](/docs/Day_10.md)| GLS of the implemented RISC-V CPU Core <ol><li>Conversion of TL-Verilog code to Verilog/ SystemVerilog</li> <li>GLS of the RISC-V CPU Core</li> </ol> | ![](https://progress-bar.dev/100/?title=done) |
- |[Day 11](/docs/Day_11.md)| Advanced Synthesis and STA with DC<br>**Pending:** Documentation | ![](https://progress-bar.dev/90/?title=progress) |
- |[Day 12](/docs/Day_12.md)| Circuit Design using sky130<br>**Pending:** Documentation | ![](https://progress-bar.dev/75/?title=progress) |
- |[Day 13](/docs/Day_13.md)| PVT Corner Analysis | ![](https://progress-bar.dev/100/?title=done) |
- |[Day 14](/docs/Day_14.md)| Advanced Physical Design using OpenLANE/ Sky130 | ![](https://progress-bar.dev/100/?title=done) |
- |[Day 15](/docs/Day_15.md)| Post-placement STA checks for your design <br>  * on ss,ff,tt corners <br>  * Compare with Post-synth | ![](https://progress-bar.dev/100/?title=done) |
-  |[Day 16](/docs/Day_16.md)| Post-CTS, Post-Routing STA checks for your design <br>  * on ss,ff,tt corners <br>  * Compare with previous results | ![](https://progress-bar.dev/100/?title=done) |
+ |[Days 11-13](/docs/Day_11.md)| Advanced Synthesis and STA with DC <ul> <li>[Day 11](/docs/Day_11.md) Introduction to STA</li> <li>[Day 12](/docs/Day_12.md) Advanced SDC Constraints</li> <li>[Day 13](/docs/Day_13.md) STA using OpenSTA</li> </ul> **Pending:** Documentation | ![](https://progress-bar.dev/90/?title=progress) |
+ |[Days 14-18](/docs/Day_14.md)| Circuit Design using SKY130 PDK <ul> <li>[Day 14](/docs/Day_14.md) CMOS Fundamentals</li> <li>[Day 15](/docs/Day_15.md) Velocity Saturation and CMOS Inverter VTC</li> <li>[Day 16](/docs/Day_16.md) CMOS Switching Threshold and Dynamic Simulations</li> <li>[Day 17](/docs/Day_17.md) CMOS Noise Margin Robustness Evaluation</li> <li>[Day 18](/docs/Day_18.md) CMOS Power Supply and Device Variation Robustness Evaluation</li> </ul> **Pending:** Documentation | ![](https://progress-bar.dev/75/?title=progress) |
+ |[Day 19](/docs/Day_19.md)| PVT Corner Analysis (Post-Synthesis Timing) | ![](https://progress-bar.dev/100/?title=done) |
+ |[Days 20-24](/docs/Day_14.md)| Advanced Physical Design using OpenLANE/ Sky130 <ul> <li>[Day 20](/docs/Day_20.md) Inception of open-source EDA, OpenLANE and Sky130 PDK</li> <li>[Day 21](/docs/Day_21.md) Floorplan considerations, Placement, Library Cells</li> <li>[Day 22](/docs/Day_22.md) Library Cell design using Magic and Characterization using Ngspice</li> <li>[Day 23](/docs/Day_23.md) Pre-layout timing analysis and importance of good clock tree</li> <li>[Day 24](/docs/Day_24.md) Final steps for RTL2GDS using tritonRoute and openSTA</li> </ul> | ![](https://progress-bar.dev/100/?title=done) |
+ |[Day 25](/docs/Day_25.md)| Post-placement STA analysis of your Design (RISC-V Myth CPU Core) <br>  * on ss,ff,tt corners <br>  * Compare with Post-synth | ![](https://progress-bar.dev/100/?title=done) |
+  |[Day 26](/docs/Day_26.md)| Post-CTS, Post-Routing STA analysis of your Design <br>  * on ss,ff,tt corners <br>  * Compare with previous results | ![](https://progress-bar.dev/100/?title=done) |
 
 # Day 0 - Setting up the working environment
 ## System Setup
