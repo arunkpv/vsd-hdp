@@ -29,6 +29,7 @@ A circuit simulator is provided with an input file that contains:
   - Inputs to the circuit, called _**stimulus**_
   - _**Simulation options**_ & _**analysis commands**_ that explain the type of simulation to be run.
 
+_**Ref:**_ CMOS VLSI Design - A Circuits and Systems Perspective - Weste & Harris
 
 | ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_1.png) | ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_2.png) |
 |:---:|:---:|
@@ -64,6 +65,23 @@ A circuit simulator is provided with an input file that contains:
 In Digital VLSI Design, the timing, power, process variation, noise and signal integrity analyses **all ultimately rely on SPICE** for accurate modelling and characterization of the various Standard Cells and macros used in the design. 
 
 ## 14.2 NMOS Transistor
+### 14.2.1 NMOS Transistor (Planar) Structure
+| ![CircuitDesignWorkshop_D1_NMOS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS.png) |
+|:---:|
+| |
+
+### 14.2.2 NMOS Transistor Working - Surface Inversion & Threshold Voltage
+The below images explain the basic operation of an NMOS transistor where a conductive channel is formed underneath the Gate on the application a sufficiently high Gate-to-Source voltage.
+
+| ![CircuitDesignWorkshop_D1_VTH_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_1.png) |
+|:---:|
+| ![CircuitDesignWorkshop_D1_VTH_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_2.png) |
+| ![CircuitDesignWorkshop_D1_VTH_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_3.png) |
+| ![CircuitDesignWorkshop_D1_VTH_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_4.png) |
+| ![CircuitDesignWorkshop_D1_VTH_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_5.png) |
+| ![CircuitDesignWorkshop_D1_VTH_6](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_6.png) |
+
+
 
 <br>
 
