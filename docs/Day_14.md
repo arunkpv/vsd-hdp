@@ -50,7 +50,6 @@ _**Ref:**_ CMOS VLSI Design - A Circuits and Systems Perspective - Weste & Harri
 **The following images show how a SPICE deck is written to perform DC analysis of an NMOS transistor:**
 | ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_3.png) | ![CircuitDesignWorkshop_D1_Basic_Spice_Setup](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Setup.png) |
 |:---:|:---:|
-| | |
 
 | ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_1.png) |
 |:---:|
@@ -68,7 +67,6 @@ In Digital VLSI Design, the timing, power, process variation, noise and signal i
 ### 14.2.1 NMOS Transistor (Planar) Structure
 | ![CircuitDesignWorkshop_D1_NMOS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS.png) |
 |:---:|
-| |
 
 ### 14.2.2 Transistor Operation: Surface Inversion & Threshold Voltage
 
