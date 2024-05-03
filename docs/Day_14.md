@@ -31,7 +31,7 @@ A circuit simulator is provided with an input file that contains:
 
 | ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_3](/docs/images/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_3.png) | |
 |:---:|:---:|
-| ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_1](/docs/images/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_1.png) | ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_2](/docs/images/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_2.png) |
+| ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_1](/docs/images/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_1.png) | ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_2](/docs/images/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_2.png) |
 
 Analysis Types supported by SPICE:
 | Analysis Type | Details |
