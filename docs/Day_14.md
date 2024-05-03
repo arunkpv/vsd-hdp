@@ -70,9 +70,13 @@ In Digital VLSI Design, the timing, power, process variation, noise and signal i
 |:---:|
 | |
 
-### 14.2.2 NMOS Transistor Working - Surface Inversion & Threshold Voltage
-The below images explain the basic operation of an NMOS transistor where a conductive channel is formed underneath the Gate on the application a sufficiently high Gate-to-Source voltage.
+### 14.2.2 NMOS Transistor Operation: Surface Inversion & Threshold Voltage
 
+  - Without the application of a Gate potential, the transistor is in **Cut-off region** as there is no conducting path between the Source and Drain terminals.
+  - On the application a sufficiently high Gate-to-Source voltage, a conductive channel starts to form underneath the Gate composed of minority carriers (electrons in an NMOS) and at a certain voltage called the _**Threshold voltage**_,  _**surface inversion**_ occurs when the concentration of minority carriers in the channel becomes equal to the concentration of majority carriers in the bulk.
+  - When VGS is increased further by a few $\Phi_T$, the transistor moves in to the _**strong inversion region**_. Here, the minority carrier concentration in the channel is a strong function of the applied gate potential. 
+
+_**The below images depict the same for an NMOS transistor:**_
 | ![CircuitDesignWorkshop_D1_VTH_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_1.png) |
 |:---:|
 | ![CircuitDesignWorkshop_D1_VTH_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_2.png) |
