@@ -12,10 +12,11 @@ Based on the original SPICE, there are many SPICE versions available - both free
 
 The input file contains a netlist consisting of components and nodes. It also contains simulation options, analysis commands, and device models. The netlist can be entered by hand or extracted from a circuit schematic or layout in a CAD program.
 
-In Digital VLSI Design, the characterization of the various Standard Cells and macros to generate the various models for timing, power and noise analyses all rely on SPICE.  
+In Digital VLSI Design, the characterization of the various Standard Cells and macros to generate the various models for timing, power and noise analyses **all ultimately rely on SPICE**.  
 
-| ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_1](/docs/images/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_1.png) |
-|:---:|
+| ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_3](/docs/images/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_3.png) | |
+|:---:|:---:|
+| ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_1](/docs/images/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_1.png) | ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_2](/docs/images/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_2.png) |
 
 ## 14.2 NMOS Transistor
 
