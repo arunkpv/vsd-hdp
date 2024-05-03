@@ -5,8 +5,8 @@ ________________________________________________________________________________
 
 # Day 14: CMOS Fundamentals
 
-## 14.1 What is SPICE and Why do we need SPICE simulations ?
-
+## 14.1 What is SPICE and why do we need SPICE simulations ?
+### 14.1.1 What is SPICE ?
 Fabricating ICs is very expensive and time-consuming, so designers need simulation tools to explore the design space and verify designs before they are fabricated. Simulation is cheap, but silicon revisions (even a single Metal layer change) are prohibitively expensive.  
 
 Simulators operate at many levels of abstraction, from process through architecture.
@@ -34,7 +34,7 @@ A circuit simulator is provided with an input file that contains:
 |:---:|:---:|
 | | |
 
-Analysis Types supported by SPICE:
+**Analysis Types supported by SPICE:**
 | Analysis Type | Details |
 |:---|:---|
 | DC Analysis | Find the DC operating point of the circuit i.e., all voltages and currents |
@@ -44,8 +44,9 @@ Analysis Types supported by SPICE:
 | Small-Signal Distortion Analysis | Computes steady-state harmonic and intermodulation products for small input signal magnitudes. |
 | Sensitivity Analysis | Calculate either the DC operating-point sensitivity or the AC small-signal sensitivity of an output variable with respect to all circuit variables, including model parameters. |
 | Noise Analysis | Measures the device-generated noise for a given circuit. |
+<br>
 
-The following images show how a SPICE deck is written to perform DC analysis of an NMOS transistor:
+**The following images show how a SPICE deck is written to perform DC analysis of an NMOS transistor:**
 | ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_3.png) | ![CircuitDesignWorkshop_D1_Basic_Spice_Setup](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Setup.png) |
 |:---:|:---:|
 | | |
@@ -59,7 +60,8 @@ The following images show how a SPICE deck is written to perform DC analysis of 
 | ![CircuitDesignWorkshop_D1_Basic_Spice_Simulation_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Simulation_1.png) |
 
 
-In Digital VLSI Design, the characterization of the various Standard Cells and macros to generate the various models for timing, power and noise analyses **all ultimately rely on SPICE**.  
+### 14.1.2 Why SPICE in VLSI Design ?
+In Digital VLSI Design, the timing, power, process variation, noise and signal integrity analyses **all ultimately rely on SPICE** for accurate modelling and characterization of the various Standard Cells and macros used in the design. 
 
 ## 14.2 NMOS Transistor
 
