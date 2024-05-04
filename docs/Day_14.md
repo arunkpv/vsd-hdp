@@ -66,11 +66,14 @@ In Digital VLSI Design, the timing, power, process variation, noise and signal i
 | ![CircuitDesignWorkshop_D1_NMOS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS.png) |
 |:---:|
 
+| ![Physical_structure_of_MOSFET_Cross_Section](/docs/images/CircuitDesignWorkshop/Physical_structure_of_MOSFET_Cross_Section.png) | ![Physical_structure_of_MOSFET_Perspective_View](/docs/images/CircuitDesignWorkshop/Physical_structure_of_MOSFET_Perspective_View.png) |
+|:---:|:---:|
+
 ### 14.2.2 Transistor Operation: Cut-off Region, Surface Inversion & Threshold Voltage
 
   - Without the application of a Gate potential, the transistor is said to be in **Cut-off region** as there is no conducting path between the Source and Drain terminals. 
   - On the application a sufficiently high Gate-to-Source voltage, a conductive channel starts to form underneath the Gate composed of minority carriers (electrons in an NMOS) and at a certain voltage called the _**Threshold voltage**_,  _**surface inversion**_ occurs when the concentration of minority carriers in the channel becomes equal to the concentration of majority carriers in the bulk.
-  - When VGS is increased further by several $\Phi_t ("thermal voltage" = k_B T/ q) $, the transistor moves in to the _**strong inversion region**_. Here, the minority carrier concentration in the channel is a strong function of the applied gate potential. 
+  - When VGS is increased further by several $\Phi_t (=thermal voltage, \dfrac{k_B T}{q}) $, the transistor moves into the _**strong inversion region**_. Here, the minority carrier concentration in the channel is a strong function of the applied gate potential. 
 
 _**The below images depict the same for an NMOS transistor:**_
 | ![CircuitDesignWorkshop_D1_VTH_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_1.png) |
@@ -102,7 +105,18 @@ _**The below images depict the same for an NMOS transistor:**_
 
 
 ### 14.2.4 Resistive/ Linear Region of Operation
-#### 14.2.4.1 Resistive region of operation with small Drain-Source voltage
+
+#### 14.2.4.1 Derivation of Drain Current, $I_D$
+Let us analyse the condition when we apply a Gate-Source potential, $V_{GS} >= V_{TH}$ and a small value of $V_{DS}$ is applied across the channel from Drain-to-Source.
+
+Using a simple first-order analysis, let us try to derive an equation for the Drain Current, $I_D$ that results due to the $V_{GS}$ and $V_{DS}$ values applied. 
+
+
+| ![CircuitDesignWorkshop_D1_NMOS_ResistiveRegion_Small_VDS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS_ResistiveRegion_Small_VDS.png) |
+|:---|
+
+
+
 #### 14.2.4.2 Drift current theory
 #### 14.2.4.3 Drain current model for linear region of operation
 
