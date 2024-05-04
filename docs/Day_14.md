@@ -101,12 +101,14 @@ _**The below images depict the same for an NMOS transistor:**_
 | **Threshold Voltage Equation considering Body Bias:** <br>  ![CircuitDesignWorkshop_D1_VTH_with_VSB_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_with_VSB_5.png) |
 |:---|
 
-### 14.2.4 Resistive/ Linear and Saturation/ Pinch-Off Regions of Operation
+### 14.2.4 Resistive/ Linear of Operation
 #### 14.2.4.1 Resistive region of operation with small Drain-Source voltage
 #### 14.2.4.2 Drift current theory
 #### 14.2.4.3 Drain current model for linear region of operation
-#### 14.2.4.4 Pinch-off Region Condition
-#### 14.2.4.5 Drain current model for saturation region of operation
+
+### 14.2.5 Saturation/ Pinch-Off Region of Operation
+#### 14.2.5.1 Pinch-off Region Condition
+#### 14.2.5.2 Drain current model for saturation region of operation
 
 <br>
 
