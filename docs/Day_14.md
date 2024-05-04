@@ -33,7 +33,6 @@ _**Ref:**_ CMOS VLSI Design - A Circuits and Systems Perspective - Weste & Harri
 
 | ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_1.png) | ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_2.png) |
 |:---:|:---:|
-| | |
 
 **Analysis Types supported by SPICE:**
 | Analysis Type | Details |
@@ -64,13 +63,13 @@ _**Ref:**_ CMOS VLSI Design - A Circuits and Systems Perspective - Weste & Harri
 In Digital VLSI Design, the timing, power, process variation, noise and signal integrity analyses **all ultimately rely on SPICE** for accurate modelling and characterization of the various Standard Cells and macros used in the design. 
 
 ## 14.2 NMOS Transistor
-### 14.2.1 NMOS Transistor (Planar) Structure
+### 14.2.1 (Planar) NMOS Transistor Structure
 | ![CircuitDesignWorkshop_D1_NMOS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS.png) |
 |:---:|
 
 ### 14.2.2 Transistor Operation: Surface Inversion & Threshold Voltage
 
-  - Without the application of a Gate potential, the transistor is in **Cut-off region** as there is no conducting path between the Source and Drain terminals.
+  - Without the application of a Gate potential, the transistor is said to be in **Cut-off region** as there is no conducting path between the Source and Drain terminals.
   - On the application a sufficiently high Gate-to-Source voltage, a conductive channel starts to form underneath the Gate composed of minority carriers (electrons in an NMOS) and at a certain voltage called the _**Threshold voltage**_,  _**surface inversion**_ occurs when the concentration of minority carriers in the channel becomes equal to the concentration of majority carriers in the bulk.
   - When VGS is increased further by several $\Phi_t ("thermal voltage" = k_B T/ q) $, the transistor moves in to the _**strong inversion region**_. Here, the minority carrier concentration in the channel is a strong function of the applied gate potential. 
 
@@ -97,9 +96,17 @@ _**The below images depict the same for an NMOS transistor:**_
 | ![CircuitDesignWorkshop_D1_VTH_with_VSB_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_with_VSB_3.png) |
 | ![CircuitDesignWorkshop_D1_VTH_with_VSB_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_with_VSB_4.png) |
 
-**Threshold Voltage Equation considering Body Bias:**
-| ![CircuitDesignWorkshop_D1_VTH_with_VSB_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_with_VSB_5.png) |
+<br>
+
+| **Threshold Voltage Equation considering Body Bias:** <br>  ![CircuitDesignWorkshop_D1_VTH_with_VSB_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_with_VSB_5.png) |
 |:---|
+
+### 14.2.4 Resistive/ Linear and Saturation/ Pinch-Off Regions of Operation
+#### 14.2.4.1 Resistive region of operation with small Drain-Source voltage
+#### 14.2.4.2 Drift current theory
+#### 14.2.4.3 Drain current model for linear region of operation
+#### 14.2.4.4 Pinch-off Region Condition
+#### 14.2.4.5 Drain current model for saturation region of operation
 
 <br>
 
