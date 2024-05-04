@@ -101,8 +101,7 @@ _**The below images depict the same for an NMOS transistor:**_
 | **Threshold Voltage Equation considering Body Bias:** <br>  <br>  ![CircuitDesignWorkshop_D1_VTH_with_VSB_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_with_VSB_5.png) |
 |:---|
 
-| ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_5](/docs/images/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_5.png) |
-|:---|
+![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_5](/docs/images/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_5.png)
 
 ### 14.2.4 Resistive/ Linear Region of Operation
 #### 14.2.4.1 Resistive region of operation with small Drain-Source voltage
