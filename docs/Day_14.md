@@ -67,9 +67,9 @@ In Digital VLSI Design, the timing, power, process variation, noise and signal i
 | ![CircuitDesignWorkshop_D1_NMOS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS.png) |
 |:---:|
 
-### 14.2.2 Transistor Operation: Surface Inversion & Threshold Voltage
+### 14.2.2 Transistor Operation: Cut-off Region, Surface Inversion & Threshold Voltage
 
-  - Without the application of a Gate potential, the transistor is said to be in **Cut-off region** as there is no conducting path between the Source and Drain terminals.
+  - Without the application of a Gate potential, the transistor is said to be in **Cut-off region** as there is no conducting path between the Source and Drain terminals. 
   - On the application a sufficiently high Gate-to-Source voltage, a conductive channel starts to form underneath the Gate composed of minority carriers (electrons in an NMOS) and at a certain voltage called the _**Threshold voltage**_,  _**surface inversion**_ occurs when the concentration of minority carriers in the channel becomes equal to the concentration of majority carriers in the bulk.
   - When VGS is increased further by several $\Phi_t ("thermal voltage" = k_B T/ q) $, the transistor moves in to the _**strong inversion region**_. Here, the minority carrier concentration in the channel is a strong function of the applied gate potential. 
 
@@ -84,7 +84,7 @@ _**The below images depict the same for an NMOS transistor:**_
 
 ### 14.2.3 Effect of Subtrate/ Body Bias on Threshold Voltage
 
-  - The Source-to-Substrate pn junction must always be reverse biased for the MOS transistor to work, so $V_{SB}$ must always be greater than or equal to zero for an NMOS transistor.
+  - The Source-to-Substrate amd Drain-to-Substrate pn junctions must always be reverse biased for the "normal operation" of the MOS transistor, so $V_{SB}, V_{DB}$ must always be greater than or equal to zero for an NMOS transistor.
   - If $V_{SB} = 0$, then surface inversion is achieved at a Gate-to-Source voltage equal to **VT0**
   - However, when $V_{SB} > 0$, the electrons from the channel can move laterally and flow out of the source terminal resulting in a reduced carrier concentration in the channel.
   - Thus, with when $V_{SB} > 0$, a higher Gate-to-Source voltage is required to achieve surface inversion.
@@ -98,10 +98,13 @@ _**The below images depict the same for an NMOS transistor:**_
 
 <br>
 
-| **Threshold Voltage Equation considering Body Bias:** <br>  ![CircuitDesignWorkshop_D1_VTH_with_VSB_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_with_VSB_5.png) |
+| **Threshold Voltage Equation considering Body Bias:** <br>  <br>  ![CircuitDesignWorkshop_D1_VTH_with_VSB_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_with_VSB_5.png) |
 |:---|
 
-### 14.2.4 Resistive/ Linear of Operation
+| ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_5](/docs/images/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_5.png) |
+|:---|
+
+### 14.2.4 Resistive/ Linear Region of Operation
 #### 14.2.4.1 Resistive region of operation with small Drain-Source voltage
 #### 14.2.4.2 Drift current theory
 #### 14.2.4.3 Drain current model for linear region of operation
