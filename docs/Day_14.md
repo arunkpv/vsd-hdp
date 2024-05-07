@@ -109,15 +109,22 @@ _**The below images depict the same for an NMOS transistor:**_
 #### 14.2.4.1 Derivation of Drain Current, $I_D$
 Let us analyse the condition when we apply a Gate-Source potential, $V_{GS} >= V_{TH}$ and a small value of $V_{DS}$ is applied across the channel from Drain-to-Source.
 
-Using a simple first-order analysis, let us try to derive an equation for the Drain Current, $I_D$ that results due to the $V_{GS}$ and $V_{DS}$ values applied. 
-
-
 | ![CircuitDesignWorkshop_D1_NMOS_ResistiveRegion_Small_VDS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS_ResistiveRegion_Small_VDS.png) |
 |:---|
 
+Using a simple first-order analysis, let us try to derive an equation for the Drain Current, $I_D$ that results due to the $V_{GS}$ and $V_{DS}$ values applied. The mechanism for the Drain current, $I_D$ is  **carrier drift** under the lateral electric field due to $V_{DS}$.
 
+| ![CircuitDesignWorkshop_D1_DriftCurrent_Theory_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_DriftCurrent_Theory_1.png) |
+|:---|
+| ![CircuitDesignWorkshop_D1_DriftCurrent_Theory_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_DriftCurrent_Theory_2.png) |
+| ![CircuitDesignWorkshop_D1_DriftCurrent_Theory_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_DriftCurrent_Theory_3.png) |
+| ![CircuitDesignWorkshop_D1_DriftCurrent_Theory_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_DriftCurrent_Theory_4.png) |
+| ![CircuitDesignWorkshop_D1_LinearRegion_Id_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_1.png) |
+| ![CircuitDesignWorkshop_D1_LinearRegion_Id_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_2.png) |
+| ![CircuitDesignWorkshop_D1_LinearRegion_Id_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_3.png) |
+| ![CircuitDesignWorkshop_D1_LinearRegion_Id_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_4.png) |
 
-#### 14.2.4.2 Drift current theory
+#### 14.2.4.2 
 #### 14.2.4.3 Drain current model for linear region of operation
 
 ### 14.2.5 Saturation/ Pinch-Off Region of Operation
