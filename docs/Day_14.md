@@ -122,8 +122,15 @@ Using a simple first-order analysis, let us try to derive an equation for the Dr
 | ![CircuitDesignWorkshop_D1_LinearRegion_Id_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_1.png) |
 | ![CircuitDesignWorkshop_D1_LinearRegion_Id_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_2.png) |
 
+  - Let $V_{GS}$ be held constant at a value greater than $V_T$.  
+  - The applied $V_{DS}$ appears as a voltage drop across the length of the channel.  
+  - As we travel along the channel from Source to Drain, the voltage (measured relative to the Source terminal) increases from zero to $V_{DS}$.
+  - Thus the voltage between the gate and points along the channel decreases from $V_{GS}$ at the Source end to $V_{GD} = V_{GS}-V_{DS}$ at the Drain end.
 
-At a point x along the channel, the voltage is $V(x)$, and the gate-to-channel voltage at that point equals $V_{GS} – V(x)$. Under the assumption that this voltage exceeds the threshold voltage all along the channel, the induced channel charge per unit area at point x can be computed.
+
+  - At a point x along the channel, the voltage is $V(x)$, and the gate-to-channel voltage at that point equals $V_{GS} – V(x)$.
+
+Under the assumption that this voltage exceeds the threshold voltage all along the channel, the induced channel charge per unit area at point x can be computed.
 
 $Q_i(x) = -C_{ox} [V_{GS} - V(x) -V_T]$  
 $where:$  
@@ -159,7 +166,7 @@ Now, the above equation for Drain Current:
 $I_D = k_n * \left[(V_{GS} - V_{TH}) * V_{DS} - \dfrac{V_{DS}^2}{2}\right]$
 is a quadratic function of $V_{DS}$.  
 But at low values, the $\dfrac{V_{DS}^2}{2}$ term can be ignored as it is close to zero. Hence the equation for $I_D$ can be approximated to be a linear function of $V_{DS}$:  
-$I_D = k_n * (V_{GS} - V_{TH}) * V_{DS}$
+$i.e., I_D = k_n * (V_{GS} - V_{TH}) * V_{DS}$
 
 For the example scenario we were discussing, this translates to:
 | ![CircuitDesignWorkshop_D1_LinearRegion_Id_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_3.png) |
@@ -167,8 +174,16 @@ For the example scenario we were discussing, this translates to:
 
 
 ### 14.2.5 Saturation/ Pinch-Off Region of Operation
-As the value of the Drain-Source voltage is increased further, the assumption that the channel voltage is larger than the threshold all along the channel ceases to hold. This happens when $V_{GS} - V(x) < V_{TH}$.
-At that point, the induced charge is zero, and the conducting channel disappears or is pinched off starting from the Drain end.
+  - When a $V_{DS}$ voltage is applied, the channel voltage becomes a function of both $V_{GS}$ and $V_{DS}$.
+  - Since the induced channel depth depends on the channel voltage relative to the Gate terminal, and specifically on the amount by which this voltage exceeds the threshold voltage, $V_{TH}$, we find that the channel is no longer of uniform depth; rather, the channel will take a tapered shape:
+    - being deepest at the Source end, where the depth is proportional to $[V_{GS}-V_{TH}]$, and
+    - shallowest at the drain end, where the depth is proportional to $[V_{GS}-V_{TH}-V_{DS}]$.
+  
+  - As the value of the Drain-Source voltage is increased further, the assumption that the channel voltage is larger than the threshold all along the channel ceases to hold.
+    - In the limiting case, the channel depth at the drain end reduces to zero and the channel is said to be **"pinched-off"**. This happens when $V_{GD}$ is just equal to the threshold voltage, $V_{TH}.
+      - i.e., $V_{DS}= V_{GS} - V_{TH} ~~~~~~~~ (=V_{OV})$
+  - At that point, the induced charge is zero, and the conducting channel disappears or is pinched off starting from the Drain end.
+  
 
 #### 14.2.5.1 Pinch-off Region Condition
 #### 14.2.5.2 Drain current model for saturation region of operation
