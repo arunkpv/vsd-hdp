@@ -103,15 +103,16 @@ _**The below images depict the same for an NMOS transistor:**_
 | **Threshold Voltage Equation considering Body Bias:** <br>  <br>  ![CircuitDesignWorkshop_D1_VTH_with_VSB_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_with_VSB_5.png) |
 |:---|
 
-### 14.2.4 Resistive/ Linear Region of Operation
-
-#### 14.2.4.1 Derivation of Drain Current, $I_D$
+### 14.2.4 Resistive/ Linear/ Triode Region of Operation
 Let us analyse the condition when we apply a Gate-Source potential, $V_{GS} >= V_{TH}$ and a small value of $V_{DS}$ is applied across the channel from Drain-to-Source.
 
 | ![CircuitDesignWorkshop_D1_NMOS_ResistiveRegion_Small_VDS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS_ResistiveRegion_Small_VDS.png) |
 |:---|
 
-Using a simple first-order analysis, let us try to derive an equation for the Drain Current, $I_D$ that results due to the $V_{GS}$ and $V_{DS}$ values applied. The mechanism for the Drain current, $I_D$ is  **carrier drift** under the lateral electric field due to $V_{DS}$.
+#### 14.2.4.1 Derivation of Drain Current Equation
+Using a simple first-order analysis, let us try to derive an equation for the Drain Current, $I_D$ that results due to the $V_{GS}$ and $V_{DS}$ values applied.
+
+The mechanism for the Drain current, $I_D$ is  **carrier drift** under the lateral electric field due to $V_{DS}$.
 
 
 | ![CircuitDesignWorkshop_D1_DriftCurrent_Theory_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_DriftCurrent_Theory_1.png) |
@@ -122,7 +123,7 @@ Using a simple first-order analysis, let us try to derive an equation for the Dr
 | ![CircuitDesignWorkshop_D1_LinearRegion_Id_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_1.png) |
 | ![CircuitDesignWorkshop_D1_LinearRegion_Id_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_2.png) |
 
-  - Let $V_{GS}$ be held constant at a value greater than $V_T$.  
+  - Let $V_{GS}$ be held constant at a value greater than $V_{TH}$.  
   - The applied $V_{DS}$ appears as a voltage drop across the length of the channel.  
   - As we travel along the channel from Source to Drain, the voltage (measured relative to the Source terminal) increases from zero to $V_{DS}$.
   - Thus the voltage between the gate and points along the channel decreases from $V_{GS}$ at the Source end to $V_{GD} = V_{GS}-V_{DS}$ at the Drain end.
@@ -132,7 +133,7 @@ Using a simple first-order analysis, let us try to derive an equation for the Dr
 
 Under the assumption that this voltage exceeds the threshold voltage all along the channel, the induced channel charge per unit area at point x can be computed.
 
-$Q_i(x) = -C_{ox} [V_{GS} - V(x) -V_T]$  
+$Q_i(x) = -C_{ox} [V_{GS} - V(x) -V_{TH}]$  
 $where:$  
 $~~~~~~~~ C_{ox} = \dfrac{\epsilon_{ox}}{t_{ox}}$
 
@@ -142,17 +143,17 @@ W is the width of the channel in a direction perpendicular to the current flow.
 
 $I_D = -v_n(x) * Q_i(x) * W$
 
-The electron velocity is related to the electric field through a parameter called the mobility $\mu_n$ (expressed in $\dfrac{m^2}{V.s}$). The mobility is a complex function of crystal structure, and local electrical field. In general, an empirical value is used.
+The electron velocity is related to the electric field through a parameter called the mobility $\mu_n$ (expressed in $\dfrac{m^2}{V.s}$).  
 
 Drift velocity, $v_n = -\mu_n \dfrac{dV}{dx}$
 
-$\therefore I_D = -\mu_n \dfrac{dV}{dx} * -C_{ox} [V_{GS} - V(x) -V_T] * W$  
+$\therefore I_D = -\mu_n \dfrac{dV}{dx} * -C_{ox} [V_{GS} - V(x) -V_{TH}] * W$  
 
-$i.e., I_D dx = \mu_n C_{ox} W [V_{GS} - V(x) -V_T] dV$
+$i.e., I_D dx = \mu_n C_{ox} W [V_{GS} - V(x) -V_{TH}] dV$
 
 Integrating the equation over the length of the channel L yields the voltage-current relation of the transistor:  
-$I_D = {k_n}^\prime \dfrac{W}{L} \left[ (V_{GS}-V_T)V_{DS} - \dfrac{{V_{DS}}^2}{2} \right]
-     = k_n \left[ (V_{GS}-V_T)V_{DS} - \dfrac{{V_{DS}}^2}{2} \right]$
+$\boxed{I_D = {k_n}^\prime \dfrac{W}{L} \left[ (V_{GS}-V_{TH})V_{DS} - \dfrac{{V_{DS}}^2}{2} \right]
+     = k_n \left[ (V_{GS}-V_{TH})V_{DS} - \dfrac{{V_{DS}}^2}{2} \right]}$
 
 $where:$  
 $~~~~~~~~ {k_n}^\prime$ is the _process transconductance parameter._  
@@ -165,8 +166,9 @@ $~~~~~~~~ k_n = {k_n}^\prime * \left( \dfrac{W}{L} \right)$
 Now, the above equation for Drain Current:  
 $I_D = k_n * \left[(V_{GS} - V_{TH}) * V_{DS} - \dfrac{V_{DS}^2}{2}\right]$
 is a quadratic function of $V_{DS}$.  
+
 But at low values, the $\dfrac{V_{DS}^2}{2}$ term can be ignored as it is close to zero. Hence the equation for $I_D$ can be approximated to be a linear function of $V_{DS}$:  
-$i.e., I_D = k_n * (V_{GS} - V_{TH}) * V_{DS}$
+$\boxed{i.e., I_D = k_n * (V_{GS} - V_{TH}) * V_{DS}} ~~~~ $ _<-- hence the name Linear Region_
 
 For the example scenario we were discussing, this translates to:
 | ![CircuitDesignWorkshop_D1_LinearRegion_Id_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_3.png) |
@@ -179,14 +181,38 @@ For the example scenario we were discussing, this translates to:
     - being deepest at the Source end, where the depth is proportional to $[V_{GS}-V_{TH}]$, and
     - shallowest at the drain end, where the depth is proportional to $[V_{GS}-V_{TH}-V_{DS}]$.
   
+#### 14.2.5.1 Pinch-off Region Condition
   - As the value of the Drain-Source voltage is increased further, the assumption that the channel voltage is larger than the threshold all along the channel ceases to hold.
-    - In the limiting case, the channel depth at the drain end reduces to zero and the channel is said to be **"pinched-off"**. This happens when $V_{GD}$ is just equal to the threshold voltage, $V_{TH}.
-      - i.e., $V_{DS}= V_{GS} - V_{TH} ~~~~~~~~ (=V_{OV})$
-  - At that point, the induced charge is zero, and the conducting channel disappears or is pinched off starting from the Drain end.
+    - In the limiting case, the channel depth at the drain end reduces to zero and the channel is said to be **"pinched-off"**. This happens when $V_{GD}$ is just equal to the threshold voltage, $V_{TH}$.
+    - i.e., $V_{DS}= V_{GS}-V_{TH} ~~~~~~~~ (=V_{OV})$
+  - At this point, the induced charge is zero, and the conducting channel disappears or is pinched off starting from the Drain end.
+
+| ![CircuitDesignWorkshop_D1_PinchOff_Region_Condition_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_PinchOff_Region_Condition_1.png) |
+|:---|
+| ![CircuitDesignWorkshop_D1_PinchOff_Region_Condition_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_PinchOff_Region_Condition_2.png) |
+| ![CircuitDesignWorkshop_D1_PinchOff_Region_Condition_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_PinchOff_Region_Condition_3.png) |
+| ![CircuitDesignWorkshop_D1_PinchOff_Region_Condition_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_PinchOff_Region_Condition_4.png) |
+
+#### 14.2.5.2 Drain current model for saturation region of operation
+  - Increasing $V_{DS}$ beyond the $V_{DSsat}$ value of ($V_{GS}-V_{TH}$) has no effect on the channel shape and charge.
+  - Thus, the current through the channel remains constant at the value reached for $V_{DS}= V_{GS}-V_{TH}$.
+  - The MOSFET is said to have entered **saturation/ pinch-off regsion** at:
+    - $V_{DS} = V_{DSsat} = V_{GS}-V_{TH}$
+  - Subsequently, the Saturation Drain current:
+    - $I_D = I_{Dsat} = {k_n}^\prime \dfrac{W}{L} \left[ (V_{GS}-V_{TH})V_{DSsat} - \dfrac{{V_{DSsat}}^2}{2} \right]$
+    - $\boxed{i.e., I_{Dsat} = \dfrac{1}{2} {k_n}^\prime \dfrac{W}{L} \left[ {(V_{GS}-V_{TH}}^2\right]}$
   
 
-#### 14.2.5.1 Pinch-off Region Condition
-#### 14.2.5.2 Drain current model for saturation region of operation
+  - **Channel pinch-off does not imply channel blockage**
+    - Current continues to flow through the pinched-off channel.
+    - The electrons that reach the drain end of the channel are accelerated through the depletion region that exists there and into the drain terminal.
+    - Any increase in $V_{DS}$ above $V_{DSsat}$ appears as a voltage drop across the depletion region
+    - Thus, both the current through the channel and the voltage drop across it remain constant in saturation.
+
+| ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_1.png) |
+|:---|
+| ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_2.png) |
+| ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_3.png) |
 
 <br>
 
