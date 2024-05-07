@@ -193,7 +193,7 @@ For the example scenario we were discussing, this translates to:
 | ![CircuitDesignWorkshop_D1_PinchOff_Region_Condition_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_PinchOff_Region_Condition_3.png) |
 | ![CircuitDesignWorkshop_D1_PinchOff_Region_Condition_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_PinchOff_Region_Condition_4.png) |
 
-#### 14.2.5.2 Drain current model for saturation region of operation
+#### 14.2.5.2 Drain current model for Saturation Region of Operation
   - Increasing $V_{DS}$ beyond the $V_{DSsat}$ value of ($V_{GS}-V_{TH}$) has no effect on the channel shape and charge.
   - Thus, the current through the channel remains constant at the value reached for $V_{DS}= V_{GS}-V_{TH}$.
   - The MOSFET is said to have entered **saturation/ pinch-off regsion** at:
@@ -207,12 +207,40 @@ For the example scenario we were discussing, this translates to:
     - Current continues to flow through the pinched-off channel.
     - The electrons that reach the drain end of the channel are accelerated through the depletion region that exists there and into the drain terminal.
     - Any increase in $V_{DS}$ above $V_{DSsat}$ appears as a voltage drop across the depletion region
-    - Thus, both the current through the channel and the voltage drop across it remain constant in saturation.
+    - Thus, both the current through the channel, $I_{Dsat}$ and the voltage drop across i, $V_{DSsat}$ remain constant in saturation.
 
 | ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_1.png) |
 |:---|
 | ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_2.png) |
 | ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_3.png) |
+
+#### 14.2.5.3 Channel Length Modulation and Finite Output Resistance in Saturation
+  - The above Drain current equation seems to indicate that in sarutation, $I_D$ is independent of $V_{DS}$
+  - Thus a change, $\Delta V_{DS}$, in the Drain-to-Source voltage causes a zero change in $I_D$, which implies that the incremental resistance looking into the drain of a saturated MOSFET is infinite.
+  - This, however, is an idealization based on the premise that once the channel is pinched off at the drain end, further increases in $V_{DS}$ have no effect on the channel’s shape.
+  - But, in practice, increasing $V_{DS}$ beyond $V_{GS}-V_{TH}$ does affect the channel somewhat.
+    - As $V_{DS}$ is increased, the channel pinch-off point is moved slightly away from the drain, toward the source.
+    - That is, the voltage across the channel remains constant at $V_{GS}-V_{TH}$, and
+    - The additional voltage applied to the drain appears as a voltage drop across the narrow depletion region between the end of the channel and the drain region.
+    - This voltage accelerates the electrons that reach the drain end of the channel and sweeps them across the depletion region into the drain.
+  
+
+  - Note, however, that (with depletion-layer widening) the channel length is reduced from $L$ to $(L-\Delta L)$, called **Channel Length Modulation (CLM)**.
+
+  - Since $I_D$ is inversely proportional to the channel length, $I_D$ increases with $V_{DS}$.
+  - CLM can be accounted for in the expression for $I_D$ by including a factor $[1 + \lambda (V_{DS}-V_{DSsat})]$.  
+    For simplicity, we use: $[1 + \lambda V_{DS}]$
+
+    $\boxed{\therefore I_{D} = \dfrac{1}{2} {k_n}^\prime \dfrac{W}{L} \left[ {(V_{GS}-V_{TH}}^2\right] (1 + \lambda V_{DS})}$
+
+  - The CLM parameter, $\lambda$ is a device parameter having the units of $V^{-1}$ . Its value depends both on the process technology used to fabricate the device and on the channel length L that the circuit designer selects.
+
+  - Output Resistance, $r_o = \dfrac{1}{\lambda I_D}$
+
+| ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_4.png) |
+|:---|
+| ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_5.png) |
+
 
 <br>
 
