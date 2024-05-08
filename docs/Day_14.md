@@ -123,6 +123,9 @@ The mechanism for the Drain current, $I_D$ is  **carrier drift** under the later
 | ![CircuitDesignWorkshop_D1_LinearRegion_Id_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_1.png) |
 | ![CircuitDesignWorkshop_D1_LinearRegion_Id_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_2.png) |
 
+| ![CircuitDesignWorkshop_D1_NMOS_with_BiasVoltages](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS_with_BiasVoltages.png) |
+|:---|
+
   - Let $V_{GS}$ be held constant at a value greater than $V_{TH}$.  
   - The applied $V_{DS}$ appears as a voltage drop across the length of the channel.  
   - As we travel along the channel from Source to Drain, the voltage (measured relative to the Source terminal) increases from zero to $V_{DS}$.
@@ -187,6 +190,9 @@ For the example scenario we were discussing, this translates to:
     - i.e., $V_{DS}= V_{GS}-V_{TH} ~~~~~~~~ (=V_{OV})$
   - At this point, the induced charge is zero, and the conducting channel disappears or is pinched off starting from the Drain end.
 
+| ![CircuitDesignWorkshop_D1_NMOS_under_Pinch-Off](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS_under_Pinch-Off.png) |
+|:---|
+
 | ![CircuitDesignWorkshop_D1_PinchOff_Region_Condition_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_PinchOff_Region_Condition_1.png) |
 |:---|
 | ![CircuitDesignWorkshop_D1_PinchOff_Region_Condition_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_PinchOff_Region_Condition_2.png) |
@@ -233,7 +239,7 @@ For the example scenario we were discussing, this translates to:
 
     $\boxed{\therefore I_{D} = \dfrac{1}{2} {k_n}^\prime \dfrac{W}{L} \left[ {(V_{GS}-V_{TH}}^2\right] (1 + \lambda V_{DS})}$
 
-  - The CLM parameter, $\lambda$ is a device parameter having the units of $V^{-1}$ . Its value depends both on the process technology used to fabricate the device and on the channel length L that the circuit designer selects.
+  - The CLM parameter, $\lambda$ is a device parameter having the units of $V^{-1}$ . Its value depends both on the process technology used to fabricate the device and on the channel length, $L$ that the circuit designer selects.
 
   - Output Resistance, $r_o = \dfrac{1}{\lambda I_D}$
 
