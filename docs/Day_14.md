@@ -190,8 +190,6 @@ For the example scenario we were discussing, this translates to:
     - i.e., $V_{DS}= V_{GS}-V_{TH} ~~~~~~~~ (=V_{OV})$
   - At this point, the induced charge is zero, and the conducting channel disappears or is pinched off starting from the Drain end.
 
-| ![CircuitDesignWorkshop_D1_NMOS_under_Pinch-Off](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS_under_Pinch-Off.png) |
-|:---|
 
 | ![CircuitDesignWorkshop_D1_PinchOff_Region_Condition_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_PinchOff_Region_Condition_1.png) |
 |:---|
@@ -200,6 +198,10 @@ For the example scenario we were discussing, this translates to:
 | ![CircuitDesignWorkshop_D1_PinchOff_Region_Condition_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_PinchOff_Region_Condition_4.png) |
 
 #### 14.2.5.2 Drain current model for Saturation Region of Operation
+
+| ![CircuitDesignWorkshop_D1_NMOS_under_Pinch-Off](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS_under_Pinch-Off.png) |
+|:---|
+
   - Increasing $V_{DS}$ beyond the $V_{DSsat}$ value of ($V_{GS}-V_{TH}$) has no effect on the channel shape and charge.
   - Thus, the current through the channel remains constant at the value reached for $V_{DS}= V_{GS}-V_{TH}$.
   - The MOSFET is said to have entered **saturation/ pinch-off regsion** at:
@@ -213,7 +215,7 @@ For the example scenario we were discussing, this translates to:
     - Current continues to flow through the pinched-off channel.
     - The electrons that reach the drain end of the channel are accelerated through the depletion region that exists there and into the drain terminal.
     - Any increase in $V_{DS}$ above $V_{DSsat}$ appears as a voltage drop across the depletion region
-    - Thus, both the current through the channel, $I_{Dsat}$ and the voltage drop across i, $V_{DSsat}$ remain constant in saturation.
+    - Thus, both the current through the channel, $I_{Dsat}$ and the voltage drop across the channel $i.e., V_{DSsat} = (V_{GS}-V_{TH})$ **remain constant in saturation**.
 
 | ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_1.png) |
 |:---|
