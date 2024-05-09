@@ -172,7 +172,8 @@ is a quadratic function of $V_{DS}$.
 
 But at low values, the $\dfrac{V_{DS}^2}{2}$ term can be ignored as it is close to zero. Hence the equation for $I_D$ can be approximated to be a linear function of $V_{DS}$:  
 
-$\boxed {i.e., I_D = k_n * (V_{GS} - V_{TH}) * V_{DS}} ~~~~ $ <-- _hence the name Linear Region_
+$\boxed {i.e., I_D = k_n * (V_{GS} - V_{TH}) * V_{DS}} ~~~~ $
+_Hence the name Linear Region_
 
 For the example scenario we were discussing, this translates to:
 | ![CircuitDesignWorkshop_D1_LinearRegion_Id_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_3.png) |
