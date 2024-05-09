@@ -150,7 +150,7 @@ The electron velocity is related to the electric field through a parameter calle
 
 Drift velocity, $v_n = -\mu_n \dfrac{dV}{dx}$
 
-$\therefore I_D = -\mu_n \dfrac{dV}{dx} * -C_{ox} [V_{GS} - V(x) -V_{TH}] * W$  
+$\therefore I_D = -\mu_n \dfrac{dV}{dx} * -C_{ox} [V_{GS} - V(x) - V_{TH}] * W$  
 
 $i.e., I_D dx = \mu_n C_{ox} W [V_{GS} - V(x) -V_{TH}] dV$
 
