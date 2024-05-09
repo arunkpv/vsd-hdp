@@ -59,7 +59,7 @@ $~~~~~~~~~~~~where, ~~~~ \kappa(V_{DS}) = \dfrac{1}{1+(V_{DS}/E_c L)}$
   - For short-channel devices, $\kappa$ is smaller than 1, implying the delivered current is smaller than what would be normally expected.
 
 **Coming to Drain current in saturation region:**  
-$I_D = -v_n(x) * -C_{ox} [V_{GS} - V(x) -V_{TH}] * W ~~~~~~~~|with~~v_n(x)=v_{sat}~~and~~V(x)=V_{DSAT}$  
+$I_D = -v_n(x) * -C_{ox} [V_{GS} - V(x) -V_{TH}] * W ~~~~~~~~ |with ~~ v_n(x)=v_{sat} ~~ and ~~ V(x)=V_{DSAT}$  
 $i.e., \boxed{I_{DSAT} = v_{sat} C_{ox} W [(V_{GS} - V_{TH}) - V_{DSAT}]}$  
 
 $I_{DSAT}$ can also be evaluated by replacing V_{DS}=V_{DSAT} in the linear region equation derived above.  
@@ -69,7 +69,7 @@ $\therefore ~~~~ \boxed{I_{DSAT} = \kappa(V_{DS}) \mu_n C_{ox} \dfrac{W}{L}\left
 
 Equating these two expressions for $I_{DSAT}$ to solve for $V_{DSAT}$, we get:  
 $I_{DSAT} = v_{sat} C_{ox} W [(V_{GS} - V_{TH}) - V_{DSAT}]$  
-$ ~~~~~~~~~~~ = \kappa(V_{DS}) \mu_n C_{ox} \dfrac{W}{L}\left[(V_{GS}-V_{TH})V_{DSAT} - \dfrac{{V_{DSAT}^2}}{2} \right]$
+$~~~~~~~~~~~ = \kappa(V_{DS}) \mu_n C_{ox} \dfrac{W}{L}\left[(V_{GS}-V_{TH})V_{DSAT} - \dfrac{{V_{DSAT}^2}}{2} \right]$
 
 $i.e.,$  
 $\dfrac{\mu_n E_c}{2} C_{ox} W [(V_{GS} - V_{TH}) - V_{DSAT}] = \kappa(V_{DS}) \mu_n C_{ox} \dfrac{W}{L}\left[(V_{GS}-V_{TH})V_{DSAT} - \dfrac{{V_{DSAT}^2}}{2} \right]$
