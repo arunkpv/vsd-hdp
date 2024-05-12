@@ -81,6 +81,8 @@ $E_c L [(V_{GS} - V_{TH}) - V_{DSAT}] = \kappa(V_{DSAT}) \left[2(V_{GS}-V_{TH})V
 This can be further simplified to the below:  
 $~~~~~~~~ \boxed{V_{DSAT} = \kappa(V_{GT}) ~ V_{GT}} ~~~~ , where ~ V_{GT} = (V_{GS} - V_{TH})$  
 
+<br>
+
 **This has the following implications:**
 
   1)  The saturation current $I_{DSAT}$ displays a linear dependence with respect to the Gate-to-Source voltage $V_{GS}$, which is in contrast with the squared dependence in the long-channel devices. This reduces the amount of current a transistor can deliver for a given control voltage.
@@ -103,7 +105,7 @@ reaches $(V_{GS} - V_{TH})$. Short-channel devices therefore experience an exten
 
   - It is desrirable to have a mathematical model that abstracts the behavior of the MOS transistor into a simple and tangible analytical model that does not lead to hopelessly complex equations, yet captures the essentials of the device.
   - This is required so that the designer is able to have an intuitive insight into the behaviour of a circuit and how the design parameters affect its operation.
-
+<br>
 
   - The first-order expressions derived earlier can be combined into a single unified model that presents the transistor as a single current source the value as defined below:
     - The model employs the voltages at the four terminals of the transistor, along with a set of five parameters: $V_{TO}, ~ \gamma, ~ V_{DSAT}, ~ k^{\prime}, ~ and ~ \lambda$.
