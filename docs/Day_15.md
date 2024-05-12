@@ -28,6 +28,8 @@ the value of that field. In other words, the carrier mobility is a constant.
 
 ### 15.1.1 Drain Current in Resistive/ Linear Region
 **Now the drain current equation in the resistive region can be re-evaluated using:**  
+<br>
+
 $I_D = -v_n(x) * Q_i(x) * W$  
 $I_D = -v_n(x) * -C_{ox} [V_{GS} - V(x) -V_{TH}] * W$  
 $v_n = \dfrac{\mu_n E}{1+(E/E_c)}$  
@@ -62,6 +64,8 @@ $~~~~~~~~~~~~where, ~~~~ \kappa(V_{DS}) = \dfrac{1}{1+(V_{DS}/E_c L)}$
 
 ### 15.1.2 Drain Current in Saturation Region
 **Coming to the Drain current in saturation region:**  
+<br>
+
 $I_D = -v_n(x) * -C_{ox} [V_{GS} - V(x) -V_{TH}] * W ~~~~~~~~ |with ~~ v_n(x)=v_{sat} ~~ and ~~ V(x)=V_{DSAT}$  
 $i.e., \boxed{I_{DSAT} = v_{sat} C_{ox} W [(V_{GS} - V_{TH}) - V_{DSAT}]}$  
 
