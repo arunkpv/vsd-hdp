@@ -106,7 +106,7 @@ reaches $(V_{GS} - V_{TH})$. Short-channel devices therefore experience an exten
 
 
   - The first-order expressions derived earlier can be combined into a single unified model that presents the transistor as a single current source the value as defined below:
-    - The model employs the voltages at the four terminals of the transistor, along with a set of five parameters: $V_{TO},~\gamma,~V_{DSAT},~k^{\prime},~and~\lambda$.
+    - The model employs the voltages at the four terminals of the transistor, along with a set of five parameters: $V_{TO}, ~ \gamma, ~ V_{DSAT}, ~ k^{\prime}, ~ and ~ \lambda$.
 
 | ![CircuitDesignWorkshop_D2_Unified_MOS_Model](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Unified_MOS_Model.png) |
 |:---:|
