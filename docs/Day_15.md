@@ -81,7 +81,7 @@ $E_c L [(V_{GS} - V_{TH}) - V_{DSAT}] = \kappa(V_{DSAT}) \left[2(V_{GS}-V_{TH})V
 This can be further simplified to the below:  
 $~~~~~~~~ \boxed{V_{DSAT} = \kappa(V_{GT}) ~ V_{GT}} ~~~~ , where ~ V_{GT} = (V_{GS} - V_{TH})$  
 
-This has the following implications:  
+**This has the following implications:  **
 
   1)  The saturation current $I_{DSAT}$ displays a linear dependence with respect to the Gate-to-Source voltage $V_{GS}$, which is in contrast with the squared dependence in the long-channel devices. This reduces the amount of current a transistor can deliver for a given control voltage.
 
@@ -92,12 +92,35 @@ reaches $(V_{GS} - V_{TH})$. Short-channel devices therefore experience an exten
 | ![CircuitDesignWorkshop_D2_VelocitySaturation_Rabaey_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_VelocitySaturation_Rabaey_2.png) |
 |:---|
 
-| ![CircuitDesignWorkshop_D2_Velocity_Saturation_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_1.png) | ![CircuitDesignWorkshop_D2_Velocity_Saturation_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_2.png) |
-|:---:|:---:|
-| ![CircuitDesignWorkshop_D2_Velocity_Saturation_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_3.png) | ![CircuitDesignWorkshop_D2_Velocity_Saturation_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_4.png) |
-| ![CircuitDesignWorkshop_D2_Velocity_Saturation_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_5.png) | ![CircuitDesignWorkshop_D2_Velocity_Saturation_6](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_6.png) |
-| ![CircuitDesignWorkshop_D2_Velocity_Saturation_7](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_7.png) | ![CircuitDesignWorkshop_D2_Velocity_Saturation_8](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_8.png) |
-| ![CircuitDesignWorkshop_D2_Velocity_Saturation_9](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_9.png) | ![CircuitDesignWorkshop_D2_Velocity_Saturation_10](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_10.png) |
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_1.png) |
+|:---:|
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_2.png) |
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_3.png) |
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_4.png) |
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_5.png) |
+
+### 15.1.3 Unified MOS Model for Manual Analysis
+
+  - It is desrirable to have a mathematical model that abstracts the behavior of the MOS transistor into a simple and tangible analytical model that does not lead to hopelessly complex equations, yet captures the essentials of the device.
+  - This is required so that the designer is able to have an intuitive insight into the behaviour of a circuit and how the design parameters affect its operation.
+
+
+  - The first-order expressions derived earlier can be combined into a single unified model that presents the transistor as a single current source the value as defined below:
+    - The model employs the voltages at the four terminals of the transistor, along with a set of five parameters: $V_{TO},~\gamma,~V_{DSAT},~k^{\prime},~and~\lambda$.
+
+| ![CircuitDesignWorkshop_D2_Unified_MOS_Model](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Unified_MOS_Model.png) |
+|:---:|
+
+
+**The following slides show how the unified model works in the different Regions of Operation of the MOS transistor:**  
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_6](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_6.png) |
+|:---:|
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_7](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_7.png) |
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_8](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_8.png) |
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_9](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_9.png) |
+
+## 15.2 CMOS Inverter VTC
+
 
 <br>
 
