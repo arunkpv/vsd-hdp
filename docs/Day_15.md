@@ -3,6 +3,7 @@
 _________________________________________________________________________________________________________  
 # Day 15: Velocity Saturation and CMOS Inverter VTC
 
+## 15.1 Velocity Saturation
   - The behavior of transistors with very short channel lengths (called short-channel devices) deviates considerably from the resistive and saturated models.
   - The main reason for this deviation is the _**velocity saturation effect**_.
   - We had seen previously that the drift velocity is modelled by:  
@@ -25,6 +26,7 @@ the value of that field. In other words, the carrier mobility is a constant.
       $~~~=v_{sat}~~~~~~~~~~~~~~~~~~~~,for~E > E_c$  
   - For continuity at $E=E_c$, we get: $E_c = \dfrac{2v_{sat}}{\mu}$
 
+### 15.1.1 Drain Current in Resistive/ Linear Region
 **Now the drain current equation in the resistive region can be re-evaluated using:**  
 $I_D = -v_n(x) * Q_i(x) * W$  
 $I_D = -v_n(x) * -C_{ox} [V_{GS} - V(x) -V_{TH}] * W$  
@@ -58,23 +60,23 @@ $~~~~~~~~~~~~where, ~~~~ \kappa(V_{DS}) = \dfrac{1}{1+(V_{DS}/E_c L)}$
   - In the case of long-channel devices (where $L$ is large), or when the value of $V_{DS}$ is small, $\kappa$ approaches 1 and the above equation simplifies to the traditional equation we had derived first using the constant mobility model.
   - For short-channel devices, $\kappa$ is smaller than 1, implying the delivered current is smaller than what would be normally expected.
 
-**Coming to Drain current in saturation region:**  
+### 15.1.2 Drain Current in Saturation Region
+**Coming to the Drain current in saturation region:**  
 $I_D = -v_n(x) * -C_{ox} [V_{GS} - V(x) -V_{TH}] * W ~~~~~~~~ |with ~~ v_n(x)=v_{sat} ~~ and ~~ V(x)=V_{DSAT}$  
 $i.e., \boxed{I_{DSAT} = v_{sat} C_{ox} W [(V_{GS} - V_{TH}) - V_{DSAT}]}$  
 
-$I_{DSAT}$ can also be evaluated by replacing V_{DS}=V_{DSAT} in the linear region equation derived above.  
+$I_{DSAT}$ can also be evaluated by replacing $V_{DS}=V_{DSAT}$ in the linear region equation derived in the previous section.  
 
-$\therefore ~~~~ \boxed{I_{DSAT} = \kappa(V_{DS}) \mu_n C_{ox} \dfrac{W}{L}\left[(V_{GS}-V_{TH})V_{DSAT} - \dfrac{{V_{DSAT}^2}}{2} \right]}$
+$\therefore ~~~~ \boxed{I_{DSAT} = \kappa(V_{DSAT}) \mu_n C_{ox} \dfrac{W}{L}\left[(V_{GS}-V_{TH})V_{DSAT} - \dfrac{{V_{DSAT}^2}}{2} \right]}$
 
 
 Equating these two expressions for $I_{DSAT}$ to solve for $V_{DSAT}$, we get:  
-$I_{DSAT} = v_{sat} C_{ox} W [(V_{GS} - V_{TH}) - V_{DSAT}]$  
-$~~~~~~~~~~~ = \kappa(V_{DS}) \mu_n C_{ox} \dfrac{W}{L}\left[(V_{GS}-V_{TH})V_{DSAT} - \dfrac{{V_{DSAT}^2}}{2} \right]$
+$I_{DSAT} = v_{sat} C_{ox} W [(V_{GS} - V_{TH}) - V_{DSAT}]~= \kappa(V_{DSAT}) \mu_n C_{ox} \dfrac{W}{L}\left[(V_{GS}-V_{TH})V_{DSAT} - \dfrac{{V_{DSAT}^2}}{2} \right]$
 
 $i.e.,$  
-$\dfrac{\mu_n E_c}{2} C_{ox} W [(V_{GS} - V_{TH}) - V_{DSAT}] = \kappa(V_{DS}) \mu_n C_{ox} \dfrac{W}{L}\left[(V_{GS}-V_{TH})V_{DSAT} - \dfrac{{V_{DSAT}^2}}{2} \right]$
+$\dfrac{\mu_n E_c}{2} C_{ox} W [(V_{GS} - V_{TH}) - V_{DSAT}] = \kappa(V_{DSAT}) \mu_n C_{ox} \dfrac{W}{L}\left[(V_{GS}-V_{TH})V_{DSAT} - \dfrac{{V_{DSAT}^2}}{2} \right]$
 
-$E_c L [(V_{GS} - V_{TH}) - V_{DSAT}] = \kappa(V_{DS}) \left[2(V_{GS}-V_{TH})V_{DSAT} - {V_{DSAT}^2} \right]$
+$E_c L [(V_{GS} - V_{TH}) - V_{DSAT}] = \kappa(V_{DSAT}) \left[2(V_{GS}-V_{TH})V_{DSAT} - {V_{DSAT}^2} \right]$
 
 <br>
 

@@ -189,7 +189,7 @@ For the example scenario we were discussing, this translates to:
 #### 14.2.5.1 Pinch-off Region Condition
   - As the value of the Drain-Source voltage is increased further, the assumption that the channel voltage is larger than the threshold all along the channel ceases to hold.
     - In the limiting case, the channel depth at the drain end reduces to zero and the channel is said to be **"pinched-off"**. This happens when $V_{GD}$ is just equal to the threshold voltage, $V_{TH}$.
-    - i.e., $V_{DS}= V_{GS}-V_{TH} ~~~~~~~~ (=V_{OV})$
+    - i.e., $V_{DS}= V_{GS}-V_{TH} ~~~~~~~~ (=V_{OV})$, Gate Over-drive voltage
   - At this point, the induced charge is zero, and the conducting channel disappears or is pinched off starting from the Drain end.
 
 
@@ -210,7 +210,7 @@ For the example scenario we were discussing, this translates to:
     - $V_{DS} = V_{DSsat} = V_{GS}-V_{TH}$
   - Subsequently, the Saturation Drain current:
     - $I_D = I_{Dsat} = {k_n}^\prime \dfrac{W}{L} \left[ (V_{GS}-V_{TH})V_{DSsat} - \dfrac{{V_{DSsat}}^2}{2} \right]$
-    - $\boxed{i.e., I_{Dsat} = \dfrac{1}{2} {k_n}^\prime \dfrac{W}{L} \left[ {(V_{GS}-V_{TH}}^2\right]}$
+    - $\boxed{i.e., I_{Dsat} = \dfrac{1}{2} {k_n}^\prime \dfrac{W}{L} {\left[ {V_{GS}-V_{TH}}^2\right]}$
   
 
   - **Channel pinch-off does not imply channel blockage**
