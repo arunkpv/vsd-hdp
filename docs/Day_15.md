@@ -90,7 +90,12 @@ reaches $(V_{GS} - V_{TH})$. Short-channel devices therefore experience an exten
 | ![CircuitDesignWorkshop_D2_VelocitySaturation_Rabaey_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_VelocitySaturation_Rabaey_2.png) |
 |:---|
 
-
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_1.png) | ![CircuitDesignWorkshop_D2_Velocity_Saturation_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_2.png) |
+|:---:|:---:|
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_3.png) | ![CircuitDesignWorkshop_D2_Velocity_Saturation_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_4.png) |
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_5.png) | ![CircuitDesignWorkshop_D2_Velocity_Saturation_6](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_6.png) |
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_7](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_7.png) | ![CircuitDesignWorkshop_D2_Velocity_Saturation_8](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_8.png) |
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_9](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_9.png) | ![CircuitDesignWorkshop_D2_Velocity_Saturation_10](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_10.png) |
 
 <br>
 
