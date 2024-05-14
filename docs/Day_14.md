@@ -210,7 +210,7 @@ For the example scenario we were discussing, this translates to:
     - $V_{DS} = V_{DSsat} = V_{GS}-V_{TH}$
   - Subsequently, the Saturation Drain current:
     - $I_D = I_{Dsat} = {k_n}^\prime \dfrac{W}{L} \left[ (V_{GS}-V_{TH})V_{DSsat} - \dfrac{{V_{DSsat}}^2}{2} \right]$
-    - $\boxed{i.e., I_{Dsat} = \dfrac{1}{2} {k_n}^\prime \dfrac{W}{L} {\left[ {V_{GS}-V_{TH}}^2\right]}$
+    - $\boxed{i.e., I_{Dsat} = \dfrac{1}{2} {k_n}^\prime \dfrac{W}{L} {\left[ {V_{GS}-V_{TH}}^2\right]}}$
   
 
   - **Channel pinch-off does not imply channel blockage**
