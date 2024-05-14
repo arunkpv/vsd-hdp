@@ -125,6 +125,65 @@ reaches $(V_{GS} - V_{TH})$. Short-channel devices therefore experience an exten
 | ![CircuitDesignWorkshop_D2_Velocity_Saturation_8](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_8.png) |
 | ![CircuitDesignWorkshop_D2_Velocity_Saturation_9](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_9.png) |
 
+### 15.1.4 Lab: Velocity Saturation - tsmc 0.25um
+SPICE File:
+```
+*** Netlist Description ***
+M1 vdd n1 0 0 nmos W=1.8u L=1.2u
+R1 in n1 55
+Vdd vdd 0 2.5
+Vin in 0 2.5
+
+*** .include model ***
+.lib "tsmc_025um_model.mod" cmos_models
+
+*** Simulation Commands ***
+.op
+.dc Vdd 0 2.5 0.1 Vin 0 2.5 0.5
+
+.control
+run
+display
+setplot dc1
+plot -vdd#branch
+.endc
+
+.end
+```
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_6](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_6.png) |
+|:---:|
+
+### 15.1.5 Lab: Velocity Saturation - sky130 (W=0.39um, L=0.15um)
+SPICE File: `day2_nfet_idvds_L015_W039.spice`
+```
+*** Model Description ***
+.param temp=27
+
+*** Including sky130 library files ***
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+*** Netlist Description ***
+
+XM1 Vdd n1 0 0 sky130_fd_pr__nfet_01v8 w=0.39 l=0.15
+R1 n1 in 55
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+*** Simulation commands ***
+.op
+.dc Vdd 0 1.8 0.1 Vin 0 1.8 0.2
+
+.control
+run
+display
+setplot dc1
+.endc
+
+.end
+```
+
+### 15.1.6 Lab: Velocity Saturation - 
+
 ## 15.2 CMOS Inverter VTC
 
 

@@ -251,6 +251,35 @@ For the example scenario we were discussing, this translates to:
 |:---|
 | ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_5.png) |
 
+### 14.2.6 Lab: ID vs. VDS for different VGS - sky130 NMOS (W=5um, L=2um)
+SPICE File: `day1_nfet_idvds_L2_W5.spice`
+```
+*** Model Description ***
+.param temp=27
+
+*** Including sky130 library files ***
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+*** Netlist Description ***
+XM1 vdd n1 0 0 sky130_fd_pr__nfet_01v8 w=5 l=2
+R1 n1 in 55
+Vdd vdd 0 1.8
+Vin in 0 1.8
+
+*** Simulation Commands ***
+.op
+.dc Vdd 0 1.8 0.1 Vin 0 1.8 0.2
+
+.control
+run
+display
+setplot dc1
+.endc
+
+.end
+```
+| **Output:** <br>  ![CircuitDesignWorkshop_D1_Id_vs_VDS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Id_vs_VDS.png) |
+|:---|
 
 <br>
 
