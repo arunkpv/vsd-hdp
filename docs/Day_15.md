@@ -177,8 +177,8 @@ plot -vdd#branch
 ```
 
 
-| **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_tsmc_0.25u](/docs/images/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_tsmc_0.25u.png) |
-|:---:|
+| **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_tsmc_0.25u](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_tsmc_0.25u.png) |
+|:---|
 
 ### 15.1.5 Lab: Velocity Saturation - sky130 (W=0.39um, L=0.15um)
 SPICE File: `day2_nfet_idvds_L015_W039.spice`
@@ -209,8 +209,8 @@ setplot dc1
 .end
 ```
 
-| **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_sky130_Short_Channel](/docs/images/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_sky130_Short_Channel.png) |
-|:---:|
+| **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_sky130_Short_Channel](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_sky130_Short_Channel.png) |
+|:---|
 
 ### 15.1.6 Lab: Velocity Saturation - Id vs. Vgs - sky130 NMOS(5u/2u vs. 0.39u/0.15u)
 ```
@@ -238,11 +238,38 @@ setplot dc1
 
 .end
 ```
-| **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vgs_sky130_LongvsShortChannel](/docs/images/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vgs_sky130_LongvsShortChannel.png) |
-|:---:|
+| **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vgs_sky130_LongvsShortChannel](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vgs_sky130_LongvsShortChannel.png) |
+|:---|
 
 ## 15.2 CMOS Inverter VTC
+  - The Voltage-Transfer Characteristic (VTC) can be graphically derived by superimposing the current characteristics of the NMOS and the PMOS devices -- i.e., their respective _**load-line plots**_.
+  - It requires that the I-V curves of the NMOS and PMOS devices are transformed onto a common coordinate set.
 
+
+  - To plot the VTC or the Input-Output transfer characteristics ($V_{out}$ vs. $V_{in}$) of the CMOS Inverter, let us choose the input voltage $V_{in}, the output voltage $V_{out}$ and the NMOS drain current $I_{DSn}$ as the independent variables.
+
+| ![CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_1.png) |
+|:---|
+
+  - The PMOS I-V relations can be translated into this variable space by the following relations:
+    - $I_{DSp} ~=~ -I_{DSn}$
+    - $V_{GSn} ~=~ V_{in}~~~~|~~~~ V_{GSp} ~=~ V_{in}-V_{DD}$
+    - $V_{DSn} ~=~ V_{out}~~~|~~~~ V_{DSp} ~=~ V_{out}-V_{DD}$
+  - Now the input voltage, $V_{in}$ needs to be swept from 0 to $V_{DD}$ and find out the corresponding values of $V_{out}$.
+
+  - The following transformations adjust the original PMOS I-V curves to the chosen common coordinate set {$V_{in}$, $V_{out}$ and $I_{Dsn}$}.
+
+  | Transform | Comments |
+  |:---|:---|
+  | $I_{DSp} ~\longrightarrow~ -I_{DSp}$ | Reflection about x-axis of $I_{DSp} ~vs.~ V_{DSp}$ curve. |
+  | $V_{GSp} ~\longrightarrow~ V_{in}$ | Variable change from $V_{GSp}$ to $V_{in}$.<br>  where, $V_{in} = V_{GSp}+V_{DD}$ |
+  | $V_{DSp} ~\longrightarrow~ V_{out}$ | Translation along the x-axis.<br>  $V_{out} = V_{DSp}+V_{DD}$ |
+
+| ![CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_2.png) |
+|:---|
+
+| ![CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_3.png) |
+|:---|
 
 <br>
 
