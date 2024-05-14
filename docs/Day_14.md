@@ -278,7 +278,7 @@ setplot dc1
 
 .end
 ```
-| **Output:** <br>  ![CircuitDesignWorkshop_D1_Id_vs_VDS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Id_vs_VDS.png) |
+| **Output:** <br>  ![CircuitDesignWorkshop_D1_sky130_Id_vs_VDS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_sky130_Id_vs_VDS.png) |
 |:---|
 
 <br>
