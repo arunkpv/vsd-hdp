@@ -254,13 +254,12 @@ setplot dc1
   - The PMOS I-V relations can be translated into this variable space by the following relations:
 
   | KCL, KVL Constraints |
-  |:---:|
+  |:---|
   | $I_{DSp} = -I_{DSn}$ |
   | $V_{GSn} = V_{in}; ~~~~~~~~ V_{GSp} = V_{in}-V_{DD}$ |
   | $V_{DSn} = V_{out}; ~~~~~~~ V_{DSp} = V_{out}-V_{DD}$ |
 
   - Now the input voltage, $V_{in}$ needs to be swept from 0 to $V_{DD}$ and find out the corresponding values of $V_{out}$.
-
   - The following transformations adjust the original PMOS I-V curves to the chosen common coordinate set {$V_{in}$, $V_{out}$ and $I_{Dsn}$}.
 
   | Transform | Comments |
@@ -271,6 +270,9 @@ setplot dc1
 
 | ![CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_2.png) |
 |:---|
+
+  - Now, the PMOS and NMOS load lines are overlaid on top of each other.
+  - For a DC operating points to be valid, the currents through the NMOS and PMOS devices must be equal. Graphically, this means that the DC operating points must be located at the intersection of corresponding load lines.
 
 | ![CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_3.png) |
 |:---|
