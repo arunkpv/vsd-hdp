@@ -125,8 +125,9 @@ reaches $(V_{GS} - V_{TH})$. Short-channel devices therefore experience an exten
 | ![CircuitDesignWorkshop_D2_Velocity_Saturation_8](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_8.png) |
 | ![CircuitDesignWorkshop_D2_Velocity_Saturation_9](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_9.png) |
 
-### 15.1.4 Lab: Velocity Saturation - tsmc 0.25um
-SPICE File: `nmos_chara_W1.8u_L1.2u.spice`
+### 15.1.4 Lab: Velocity Saturation - ID vs. VDS - tsmc 0.25um
+<details> <summary> SPICE File: nmos_chara_W1.8u_L1.2u.spice </summary>
+
 ```
 *** Netlist Description ***
 M1 vdd n1 0 0 nmos W=1.8u L=1.2u
@@ -150,8 +151,10 @@ plot -vdd#branch
 
 .end
 ```
+</details>
 
-SPICE File: `nmos_chara_W0.375u_L0.25u.spice`
+<details> <summary> SPICE File: nmos_chara_W0.375u_L0.25u.spice </summary>
+
 ```
 *** Netlist Description ***
 M1 vdd n1 0 0 nmos W=0.375u L=0.25u
@@ -175,13 +178,14 @@ plot -vdd#branch
 
 .end
 ```
-
+</details>
 
 | **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_tsmc_0.25u](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_tsmc_0.25u.png) |
 |:---|
 
-### 15.1.5 Lab: Velocity Saturation - sky130 (W=0.39um, L=0.15um)
-SPICE File: `day2_nfet_idvds_L015_W039.spice`
+### 15.1.5 Lab: Velocity Saturation - ID vs. VDS - sky130 (W=0.39um, L=0.15um)
+<details> <summary> SPICE File: day2_nfet_idvds_L015_W039.spice </summary>
+
 ```
 *** Model Description ***
 .param temp=27
@@ -208,11 +212,14 @@ setplot dc1
 
 .end
 ```
+</details>
 
 | **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_sky130_Short_Channel](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_sky130_Short_Channel.png) |
 |:---|
 
 ### 15.1.6 Lab: Velocity Saturation - Id vs. Vgs - sky130 NMOS(5u/2u vs. 0.39u/0.15u)
+<details> <summary> SPICE File: day2_nfet_idvgs_L015_W039.spice </summary>
+
 ```
 *** Model Description ***
 .param temp=27
@@ -238,6 +245,8 @@ setplot dc1
 
 .end
 ```
+</details>
+
 | **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vgs_sky130_LongvsShortChannel](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vgs_sky130_LongvsShortChannel.png) |
 |:---|
 
