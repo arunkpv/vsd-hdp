@@ -252,18 +252,21 @@ setplot dc1
 |:---|
 
   - The PMOS I-V relations can be translated into this variable space by the following relations:
-    - $I_{DSp} ~=~ -I_{DSn}$
-    - $V_{GSn} ~=~ V_{in} ~~~~ | ~~~~ V_{GSp} ~=~ V_{in}-V_{DD}$
-    - $V_{DSn} ~=~ V_{out} ~~~ | ~~~~ V_{DSp} ~=~ V_{out}-V_{DD}$
+
+  | $I_{DSp} ~=~ -I_{DSn}$ |
+  |:---:|
+  | $V_{GSn} ~=~ V_{in}; ~~~~~~~~ V_{GSp} ~=~ V_{in}-V_{DD}$ |
+  | $V_{DSn} ~=~ V_{out}; ~~~~~~~ V_{DSp} ~=~ V_{out}-V_{DD}$ |
+
   - Now the input voltage, $V_{in}$ needs to be swept from 0 to $V_{DD}$ and find out the corresponding values of $V_{out}$.
 
   - The following transformations adjust the original PMOS I-V curves to the chosen common coordinate set {$V_{in}$, $V_{out}$ and $I_{Dsn}$}.
 
   | Transform | Comments |
   |:---|:---|
-  | $I_{DSp} ~\longrightarrow~ -I_{DSp}$ | Reflection about x-axis of $I_{DSp} ~vs.~ V_{DSp}$ curve. |
-  | $V_{GSp} ~\longrightarrow~ V_{in}$ | Variable change from $V_{GSp}$ to $V_{in}$.<br>  where, $V_{in} = V_{GSp}+V_{DD}$ |
-  | $V_{DSp} ~\longrightarrow~ V_{out}$ | Translation along the x-axis.<br>  $V_{out} = V_{DSp}+V_{DD}$ |
+  | $I_{DSp} ~ \longrightarrow ~ -I_{DSp}$ | Reflection about x-axis of $I_{DSp} ~vs.~ V_{DSp}$ curve. |
+  | $V_{GSp} ~ \longrightarrow ~ V_{in}$ | Variable change from $V_{GSp}$ to $V_{in}$.<br>  where, $V_{in} = V_{GSp}+V_{DD}$ |
+  | $V_{DSp} ~ \longrightarrow ~ V_{out}$ | Translation along the x-axis.<br>  $V_{out} = V_{DSp}+V_{DD}$ |
 
 | ![CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_2.png) |
 |:---|
