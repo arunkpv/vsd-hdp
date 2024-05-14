@@ -253,8 +253,8 @@ setplot dc1
 
   - The PMOS I-V relations can be translated into this variable space by the following relations:
     - $I_{DSp} ~=~ -I_{DSn}$
-    - $V_{GSn} ~=~ V_{in}~~~~|~~~~ V_{GSp} ~=~ V_{in}-V_{DD}$
-    - $V_{DSn} ~=~ V_{out}~~~|~~~~ V_{DSp} ~=~ V_{out}-V_{DD}$
+    - $V_{GSn} ~=~ V_{in} ~~~~ | ~~~~ V_{GSp} ~=~ V_{in}-V_{DD}$
+    - $V_{DSn} ~=~ V_{out} ~~~ | ~~~~ V_{DSp} ~=~ V_{out}-V_{DD}$
   - Now the input voltage, $V_{in}$ needs to be swept from 0 to $V_{DD}$ and find out the corresponding values of $V_{out}$.
 
   - The following transformations adjust the original PMOS I-V curves to the chosen common coordinate set {$V_{in}$, $V_{out}$ and $I_{Dsn}$}.
