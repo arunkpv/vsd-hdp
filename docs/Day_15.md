@@ -287,7 +287,7 @@ setplot dc1
 | ![CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_3.png) | ![CircuitDesignWorkshop_D4_CMOS_Inverter_VTC_Weste_Harris_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_VTC_Weste_Harris_1.png) |
 |:---|:---|
 
-**Relationships between voltages for the three regions of operation of a CMOS inverter:**  
+**Relationships between voltages for the three regions of operation of PMOS, NMOS in a CMOS inverter:**  
 | | Cutoff | Linear | Saturation |
 |:---|:---|:---|:---|
 | **NMOS** | $V_{GSn} < V_{Tn}$ <br>  $V_{in} < V_{Tn}$ <br>  <br>  <br>  <br>  | $V_{GSn} > V_{Tn}$ <br>  $V_{in} > V_{Tn}$ <br>  <br>  $V_{DSn} < (V_{GSn}-V_{Tn})$ <br>  $V_{out} < (V_{in}-V_{Tn})$ | $V_{GSn} > V_{Tn}$ <br>  $V_{in} > V_{Tn}$ <br>  <br>  $V_{DSn} > (V_{GSn}-V_{Tn})$ <br>  $V_{out} > (V_{in}-V_{Tn})$ |

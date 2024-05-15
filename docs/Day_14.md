@@ -252,7 +252,8 @@ For the example scenario we were discussing, this translates to:
 | ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_5.png) |
 
 ### 14.2.6 Lab: ID vs. VDS for different VGS - sky130 NMOS (W=5um, L=2um)
-SPICE File: `day1_nfet_idvds_L2_W5.spice`
+<details> <summary> SPICE File: day1_nfet_idvds_L2_W5.spice </summary>
+
 ```
 *** Model Description ***
 .param temp=27
@@ -278,6 +279,8 @@ setplot dc1
 
 .end
 ```
+</details>
+
 | **Output:** <br>  ![CircuitDesignWorkshop_D1_sky130_Id_vs_VDS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_sky130_Id_vs_VDS.png) |
 |:---|
 
