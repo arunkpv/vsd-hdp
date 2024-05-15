@@ -295,6 +295,7 @@ setplot dc1
 |:---|:---|:---|:---|
 | **NMOS** | $V_{GSn} < V_{Tn}$ <br>  $V_{in} < V_{Tn}$ <br>  <br>  <br>  | $V_{GSn} > V_{Tn}$ <br>  $V_{in} > V_{Tn}$ <br>  $V_{DSn} < (V_{GSn}-V_{Tn})$ <br>  $V_{out} < (V_{in}-V_{Tn})$ | $V_{GSn} > V_{Tn}$ <br>  $V_{in} > V_{Tn}$ <br>  $V_{DSn} > (V_{GSn}-V_{Tn})$ <br>  $V_{out} > (V_{in}-V_{Tn})$ |
 | **PMOS** | $V_{GSp} > V_{Tp}$ <br>  $V_{in} > V_{Tp}+V_{DD}$ <br>  <br>  <br>  | $V_{GSp} < V_{Tp}$ <br>  $V_{in} < V_{Tp}+V_{DD}$ <br>  $V_{DSp} > (V_{GSp}-V_{Tp})$ <br>  $V_{out} > (V_{in}-V_{Tp})$ | $V_{GSp} < V_{Tp}$ <br>  $V_{in} < V_{Tp}+V_{DD}$ <br>  $V_{DSp} < (V_{GSp}-V_{Tp})$ <br>  $V_{out} < (V_{in}-V_{Tp})$ |
+
 **Note:** $V_{Tp}$ is negative.  
 
 
@@ -307,7 +308,7 @@ setplot dc1
 | B | $V_{Tn} \le V_{in} < (V_{DD}/2)$ | Linear | Saturation | $V_{out} > V_{DD}/2$ |
 | C | $Vin = V_{DD}/2$ | Saturation | Saturation | $V_{out}$ drops sharply |
 | D | $(V_{DD}/2) < V_{in} \le (V_{DD}-\mid V_{Tp} \mid)$ | Saturation | Linear | $V_{out} < V_{DD}/2$ |
-| E | $ V_{in} > (V_{DD}-\mid V_{Tp} \mid)$ | Cutoff | Linear | $V_{out} = 0$ |
+| E | $V_{in} > (V_{DD}-\mid V_{Tp} \mid)$ | Cutoff | Linear | $V_{out} = 0$ |
 
 <br>
 
