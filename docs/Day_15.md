@@ -183,7 +183,7 @@ plot -vdd#branch
 | **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_tsmc_0.25u](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_tsmc_0.25u.png) |
 |:---|
 
-### 15.1.5 Lab: Velocity Saturation - ID vs. VDS - sky130 (W=0.39um, L=0.15um)
+### 15.1.5 Lab: Velocity Saturation - sky130 (W=0.39um, L=0.15um)
 <details> <summary> SPICE File: day2_nfet_idvds_L015_W039.spice </summary>
 
 ```
@@ -217,7 +217,7 @@ setplot dc1
 | **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_sky130_Short_Channel](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_sky130_Short_Channel.png) |
 |:---|
 
-### 15.1.6 Lab: Velocity Saturation - Id vs. Vgs - sky130 NMOS(5u/2u vs. 0.39u/0.15u)
+### 15.1.6 Lab: Velocity Saturation - Id vs. Vgs - sky130 NMOS (5u/2u vs. 0.39u/0.15u)
 <details> <summary> SPICE File: day2_nfet_idvgs_L015_W039.spice </summary>
 
 ```
@@ -306,6 +306,8 @@ _**Note:**_ $V_{Tp}$ is negative.
 | C | $Vin = V_{DD}/2$ | Saturation | Saturation | $V_{out}$ drops sharply |
 | D | $(V_{DD}/2) < V_{in} \le V_{DD}-\mid V_{Tp} \mid$ | Saturation | Linear | $V_{out} < V_{DD}/2$ |
 | E | $V_{in} > V_{DD}-\mid V_{Tp} \mid$ | Cutoff | Linear | $V_{out} = 0$ |
+
+  - Almost all the operating points are located either at the high or low output levels. The VTC of the inverter hence exhibits a _**very narrow transition zone**_ (resulting from the high gain during the switching transient).
 
 <br>
 
