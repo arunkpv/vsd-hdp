@@ -273,7 +273,7 @@ setplot dc1
 
   | Transform | Comments |
   |:---|:---|
-  | $I_{DSp} ~ \longrightarrow ~ -I_{DSp}$ | Reflection about x-axis of $I_{DSp} ~vs.~ V_{DSp}$ curve. |
+  | $I_{DSp} ~ \longrightarrow ~ I_{DSn}$ | Reflection about x-axis of $I_{DSp} ~ vs. ~ V_{DSp}$ curve.<br>  where, $I_{DSn} = -I_{DSp}$ |
   | $V_{GSp} ~ \longrightarrow ~ V_{in}$ | Variable change from $V_{GSp}$ to $V_{in}$.<br>  where, $V_{in} = V_{GSp}+V_{DD}$ |
   | $V_{DSp} ~ \longrightarrow ~ V_{out}$ | Translation along the x-axis.<br>  $V_{out} = V_{DSp}+V_{DD}$ |
 
@@ -282,9 +282,32 @@ setplot dc1
 
   - Now, the PMOS and NMOS load lines are overlaid on top of each other.
   - For a DC operating points to be valid, the currents through the NMOS and PMOS devices must be equal. Graphically, this means that the DC operating points must be located at the intersection of corresponding load lines.
+  - Find the set of all $(V_{in}, V_{out})$ pairs corresponding to the points of intersection and plot them to generate the VTC of the CMOS Inverter circuit.
 
 | ![CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_3.png) |
 |:---|
+
+| ![CircuitDesignWorkshop_D4_CMOS_Inverter_VTC_Weste_Harris_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_VTC_Weste_Harris_1.png) |
+|:---|
+
+**Relationships between voltages for the three regions of operation of a CMOS inverter:**  
+| | Cutoff | Linear | Saturation |
+|:---|:---|:---|:---|
+| **NMOS** | $V_{GSn} < V_{Tn}$ <br>  $V_{in} < V_{Tn}$ <br>  <br>  <br>  | $V_{GSn} > V_{Tn}$ <br>  $V_{in} > V_{Tn}$ <br>  $V_{DSn} < (V_{GSn}-V_{Tn})$ <br>  $V_{out} < (V_{in}-V_{Tn})$ | $V_{GSn} > V_{Tn}$ <br>  $V_{in} > V_{Tn}$ <br>  $V_{DSn} > (V_{GSn}-V_{Tn})$ <br>  $V_{out} > (V_{in}-V_{Tn})$ |
+| **PMOS** | $V_{GSp} > V_{Tp}$ <br>  $V_{in} > V_{Tp}+V_{DD}$ <br>  <br>  <br>  | $V_{GSp} < V_{Tp}$ <br>  $V_{in} < V_{Tp}+V_{DD}$ <br>  $V_{DSp} > (V_{GSp}-V_{Tp})$ <br>  $V_{out} > (V_{in}-V_{Tp})$ | $V_{GSp} < V_{Tp}$ <br>  $V_{in} < V_{Tp}+V_{DD}$ <br>  $V_{DSp} < (V_{GSp}-V_{Tp})$ <br>  $V_{out} < (V_{in}-V_{Tp})$ |
+**Note:** $V_{Tp}$ is negative.  
+
+
+  - The operation of the CMOS inverter can be divided into five regions - A, B, C, D, E - indicated in the above figure.
+   - For simplicity, let us assume $V_{Tp} = –V_{Tn}$ and that the PMOS transistor is ~2–3 times as wide as the NMOS transistor so that $k_n = k_p$.
+
+| Region| Condition | PMOS | NMOS | Output |
+|:---:|:---|:---|:---|:---|
+| A | $0 \le V_{in} < V_{Tn}$ | Linear | Cutoff | $V_{out} = V_{DD}$ |
+| B | $V_{Tn} \le V_{in} < (V_{DD}/2)$ | Linear | Saturation | $V_{out} > V_{DD}/2$ |
+| C | $Vin = V_{DD}/2$ | Saturation | Saturation | $V_{out}$ drops sharply |
+| D | $(V_{DD}/2) < V_{in} \le (V_{DD}-\mid V_{Tp} \mid)$ | Saturation | Linear | $V_{out} < V_{DD}/2$ |
+| E | $ V_{in} > (V_{DD}-\mid V_{Tp} \mid)$ | Cutoff | Linear | $V_{out} = 0$ |
 
 <br>
 
