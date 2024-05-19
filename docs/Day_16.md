@@ -3,7 +3,7 @@
 _________________________________________________________________________________________________________  
 # Day 16: CMOS Switching Threshold and Dynamic Simulations
 
-## 16.1 CMOS Inverter VTC contd.
+## 16.1 CMOS Inverter VTC (contd.)
 ### 16.1.1 Lab: CMOS Inverter VTC - sky130 $(W_P/W_N = 0.84u/0.36u, L=0.15u)$
 
 <details> <summary> SPICE File: day3_inv_vtc_Wp084_Wn036.spice </summary>
@@ -84,6 +84,19 @@ meas tran t_pHL TRIG v(in) VAL=tp_thr RISE=2 TARG v(out) VAL=tp_thr FALL=2
 
 | **Output:** <br>  ![CircuitDesignWorkshop_D3_sky130_CMOS_Inv_Prop_Delay](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_sky130_CMOS_Inv_Prop_Delay.png) |
 |:---|
+
+## 16.2 Evaluating the Robustness of the CMOS Inverter - Static Behaviour
+### 16.2.1  Switching Threshold, $V_M$
+  - The switching threshold, $V_M$, is defined as the point where $V_{in} = V_{out}$.
+  - Graphically it can be found from the intersection of the VTC with the $V_{in} = V_{out}$ line.
+  - In the region around $V_M$, both PMOS and NMOS are in saturation, since $V_{DS} = V_{GS}$.
+  - An analytical expression for $V_M$ can be obtained by equating the currents through the PMOS and NMOS transistors, $I_{DSn}=I_{DSp}$.
+  - Depending on the supply voltage, $V_{DD}$ and the Channel length, $L$, of the devices, there can be two cases:
+    1) Devices are Velocity Saturated
+    2) Velocity Saturation does not occur
+
+#### 16.2.1.1 **Case 1:** Devices are velocity saturated - $V_{DSAT}<(V_M-V_{TH})$
+#### 16.2.1.2 **Case 1:** Devices are velocity saturated - $V_{DSAT}<(V_M-V_{TH})$
 
 <br>
 
