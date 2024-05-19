@@ -130,6 +130,8 @@ $~~~~~~~~~~~~~~~~ \boxed{V_M \approx \dfrac{rV_{DD}}{1+r}}$
   - For comparable values for low and high noise margins, $V_M$ is desired to be located around the centre of the available voltage swing (or at $V_{DD}/2$ as CMOS logic has rail-to-rail swing). This implies:  
 $~~~~~~~~ r \approx 1$  
 $~~~~~~~~ i.e., k_p V_{DSATp} = k_n V_{DSATn}$  
+$\boxed{(W/L) = (W/L)_n}$  
+
 $\boxed{(W/L)_p = (W/L)_n * \dfrac{{k_n}^\prime V_{DSATn}}{{k_p}^\prime V_{DSATp}}}$  
 
   - To move the $V_M$ upwards, a larger value of $r$ is needed, which in other words is to make the PMOS wider.
