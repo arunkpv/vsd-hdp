@@ -95,8 +95,35 @@ meas tran t_pHL TRIG v(in) VAL=tp_thr RISE=2 TARG v(out) VAL=tp_thr FALL=2
     1) Devices are Velocity Saturated
     2) Velocity Saturation does not occur
 
-#### 16.2.1.1 **Case 1:** Devices are velocity saturated - $V_{DSAT}<(V_M-V_{TH})$
-#### 16.2.1.2 **Case 1:** Devices are velocity saturated - $V_{DSAT}<(V_M-V_{TH})$
+_**Note:**_ For the following derivations, we ignore the effects of Channel Length Modulation for simplicity.  
+
+**<ins>Case 1:</ins> Devices are Velocity-Saturated - $V_{DSAT}<(V_M-V_{TH})$**  
+  - This case is applicable to short-channel devices or when the supply voltage is high so that the devices are in velocity saturation.
+
+$I_{DSn} = -I_{DSp}$  
+$i.e.,$  
+$~~~~ I_{DSn} + I_{DSp} = 0$  
+
+$k_n \left[ (V_M - V_{THn})V_{DSATn} - \dfrac{V_{DSATn}^2}{2} \right] + k_p \left[ (V_M - V_{DD} - V_{THp})V_{DSATp} - \dfrac{V_{DSATp}^2}{2} \right] = 0$
+
+$k_n V_{DSATn} \left[ V_M - V_{THn} - \dfrac{V_{DSATn}}{2} \right] + k_p V_{DSATp} \left[ V_M - V_{DD} - V_{THp} - \dfrac{V_{DSATp}}{2} \right] = 0$
+
+<br>
+
+$Solving for V_M:$  
+
+$\boxed{V_M = \dfrac{\left[ V_{THn}+\dfrac{V_{DSATn}}{2} \right] + r \left[ V_{DD}+V_{THp}+\dfrac{V_{DSATp}}{2} \right]}{1+r}},$  
+  
+$where, ~ \boxed{r=\dfrac{k_p V_{DSATp}}{k_n V_{DSATn}} = \dfrac{\upsilon_{satp} W_p}{\upsilon_{satn} W_n}}$ _(assuming for identical oxide thickness for PMOS and NMOS transistors)_  
+
+  - Now, for large values of $V_{DD}$ compared to the threshold voltages $(V_{THp}, V_{THn})$ and saturation voltages $(V_{DSATp}, V_{DSATn})$, the above equation can be approximated to:
+
+$~~~~~~~~~~~~~~~~ \boxed{V_M = \dfrac{rV_{DD}}{1+r}}$  
+
+
+**<ins>Case 2:</ins> Velocity Saturation does not occur - $V_{DSAT}>(V_M-V_{TH})$**  
+  - 
+
 
 <br>
 
