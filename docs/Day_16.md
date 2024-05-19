@@ -132,7 +132,7 @@ $~~~~~~~~~~~~~~~~ \boxed{V_M \approx \dfrac{rV_{DD}}{1+r}}$
 $~~~~~~~~ r \approx 1$  
 $~~~~~~~~ i.e., k_p V_{DSATp} = k_n V_{DSATn}$  
 
-$\boxed{(W/L)_p = (W/L)_n \times \dfrac{k_n^\prime V_{DSATn}}{k_p^\prime V_{DSATp}}}$  
+$\boxed{{(W/L)}_p = {(W/L)}_n \times \dfrac{k_n^\prime V_{DSATn}}{k_p^\prime V_{DSATp}}}$  
 
   - To move the $V_M$ upwards, a larger value of $r$ is needed, which in other words is to make the PMOS wider.
   - On the other hand, to move the $V_M$ downwards, the NMOS must be made wider.
