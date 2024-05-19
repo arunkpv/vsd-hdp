@@ -130,7 +130,7 @@ $~~~~~~~~~~~~~~~~ \boxed{V_M \approx \dfrac{rV_{DD}}{1+r}}$
   - For comparable values for low and high noise margins, $V_M$ is desired to be located around the centre of the available voltage swing (or at $V_{DD}/2$ as CMOS logic has rail-to-rail swing). This implies:  
 $~~~~~~~~ r \approx 1$  
 $~~~~~~~~ i.e., k_p V_{DSATp} = k_n V_{DSATn}$  
-$\boxed{(W/L) = (W/L) * \dfrac{k_n V_{DSATn}}{k_p V_{DSATp}}}$  
+$\boxed{{(W/L)}_p = {(W/L)}_n * \dfrac{k_n V_{DSATn}}{k_p V_{DSATp}}}$  
 
 $\boxed{(W/L)_p = (W/L)_n * \dfrac{{k_n}^\prime V_{DSATn}}{{k_p}^\prime V_{DSATp}}}$  
 
