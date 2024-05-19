@@ -34,6 +34,11 @@ meas dc vil find V(in) when dVout=-1 cross=1
 meas dc vih find V(in) when dVout=-1 cross=2
 meas dc voh find V(out) when dVout=-1 cross=1
 meas dc vol find V(out) when dVout=-1 cross=2
+
+let NML = vil - vol
+let NMH = voh - vih
+print NML
+print NMH
 .endc
 
 .end
