@@ -97,8 +97,14 @@ meas tran t_pHL TRIG v(in) VAL=tp_thr RISE=2 TARG v(out) VAL=tp_thr FALL=2
 
 _**Note:**_ For the following derivations, we ignore the effects of Channel Length Modulation for simplicity.  
 
+
 **<ins>Case 1:</ins> Devices are Velocity-Saturated - $V_{DSAT}<(V_M-V_{TH})$**  
   - This case is applicable to short-channel devices or when the supply voltage is high so that the devices are in velocity saturation.
+
+| ![CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_1.png) |
+|:---:|
+| ![CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_2.png) |
+| ![CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_3.png) |
 
 $I_{DSn} = -I_{DSp}$  
 $i.e.,$  
@@ -112,18 +118,38 @@ $k_n V_{DSATn} \left[ V_M - V_{THn} - \dfrac{V_{DSATn}}{2} \right] + k_p V_{DSAT
 
 $Solving for V_M:$  
 
-$\boxed{V_M = \dfrac{\left[ V_{THn}+\dfrac{V_{DSATn}}{2} \right] + r \left[ V_{DD}+V_{THp}+\dfrac{V_{DSATp}}{2} \right]}{1+r}},$  
+$\boxed{V_M = \dfrac{\left( V_{THn}+\dfrac{V_{DSATn}}{2} \right) + r \left( V_{DD}+V_{THp}+\dfrac{V_{DSATp}}{2} \right)}{1+r}},$  
   
 $where, ~ \boxed{r=\dfrac{k_p V_{DSATp}}{k_n V_{DSATn}} = \dfrac{\upsilon_{satp} W_p}{\upsilon_{satn} W_n}}$ _(assuming for identical oxide thickness for PMOS and NMOS transistors)_  
 
   - Now, for large values of $V_{DD}$ compared to the threshold voltages $(V_{THp}, V_{THn})$ and saturation voltages $(V_{DSATp}, V_{DSATn})$, the above equation can be approximated to:
 
-$~~~~~~~~~~~~~~~~ \boxed{V_M = \dfrac{rV_{DD}}{1+r}}$  
+$~~~~~~~~~~~~~~~~ \boxed{V_M \approx \dfrac{rV_{DD}}{1+r}}$  
+
+  - The switching threshold is determined by the ratio, $r$ - which is a measure of the relative drive strengths of the PMOS and NMOS transistors.
+  - For comparable values for low and high noise margins, $V_M$ is desired to be located around the centre of the available voltage swing (or at $V_{DD}/2$ as CMOS logic has rail-to-rail swing). This implies:  
+$~~~~~~~~ r \approx 1$  
+$~~~~~~~~ i.e., k_p V_{DSATp} = k_n V_{DSATn}$  
+$~~~~~~~~ \boxed{(W/L)_p = (W/L)_n \times \dfrac{k_n^\prime ~ V_{DSATn}}{k_p^\prime ~ V_{DSATp}}}$  
+  - To move the $V_M$ upwards, a larger value of $r$ is needed, which in other words is to make the PMOS wider.
+  - On the other hand, to move the $V_M$ downwards, the NMOS must be made wider.
+
+  - If a target design value for $V_M$ is desired, we can derive the required ratio of PMOS vs. NMOS transistor sizes in a similar manner:
+
+$~~~~~~~~ \boxed{\dfrac{(W/L)_p}{(W/L)_n} = \dfrac{k_n^\prime V_{DSATn} \left[ V_M - V_{THn} - \dfrac{V_{DSATn}}{2} \right]}{k_p^\prime V_{DSATp} \left[ V_{DD} - V_M + V_{THp} + \dfrac{V_{DSATp}}{2}\right]}}$  
+$~~~~~~~~ Note:$ _Make sure that the assumption that both devices are velocity-saturated still holds for the chosen operation point._
 
 
 **<ins>Case 2:</ins> Velocity Saturation does not occur - $V_{DSAT}>(V_M-V_{TH})$**  
-  - 
+  - This case is applicable for long-channel devices or when the supply voltages are low, that the devices are not velocity saturated.
+  - Using a similar analysis done in Case 1 above, we derive the switching threshold, $V_M$ to be:
 
+$~~~~~~~~ \boxed{V_M = \dfrac{V_{THn} + r(V_{DD} + V_{THp})}{1+r}}, ~~~~ where ~ r = \sqrt{\dfrac{-k_p}{k_n}}$  
+
+  - The switching threshold, $V_M$ **is relatively insensitive to variations in the device ratio**.
+
+| ![CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_4.png) |
+|:---:|
 
 <br>
 
