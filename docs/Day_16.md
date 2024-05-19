@@ -147,6 +147,7 @@ $~~~~~~~~ Note:$ _Make sure that the assumption that both devices are velocity-s
 $~~~~~~~~ \boxed{V_M = \dfrac{V_{THn} + r(V_{DD} + V_{THp})}{1+r}}, ~~~~ where ~ r = \sqrt{\dfrac{-k_p}{k_n}}$  
 
   - The switching threshold, $V_M$ **is relatively insensitive to variations in the device ratio**.
+    - Small variations of the ratio (e.g., 3 or 2.5) do not disturb the transfer characteristic that much.
 
 | ![CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_4.png) |
 |:---:|
