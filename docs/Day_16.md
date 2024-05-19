@@ -37,6 +37,11 @@ meas dc Vm find V(out) when V(out)=V(in)
 ```
 </details>
 
+| **Output:** <br>  ![CircuitDesignWorkshop_D3_sky130_CMOS_Inv_VTC](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_sky130_CMOS_Inv_VTC.png) |
+|:---|
+
+
+
 ### 16.1.2 Lab: CMOS Inverter Transition time - sky130 $(W_P/W_N = 0.84u/0.36u, L=0.15u)$
 <details> <summary> SPICE File: day3_inv_tran_Wp084_Wn036.spice </summary>
 
@@ -59,11 +64,26 @@ Vin in 0 PULSE(0V 1.8V 0 0.1ns 0.1ns 2ns 4ns)
 
 .control
 run
+
+let vdd=1.8
+let slew_low_rise_thr=0.2*vdd
+let slew_high_rise_thr=0.8*vdd
+let slew_high_fall_thr=0.8*vdd
+let slew_low_fall_thr=0.2*vdd
+let tp_thr=0.5*vdd
+
+meas tran t_rise TRIG v(out) VAL=slew_low_rise_thr RISE=1 TARG v(out) VAL=slew_high_rise_thr RISE=1
+meas tran t_fall TRIG v(out) VAL=slew_high_fall_thr FALL=1 TARG v(out) VAL=slew_low_fall_thr FALL=1
+meas tran t_pLH TRIG v(in) VAL=tp_thr FALL=2 TARG v(out) VAL=tp_thr RISE=2
+meas tran t_pHL TRIG v(in) VAL=tp_thr RISE=2 TARG v(out) VAL=tp_thr FALL=2
 .endc
 
 .end
 ```
 </details>
+
+| **Output:** <br>  ![CircuitDesignWorkshop_D3_sky130_CMOS_Inv_Prop_Delay](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_sky130_CMOS_Inv_Prop_Delay.png) |
+|:---|
 
 <br>
 
