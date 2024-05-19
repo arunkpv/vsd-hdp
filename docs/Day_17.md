@@ -1,7 +1,8 @@
 [Back to TOC](../README.md)  
 [Prev: Day 16](Day_16.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 18](Day_18.md)  
 _________________________________________________________________________________________________________  
-# Day 17: CMOS Noise Margin Robustness Evaluation
+# Day 17: Evaluating the Robustness of the CMOS Inverter (Contd.)
+## 17.1 Static Behaviour Robustness: Noise Margin
 
 
 <br>
