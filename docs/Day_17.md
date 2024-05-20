@@ -28,8 +28,9 @@ ________________________________________________________________________________
   - However, when the input voltage is in the range $V_{IL} < V_{in} < V_{IH}$ , the gain magnitude is greater than one, and the output signal amplitude changes drastically.
     - This region is called the **undefined range** (from a digital design standpoint), since if the input voltage is inadvertently pushed into this range by a noise signal, the output may change logic state introducing an error.
 
-| ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_2.png) | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_3.png) |
-|:---|:---|
+| ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_2.png) |
+|:---|
+| ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_3.png) |
 
   - **The noise margins are defined as thus defined as follows:**  
     $\boxed{\text{Low-level Noise Margin, } NM_L = V_{IL_MAX} - V_{OL_MAX}}$  
