@@ -4,7 +4,8 @@ ________________________________________________________________________________
 # Day 17: Evaluating the Robustness of the CMOS Inverter (Contd.)
 ## 17.1 Static Behaviour Robustness: Noise Margin
   - $V_{IL}$ and $V_{IH}$ (or to be more precise, $V_{IL_MAX}$ and $V_{IH_MIN}$) are defined to be the operational points of the inverter where $\dfrac{dV_{out}}{dV_{in}} = -1$. Or, from an analog design perspective, these are the points where the gain of the inverting amplifier formed by the inverter is equal to -1.
-  - The following images show an ideal, a piece-wise linear and a realistic VTC of a CMOS inverter. 
+  - The following images show an ideal, a piece-wise linear and a realistic VTC of a CMOS inverter.
+
 | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_1.png) | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_2.png) |
 |:---|:---|
 | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_3.png) | |
