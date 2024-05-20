@@ -18,7 +18,7 @@ ________________________________________________________________________________
 |:---|:---|
 | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_3.png) | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_1.png)  |
 
-  - $V_{IL}$ and $V_{IH}$ (or to be more precise, $V_{IL\_ MAX}$ and $V_{IH\_ MIN}$) are defined to be the operational points of the inverter where $\dfrac{dV_{out}}{dV_{in}} = -1$. Or, from an analog design perspective, these are the points where the gain of the inverting amplifier formed by the inverter is equal to -1.
+  - $V_{IL}$ and $V_{IH}$ (or to be more precise, $V_{IL\_~ MAX}$ and $V_{IH\_~ MIN}$) are defined to be the operational points of the inverter where $\dfrac{dV_{out}}{dV_{in}} = -1$. Or, from an analog design perspective, these are the points where the gain of the inverting amplifier formed by the inverter is equal to -1.
     - Any input voltage level between 0 and $V_{IL}$ will be treated as **logic 0**
     - Any input voltage level between $V_{IH}$ and $V_{DD}$ will be treated as **logic 1**
     - Point $V_{IL}$ occurs when the NMOS is biased in saturation region and the PMOS is biased in the linear region.
