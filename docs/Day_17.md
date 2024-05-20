@@ -2,7 +2,7 @@
 [Prev: Day 16](Day_16.md)$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$[Next: Day 18](Day_18.md)  
 _________________________________________________________________________________________________________  
 # Day 17: Evaluating the Robustness of the CMOS Inverter (Contd.)
-## 17.1 Static Behaviour Robustness: Noise Margin
+## 17.1 Static Behaviour Robustness: (2) Noise Margin
   - In digital circuits, if the magnitude of the "noise voltage" at a node is too large, logic errors can be introduced into the system.
   - However, if the noise amplitude is less than a specified value, called the **noise margin**, the noise signal will be attenuated as it passes through the logic gate or circuit, and the logic signals will be transmitted without any errors.
   - i.e., **Noise margin** is the amount of noise that a CMOS circuit could withstand without compromising the operation of circuit.

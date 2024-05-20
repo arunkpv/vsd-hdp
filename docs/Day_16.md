@@ -86,7 +86,7 @@ meas tran t_pHL TRIG v(in) VAL=tp_thr RISE=2 TARG v(out) VAL=tp_thr FALL=2
 |:---|
 
 ## 16.2 Evaluating the Robustness of the CMOS Inverter
-### 16.2.1  Static Behaviour Robustness: Switching Threshold, $V_M$
+### 16.2.1  Static Behaviour Robustness: (1) Switching Threshold, $V_M$
   - The switching threshold, $V_M$, is defined as the point where $V_{in} = V_{out}$.
   - Graphically it can be found from the intersection of the VTC with the $V_{in} = V_{out}$ line.
   - In the region around $V_M$, both PMOS and NMOS are in saturation, since $V_{DS} = V_{GS}$.
