@@ -33,7 +33,7 @@ ________________________________________________________________________________
 | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_3.png) |
 
   - **The noise margins are defined as thus defined as follows:**  
-    $\boxed{\text{Low-level Noise Margin, } NM_L = V_{IL\_MAX} - V_{OL\_MAX}}$  
+    $\boxed{\text{Low-level Noise Margin, } NM_L = V_{IL\text{_}MAX} - V_{OL\_MAX}}$  
     $\boxed{\text{High-level Noise Margin, } NM_H = V_{OH\_MIN} - V_{IH\_MIN}}$  
 
 ### 17.1.2 Noise Margin Robustness against variations in Device Ratio
