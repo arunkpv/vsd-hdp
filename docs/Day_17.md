@@ -18,7 +18,7 @@ ________________________________________________________________________________
 |:---|:---|
 | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_3.png) | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_1.png)  |
 
-  - $V_{IL}$ and $V_{IH}$ (or to be more precise, $V_{IL\_MAX}$ and $V_{IH\_MIN}$) are defined to be the operational points of the inverter where $\dfrac{dV_{out}}{dV_{in}} = -1$. Or, from an analog design perspective, these are the points where the gain of the inverting amplifier formed by the inverter is equal to -1.
+  - $V_{IL}$ and $V_{IH}$ (or to be more precise, $V_{IL_MAX}$ and $V_{IH_MIN}$) are defined to be the operational points of the inverter where $\dfrac{dV_{out}}{dV_{in}} = -1$. Or, from an analog design perspective, these are the points where the gain of the inverting amplifier formed by the inverter is equal to -1.
     - Any input voltage level between 0 and $V_{IL}$ will be treated as **logic 0**
     - Any input voltage level between $V_{IH}$ and $V_{DD}$ will be treated as **logic 1**
     - Point $V_{IL}$ occurs when the NMOS is biased in saturation region and the PMOS is biased in the linear region.
@@ -32,15 +32,15 @@ ________________________________________________________________________________
 |:---|:---|
 
   - **The noise margins are defined as thus defined as follows:**  
-    $\boxed{\text{Low-level Noise Margin, } NM_L = V_{IL\_MAX} - V_{OL\_MAX}}$  
-    $\boxed{\text{High-level Noise Margin, } NM_H = V_{OH\_MIN} - V_{IH\_MIN}}$  
+    $\boxed{\text{Low-level Noise Margin, } NM_L = V_{IL_MAX} - V_{OL_MAX}}$  
+    $\boxed{\text{High-level Noise Margin, } NM_H = V_{OH_MIN} - V_{IH_MIN}}$  
 
-**<ins>Noise Margin Robustness against Device Ratio variation</ins>**  
+### 17.1.2 Noise Margin Robustness against variations in Device Ratio
 
 | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_4.png) |
 |:---|
 
-### 17.1.1 Lab: Noise Margin
+### 17.1.3 Lab: Noise Margin
 <details> <summary> SPICE File: day4_inv_noisemargin_wp1_wn036.spice </summary>
 
 ```
