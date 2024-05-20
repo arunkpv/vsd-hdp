@@ -18,7 +18,7 @@ ________________________________________________________________________________
 |:---|:---|
 | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_3.png) | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_1.png)  |
 
-  - $V_{IL}$ and $V_{IH}$ (or to be more precise, $V_{IL\text{\textunderscore}MAX}$ and $V_{IH\text{\textunderscore}MIN}$) are defined to be the operational points of the inverter where $\dfrac{dV_{out}}{dV_{in}} = -1$. Or, from an analog design perspective, these are the points where the gain of the inverting amplifier formed by the inverter is equal to -1.
+  - $V_{IL}$ and $V_{IH}$ (or to be more precise, $V_{IL\_MAX}$ and $V_{IH\_MIN}$) are defined to be the operational points of the inverter where $\dfrac{dV_{out}}{dV_{in}} = -1$. Or, from an analog design perspective, these are the points where the gain of the inverting amplifier formed by the inverter is equal to -1.
     - Any input voltage level between 0 and $V_{IL}$ will be treated as **logic 0**
     - Any input voltage level between $V_{IH}$ and $V_{DD}$ will be treated as **logic 1**
     - Point $V_{IL}$ occurs when the NMOS is biased in saturation region and the PMOS is biased in the linear region.
@@ -33,8 +33,8 @@ ________________________________________________________________________________
 | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_3.png) |
 
   - **The noise margins are defined as thus defined as follows:**  
-    $\boxed{\text{Low-level Noise Margin, } NM_L = V_{IL\text{\textunderscore}MAX} - V_{OL\text{\textunderscore}MAX}}$  
-    $\boxed{\text{High-level Noise Margin, } NM_H = V_{OH\text{\textunderscore}MIN} - V_{IH\text{\textunderscore}MIN}}$  
+    $\boxed{\text{Low-level Noise Margin, } NM_L = V_{IL\_MAX} - V_{OL\_MAX}}$  
+    $\boxed{\text{High-level Noise Margin, } NM_H = V_{OH\_MIN} - V_{IH\_MIN}}$  
 
 ### 17.1.2 Noise Margin Robustness against variations in Device Ratio
 
