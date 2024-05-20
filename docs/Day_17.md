@@ -6,6 +6,8 @@ ________________________________________________________________________________
   - In digital circuits, if the magnitude of the "noise voltage" at a node is too large, logic errors can be introduced into the system.
   - However, if the noise amplitude is less than a specified value, called the **noise margin**, the noise signal will be attenuated as it passes through the logic gate or circuit, and the logic signals will be transmitted without any errors.
   - i.e., **Noise margin** is the amount of noise that a CMOS circuit could withstand without compromising the operation of circuit.
+<br>
+
   - Noise margin makes sure that:
     - any signal which is **logic 1** with finite noise added to it, is still recognized as **logic 1** and not **logic 0**.
     - similarly, any signal which is **logic 0** with finite noise added to it, is still recognized as **logic 0** and not **logic 1**.
@@ -22,7 +24,9 @@ ________________________________________________________________________________
     - Any input voltage level between 0 and $V_{IL}$ will be treated as **logic 0**
     - Any input voltage level between $V_{IH}$ and $V_{DD}$ will be treated as **logic 1**
     - Point $V_{IL}$ occurs when the NMOS is biased in saturation region and the PMOS is biased in the linear region.
-    - Likewise, Point $V_{IH}$ occurs when the NMOS is biased in linear region and the PMOS is biased in the saturation region. 
+    - Likewise, Point $V_{IH}$ occurs when the NMOS is biased in linear region and the PMOS is biased in the saturation region.
+<br>
+
   - For $V_{in} \le V_{IL}$ , the inverter gain magnitude is less than unity, and the output change is minimal for a given change in the input voltage in this range.
   - Similarly, for $V_{in} \ge V_{IH}$ , the output change is minimal for a given input voltage in this range, again because of the same reason that the gain magnitude is less than unity.
   - However, when the input voltage is in the range $V_{IL} < V_{in} < V_{IH}$ , the gain magnitude is greater than one, and the output signal amplitude changes drastically.
