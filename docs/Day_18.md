@@ -50,12 +50,12 @@ plot deriv(dc1.V(out)) deriv(dc2.V(out)) deriv(dc3.V(out)) deriv(dc4.V(out)) der
 
 We can see from the simulations that:
   - The CMOS Inverter continues to work well at even 0.8V (below half the original supply voltage of 1.8V) close to the transistor threshold voltages!
-  - Since the transistor ratio, $r$ is fixed, the switching threshold, $V_M$ is approximately proportional to the $V_{DD}.
+  - Since the transistor ratio, $r$ is fixed, the switching threshold, $V_M$ is approximately proportional to the $V_{DD}$.
   - The gain of the inverter in the transition region increases with a reduction of the supply voltage.
   - The width of the transition region also reduces when the supply voltage is scaled down compared to the original $V_{DD}$.
 
 However, given these improvements in DC characteristics, we cannot choose to operate all our digital circuits at these low supply voltages:
-  - Reducing the supply voltage has a positive impact on the energy dissipation, but is absolutely detrimental to the performance of the gate.
+  - Reducing the supply voltage yields a significant reduction in the energy dissipation, but it is absolutely detrimental to the performance of the gate, increasing the transition times greatly.
   - The DC characteristic becomes increasingly sensitive to variations in the device parameters such as the transistor threshold, once supply voltages and intrinsic voltages become comparable.
   - Scaling the supply voltage means reducing the signal swing. While this typically helps to reduce the internal noise in the system (such as caused by crosstalk), it makes the design more sensitive to external noise sources that do not scale.
 
