@@ -68,7 +68,7 @@ ________________________________________________________________________________
 | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_4.png) |
 |:---|
 
-### 17.1.3 Lab: Noise Margin
+### 17.1.3 Lab: Noise Margin - sky130 Inverter (Wp/Lp=1u/0.15u, Wn/Ln=0.36u/0.15u)
 <details> <summary> SPICE File: day4_inv_noisemargin_wp1_wn036.spice </summary>
 
 ```
