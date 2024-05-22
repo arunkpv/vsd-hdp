@@ -54,7 +54,7 @@ ________________________________________________________________________________
     - This region is called the **undefined range** (from a digital design standpoint), since if the input voltage is inadvertently pushed into this range by a noise signal, the output may change logic state introducing an error.
 
   - **The noise margins are defined as thus defined as follows:**  
-    - Low-level Noise Margin, $NM_L = V_{IL-MAX} - V_{OL-MAX}$  
+    - Low-level Noise Margin, $~ NM_L ~ = V_{IL-MAX} - V_{OL-MAX}$  
     - High-level Noise Margin, $NM_H = V_{OH-MIN} - V_{IH-MIN}$  
     - Noise Margin, $NM = Min(NM_L, NM_H)$  
 
