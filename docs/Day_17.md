@@ -47,7 +47,6 @@ ________________________________________________________________________________
   - Obviosuly, for proper operation of the logic gate in the presence of noise:
     - $V_{OL-MAX} < V_{IL-MAX}$
     - $V_{OH-MIN} > V_{IH-MIN}$
-<br>
 
   - For $V_{in} \le V_{IL}$ , the inverter gain magnitude is less than unity, and the output change is minimal for a given change in the input voltage in this range.
   - Similarly, for $V_{in} \ge V_{IH}$ , the output change is minimal for a given input voltage in this range, again because of the same reason that the gain magnitude is less than unity.
