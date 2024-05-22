@@ -125,7 +125,7 @@ reaches $(V_{GS} - V_{TH})$. Short-channel devices therefore experience an exten
 | ![CircuitDesignWorkshop_D2_Velocity_Saturation_8](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_8.png) |
 | ![CircuitDesignWorkshop_D2_Velocity_Saturation_9](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_9.png) |
 
-### 15.1.4 Lab: Velocity Saturation - $I_D$ vs. $V_{DS}$ - tsmc 0.25um
+### 15.1.4 Lab: Velocity Saturation - ID vs. VDS - tsmc 0.25um
 <details> <summary> SPICE File: nmos_chara_W1.8u_L1.2u.spice </summary>
 
 ```
@@ -217,7 +217,7 @@ setplot dc1
 | **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_sky130_Short_Channel](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_sky130_Short_Channel.png) |
 |:---|
 
-### 15.1.6 Lab: Velocity Saturation - $I_D$ vs. $V_{GS}$ - sky130 NMOS (5u/2u vs. 0.39u/0.15u)
+### 15.1.6 Lab: Velocity Saturation - ID$ vs. VGS - sky130 NMOS (5u/2u vs. 0.39u/0.15u)
 <details> <summary> SPICE File: day2_nfet_idvgs_L015_W039.spice </summary>
 
 ```

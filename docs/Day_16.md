@@ -4,7 +4,7 @@ ________________________________________________________________________________
 # Day 16: CMOS Switching Threshold and Dynamic Simulations
 
 ## 16.1 CMOS Inverter VTC (contd.)
-### 16.1.1 Lab: CMOS Inverter VTC - sky130 $(W_P/W_N = 0.84u/0.36u, L=0.15u)$
+### 16.1.1 Lab: CMOS Inverter VTC - sky130 (Wp/Wn = 0.84u/0.36u, L=0.15u)
 
 <details> <summary> SPICE File: day3_inv_vtc_Wp084_Wn036.spice </summary>
 
@@ -42,7 +42,7 @@ meas dc Vm find V(out) when V(out)=V(in)
 
 
 
-### 16.1.2 Lab: CMOS Inverter Transition time - sky130 $(W_P/W_N = 0.84u/0.36u, L=0.15u)$
+### 16.1.2 Lab: CMOS Inverter Transition time - sky130 (Wp/Wn = 0.84u/0.36u, L=0.15u)
 <details> <summary> SPICE File: day3_inv_tran_Wp084_Wn036.spice </summary>
 
 ```
@@ -86,7 +86,7 @@ meas tran t_pHL TRIG v(in) VAL=tp_thr RISE=2 TARG v(out) VAL=tp_thr FALL=2
 |:---|
 
 ## 16.2 Evaluating the Robustness of the CMOS Inverter
-### 16.2.1  Static Behaviour Robustness: (1) Switching Threshold, $V_M$
+### 16.2.1  Static Behaviour Robustness: (1) Switching Threshold, VM
   - The switching threshold, $V_M$, is defined as the point where $V_{in} = V_{out}$.
   - Graphically it can be found from the intersection of the VTC with the $V_{in} = V_{out}$ line.
   - In the region around $V_M$, both PMOS and NMOS are in saturation, since $V_{DS} = V_{GS}$.

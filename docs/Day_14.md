@@ -251,7 +251,7 @@ For the example scenario we were discussing, this translates to:
 |:---|
 | ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_5.png) |
 
-### 14.2.6 Lab: $I_D$ vs. $V_{DS}$ for different $V_{GS}$ - sky130 NMOS (W=5um, L=2um)
+### 14.2.6 Lab: ID vs. VDS for different VGS - sky130 NMOS (W=5um, L=2um)
 <details> <summary> SPICE File: day1_nfet_idvds_L2_W5.spice </summary>
 
 ```
