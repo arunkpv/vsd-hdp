@@ -24,8 +24,29 @@ ________________________________________________________________________________
   - $V_{IL}$ and $V_{IH}$ (or to be more precise, $V_{IL-MAX}$ and $V_{IH-MIN}$) are defined to be the operational points of the inverter where $\dfrac{dV_{out}}{dV_{in}} = -1$. Or, from an analog design perspective, these are the points where the gain of the inverting amplifier formed by the inverter is equal to -1.
     - Any input voltage level between 0 and $V_{IL}$ will be treated as **logic 0**
     - Any input voltage level between $V_{IH}$ and $V_{DD}$ will be treated as **logic 1**
-    - Point $V_{IL}$ occurs when the NMOS is biased in saturation region and the PMOS is biased in the linear region.
-    - Likewise, Point $V_{IH}$ occurs when the NMOS is biased in linear region and the PMOS is biased in the saturation region.
+    - The point $V_{IL}$ occurs when the NMOS is biased in saturation region and the PMOS is biased in the linear region.
+    - Similarly, the point $V_{IH}$ occurs when the NMOS is biased in linear region and the PMOS is biased in the saturation region.
+    ```
+    -----------------------
+    Output Characteristics:
+    -----------------------
+    VOL_Min : Minimum output voltage that the logic gate can drive for a logic "0" output.
+    VOL_Max : Maximum output voltage that the logic gate will drive corresponding to a logic "0" output.
+    VOH_Min : Minimum output voltage that the logic gate will drive corresponding to a logic "1" output.
+    VOH_Max : Maximum output voltage that the logic gate can drive for a logic "1" output.
+
+    ----------------------
+    Input Characteristics:
+    ----------------------
+    VIL_Min : The minimum input voltage to the gate corresponding to logic "0" -- is equal to the VSS
+    VIL_Max : The maximum input voltage to the gate that will be recognized as logic "0"
+    VIH_Min : The minimum input voltage to the gate that will be recognized as logic "1"
+    VIH_Max : The maximum input voltage to the gate corresponding to logic "1" -- is equal to the VDD
+    ```
+  
+  - Obviosuly, for proper operation of the logic gate in the presence of noise:
+    - $V_{OL-MAX} < V_{IL-MAX}$
+    - $V_{OH-MIN} > V_{IH-MIN}$
 <br>
 
   - For $V_{in} \le V_{IL}$ , the inverter gain magnitude is less than unity, and the output change is minimal for a given change in the input voltage in this range.
