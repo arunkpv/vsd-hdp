@@ -62,7 +62,7 @@ However, given these improvements in DC characteristics, we cannot choose to ope
 | ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_SupplyVariation](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_SupplyVariation.png) |
 |:---|
 
-## 18.2 Static Behaviour Robustness: (3) Device Variations
+## 18.2 Static Behaviour Robustness: (4) Device Variations
 
 While we design a gate for nominal operation conditions and typical device parameters, the actual operating temperatures might very over a large range, and the device parameters after fabrication will deviate from the nominal values used in the design process.
 
@@ -79,7 +79,13 @@ The DC characteristics of the static CMOS inverter turn out to be rather insensi
 |:---|
 | ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_4.png) |
 
-### 18.2.2 Lab - Device Variations - sky130
+### 18.2.2 Lab - Device Variations - sky130 Inverter - (Wp:7u --> 0.42u, Wn:0.36u --> 7u, L=0.15u)
+
+In this exercise, we try to capture the CMOS Inverter's robustness in the case of a ridiculously extreme case of device width variation.
+
+| ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_5.png) |
+|:---|
+
 <details> <summary> SPICE File: day5_inv_devicevariation_wp7_wn042.spice </summary>
 
 ```
@@ -124,7 +130,7 @@ plot dc1.V(out) dc2.V(out) dc3.V(out) vs in
 ```
 </details>
 
-| **Output:** <br>  ![CircuitDesignWorkshop_D5_sky130_CMOS_Inv_DeviceVariations](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_sky130_CMOS_Inv_DeviceVariations.png) |
+| **Output:** <br>  **(1)** The shift in $V_M$ for such a large change in device variations is relatively very small. <br>  **(2)** The variation in the $NM_H$ and $NM_L$ ![CircuitDesignWorkshop_D5_sky130_CMOS_Inv_DeviceVariations](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_sky130_CMOS_Inv_DeviceVariations.png) |
 |:---|
 
 <br>
