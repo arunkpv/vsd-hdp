@@ -2094,33 +2094,1007 @@ ________________________________________________________________________________
 
 _________________________________________________________________________________________________________  
 # Days 14-18: Circuit Design using SKY130 PDK
-
 # Day 14: CMOS Fundamentals
 
+## 14.1 What is SPICE and why do we need SPICE simulations ?
+### 14.1.1 What is SPICE ?
+Fabricating ICs is very expensive and time-consuming, so designers need simulation tools to explore the design space and verify designs before they are fabricated. Simulation is cheap, but silicon revisions (even a single Metal layer change) are prohibitively expensive.  
+
+Simulators operate at many levels of abstraction, from process through architecture.
+  - Process simulators such as SUPREME predict how factors in the process recipe such as time and temperature affect device physical and electrical characteristics.
+  - Circuit simulators such as SPICE and Spectre use device models and a circuit netlist to predict circuit voltages and currents, which indicate performance and power consumption.
+  - Logic simulators such as VCS and ModelSim are widely used to verify correct logical operation of designs specified in a hardware description language (HDL).
+  - Architecture simulators, sometimes offered with a processor’s development toolkit, work at the level of instructions and registers to predict throughput and memory access patterns, which influence design decisions such as pipelining and cache memory organization.
+
+The various levels of abstraction offer trade-offs between degree of detail and the size of the system that can be simulated. VLSI designers are primarily concerned with circuit and logic simulation.
+
+SPICE (Simulation Program with Integrated Circuit Emphasis) was originally developed in the 1970s at University of California, Berkeley. It solves the nonlinear differential equations describing components such as transistors, resistors, capacitors, and voltage sources.  
+
+Based on the original SPICE, there are many SPICE versions available - both free (like Ngspice, Xyce, LTSpice, TINA-TI) as well as commercial (HSPICE, PSPICE). All versions of SPICE read an input file and generate an output  with results, warnings, and error messages. The input file is often called a _**SPICE deck**_ and each line is called a _**card**_ because it was once provided to a mainframe as a deck of punch cards.  
+
+A circuit simulator is provided with an input file that contains:
+  - A _**netlist**_ consisting of components and nodes detailing the circuit connectivity.  
+    The netlist can be entered by hand or extracted from a circuit schematic or layout in a CAD program.
+  - Component behaviour by means of _**device models**_ and _**model parameters**_.
+  - The Initial state of the circuit -- _**initial conditions**_ 
+  - Inputs to the circuit, called _**stimulus**_
+  - _**Simulation options**_ & _**analysis commands**_ that explain the type of simulation to be run.
+
+_**Ref:**_ CMOS VLSI Design - A Circuits and Systems Perspective - Weste & Harris
+
+| ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_1.png) | ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Ngspice_2.png) |
+|:---:|:---:|
+
+**Analysis Types supported by SPICE:**
+| Analysis Type | Details |
+|:---|:---|
+| DC Analysis | Find the DC operating point of the circuit i.e., all voltages and currents |
+| AC Small-Signal Analysis | AC analysis is limited to analog nodes and represents the small signal, sinusoidal solution of the analog system described at a particular frequency or set of frequencies.
+| Transient Analysis | Transient analysis is an extension of DC analysis to the time domain. In other words, it solves a DC Analysis for each timestep based on initial conditions. |
+| Pole-Zero Analysis | Computes the poles and/or zeros in the small-signal ac transfer function. |
+| Small-Signal Distortion Analysis | Computes steady-state harmonic and intermodulation products for small input signal magnitudes. |
+| Sensitivity Analysis | Calculate either the DC operating-point sensitivity or the AC small-signal sensitivity of an output variable with respect to all circuit variables, including model parameters. |
+| Noise Analysis | Measures the device-generated noise for a given circuit. |
+<br>
+
+**The following images show how a SPICE deck is written to perform DC analysis of an NMOS transistor:**
+| ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_Weste_Harris_3.png) |
+|:---:|
+| ![CircuitDesignWorkshop_D1_Basic_Spice_Setup](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Setup.png) |
+| ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_1.png) |
+| ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_2.png) |
+| ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_3.png) |
+| ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_4.png) |
+| ![CircuitDesignWorkshop_D1_Basic_Spice_Syntax_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Syntax_5.png) |
+| ![CircuitDesignWorkshop_D1_Basic_Spice_Simulation_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_Basic_Spice_Simulation_1.png) |
+
+
+### 14.1.2 Why SPICE in VLSI Design ?
+In Digital VLSI Design, the timing, power, process variation, noise and signal integrity analyses **all ultimately rely on SPICE** for accurate modelling and characterization of the various Standard Cells and macros used in the design. 
+
+## 14.2 NMOS Transistor
+### 14.2.1 (Planar) NMOS Transistor Structure
+| ![CircuitDesignWorkshop_D1_NMOS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS.png) |
+|:---:|
+
+| ![Physical_structure_of_MOSFET_Cross_Section](/docs/images/CircuitDesignWorkshop/Physical_structure_of_MOSFET_Cross_Section.png) | ![Physical_structure_of_MOSFET_Perspective_View](/docs/images/CircuitDesignWorkshop/Physical_structure_of_MOSFET_Perspective_View.png) |
+|:---:|:---:|
+
+### 14.2.2 Transistor Operation: Cut-off Region, Surface Inversion & Threshold Voltage
+
+  - Without the application of a Gate potential, the transistor is said to be in **Cut-off region** as there is no conducting path between the Source and Drain terminals. 
+  - On the application a sufficiently high Gate-to-Source voltage, a conductive channel starts to form underneath the Gate composed of minority carriers (electrons in an NMOS) and at a certain voltage called the _**Threshold voltage**_,  _**surface inversion**_ occurs when the concentration of minority carriers in the channel becomes equal to the concentration of majority carriers in the bulk.
+  - When VGS is increased further by several $\Phi_t (=thermal voltage, \dfrac{k_B T}{q}) $, the transistor moves into the _**strong inversion region**_. Here, the minority carrier concentration in the channel is a strong function of the applied gate potential. 
+
+_**The below images depict the same for an NMOS transistor:**_
+| ![CircuitDesignWorkshop_D1_VTH_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_1.png) |
+|:---:|
+| ![CircuitDesignWorkshop_D1_VTH_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_2.png) |
+| ![CircuitDesignWorkshop_D1_VTH_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_3.png) |
+| ![CircuitDesignWorkshop_D1_VTH_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_4.png) |
+| ![CircuitDesignWorkshop_D1_VTH_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_5.png) |
+| ![CircuitDesignWorkshop_D1_VTH_6](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_6.png) |
+
+### 14.2.3 Effect of Subtrate/ Body Bias on Threshold Voltage
+
+  - The Source-to-Substrate amd Drain-to-Substrate pn junctions must always be reverse biased for the "normal operation" of the MOS transistor, so $V_{SB}, V_{DB}$ must always be greater than or equal to zero for an NMOS transistor.
+  - If $V_{SB} = 0$, then surface inversion is achieved at a Gate-to-Source voltage equal to **VT0**
+  - However, when $V_{SB} > 0$, the electrons from the channel can move laterally and flow out of the source terminal resulting in a reduced carrier concentration in the channel.
+  - Thus, with when $V_{SB} > 0$, a higher Gate-to-Source voltage is required to achieve surface inversion.
+  - In other words, the threshold voltage of an NMOS increases when $V_{SB} > 0$.
+
+| ![CircuitDesignWorkshop_D1_VTH_with_VSB_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_with_VSB_1.png) |
+|:---:|
+| ![CircuitDesignWorkshop_D1_VTH_with_VSB_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_with_VSB_2.png) |
+| ![CircuitDesignWorkshop_D1_VTH_with_VSB_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_with_VSB_3.png) |
+| ![CircuitDesignWorkshop_D1_VTH_with_VSB_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_with_VSB_4.png) |
+
+<br>
+
+| **Threshold Voltage Equation considering Body Bias:** <br>  <br>  ![CircuitDesignWorkshop_D1_VTH_with_VSB_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_VTH_with_VSB_5.png) |
+|:---|
+
+### 14.2.4 Resistive/ Linear/ Triode Region of Operation
+Let us analyse the condition when we apply a Gate-Source potential, $V_{GS} >= V_{TH}$ and a small value of $V_{DS}$ is applied across the channel from Drain-to-Source.
+
+| ![CircuitDesignWorkshop_D1_NMOS_ResistiveRegion_Small_VDS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS_ResistiveRegion_Small_VDS.png) |
+|:---|
+
+#### 14.2.4.1 Derivation of Drain Current Equation
+Using a simple first-order analysis, let us try to derive an equation for the Drain Current, $I_D$ that results due to the $V_{GS}$ and $V_{DS}$ values applied.
+
+The mechanism for the Drain current, $I_D$ is  **carrier drift** under the lateral electric field due to $V_{DS}$.
+
+
+| ![CircuitDesignWorkshop_D1_DriftCurrent_Theory_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_DriftCurrent_Theory_1.png) |
+|:---|
+| ![CircuitDesignWorkshop_D1_DriftCurrent_Theory_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_DriftCurrent_Theory_2.png) |
+| ![CircuitDesignWorkshop_D1_DriftCurrent_Theory_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_DriftCurrent_Theory_3.png) |
+| ![CircuitDesignWorkshop_D1_DriftCurrent_Theory_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_DriftCurrent_Theory_4.png) |
+| ![CircuitDesignWorkshop_D1_LinearRegion_Id_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_1.png) |
+| ![CircuitDesignWorkshop_D1_LinearRegion_Id_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_2.png) |
+
+| ![CircuitDesignWorkshop_D1_NMOS_with_BiasVoltages](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS_with_BiasVoltages.png) |
+|:---|
+
+  - Let $V_{GS}$ be held constant at a value greater than $V_{TH}$.  
+  - The applied $V_{DS}$ appears as a voltage drop across the length of the channel.  
+  - As we travel along the channel from Source to Drain, the voltage (measured relative to the Source terminal) increases from zero to $V_{DS}$.
+  - Thus the voltage between the gate and points along the channel decreases from $V_{GS}$ at the Source end to $V_{GD} = V_{GS}-V_{DS}$ at the Drain end.
+
+
+  - At a point x along the channel, the voltage is $V(x)$, and the gate-to-channel voltage at that point equals $V_{GS} – V(x)$.
+
+Under the assumption that this voltage exceeds the threshold voltage all along the channel, the induced channel charge per unit area at point x can be computed.
+
+$Q_i(x) = -C_{ox} [V_{GS} - V(x) -V_{TH}]$  
+$where:$  
+$~~~~~~~~ C_{ox} = \dfrac{\epsilon_{ox}}{t_{ox}}$
+
+The current is given as the product of the drift velocity of the carriers, $v_n$ and the
+available charge. Due to charge conservation, it is a constant over the length of the channel.
+W is the width of the channel in a direction perpendicular to the current flow.
+
+$I_D = -v_n(x) * Q_i(x) * W$
+
+The electron velocity is related to the electric field through a parameter called the mobility $\mu_n$ (expressed in $\dfrac{m^2}{V.s}$).  
+
+Drift velocity, $v_n = -\mu_n \dfrac{dV}{dx}$
+
+$\therefore I_D = -\mu_n \dfrac{dV}{dx} * -C_{ox} [V_{GS} - V(x) - V_{TH}] * W$  
+
+$i.e., I_D dx = \mu_n C_{ox} W [V_{GS} - V(x) -V_{TH}] dV$
+
+Integrating the equation over the length of the channel L yields the voltage-current relation of the transistor:  
+$\boxed{I_D = {k_n}^\prime \dfrac{W}{L} \left[ (V_{GS}-V_{TH})V_{DS} - \dfrac{{V_{DS}}^2}{2} \right]
+     = k_n \left[ (V_{GS}-V_{TH})V_{DS} - \dfrac{{V_{DS}}^2}{2} \right]}$
+
+$where:$  
+$~~~~~~~~ {k_n}^\prime$ is the _process transconductance parameter._  
+$~~~~~~~~ {k_n}^\prime = \mu_nC_{ox}$
+
+The product of process transconductance, ${k_n}^\prime$ and the $\dfrac{W}{L}$ ratio of the transistor is called the _gain factor_, $k_n$ of the device.
+
+$~~~~~~~~ k_n = {k_n}^\prime * \left( \dfrac{W}{L} \right)$
+
+Now, the above equation for Drain Current:  
+$I_D = k_n * \left[(V_{GS} - V_{TH}) * V_{DS} - \dfrac{V_{DS}^2}{2}\right]$
+is a quadratic function of $V_{DS}$.  
+
+But at low values, the $\dfrac{V_{DS}^2}{2}$ term can be ignored as it is close to zero. Hence the equation for $I_D$ can be approximated to be a linear function of $V_{DS}$:  
+
+$\boxed {i.e., I_D = k_n * (V_{GS} - V_{TH}) * V_{DS}} ~~~~ $
+_Hence the name Linear Region_
+
+For the example scenario we were discussing, this translates to:
+| ![CircuitDesignWorkshop_D1_LinearRegion_Id_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_LinearRegion_Id_3.png) |
+|:---|
+
+
+### 14.2.5 Saturation/ Pinch-Off Region of Operation
+  - When a $V_{DS}$ voltage is applied, the channel voltage becomes a function of both $V_{GS}$ and $V_{DS}$.
+  - Since the induced channel depth depends on the channel voltage relative to the Gate terminal, and specifically on the amount by which this voltage exceeds the threshold voltage, $V_{TH}$, we find that the channel is no longer of uniform depth; rather, the channel will take a tapered shape:
+    - being deepest at the Source end, where the depth is proportional to $[V_{GS}-V_{TH}]$, and
+    - shallowest at the drain end, where the depth is proportional to $[V_{GS}-V_{TH}-V_{DS}]$.
+  
+#### 14.2.5.1 Pinch-off Region Condition
+  - As the value of the Drain-Source voltage is increased further, the assumption that the channel voltage is larger than the threshold all along the channel ceases to hold.
+    - In the limiting case, the channel depth at the drain end reduces to zero and the channel is said to be **"pinched-off"**. This happens when $V_{GD}$ is just equal to the threshold voltage, $V_{TH}$.
+    - i.e., $V_{DS}= V_{GS}-V_{TH} ~~~~~~~~ (=V_{OV})$, Gate Over-drive voltage
+  - At this point, the induced charge is zero, and the conducting channel disappears or is pinched off starting from the Drain end.
+
+
+| ![CircuitDesignWorkshop_D1_PinchOff_Region_Condition_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_PinchOff_Region_Condition_1.png) |
+|:---|
+| ![CircuitDesignWorkshop_D1_PinchOff_Region_Condition_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_PinchOff_Region_Condition_2.png) |
+| ![CircuitDesignWorkshop_D1_PinchOff_Region_Condition_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_PinchOff_Region_Condition_3.png) |
+| ![CircuitDesignWorkshop_D1_PinchOff_Region_Condition_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_PinchOff_Region_Condition_4.png) |
+
+#### 14.2.5.2 Drain current model for Saturation Region of Operation
+
+| ![CircuitDesignWorkshop_D1_NMOS_under_Pinch-Off](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_NMOS_under_Pinch-Off.png) |
+|:---|
+
+  - Increasing $V_{DS}$ beyond the $V_{DSsat}$ value of ($V_{GS}-V_{TH}$) has no effect on the channel shape and charge.
+  - Thus, the current through the channel remains constant at the value reached for $V_{DS}= V_{GS}-V_{TH}$.
+  - The MOSFET is said to have entered **saturation/ pinch-off regsion** at:
+    - $V_{DS} = V_{DSsat} = V_{GS}-V_{TH}$
+  - Subsequently, the Saturation Drain current:
+    - $I_D = I_{Dsat} = {k_n}^\prime \dfrac{W}{L} \left[ (V_{GS}-V_{TH})V_{DSsat} - \dfrac{{V_{DSsat}}^2}{2} \right]$
+    - $\boxed{i.e., I_{Dsat} = \dfrac{1}{2} {k_n}^\prime \dfrac{W}{L} {\left[ {V_{GS}-V_{TH}}^2\right]}}$
+  
+
+  - **Channel pinch-off does not imply channel blockage**
+    - Current continues to flow through the pinched-off channel.
+    - The electrons that reach the drain end of the channel are accelerated through the depletion region that exists there and into the drain terminal.
+    - Any increase in $V_{DS}$ above $V_{DSsat}$ appears as a voltage drop across the depletion region
+    - Thus, both the current through the channel, $I_{Dsat}$ and the voltage drop across the channel $i.e., V_{DSsat} = (V_{GS}-V_{TH})$ **remain constant in saturation**.
+
+| ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_1.png) |
+|:---|
+| ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_2.png) |
+| ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_3.png) |
+
+#### 14.2.5.3 Channel Length Modulation and Finite Output Resistance in Saturation
+  - The above Drain current equation seems to indicate that in sarutation, $I_D$ is independent of $V_{DS}$
+  - Thus a change, $\Delta V_{DS}$, in the Drain-to-Source voltage causes a zero change in $I_D$, which implies that the incremental resistance looking into the drain of a saturated MOSFET is infinite.
+  - This, however, is an idealization based on the premise that once the channel is pinched off at the drain end, further increases in $V_{DS}$ have no effect on the channel’s shape.
+  - But, in practice, increasing $V_{DS}$ beyond $V_{GS}-V_{TH}$ does affect the channel somewhat.
+    - As $V_{DS}$ is increased, the channel pinch-off point is moved slightly away from the drain, toward the source.
+    - That is, the voltage across the channel remains constant at $V_{GS}-V_{TH}$, and
+    - The additional voltage applied to the drain appears as a voltage drop across the narrow depletion region between the end of the channel and the drain region.
+    - This voltage accelerates the electrons that reach the drain end of the channel and sweeps them across the depletion region into the drain.
+  
+
+  - Note, however, that (with depletion-layer widening) the channel length is reduced from $L$ to $(L-\Delta L)$, called **Channel Length Modulation (CLM)**.
+
+  - Since $I_D$ is inversely proportional to the channel length, $I_D$ increases with $V_{DS}$.
+  - CLM can be accounted for in the expression for $I_D$ by including a factor $[1 + \lambda (V_{DS}-V_{DSsat})]$.  
+    For simplicity, we use: $[1 + \lambda V_{DS}]$
+
+    $\boxed{\therefore I_{D} = \dfrac{1}{2} {k_n}^\prime \dfrac{W}{L} \left[ {(V_{GS}-V_{TH}}^2\right] (1 + \lambda V_{DS})}$
+
+  - The CLM parameter, $\lambda$ is a device parameter having the units of $V^{-1}$ . Its value depends both on the process technology used to fabricate the device and on the channel length, $L$ that the circuit designer selects.
+
+  - Output Resistance, $r_o = \dfrac{1}{\lambda I_D}$
+
+| ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_4.png) |
+|:---|
+| ![CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_SaturationRegion_Id_Model_5.png) |
+
+### 14.2.6 Lab: ID vs. VDS for different VGS - sky130 NMOS (W=5um, L=2um)
+<details> <summary> SPICE File: day1_nfet_idvds_L2_W5.spice </summary>
+
+```
+*** Model Description ***
+.param temp=27
+
+*** Including sky130 library files ***
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+*** Netlist Description ***
+XM1 vdd n1 0 0 sky130_fd_pr__nfet_01v8 w=5 l=2
+R1 n1 in 55
+Vdd vdd 0 1.8
+Vin in 0 1.8
+
+*** Simulation Commands ***
+.op
+.dc Vdd 0 1.8 0.1 Vin 0 1.8 0.2
+
+.control
+run
+display
+setplot dc1
+.endc
+
+.end
+```
+</details>
+
+| **Output:** <br>  ![CircuitDesignWorkshop_D1_sky130_Id_vs_VDS](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D1_sky130_Id_vs_VDS.png) |
+|:---|
 
 <br>
 
 _________________________________________________________________________________________________________  
 # Day 15: Velocity Saturation and CMOS Inverter VTC
 
+## 15.1 Velocity Saturation
+  - The behavior of transistors with very short channel lengths (called short-channel devices) deviates considerably from the resistive and saturated models.
+  - The main reason for this deviation is the _**velocity saturation effect**_.
+  - We had seen previously that the drift velocity is modelled by:  
+    Drift velocity, $v = -\mu \dfrac{dV}{dx}$
+      - i.e., the velocity of the carriers is proportional to the electrical field, independent of
+the value of that field. In other words, the carrier mobility is a constant.
+  - However, at high electric field strengths, the carriers fail to follow this linear model.
+  - When the electrical field along the channel reaches a critical value $E_c$, the velocity of the carriers tends to saturate due to scattering effects (collisions suffered by the carriers).
+
+| ![CircuitDesignWorkshop_D2_VelocitySaturation_Rabaey](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_VelocitySaturation_Rabaey.png) |
+|:---|
+
+  - For p-type silicon:
+    - the critical field at which electron saturation occurs is around $1.5 \times 10^6 V/m ~ (or~1.5 V/\mu m)$, and
+    - the saturation velocity $v_{sat}$ approximately equals $10^5 m/s$
+  - This means that in an NMOS device with a channel length of $1~\mu m$, only a couple of volts of $V_{DS}$ is needed to reach the electron velocity saturation point. This condition is easily met in current short-channel devices.
+  - Holes in a n-type silicon saturate at the same velocity, although a higher electrical field is needed to achieve saturation. Velocity-saturation effects are hence less pronounced in PMOS transistors.
+  - The drift velocity can be roughly approximated as a piece-wise linear function of the electrical field as follows:  
+    - $v = \dfrac{\mu E}{1+(E/E_c)}~~~~~,for~ E \le E_c$  
+      $~~~=v_{sat}~~~~~~~~~~~~~~~~~~~~,for~E > E_c$  
+  - For continuity at $E=E_c$, we get: $E_c = \dfrac{2v_{sat}}{\mu}$
+
+### 15.1.1 Drain Current in Resistive/ Linear Region
+**Now the drain current equation in the resistive region can be re-evaluated using:**  
+<br>
+
+$I_D = -v_n(x) * Q_i(x) * W$  
+$I_D = -v_n(x) * -C_{ox} [V_{GS} - V(x) -V_{TH}] * W$  
+$v_n = \dfrac{\mu_n E}{1+(E/E_c)}$  
+
+Now, $E = \dfrac{dV}{dx}$  
+
+$\therefore v_n = \dfrac{\mu_n (dV/dx)}{1+(1/E_c)(dV/dx)}$  
+
+
+$\therefore I_D = \dfrac{\mu_n (dV/dx)}{1+(1/E_c)(dV/dx)} * C_{ox} [V_{GS} - V(x) - V_{TH}] * W$  
+
+$i.e., I_D \left[ 1+\dfrac{1}{E_c}\dfrac{dV}{dx}\right] = \mu_n \dfrac{dV}{dx} * C_{ox} [V_{GS} - V(x) - V_{TH}] * W$  
+
+Integrating w.r.t $x$ from $x=0 ~~ (where ~~ V=0)$ to $x=L ~~ (where ~~ V=V_{DS})$, we get:  
+
+$I_D \left[ L+(V_{DS}/E_c)\right] = \mu_n C_{ox} [(V_{GS} - V_{TH})V_{DS} - \dfrac{V_{DS}^2}{2} ] * W$  
+
+Re-arranging:  
+$I_D = \left[\dfrac{1}{L+(V_{DS}/E_c)}\right] \mu_n * C_{ox} [(V_{GS} - V_{TH})V_{DS} - \dfrac{V_{DS}^2}{2} ] * W$  
+
+$i.e., I_D = \left[\dfrac{1}{1+(V_{DS}/E_c L)}\right] \mu_n * C_{ox} [(V_{GS} - V_{TH})V_{DS} - \dfrac{V_{DS}^2}{2} ] * \dfrac{W}{L}$  
+
+$i.e., \boxed{I_D = \left[\dfrac{1}{1+(V_{DS}/E_c L)}\right]~\mu_n C_{ox} \dfrac{W}{L} [(V_{GS} - V_{TH})V_{DS} - \dfrac{V_{DS}^2}{2} ]}$  
+
+$~~~~~~~~~~~~\boxed{I_D = \kappa(V_{DS}) \mu_n C_{ox} \dfrac{W}{L}\left[(V_{GS}-V_{TH})V_{DS} - \dfrac{{V_{DS}^2}}{2} \right]}$  
+
+$~~~~~~~~~~~~where, ~~~~ \kappa(V_{DS}) = \dfrac{1}{1+(V_{DS}/E_c L)}$  
+
+  - $\kappa$ is a measure of the velocity saturation since $V_{DS}/L$ is the average field in the channel.
+  - In the case of long-channel devices (where $L$ is large), or when the value of $V_{DS}$ is small, $\kappa$ approaches 1 and the above equation simplifies to the traditional equation we had derived first using the constant mobility model.
+  - For short-channel devices, $\kappa$ is smaller than 1, implying the delivered current is smaller than what would be normally expected.
+
+### 15.1.2 Drain Current in Saturation Region
+**Coming to the Drain current in saturation region:**  
+<br>
+
+$I_D = -v_n(x) * -C_{ox} [V_{GS} - V(x) -V_{TH}] * W ~~~~~~~~ |with ~~ v_n(x)=v_{sat} ~~ and ~~ V(x)=V_{DSAT}$  
+$i.e., \boxed{I_{DSAT} = v_{sat} C_{ox} W [(V_{GS} - V_{TH}) - V_{DSAT}]}$  
+
+$I_{DSAT}$ can also be evaluated by replacing $V_{DS}=V_{DSAT}$ in the linear region equation derived in the previous section.  
+
+$\therefore ~~~~ \boxed{I_{DSAT} = \kappa(V_{DSAT}) \mu_n C_{ox} \dfrac{W}{L}\left[(V_{GS}-V_{TH})V_{DSAT} - \dfrac{{V_{DSAT}^2}}{2} \right]}$
+
+
+Equating these two expressions for $I_{DSAT}$ to solve for $V_{DSAT}$, we get:  
+$I_{DSAT} = v_{sat} C_{ox} W [(V_{GS} - V_{TH}) - V_{DSAT}]~= \kappa(V_{DSAT}) \mu_n C_{ox} \dfrac{W}{L}\left[(V_{GS}-V_{TH})V_{DSAT} - \dfrac{{V_{DSAT}^2}}{2} \right]$
+
+$i.e.,$  
+$\dfrac{\mu_n E_c}{2} C_{ox} W [(V_{GS} - V_{TH}) - V_{DSAT}] = \kappa(V_{DSAT}) \mu_n C_{ox} \dfrac{W}{L}\left[(V_{GS}-V_{TH})V_{DSAT} - \dfrac{{V_{DSAT}^2}}{2} \right]$
+
+$E_c L [(V_{GS} - V_{TH}) - V_{DSAT}] = \kappa(V_{DSAT}) \left[2(V_{GS}-V_{TH})V_{DSAT} - {V_{DSAT}^2} \right]$
+
+This can be further simplified to the below:  
+$~~~~~~~~ \boxed{V_{DSAT} = \kappa(V_{GT}) ~ V_{GT}} ~~~~ , where ~ V_{GT} = (V_{GS} - V_{TH})$  
+
+<br>
+
+**This has the following implications:**
+
+  1)  The saturation current $I_{DSAT}$ displays a linear dependence with respect to the Gate-to-Source voltage $V_{GS}$, which is in contrast with the squared dependence in the long-channel devices. This reduces the amount of current a transistor can deliver for a given control voltage.
+
+  2) For a short-channel device and for large enough values of $V_{GT}$, $\kappa(V_{GT})$ is substantially smaller than 1, hence $V_{DSAT} < V_{GT}$. The device enters saturation before $V_{DS}$
+reaches $(V_{GS} - V_{TH})$. Short-channel devices therefore experience an extended saturation region and tend to operate more often in saturation region compared to long-channel devices.
+
+
+| ![CircuitDesignWorkshop_D2_VelocitySaturation_Rabaey_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_VelocitySaturation_Rabaey_2.png) |
+|:---|
+
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_1.png) |
+|:---:|
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_2.png) |
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_3.png) |
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_4.png) |
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_5.png) |
+
+### 15.1.3 Unified MOS Model for Manual Analysis
+
+  - It is desrirable to have a mathematical model that abstracts the behavior of the MOS transistor into a simple and tangible analytical model that does not lead to hopelessly complex equations, yet captures the essentials of the device.
+  - This is required so that the designer is able to have an intuitive insight into the behaviour of a circuit and how the design parameters affect its operation.
+<br>
+
+  - The first-order expressions derived earlier can be combined into a single unified model that presents the transistor as a single current source the value as defined below:
+    - The model employs the voltages at the four terminals of the transistor, along with a set of five parameters: $V_{TO}, ~ \gamma, ~ V_{DSAT}, ~ k^{\prime}, ~ and ~ \lambda$.
+
+| ![CircuitDesignWorkshop_D2_Unified_MOS_Model](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Unified_MOS_Model.png) |
+|:---:|
+
+
+**The following slides show how the unified model works in the different Regions of Operation of the MOS transistor:**  
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_6](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_6.png) |
+|:---:|
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_7](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_7.png) |
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_8](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_8.png) |
+| ![CircuitDesignWorkshop_D2_Velocity_Saturation_9](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_9.png) |
+
+### 15.1.4 Lab: Velocity Saturation - ID vs. VDS - tsmc 0.25um
+<details> <summary> SPICE File: nmos_chara_W1.8u_L1.2u.spice </summary>
+
+```
+*** Netlist Description ***
+M1 vdd n1 0 0 nmos W=1.8u L=1.2u
+R1 in n1 55
+Vdd vdd 0 2.5
+Vin in 0 2.5
+
+*** .include model ***
+.lib "tsmc_025um_model.mod" cmos_models
+
+*** Simulation Commands ***
+.op
+.dc Vdd 0 2.5 0.1 Vin 0 2.5 0.5
+
+.control
+run
+display
+setplot dc1
+plot -vdd#branch
+.endc
+
+.end
+```
+</details>
+
+<details> <summary> SPICE File: nmos_chara_W0.375u_L0.25u.spice </summary>
+
+```
+*** Netlist Description ***
+M1 vdd n1 0 0 nmos W=0.375u L=0.25u
+R1 in n1 55
+Vdd vdd 0 2.5
+Vin in 0 2.5
+
+*** .include model ***
+.lib "tsmc_025um_model.mod" cmos_models
+
+*** Simulation Commands ***
+.op
+.dc Vdd 0 2.5 0.1 Vin 0 2.5 0.5
+
+.control
+run
+display
+setplot dc1
+plot -vdd#branch
+.endc
+
+.end
+```
+</details>
+
+| **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_tsmc_0.25u](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_tsmc_0.25u.png) |
+|:---|
+
+### 15.1.5 Lab: Velocity Saturation - sky130 (W=0.39um, L=0.15um)
+<details> <summary> SPICE File: day2_nfet_idvds_L015_W039.spice </summary>
+
+```
+*** Model Description ***
+.param temp=27
+
+*** Including sky130 library files ***
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+*** Netlist Description ***
+
+XM1 Vdd n1 0 0 sky130_fd_pr__nfet_01v8 w=0.39 l=0.15
+R1 n1 in 55
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+*** Simulation commands ***
+.op
+.dc Vdd 0 1.8 0.1 Vin 0 1.8 0.2
+
+.control
+run
+display
+setplot dc1
+.endc
+
+.end
+```
+</details>
+
+| **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_sky130_Short_Channel](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vds_sky130_Short_Channel.png) |
+|:---|
+
+### 15.1.6 Lab: Velocity Saturation - ID$ vs. VGS - sky130 NMOS (5u/2u vs. 0.39u/0.15u)
+<details> <summary> SPICE File: day2_nfet_idvgs_L015_W039.spice </summary>
+
+```
+*** Model Description ***
+.param temp=27
+
+*** Including sky130 library files ***
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+**** Netlist Description ***
+XM1 Vdd n1 0 0 sky130_fd_pr__nfet_01v8 w=0.39 l=0.15
+R1 n1 in 55
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+*** Simulation Commands ***
+.op
+.dc Vin 0 1.8 0.1 Vdd 1.8 1.8 0.2 
+
+.control
+run
+display
+setplot dc1
+.endc
+
+.end
+```
+</details>
+
+| **Output:** ![CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vgs_sky130_LongvsShortChannel](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_Velocity_Saturation_Id_vs_Vgs_sky130_LongvsShortChannel.png) |
+|:---|
+
+## 15.2 CMOS Inverter VTC
+  - The Voltage-Transfer Characteristic (VTC) can be graphically derived by superimposing the current characteristics of the NMOS and the PMOS devices -- i.e., their respective _**load-line plots**_.
+  - It requires that the I-V curves of the NMOS and PMOS devices are transformed onto a common coordinate set.
+
+
+  - To plot the VTC or the Input-Output transfer characteristics ($V_{out}$ vs. $V_{in}$) of the CMOS Inverter, let us choose the input voltage $V_{in}, the output voltage $V_{out}$ and the NMOS drain current $I_{DSn}$ as the independent variables.
+
+| ![CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_1.png) |
+|:---|
+
+  - The PMOS I-V relations can be translated into this variable space by the following relations:
+
+  | KCL, KVL Constraints |
+  |:---|
+  | $I_{DSp} = -I_{DSn}$ |
+  | $V_{GSn} = V_{in}; ~~~~~~~~ V_{GSp} = V_{in}-V_{DD}$ |
+  | $V_{DSn} = V_{out}; ~~~~~~~ V_{DSp} = V_{out}-V_{DD}$ |
+
+  - Now the input voltage, $V_{in}$ needs to be swept from 0 to $V_{DD}$ and find out the corresponding values of $V_{out}$.
+  - The following transformations adjust the original PMOS I-V curves to the chosen common coordinate set {$V_{in}$, $V_{out}$ and $I_{Dsn}$}.
+
+  | Transform | Comments |
+  |:---|:---|
+  | $I_{DSp} ~ \longrightarrow ~ I_{DSn}$ | Reflection about x-axis of $I_{DSp} ~ vs. ~ V_{DSp}$ curve.<br>  where, $I_{DSn} = -I_{DSp}$ |
+  | $V_{GSp} ~ \longrightarrow ~ V_{in}$ | Variable change from $V_{GSp}$ to $V_{in}$.<br>  where, $V_{in} = V_{GSp}+V_{DD}$ |
+  | $V_{DSp} ~ \longrightarrow ~ V_{out}$ | Translation along the x-axis.<br>  $V_{out} = V_{DSp}+V_{DD}$ |
+
+| ![CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_2.png) |
+|:---|
+
+  - Now, the PMOS and NMOS load lines are overlaid on top of each other.
+  - For a DC operating points to be valid, the currents through the NMOS and PMOS devices must be equal. Graphically, this means that the DC operating points must be located at the intersection of corresponding load lines.
+  - Find the set of all $(V_{in}, V_{out})$ pairs corresponding to the points of intersection and plot them to generate the VTC of the CMOS Inverter circuit.
+
+| ![CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Rabaey_3.png) | ![CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Weste_Harris_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D2_CMOS_Inverter_VTC_Weste_Harris_1.png) |
+|:---|:---|
+
+**Relationships between voltages for the three regions of operation of PMOS, NMOS in a CMOS inverter:**  
+| | Cutoff | Linear | Saturation |
+|:---|:---|:---|:---|
+| **NMOS** | $V_{GSn} < V_{Tn}$ <br>  $V_{in} < V_{Tn}$ <br>  <br>  <br>  <br>  | $V_{GSn} > V_{Tn}$ <br>  $V_{in} > V_{Tn}$ <br>  <br>  $V_{DSn} < (V_{GSn}-V_{Tn})$ <br>  $V_{out} < (V_{in}-V_{Tn})$ | $V_{GSn} > V_{Tn}$ <br>  $V_{in} > V_{Tn}$ <br>  <br>  $V_{DSn} > (V_{GSn}-V_{Tn})$ <br>  $V_{out} > (V_{in}-V_{Tn})$ |
+| **PMOS** | $V_{GSp} > V_{Tp}$ <br>  $V_{in} > V_{DD} - \mid V_{Tp} \mid$ <br>  <br>  <br>  <br>  | $V_{GSp} < V_{Tp}$ <br>  $V_{in} < V_{DD}-\mid V_{Tp} \mid$ <br>  <br>  $V_{DSp} > (V_{GSp}-V_{Tp})$ <br>  $V_{out} > (V_{in}+\mid V_{Tp} \mid)$ | $V_{GSp} < V_{Tp}$ <br>  $V_{in} < V_{DD}-\mid V_{Tp} \mid$ <br>  <br>  $V_{DSp} < (V_{GSp}-V_{Tp})$ <br>  $V_{out} < (V_{in}+\mid V_{Tp} \mid)$ |
+
+_**Note:**_ $V_{Tp}$ is negative.  
+
+
+  - The operation of the CMOS inverter can be divided into five regions - A, B, C, D, E - indicated in the above figure.
+   - For simplicity, let us assume $V_{Tp} = –V_{Tn}$ and that the PMOS transistor is ~2–3 times as wide as the NMOS transistor so that $k_n = k_p$.
+
+| Region| Condition | PMOS | NMOS | Output |
+|:---:|:---|:---|:---|:---|
+| A | $0 \le V_{in} < V_{Tn}$ | Linear | Cutoff | $V_{out} = V_{DD}$ |
+| B | $V_{Tn} \le V_{in} < (V_{DD}/2)$ | Linear | Saturation | $V_{out} > V_{DD}/2$ |
+| C | $Vin = V_{DD}/2$ | Saturation | Saturation | $V_{out}$ drops sharply |
+| D | $(V_{DD}/2) < V_{in} \le V_{DD}-\mid V_{Tp} \mid$ | Saturation | Linear | $V_{out} < V_{DD}/2$ |
+| E | $V_{in} > V_{DD}-\mid V_{Tp} \mid$ | Cutoff | Linear | $V_{out} = 0$ |
+
+  - Almost all the operating points are located either at the high or low output levels. The VTC of the inverter hence exhibits a _**very narrow transition zone**_ (resulting from the high gain during the switching transient).
 
 <br>
 
 _________________________________________________________________________________________________________  
 # Day 16: CMOS Switching Threshold and Dynamic Simulations
 
+## 16.1 CMOS Inverter VTC (contd.)
+### 16.1.1 Lab: CMOS Inverter VTC - sky130 (Wp/Wn = 0.84u/0.36u, L=0.15u)
+
+<details> <summary> SPICE File: day3_inv_vtc_Wp084_Wn036.spice </summary>
+
+```
+*** Model Description ***
+.param temp=27
+
+*** Including sky130 library files **
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+*** Netlist Description **
+XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w=0.84 l=0.15
+XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w=0.36 l=0.15
+Cload out 0 50fF
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+*** Simulation Commands ***
+.op
+.dc Vin 0 1.8 0.01
+
+.control
+run
+setplot dc1
+display
+meas dc Vm find V(out) when V(out)=V(in)
+.endc
+
+.end
+```
+</details>
+
+| **Output:** <br>  ![CircuitDesignWorkshop_D3_sky130_CMOS_Inv_VTC](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_sky130_CMOS_Inv_VTC.png) |
+|:---|
+
+
+
+### 16.1.2 Lab: CMOS Inverter Transition time - sky130 (Wp/Wn = 0.84u/0.36u, L=0.15u)
+<details> <summary> SPICE File: day3_inv_tran_Wp084_Wn036.spice </summary>
+
+```
+ *** Model Description ***
+.param temp=27
+
+*** Including sky130 library files ***
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+*** Netlist Description ***
+XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w=0.84 l=0.15
+XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w=0.36 l=0.15
+Cload out 0 50fF
+Vdd vdd 0 1.8V
+Vin in 0 PULSE(0V 1.8V 0 0.1ns 0.1ns 2ns 4ns)
+
+*** Simulation Commands ***
+.tran 1n 10n
+
+.control
+run
+
+let vdd=1.8
+let slew_low_rise_thr=0.2*vdd
+let slew_high_rise_thr=0.8*vdd
+let slew_high_fall_thr=0.8*vdd
+let slew_low_fall_thr=0.2*vdd
+let tp_thr=0.5*vdd
+
+meas tran t_rise TRIG v(out) VAL=slew_low_rise_thr RISE=1 TARG v(out) VAL=slew_high_rise_thr RISE=1
+meas tran t_fall TRIG v(out) VAL=slew_high_fall_thr FALL=1 TARG v(out) VAL=slew_low_fall_thr FALL=1
+meas tran t_pLH TRIG v(in) VAL=tp_thr FALL=2 TARG v(out) VAL=tp_thr RISE=2
+meas tran t_pHL TRIG v(in) VAL=tp_thr RISE=2 TARG v(out) VAL=tp_thr FALL=2
+.endc
+
+.end
+```
+</details>
+
+| **Output:** <br>  ![CircuitDesignWorkshop_D3_sky130_CMOS_Inv_Prop_Delay](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_sky130_CMOS_Inv_Prop_Delay.png) |
+|:---|
+
+## 16.2 Evaluating the Robustness of the CMOS Inverter
+### 16.2.1  Static Behaviour Robustness: (1) Switching Threshold, VM
+  - The switching threshold, $V_M$, is defined as the point where $V_{in} = V_{out}$.
+  - Graphically it can be found from the intersection of the VTC with the $V_{in} = V_{out}$ line.
+  - In the region around $V_M$, both PMOS and NMOS are in saturation, since $V_{DS} = V_{GS}$.
+  - An analytical expression for $V_M$ can be obtained by equating the currents through the PMOS and NMOS transistors, $I_{DSn}=I_{DSp}$.
+  - Depending on the supply voltage, $V_{DD}$ and the Channel length, $L$, of the devices, there can be two cases:
+    1) Devices are Velocity Saturated
+    2) Velocity Saturation does not occur
+
+_**Note:**_ For the following derivations, we ignore the effects of Channel Length Modulation for simplicity.  
+
+
+**<ins>Case 1:</ins> Devices are Velocity-Saturated - $V_{DSAT}<(V_M-V_{TH})$**  
+  - This case is applicable to short-channel devices or when the supply voltage is high so that the devices are in velocity saturation.
+
+| ![CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_1.png) |
+|:---:|
+| ![CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_2.png) |
+| ![CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_3.png) |
+
+$I_{DSn} = -I_{DSp}$  
+$i.e.,$  
+$~~~~ I_{DSn} + I_{DSp} = 0$  
+
+$k_n \left[ (V_M - V_{THn})V_{DSATn} - \dfrac{V_{DSATn}^2}{2} \right] + k_p \left[ (V_M - V_{DD} - V_{THp})V_{DSATp} - \dfrac{V_{DSATp}^2}{2} \right] = 0$
+
+$k_n V_{DSATn} \left[ V_M - V_{THn} - \dfrac{V_{DSATn}}{2} \right] + k_p V_{DSATp} \left[ V_M - V_{DD} - V_{THp} - \dfrac{V_{DSATp}}{2} \right] = 0$
+
+<br>
+
+$Solving for V_M:$  
+
+$\boxed{V_M = \dfrac{\left( V_{THn}+\dfrac{V_{DSATn}}{2} \right) + r \left( V_{DD}+V_{THp}+\dfrac{V_{DSATp}}{2} \right)}{1+r}},$  
+  
+$where, ~ \boxed{r=\dfrac{k_p V_{DSATp}}{k_n V_{DSATn}} = \dfrac{\upsilon_{satp} W_p}{\upsilon_{satn} W_n}}$ _(assuming for identical oxide thickness for PMOS and NMOS transistors)_  
+
+  - Now, for large values of $V_{DD}$ compared to the threshold voltages $(V_{THp}, V_{THn})$ and saturation voltages $(V_{DSATp}, V_{DSATn})$, the above equation can be approximated to:
+
+$~~~~~~~~~~~~~~~~ \boxed{V_M \approx \dfrac{rV_{DD}}{1+r}}$  
+
+  - The switching threshold is determined by the ratio, $r$ - which is a measure of the relative drive strengths of the PMOS and NMOS transistors.
+  - For comparable values for low and high noise margins, $V_M$ is desired to be located around the centre of the available voltage swing (or at $V_{DD}/2$ as CMOS logic has rail-to-rail swing). This implies:  
+$~~~~~~~~ r \approx 1$  
+$~~~~~~~~ i.e., k_p V_{DSATp} = k_n V_{DSATn}$  
+$\boxed{(W/L)\_p = (W/L)\_n * \dfrac{{k_n}^\prime V_{DSATn}}{{k_p}^\prime V_{DSATp}}}$  
+
+  - To move the $V_M$ upwards, a larger value of $r$ is needed, which in other words is to make the PMOS wider.
+  - On the other hand, to move the $V_M$ downwards, the NMOS must be made wider.
+  - If a target design value for $V_M$ is desired, we can derive the required ratio of PMOS vs. NMOS transistor sizes in a similar manner:
+
+$~~~~~~~~ \boxed{\dfrac{(W/L)\_p}{(W/L)\_n} = \dfrac{k_n^\prime V_{DSATn} \left[ V_M - V_{THn} - \dfrac{V_{DSATn}}{2} \right]}{k_p^\prime V_{DSATp} \left[ V_{DD} - V_M + V_{THp} + \dfrac{V_{DSATp}}{2}\right]}}$  
+$~~~~~~~~ Note:$ _Make sure that the assumption that both devices are velocity-saturated still holds for the chosen operation point._
+
+
+**<ins>Case 2:</ins> Velocity Saturation does not occur - $V_{DSAT}>(V_M-V_{TH})$**  
+  - This case is applicable for long-channel devices or when the supply voltages are low, that the devices are not velocity saturated.
+  - Using a similar analysis done in Case 1 above, we derive the switching threshold, $V_M$ to be:
+
+$~~~~~~~~ \boxed{V_M = \dfrac{V_{THn} + r(V_{DD} + V_{THp})}{1+r}}, ~~~~ where ~ r = \sqrt{\dfrac{-k_p}{k_n}}$  
+
+  - The switching threshold, $V_M$ **is relatively insensitive to variations in the device ratio**.
+    - Small variations of the ratio (e.g., 3 or 2.5) do not disturb the transfer characteristic that much.
+
+| ![CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_4.png) |
+|:---:|
 
 <br>
 
 _________________________________________________________________________________________________________  
 # Day 17: CMOS Noise Margin Robustness Evaluation
 
+## 17.1 Static Behaviour Robustness: (2) Noise Margin
+  - In digital circuits, if the magnitude of the "noise voltage" at a node is too large, logic errors can be introduced into the system.
+  - However, if the noise amplitude is less than a specified value, called the **noise margin**, the noise signal will be attenuated as it passes through the logic gate or circuit, and the logic signals will be transmitted without any errors.
+  - i.e., **Noise margin** is the amount of noise that a CMOS circuit could withstand without compromising the operation of circuit.
+<br>
+
+  - Noise margin makes sure that:
+    - any signal which is **logic 1** with finite noise added to it, is still recognized as **logic 1** and not **logic 0**.
+    - similarly, any signal which is **logic 0** with finite noise added to it, is still recognized as **logic 0** and not **logic 1**.
+
+### 17.1.1 Noise Margin Definition
+  - Let us consider the case of two CMOS inverters connected back-to-back with one driving the next.
+  - The following images show an ideal, a piece-wise linear and a realistic VTC of a CMOS inverter:
+
+| ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_1.png) | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_2.png) |
+|:---|:---|
+| ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_VTC_3.png) |  |
+| ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_Definitions_Weste_Harris](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_Definitions_Weste_Harris.png)  | ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_1.png) | 
+
+  - $V_{IL}$ and $V_{IH}$ (or to be more precise, $V_{IL-MAX}$ and $V_{IH-MIN}$) are defined to be the operational points of the inverter where $\dfrac{dV_{out}}{dV_{in}} = -1$. Or, from an analog design perspective, these are the points where the gain of the inverting amplifier formed by the inverter is equal to -1.
+    - Any input voltage level between 0 and $V_{IL}$ will be treated as **logic 0**
+    - Any input voltage level between $V_{IH}$ and $V_{DD}$ will be treated as **logic 1**
+    - The point $V_{IL}$ occurs when the NMOS is biased in saturation region and the PMOS is biased in the linear region.
+    - Similarly, the point $V_{IH}$ occurs when the NMOS is biased in linear region and the PMOS is biased in the saturation region.
+    ```
+    -----------------------
+    Output Characteristics:
+    -----------------------
+    VOL_Min : Minimum output voltage that the logic gate can drive for a logic "0" output.
+    VOL_Max : Maximum output voltage that the logic gate will drive corresponding to a logic "0" output.
+    VOH_Min : Minimum output voltage that the logic gate will drive corresponding to a logic "1" output.
+    VOH_Max : Maximum output voltage that the logic gate can drive for a logic "1" output.
+
+    ----------------------
+    Input Characteristics:
+    ----------------------
+    VIL_Min : The minimum input voltage to the gate corresponding to logic "0" -- is equal to the VSS
+    VIL_Max : The maximum input voltage to the gate that will be recognized as logic "0"
+    VIH_Min : The minimum input voltage to the gate that will be recognized as logic "1"
+    VIH_Max : The maximum input voltage to the gate corresponding to logic "1" -- is equal to the VDD
+    ```
+  
+  - Obviosuly, for proper operation of the logic gate in the presence of noise:
+    - $V_{OL-MAX} < V_{IL-MAX}$
+    - $V_{OH-MIN} > V_{IH-MIN}$
+
+  - For $V_{in} \le V_{IL}$ , the inverter gain magnitude is less than unity, and the output change is minimal for a given change in the input voltage in this range.
+  - Similarly, for $V_{in} \ge V_{IH}$ , the output change is minimal for a given input voltage in this range, again because of the same reason that the gain magnitude is less than unity.
+  - However, when the input voltage is in the range $V_{IL} < V_{in} < V_{IH}$ , the gain magnitude is greater than one, and the output signal amplitude changes drastically.
+    - This region is called the **undefined range** (from a digital design standpoint), since if the input voltage is inadvertently pushed into this range by a noise signal, the output may change logic state introducing an error.
+
+  - **The noise margins are defined as thus defined as follows:**  
+    - Low-level Noise Margin, $~ NM_L ~ = V_{IL-MAX} - V_{OL-MAX}$  
+    - High-level Noise Margin, $NM_H = V_{OH-MIN} - V_{IH-MIN}$  
+    - Noise Margin, $NM = Min(NM_L, NM_H)$  
+
+| ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_2.png) |
+|:---|
+| ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_3.png) |
+
+
+### 17.1.2 Noise Margin Robustness against variations in Device Ratio
+
+| ![CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_CMOS_Inverter_Robustness_NoiseMargin_4.png) |
+|:---|
+
+### 17.1.3 Lab: Noise Margin - sky130 Inverter (Wp/Lp=1u/0.15u, Wn/Ln=0.36u/0.15u)
+<details> <summary> SPICE File: day4_inv_noisemargin_wp1_wn036.spice </summary>
+
+```
+*** Model Description ***
+.param temp=27
+
+*** Including sky130 library files ***
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+*** Netlist Description ***
+XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w=1 l=0.15
+XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w=0.36 l=0.15
+Cload out 0 50fF
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+*** Simulation Commands ***
+.op
+.dc Vin 0 1.8 0.01
+
+.control
+run
+setplot dc1
+display
+let dVout = deriv(V(out))
+meas dc vil find V(in) when dVout=-1 cross=1
+meas dc vih find V(in) when dVout=-1 cross=2
+meas dc voh find V(out) when dVout=-1 cross=1
+meas dc vol find V(out) when dVout=-1 cross=2
+
+let NML = vil - vol
+let NMH = voh - vih
+print NML
+print NMH
+.endc
+
+.end
+```
+</details>
+
+| **Output:** <br>  ![CircuitDesignWorkshop_D4_sky130_CMOS_Inv_NoiseMargin](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D4_sky130_CMOS_Inv_NoiseMargin.png) |
+|:---|
 
 <br>
 
 _________________________________________________________________________________________________________  
 # Day 18: CMOS Power Supply and Device Variation Robustness Evaluation
 
+## 18.1 Static Behaviour Robustness: (3) Power Supply Variations/ Scaling
+
+Here, we take a look at the effect of power supply scaling on the static behaviour of the CMOS Inverter.
+
+### 18.1.1 Lab - Supply Scaling - sky130 Inverter (Wp/Wn=1u/0.36u, L=0.15u)
+<details> <summary> SPICE File: day5_inv_supplyvariation_Wp1_Wn036.spice </summary>
+
+```
+*** Model Description ***
+.param temp=27
+
+*** Including sky130 library files ***
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+*** Netlist Description ***
+XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w=1 l=0.15
+XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w=0.36 l=0.15
+Cload out 0 50fF
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+.control
+let powersupply     = 1.8
+let powersupply_min = 0.8
+let increment_step  = -0.2
+
+dowhile powersupply >= powersupply_min
+    dc Vin 0 1.8 0.01
+    let powersupply = powersupply + increment_step
+    alter Vdd = powersupply
+end
+
+plot dc1.V(out) dc2.V(out) dc3.V(out) dc4.V(out) dc5.V(out) dc6.V(out) vs in 
++ xlabel 'Input Voltage(V)' ylabel 'Output Voltage(V)' title 'Inverter VTC for different VDD'
+
+plot deriv(dc1.V(out)) deriv(dc2.V(out)) deriv(dc3.V(out)) deriv(dc4.V(out)) deriv(dc5.V(out)) deriv(dc6.V(out)) vs in 
++ xlabel 'Input Voltage(V)' ylabel 'Gain (dVout/dVin)' title 'Inverter Gain for different VDD'
+.endc
+
+.end
+```
+</details>
+
+| **Output:** <br>  ![CircuitDesignWorkshop_D5_sky130_CMOS_Inv_SupplyVariation](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_sky130_CMOS_Inv_SupplyVariation.png) |
+|:---|
+
+We can see from the simulations that:
+  - The CMOS Inverter continues to work well at even 0.8V (below half the original supply voltage of 1.8V) close to the transistor threshold voltages!
+  - Since the transistor ratio, $r$ is fixed, the switching threshold, $V_M$ is approximately proportional to the $V_{DD}$.
+  - The gain of the inverter in the transition region increases with a reduction of the supply voltage.
+  - The width of the transition region also reduces when the supply voltage is scaled down compared to the original $V_{DD}$.
+
+However, given these improvements in DC characteristics, we cannot choose to operate all our digital circuits at these low supply voltages:
+  - Reducing the supply voltage yields a significant reduction in the energy dissipation, but it is absolutely detrimental to the performance of the gate, increasing the transition times greatly.
+  - The DC characteristic becomes increasingly sensitive to variations in the device parameters such as the transistor threshold, once supply voltages and intrinsic voltages become comparable.
+  - Scaling the supply voltage means reducing the signal swing. While this typically helps to reduce the internal noise in the system (such as caused by crosstalk), it makes the design more sensitive to external noise sources that do not scale.
+
+| ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_SupplyVariation](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_SupplyVariation.png) |
+|:---|
+
+## 18.2 Static Behaviour Robustness: (4) Device Variations
+
+While we design a gate for nominal operation conditions and typical device parameters, the actual operating temperatures might very over a large range, and the device parameters after fabrication will deviate from the nominal values used in the design process.
+
+The DC characteristics of the static CMOS inverter turn out to be rather insensitive to these variations, and the gate remains functional over a wide range of operating conditions.
+
+### 18.2.1 Sources of Variation
+**1) Etching Process Variations**
+| ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_1.png) | ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_2.png) |
+|:---|:---|
+
+
+**2) Oxide Thickness Variation**
+| ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_3.png) | ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_4.png) |
+|:---|:---|
+
+
+### 18.2.2 Lab - Device Variations - sky130 Inverter - (Wp:7u --> 0.42u, Wn:0.36u --> 7u, L=0.15u)
+
+In this exercise, we try to capture the CMOS Inverter's robustness in the case of a ridiculously extreme case of device width variation.
+
+| ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_5](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_5.png) |
+|:---|
+
+<details> <summary> SPICE File: day5_inv_devicevariation_wp7_wn042.spice </summary>
+
+```
+*** Model Description **
+.param temp=27
+.param Wp=0.84
+.param Wn=0.42
+
+*** Including sky130 library files ***
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+*** Netlist Description ***
+XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w={Wp} l=0.15
+XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w={Wn} l=0.15
+Cload out 0 50fF
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+*** Simulation Commands ***
+.dc Vin 0 1.8 0.01
+
+.control
+alterparam Wp=0.84
+alterparam Wn=0.42
+reset
+run
+
+alterparam Wp=0.42
+alterparam Wn=7
+reset
+run
+
+alterparam Wp=7
+alterparam Wn=0.36
+reset
+run
+
+plot dc1.V(out) dc2.V(out) dc3.V(out) vs in 
++ xlabel 'Input Voltage(V)' ylabel 'Output Voltage(V)' title 'Inverter VTC for Extreme Device Variations'
+.endc
+.end
+```
+</details>
+
+
+**From the simulation results:**
+  1) The shift in $V_M$ for such a large change in device variations is relatively very small.
+  2) The variation in the $NM_H$ and $NM_L$ is also very small.
+
+| **Output:** <br>  ![CircuitDesignWorkshop_D5_sky130_CMOS_Inv_DeviceVariations](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_sky130_CMOS_Inv_DeviceVariations.png) |
+|:---|
 
 <br>
 

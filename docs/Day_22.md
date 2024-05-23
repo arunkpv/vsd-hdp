@@ -5,6 +5,7 @@ ________________________________________________________________________________
 # Day 22: Library Cell design using Magic and Characterization using Ngspice
 
 ## 22.1 16-Mask CMOS Process
+Steps:
 
 
 ## Lab: Introduction to Sky130 basic layers layout and LEF using inverter
