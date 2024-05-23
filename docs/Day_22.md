@@ -31,6 +31,58 @@ ________________________________________________________________________________
 | ![3k_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3k_NWell_PWell_Formation.png) | ![3l_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3l_NWell_PWell_Formation.png) |
 | ![3m_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3m_NWell_PWell_Formation.png) | ![3n_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3n_NWell_PWell_Formation.png) |
 
+### 22.1.4 Formation of Gate
+| ![4a_Gate_Formation](/docs/images/16Mask_CMOS_Process/4a_Gate_Formation.png) | ![4b_Gate_Formation](/docs/images/16Mask_CMOS_Process/4b_Gate_Formation.png) |
+|:---|:---|
+| ![4c_Gate_Formation](/docs/images/16Mask_CMOS_Process/4c_Gate_Formation.png) | ![4d_Gate_Formation](/docs/images/16Mask_CMOS_Process/4d_Gate_Formation.png) |
+| ![4e_Gate_Formation](/docs/images/16Mask_CMOS_Process/4e_Gate_Formation.png) | ![4f_Gate_Formation](/docs/images/16Mask_CMOS_Process/4f_Gate_Formation.png) |
+| ![4g_Gate_Formation](/docs/images/16Mask_CMOS_Process/4g_Gate_Formation.png) | ![4h_Gate_Formation](/docs/images/16Mask_CMOS_Process/4h_Gate_Formation.png) |
+| ![4i_Gate_Formation](/docs/images/16Mask_CMOS_Process/4i_Gate_Formation.png) | ![4j_Gate_Formation](/docs/images/16Mask_CMOS_Process/4j_Gate_Formation.png) |
+| ![4k_Gate_Formation](/docs/images/16Mask_CMOS_Process/4k_Gate_Formation.png) | ![4l_Gate_Formation](/docs/images/16Mask_CMOS_Process/4l_Gate_Formation.png) |
+| ![4m_Gate_Formation](/docs/images/16Mask_CMOS_Process/4m_Gate_Formation.png) | ![4n_Gate_Formation](/docs/images/16Mask_CMOS_Process/4n_Gate_Formation.png) |
+
+### 22.1.5 Lightly-Doped Drain (LDD) Formation
+| ![5a_LDD_Formation](/docs/images/16Mask_CMOS_Process/5a_LDD_Formation.png) | ![5b_LDD_Formation](/docs/images/16Mask_CMOS_Process/5b_LDD_Formation.png) |
+|:---|:---|
+| ![5c_LDD_Formation](/docs/images/16Mask_CMOS_Process/5c_LDD_Formation.png) | ![5d_LDD_Formation](/docs/images/16Mask_CMOS_Process/5d_LDD_Formation.png) |
+| ![5e_LDD_Formation](/docs/images/16Mask_CMOS_Process/5e_LDD_Formation.png) | ![5f_LDD_Formation](/docs/images/16Mask_CMOS_Process/5f_LDD_Formation.png) |
+| ![5g_LDD_Formation](/docs/images/16Mask_CMOS_Process/5g_LDD_Formation.png) | ![5h_LDD_Formation](/docs/images/16Mask_CMOS_Process/5h_LDD_Formation.png) |
+| ![5i_LDD_Formation](/docs/images/16Mask_CMOS_Process/5i_LDD_Formation.png) | ![5j_LDD_Formation](/docs/images/16Mask_CMOS_Process/5j_LDD_Formation.png) |
+
+### 22.1.6 Source and Drain Formation
+| ![6a_Source_Drain_Formation](/docs/images/16Mask_CMOS_Process/6a_Source_Drain_Formation.png) | ![6b_Source_Drain_Formation](/docs/images/16Mask_CMOS_Process/6b_Source_Drain_Formation.png) |
+|:---|:---|
+| ![6c_Source_Drain_Formation](/docs/images/16Mask_CMOS_Process/6c_Source_Drain_Formation.png) | ![6d_Source_Drain_Formation](/docs/images/16Mask_CMOS_Process/6d_Source_Drain_Formation.png) |
+| ![6e_Source_Drain_Formation](/docs/images/16Mask_CMOS_Process/6e_Source_Drain_Formation.png) | ![6f_Source_Drain_Formation](/docs/images/16Mask_CMOS_Process/6f_Source_Drain_Formation.png) |
+| ![6g_Source_Drain_Formation](/docs/images/16Mask_CMOS_Process/6g_Source_Drain_Formation.png) | ![6h_Source_Drain_Formation](/docs/images/16Mask_CMOS_Process/6h_Source_Drain_Formation.png) |
+
+### 22.1.7 Formation of Contacts and Local Interconnects
+| ![7a_Contacts_Local_Interconnect_Formation](/docs/images/17Mask_CMOS_Process/7a_Contacts_Local_Interconnect_Formation.png) | ![7b_Contacts_Local_Interconnect_Formation](/docs/images/17Mask_CMOS_Process/7b_Contacts_Local_Interconnect_Formation.png) |
+|:---|:---|
+| ![7c_Contacts_Local_Interconnect_Formation](/docs/images/17Mask_CMOS_Process/7c_Contacts_Local_Interconnect_Formation.png) | ![7d_Contacts_Local_Interconnect_Formation](/docs/images/17Mask_CMOS_Process/7d_Contacts_Local_Interconnect_Formation.png) |
+| ![7e_Contacts_Local_Interconnect_Formation](/docs/images/17Mask_CMOS_Process/7e_Contacts_Local_Interconnect_Formation.png) | ![7f_Contacts_Local_Interconnect_Formation](/docs/images/17Mask_CMOS_Process/7f_Contacts_Local_Interconnect_Formation.png) |
+| ![7g_Contacts_Local_Interconnect_Formation](/docs/images/17Mask_CMOS_Process/7g_Contacts_Local_Interconnect_Formation.png) | ![7h_Contacts_Local_Interconnect_Formation](/docs/images/17Mask_CMOS_Process/7h_Contacts_Local_Interconnect_Formation.png) |
+| ![7i_Contacts_Local_Interconnect_Formation](/docs/images/17Mask_CMOS_Process/7i_Contacts_Local_Interconnect_Formation.png) | ![7j_Contacts_Local_Interconnect_Formation](/docs/images/17Mask_CMOS_Process/7j_Contacts_Local_Interconnect_Formation.png) |
+| ![7k_Contacts_Local_Interconnect_Formation](/docs/images/17Mask_CMOS_Process/7k_Contacts_Local_Interconnect_Formation.png) | ![7l_Contacts_Local_Interconnect_Formation](/docs/images/17Mask_CMOS_Process/7l_Contacts_Local_Interconnect_Formation.png) |
+| ![7m_Contacts_Local_Interconnect_Formation](/docs/images/17Mask_CMOS_Process/7m_Contacts_Local_Interconnect_Formation.png) | ![7n_Contacts_Local_Interconnect_Formation](/docs/images/17Mask_CMOS_Process/7n_Contacts_Local_Interconnect_Formation.png) |
+
+### 22.1.8 Formation of Higher Level Metal Layers
+| ![8a_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8a_Higher_Level_Metal_Formation.png) | ![8b_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8b_Higher_Level_Metal_Formation.png) |
+|:---|:---|
+| ![8c_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8c_Higher_Level_Metal_Formation.png) | ![8d_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8d_Higher_Level_Metal_Formation.png) |
+| ![8e_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8e_Higher_Level_Metal_Formation.png) | ![8f_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8f_Higher_Level_Metal_Formation.png) |
+| ![8g_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8g_Higher_Level_Metal_Formation.png) | ![8h_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8h_Higher_Level_Metal_Formation.png) |
+| ![8i_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8i_Higher_Level_Metal_Formation.png) | ![8j_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8j_Higher_Level_Metal_Formation.png) |
+| ![8k_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8k_Higher_Level_Metal_Formation.png) | ![8l_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8l_Higher_Level_Metal_Formation.png) |
+| ![8m_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8m_Higher_Level_Metal_Formation.png) | ![8n_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8n_Higher_Level_Metal_Formation.png) |
+| ![8o_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8o_Higher_Level_Metal_Formation.png) | ![8p_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8p_Higher_Level_Metal_Formation.png) |
+| ![8q_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8q_Higher_Level_Metal_Formation.png) | ![8r_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8r_Higher_Level_Metal_Formation.png) |
+| ![8s_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8s_Higher_Level_Metal_Formation.png) | ![8t_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8t_Higher_Level_Metal_Formation.png) |
+
+### 22.1.9 Final Wafer after Fabrication
+| ![8u_Higher_Level_Metal_Formation](/docs/images/18Mask_CMOS_Process/8u_Higher_Level_Metal_Formation.png) |
+|:---|
+
 ## Lab: Introduction to Sky130 basic layers layout and LEF using inverter
   * Clone a custom standard cell design from the following github repo for this exercise
     [https://github.com/nickson-jose/vsdstdcelldesign.git](https://github.com/nickson-jose/vsdstdcelldesign.git)
