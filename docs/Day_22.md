@@ -5,8 +5,13 @@ ________________________________________________________________________________
 # Day 22: Library Cell design using Magic and Characterization using Ngspice
 
 ## 22.1 16-Mask CMOS Process
-Steps:
+### 22.1.1 Selecting a substrate with suitable properties
+  - P-type substrate with high resistivity (5~50ohms)
+  - Doping level ($10^{15} cm^{-3}$)
+  - Orientation (100)
 
+| ![1_Substrate](/docs/images/16Mask_CMOS_Process/1_Substrate.png) |
+|:---|
 
 ## Lab: Introduction to Sky130 basic layers layout and LEF using inverter
   * Clone a custom standard cell design from the following github repo for this exercise
