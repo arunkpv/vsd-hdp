@@ -23,6 +23,8 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |[Day 25](/docs/Day_25.md)| Post-placement STA analysis of your Design (RISC-V Myth CPU Core) <br>  * on ss,ff,tt corners <br>  * Compare with Post-synth | ![](https://progress-bar.dev/100/?title=done) |
   |[Day 26](/docs/Day_26.md)| Post-CTS, Post-Routing STA analysis of your Design <br>  * on ss,ff,tt corners <br>  * Compare with previous results | ![](https://progress-bar.dev/100/?title=done) |
 
+| ![VSD-HDP_Certificate_Arun](/docs/images/VSD-HDP_Certificate_Arun.png) |
+|:---:|
 # Day 0: GitHub repo creation, System/ Tools Environment Setup
 
 ## 0.1 System Setup
