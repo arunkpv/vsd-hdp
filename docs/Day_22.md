@@ -64,7 +64,7 @@ ________________________________________________________________________________
 | ![7g_Contacts_Local_Interconnect_Formation](/docs/images/16Mask_CMOS_Process/7g_Contacts_Local_Interconnect_Formation.png) | ![7h_Contacts_Local_Interconnect_Formation](/docs/images/16Mask_CMOS_Process/7h_Contacts_Local_Interconnect_Formation.png) |
 | ![7i_Contacts_Local_Interconnect_Formation](/docs/images/16Mask_CMOS_Process/7i_Contacts_Local_Interconnect_Formation.png) | ![7j_Contacts_Local_Interconnect_Formation](/docs/images/16Mask_CMOS_Process/7j_Contacts_Local_Interconnect_Formation.png) |
 | ![7k_Contacts_Local_Interconnect_Formation](/docs/images/16Mask_CMOS_Process/7k_Contacts_Local_Interconnect_Formation.png) | ![7l_Contacts_Local_Interconnect_Formation](/docs/images/16Mask_CMOS_Process/7l_Contacts_Local_Interconnect_Formation.png) |
-| ![7m_Contacts_Local_Interconnect_Formation](/docs/images/16Mask_CMOS_Process/7m_Contacts_Local_Interconnect_Formation.png) | ![7n_Contacts_Local_Interconnect_Formation](/docs/images/16Mask_CMOS_Process/7n_Contacts_Local_Interconnect_Formation.png) |
+| ![7m_Contacts_Local_Interconnect_Formation](/docs/images/16Mask_CMOS_Process/7m_Contacts_Local_Interconnect_Formation.png) | |
 
 ### 22.1.8 Formation of Higher Level Metal Layers
 | ![8a_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8a_Higher_Level_Metal_Formation.png) | ![8b_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8b_Higher_Level_Metal_Formation.png) |
