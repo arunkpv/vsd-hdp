@@ -32,6 +32,8 @@ Fundamental to all of these processes is photolithography - the formation of thr
 | ![2g_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2g_Creating_ActiveRegion.png) | ![2h_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2h_Creating_ActiveRegion.png) |
 
 ### 22.1.3 N-Well and P-Well Formation
+  - Ion-implantation is used to further change the channel doping to adjust the threshold voltage, $V_{TH}$ as required.
+
 | ![3a_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3a_NWell_PWell_Formation.png) | ![3b_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3b_NWell_PWell_Formation.png) |
 |:---|:---|
 | ![3c_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3c_NWell_PWell_Formation.png) | ![3d_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3d_NWell_PWell_Formation.png) |
@@ -52,6 +54,17 @@ Fundamental to all of these processes is photolithography - the formation of thr
 | ![4m_Gate_Formation](/docs/images/16Mask_CMOS_Process/4m_Gate_Formation.png) | ![4n_Gate_Formation](/docs/images/16Mask_CMOS_Process/4n_Gate_Formation.png) |
 
 ### 22.1.5 Lightly-Doped Drain (LDD) Formation
+  - LDD is formed to prevent hot electron effect and short channel effects.
+    - PMOS Doping profile: P+, P-, N
+    - NMOS doping profile: N+, N-, P
+
+  - Hot Electron Effect
+    - When device size reduces, the electric field in the channel, $E = V/d$ also increases, and the energy of electron and holes attains tremendous become high enough to break si-si bonds leading to some more addition of electron and holes.
+    - Their enegry might be so high that it crosses 3.2eV barrier between Si conduction band and SiO2 conduction band. If it crosses this band it might enters into oxide layer which is present above substate cause reliability issues.
+
+  - Short Channel Effects
+    - WHen device size reduces, the drain field starts to penetrate into the channel and thus reducing the controlling effect of the Gate terminal voltage on the Drain current.
+
 | ![5a_LDD_Formation](/docs/images/16Mask_CMOS_Process/5a_LDD_Formation.png) | ![5b_LDD_Formation](/docs/images/16Mask_CMOS_Process/5b_LDD_Formation.png) |
 |:---|:---|
 | ![5c_LDD_Formation](/docs/images/16Mask_CMOS_Process/5c_LDD_Formation.png) | ![5d_LDD_Formation](/docs/images/16Mask_CMOS_Process/5d_LDD_Formation.png) |
