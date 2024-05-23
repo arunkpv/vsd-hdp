@@ -21,8 +21,8 @@ Fundamental to all of these processes is photolithography - the formation of thr
   - Orientation (100)
   - Substrate doping should be less than the well doping.
 
-| ![1_Substrate](/docs/images/16Mask_CMOS_Process/1_Substrate.png) |
-|:---|
+| ![1_Substrate](/docs/images/16Mask_CMOS_Process/1_Substrate.png) | |
+|:---|:---|
 
 ### 22.1.2 Creating Active Region for the transistors
 | ![2a_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2a_Creating_ActiveRegion.png) | ![2b_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2b_Creating_ActiveRegion.png) |
