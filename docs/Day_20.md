@@ -49,7 +49,7 @@ Main requirements of Digital ASIC Design:
   * PDK
 
 | ![D20_OpenSource_ASIC_Design](/docs/images/D20_OpenSource_ASIC_Design.png) |
-|---|
+|:---|
   
 Open Source RTL IPs and competitive EDA tools have been available.  
 However, an OpenSource PDK was not available until Google collaborated with SkyWater to open source the skywater-130nm PDK.
@@ -61,7 +61,7 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
   * I/O Libraries
 
 | **SKY130 Stackup** ![D20_sky130_stackup](/docs/images/D20_sky130_stackup.png) |
-|---|
+|:---|
 
 **Introduction to OpenLANE**  
   * Started as an Open-Source Flow for a True Open Source Tape-out Experiment
