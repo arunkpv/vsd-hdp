@@ -6,7 +6,7 @@ ________________________________________________________________________________
 
 Here, we take a look at the effect of power supply scaling on the static behaviour of the CMOS Inverter.
 
-### 18.1.1 Lab - Supply Scaling - sky130 Inverter (Wp/Wn = 1u/0.36u, L=0.15u)
+### 18.1.1 Lab - Supply Scaling - sky130 Inverter (Wp/Wn=1u/0.36u, L=0.15u)
 <details> <summary> SPICE File: day5_inv_supplyvariation_Wp1_Wn036.spice </summary>
 
 ```
