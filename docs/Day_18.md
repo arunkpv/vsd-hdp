@@ -130,7 +130,7 @@ plot dc1.V(out) dc2.V(out) dc3.V(out) vs in
 ```
 </details>
 
-| **Output:** <br>  **(1)** The shift in $V_M$ for such a large change in device variations is relatively very small. <br>  **(2)** The variation in the $NM_H$ and $NM_L$ ![CircuitDesignWorkshop_D5_sky130_CMOS_Inv_DeviceVariations](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_sky130_CMOS_Inv_DeviceVariations.png) |
+| **Output:** <br>  **(1)** The shift in $V_M$ for such a large change in device variations is relatively very small. <br>  **(2)** The variation in the $NM_H$ and $NM_L$ <br>  ![CircuitDesignWorkshop_D5_sky130_CMOS_Inv_DeviceVariations](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_sky130_CMOS_Inv_DeviceVariations.png) |
 |:---|
 
 <br>
