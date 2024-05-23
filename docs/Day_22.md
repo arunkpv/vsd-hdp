@@ -21,6 +21,16 @@ ________________________________________________________________________________
 | ![2e_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2e_Creating_ActiveRegion.png) | ![2f_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2f_Creating_ActiveRegion.png) |
 | ![2g_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2g_Creating_ActiveRegion.png) | ![2h_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2h_Creating_ActiveRegion.png) |
 
+### 22.1.3 N-Well and P-Well Formation
+| ![3a_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3a_NWell_PWell_Formation.png) | ![3b_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3b_NWell_PWell_Formation.png) |
+|:---|:---|
+| ![3c_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3c_NWell_PWell_Formation.png) | ![3d_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3d_NWell_PWell_Formation.png) |
+| ![3e_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3e_NWell_PWell_Formation.png) | ![3f_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3f_NWell_PWell_Formation.png) |
+| ![3g_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3g_NWell_PWell_Formation.png) | ![3h_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3h_NWell_PWell_Formation.png) |
+| ![3i_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3i_NWell_PWell_Formation.png) | ![3j_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3j_NWell_PWell_Formation.png) |
+| ![3k_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3k_NWell_PWell_Formation.png) | ![3l_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3l_NWell_PWell_Formation.png) |
+| ![3m_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3m_NWell_PWell_Formation.png) | ![3n_NWell_PWell_Formation](/docs/images/16Mask_CMOS_Process/3n_NWell_PWell_Formation.png) |
+
 ## Lab: Introduction to Sky130 basic layers layout and LEF using inverter
   * Clone a custom standard cell design from the following github repo for this exercise
     [https://github.com/nickson-jose/vsdstdcelldesign.git](https://github.com/nickson-jose/vsdstdcelldesign.git)
