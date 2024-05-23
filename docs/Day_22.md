@@ -5,6 +5,16 @@ ________________________________________________________________________________
 # Day 22: Library Cell design using Magic and Characterization using Ngspice
 
 ## 22.1 16-Mask CMOS Process
+The fabrication of an integrated circuit requires a variety of physical and chemical processes performed on a semiconductor substrate. In general, the various processes used to make an IC fall into three categories: film deposition, patterning, and semiconductor doping.
+  - Films of both conductors (such as polysilicon, aluminum, copper etc.) and insulators (various forms of silicon dioxide, silicon nitride, and others) are used to connect and isolate transistors and their components.
+  - Selective doping of various regions of silicon allow the conductivity of the silicon to be changed.
+
+Fundamental to all of these processes is photolithography - the formation of three-dimensional relief images on the substrate for subsequent transfer of the pattern to the substrate.  
+**_Source:_** [https://www.lithoguru.com/scientist/lithobasics.html](https://www.lithoguru.com/scientist/lithobasics.html)
+
+| **Typical Sequence of photolithographic steps for a positive resist** <br>  ![Photo_Lithography](/docs/images/16Mask_CMOS_Process/Photo_Lithography.png) |
+|:---|
+
 ### 22.1.1 Selecting a substrate with suitable properties
   - P-type substrate with high resistivity (5~50ohms)
   - Doping level ($10^{15} cm^{-3}$)
