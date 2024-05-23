@@ -60,6 +60,9 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
   * Digital Standard Cell Libraries
   * I/O Libraries
 
+| ![D20_sky130_stackup](/docs/images/D20_sky130_stackup.png) |
+|---|
+
 **Introduction to OpenLANE**  
   * Started as an Open-Source Flow for a True Open Source Tape-out Experiment
   * **Main Goal:** Produce a clean GDSII with no human intervention (no-human-in-the-loop)
