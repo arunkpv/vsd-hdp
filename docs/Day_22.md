@@ -9,9 +9,17 @@ ________________________________________________________________________________
   - P-type substrate with high resistivity (5~50ohms)
   - Doping level ($10^{15} cm^{-3}$)
   - Orientation (100)
+  - Substrate doping should be less than the well doping.
 
 | ![1_Substrate](/docs/images/16Mask_CMOS_Process/1_Substrate.png) |
 |:---|
+
+### 22.1.2 Creating Active Region for the transistors
+| ![2a_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2a_Creating_ActiveRegion.png) | ![2b_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2b_Creating_ActiveRegion.png) |
+|:---|:---|
+| ![2c_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2c_Creating_ActiveRegion.png) | ![2d_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2d_Creating_ActiveRegion.png) |
+| ![2e_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2e_Creating_ActiveRegion.png) | ![2f_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2f_Creating_ActiveRegion.png) |
+| ![2g_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2g_Creating_ActiveRegion.png) | ![2h_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2h_Creating_ActiveRegion.png) |
 
 ## Lab: Introduction to Sky130 basic layers layout and LEF using inverter
   * Clone a custom standard cell design from the following github repo for this exercise
