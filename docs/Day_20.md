@@ -60,7 +60,7 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
   * Digital Standard Cell Libraries
   * I/O Libraries
 
-| ![D20_sky130_stackup](/docs/images/D20_sky130_stackup.png) |
+| **SKY130 Stackup** ![D20_sky130_stackup](/docs/images/D20_sky130_stackup.png) |
 |---|
 
 **Introduction to OpenLANE**  
