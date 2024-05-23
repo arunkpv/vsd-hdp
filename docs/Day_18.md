@@ -70,14 +70,14 @@ The DC characteristics of the static CMOS inverter turn out to be rather insensi
 
 ### 18.2.1 Sources of Variation
 **1) Etching Process Variations**
-| ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_1.png) |
-|:---|
-| ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_2.png) |
+| ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_1](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_1.png) | ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_2](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_2.png) |
+|:---|:---|
+
 
 **2) Oxide Thickness Variation**
-| ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_3.png) |
-|:---|
-| ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_4.png) |
+| ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_3](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_3.png) | ![CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D5_CMOS_Inverter_Robustness_DeviceVariations_4.png) |
+|:---|:---|
+
 
 ### 18.2.2 Lab - Device Variations - sky130 Inverter - (Wp:7u --> 0.42u, Wn:0.36u --> 7u, L=0.15u)
 
