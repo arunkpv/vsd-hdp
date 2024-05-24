@@ -12,8 +12,19 @@ The fabrication of an integrated circuit requires a variety of physical and chem
 Fundamental to all of these processes is photolithography - the formation of three-dimensional relief images on the substrate for subsequent transfer of the pattern to the substrate.  
 **_Source:_** [https://www.lithoguru.com/scientist/lithobasics.html](https://www.lithoguru.com/scientist/lithobasics.html)
 
-| **Typical Sequence of photolithographic steps for a positive resist** <br>  ![Photo_Lithography](/docs/images/16Mask_CMOS_Process/Photo_Lithography.png) |
+| **Typical Sequence of photolithographic steps for a positive resist** <br>  <br>  ![Photo_Lithography](/docs/images/16Mask_CMOS_Process/Photo_Lithography.png) |
 |:---|
+
+
+<ins>**Steps:**</ins>
+  1) Selecting a substrate with suitable properties
+  2) Creating Active Region for the transistors
+  3) N-Well and P-Well Formation
+  4) Formation of Gate
+  5) Lightly-Doped Drain (LDD) Formation
+  6) Source and Drain Formation
+  7) Formation of Contacts and Local Interconnects
+  8) Formation of Higher Level Metal Layers
 
 ### 22.1.1 Selecting a substrate with suitable properties
   - P-type substrate with high resistivity (5~50ohms)
@@ -64,6 +75,8 @@ Fundamental to all of these processes is photolithography - the formation of thr
 
   - Short Channel Effects
     - WHen device size reduces, the drain field starts to penetrate into the channel and thus reducing the controlling effect of the Gate terminal voltage on the Drain current.
+
+  - Nowadays, the Source/Drain Extension is used to mitigate the effects of SCE.
 
 | ![5a_LDD_Formation](/docs/images/16Mask_CMOS_Process/5a_LDD_Formation.png) | ![5b_LDD_Formation](/docs/images/16Mask_CMOS_Process/5b_LDD_Formation.png) |
 |:---|:---|
@@ -141,7 +154,7 @@ Fundamental to all of these processes is photolithography - the formation of thr
       ``` 
     * Add a pulse source to the input node: `Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)`
     * Transient simulation: `.tran 1n 20n`
-    * Finally, for some weird reasons, ngspice throws an **unknown subckt** error with transistor instance names starting with `X`. So, modify the instance names to M0 and M1
+    * Since we are using the separate NMOS and PMOS models and not the sub-circuits from the lib files, modify the instance names to M0 and M1
 
     | **SPICE deck to run trans sim using the extracted netlist**<br>  ![D22_Inverter_Extracted_SPICE_netlist_trans_sim](/docs/images/D22_Inverter_Extracted_SPICE_netlist_trans_sim.png) |
     |:---|
