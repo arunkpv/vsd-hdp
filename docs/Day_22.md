@@ -36,6 +36,8 @@ Fundamental to all of these processes is photolithography - the formation of thr
 |:---|:---|
 
 ### 22.1.2 Creating Active Region for the transistors
+**Note:** Zoom-in using the browser as needed for readability :)
+
 | ![2a_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2a_Creating_ActiveRegion.png) | ![2b_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2b_Creating_ActiveRegion.png) |
 |:---|:---|
 | ![2c_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2c_Creating_ActiveRegion.png) | ![2d_Creating_ActiveRegion](/docs/images/16Mask_CMOS_Process/2d_Creating_ActiveRegion.png) |
