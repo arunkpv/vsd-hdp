@@ -142,7 +142,7 @@ However, an OpenSource PDK was not available until Google collaborated with SkyW
   <kbd> ![D20_AntennaRules_FakeDiode_RealDiode](/docs/images/D20_AntennaRules_FakeDiode_RealDiode.png) </kbd>
 
 
-### Lab: Familiarize with OpenLANE flow
+### 20.1.3 Lab: Familiarize with OpenLANE flow
 
 **Objectives**:  
 Using an existing design provided in the OpenLANE package to:
@@ -184,6 +184,8 @@ Using an existing design provided in the OpenLANE package to:
 
 | ![D20_Lab2_run_synthesis](/docs/images/D20_Lab2_run_synthesis.png) |
 |-|
+
+<details> <summary> Synthesis Statistics </summary>
 
        === picorv32a ===
        
@@ -255,6 +257,7 @@ Using an existing design provided in the OpenLANE package to:
             sky130_fd_sc_hd__or4bb_2        2
        
           Chip area for module '\picorv32a': 147712.918400
+</details>
       
    * **Flop Ratio**
      ```

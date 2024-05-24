@@ -39,7 +39,7 @@ ________________________________________________________________________________
 
 **Now Floorplan is ready for PnR**
 
-### Lab: Run floorplan using OpenLANE and review the layout in Magic
+### 21.1.1 Lab: Run floorplan using OpenLANE and review the layout in Magic
   * To run the floorplan creation, execute the following command from the OpenLANE shell: `run_floorplan`
        
   <kbd> ![D21_Lab_3a_run_floorplan](/docs/images/D21_Lab_3a_run_floorplan.png) </kbd>
@@ -75,7 +75,7 @@ ________________________________________________________________________________
   4) Congestion aware placement using RePlAce followed by detailed placement using OpenDP
      * Global placement: HPWL (Half-Parameter Wire Length) based
 
-### Lab: Run placement
+### 21.2.1 Lab: Run placement
   * The `run_placement` command runs the global placement followed by detailed placement.
   * First the global placement happens, where the main objective is to reduce the wire length. Algorithm used is Half-Parameter Wire Length (HPWL).
   * Then detailed placement is performed to legalize the globally placed components.
