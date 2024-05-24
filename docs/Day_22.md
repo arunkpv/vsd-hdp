@@ -113,9 +113,9 @@ Fundamental to all of these processes is photolithography - the formation of thr
 | ![8i_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8i_Higher_Level_Metal_Formation.png) | ![8j_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8j_Higher_Level_Metal_Formation.png) |
 | ![8k_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8k_Higher_Level_Metal_Formation.png) | ![8l_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8l_Higher_Level_Metal_Formation.png) |
 | ![8m_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8m_Higher_Level_Metal_Formation.png) | ![8n_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8n_Higher_Level_Metal_Formation.png) |
-| ![8o_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8o_Higher_Level_Metal_Formation.png) | ![8p_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8p_Higher_Level_Metal_Formation.png) |
-| ![8q_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8q_Higher_Level_Metal_Formation.png) | ![8r_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8r_Higher_Level_Metal_Formation.png) |
-| ![8s_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8s_Higher_Level_Metal_Formation.png) | ![8t_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8t_Higher_Level_Metal_Formation.png) |
+| ![8o_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8o_Higher_Level_Metal_Formation.png) | ![8q_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8q_Higher_Level_Metal_Formation.png) |
+| ![8r_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8r_Higher_Level_Metal_Formation.png) | ![8s_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8s_Higher_Level_Metal_Formation.png) |
+| ![8t_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8t_Higher_Level_Metal_Formation.png) | |
 
 ### 22.1.9 Final Wafer after Fabrication
 | ![8u_Higher_Level_Metal_Formation](/docs/images/16Mask_CMOS_Process/8u_Higher_Level_Metal_Formation.png) |
