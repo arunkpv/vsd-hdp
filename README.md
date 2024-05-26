@@ -23,8 +23,9 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |[Day 25](/docs/Day_25.md)| Post-placement STA analysis of your Design (RISC-V Myth CPU Core) <br>  * on ss,ff,tt corners <br>  * Compare with Post-synth | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 26](/docs/Day_26.md)| Post-CTS, Post-Routing STA analysis of your Design <br>  * on ss,ff,tt corners <br>  * Compare with previous results | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 27](/docs/Day_27.md)| Re-run the automated flow with ftarget of 100MHz and perform STA at various stages <br>  **Pending:** Documentation | ![](https://progress-bar.dev/90/?title=done) |
- |[Misc.](/docs/Misc.md)| A collection of related miscellaneous information and notes. |  |
 
+ | [Misc.](/docs/Misc.md) | A collection of related miscellaneous information and notes. |
+ |---|---|
 
 <!--
 | ![VSD-HDP_Certificate_Arun](/docs/images/VSD-HDP_Certificate_Arun.png) |
