@@ -22,7 +22,7 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |[Days 20-24](/docs/Day_14.md)| Advanced Physical Design using OpenLANE/ Sky130 <ul> <li>[Day 20](/docs/Day_20.md) Inception of open-source EDA, OpenLANE and Sky130 PDK</li> <li>[Day 21](/docs/Day_21.md) Floorplan considerations, Placement, Library Cells</li> <li>[Day 22](/docs/Day_22.md) Library Cell design using Magic and Characterization using Ngspice</li> <li>[Day 23](/docs/Day_23.md) Pre-layout timing analysis and importance of good clock tree</li> <li>[Day 24](/docs/Day_24.md) Final steps for RTL2GDS using tritonRoute and openSTA</li> </ul> | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 25](/docs/Day_25.md)| Post-placement STA analysis of your Design (RISC-V Myth CPU Core) <br>  * on ss,ff,tt corners <br>  * Compare with Post-synth | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 26](/docs/Day_26.md)| Post-CTS, Post-Routing STA analysis of your Design <br>  * on ss,ff,tt corners <br>  * Compare with previous results | ![](https://progress-bar.dev/100/?title=done) |
- |[Day 27](/docs/Day_27.md)| Re-run the flow to ftarget of 100MHz and perform STA at various stages <br>  * on ss,ff,tt corners <br>  * Compare with previous results <br>  **Pending:** Documentation | ![](https://progress-bar.dev/90/?title=done) |
+ |[Day 27](/docs/Day_27.md)| Re-run the automated flow with ftarget of 100MHz and perform STA at various stages <br>  **Pending:** Documentation | ![](https://progress-bar.dev/90/?title=done) |
  |[Misc.](/docs/Misc.md)| A collection of related miscellaneous information and notes. |  |
 
 
