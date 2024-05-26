@@ -152,6 +152,158 @@ $~~~~~~~~ \boxed{V_M = \dfrac{V_{THn} + r(V_{DD} + V_{THp})}{1+r}}, ~~~~ where ~
 | ![CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_4](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_CMOS_Inverter_Robustness_SwitchingThreshold_4.png) |
 |:---:|
 
+### 16.2.2 Lab: CMOS Inverter Switching Threshold - sky130 (Wp/Wn ratio sweep, L=0.15u)
+<details> <summary> SPICE File: day3_inv_vm.spice </summary>
+
+```
+*** Model Description ***
+.param temp=27
+.param Wp=0.84
+.param Wn=0.36
+
+*** Including sky130 library files ***
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+*** Netlist Description ***
+XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w={Wp} l=0.15
+XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w={Wn}l=0.15
+Cload out 0 50fF
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+*** Simulation Commands ***
+.dc Vin 0 1.8 0.01
+
+.control
+let idx=1
+let loops=40
+let Wp_incr=0.84
+let Wn_incr=0.36
+let Wp_start=0.84
+let Wn_start=0.36*20
+set c = " "
+let vector_Vm = vector(loops)
+let vector_Wp_Wn_ratio = vector(loops)
+
+dowhile idx <= loops
+    if (idx <= 20)
+        let new_Wn = Wn_start - ((idx-1) * Wn_incr)
+        let new_Wp = 0.84
+    end
+    if (idx >= 21)
+        let new_Wn = 0.36
+        let new_Wp = Wp_start + ((idx-20) * Wp_incr)
+    end
+
+    alterparam Wp=$&new_Wp
+    alterparam Wn=$&new_Wn
+    reset
+    run
+    meas dc Vm find V(out) when V(out)=V(in)
+    let vector_Vm[idx-1] = Vm
+    let vector_Wp_Wn_ratio[idx-1] = ($&new_Wp/ $&new_Wn)
+    print ($&new_Wp/ $&new_Wn)
+    set c = ( $c dc{$&idx}.V(out) )
+    let idx = idx + 1
+end
+
+set nolegend
+plot $c xlabel 'Vin' ylabel 'Vout'
+plot vector_Vm vs vector_Wp_Wn_ratio xlabel 'Wp/Wn' ylabel 'Vm (V)'
+*+ xlimit vector_Wp_Wn_ratio[0] vector_Wp_Wn_ratio[39] ylimit vector_Vm[0] vector_Vm[39]
+.endc
+
+.end
+```
+</details>
+
+| **Output:** <br>  ![CircuitDesignWorkshop_D3_sky130_CMOS_Inv_WpWnRatio_Sweep](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_sky130_CMOS_Inv_WpWnRatio_Sweep.png) |
+|:---|
+
+### 16.2.3 Lab: CMOS Inverter t_pd - sky130 (Wp/Wn ratio sweep, L=0.15u)
+<details> <summary> SPICE File: day3_inv_vm_tran.spice </summary>
+
+```
+*** Model Description ***
+.param temp=27
+.param Wp=0.84
+.param Wn=0.36
+
+*** Including sky130 library files ***
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+*** Netlist Description ***
+XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w={Wp} l=0.15
+XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w={Wn}l=0.15
+Cload out 0 50fF
+Vdd vdd 0 1.8V
+Vin in 0 PULSE(0V 1.8V 0 0.1ns 0.1ns 2ns 4ns)
+
+*** Simulation Commands ***
+.tran 1n 10n
+
+.control
+let idx=1
+let loops=40
+let Wp_incr=0.84
+let Wn_incr=0.36
+let Wp_start=0.84
+let Wn_start=0.36*20
+
+let vector_trise = vector(loops)
+let vector_tfall = vector(loops)
+let vector_tpLH  = vector(loops)
+let vector_tpHL  = vector(loops)
+let vector_Wp_Wn_ratio = vector(loops)
+
+let vdd=1.8
+let slew_low_rise_thr=0.2*vdd
+let slew_high_rise_thr=0.8*vdd
+let slew_high_fall_thr=0.8*vdd
+let slew_low_fall_thr=0.2*vdd
+let tp_thr=0.5*vdd
+
+dowhile idx <= loops
+    if (idx <= 20)
+        let new_Wn = Wn_start - ((idx-1) * Wn_incr)
+        let new_Wp = 0.84
+    end
+    if (idx >= 21)
+        let new_Wn = 0.36
+        let new_Wp = Wp_start + ((idx-20) * Wp_incr)
+    end
+
+    alterparam Wp=$&new_Wp
+    alterparam Wn=$&new_Wn
+    reset
+    run
+    
+    meas tran t_rise TRIG v(out) VAL=slew_low_rise_thr RISE=1 TARG v(out) VAL=slew_high_rise_thr RISE=1
+    meas tran t_fall TRIG v(out) VAL=slew_high_fall_thr FALL=1 TARG v(out) VAL=slew_low_fall_thr FALL=1
+    meas tran t_pLH TRIG v(in) VAL=tp_thr FALL=2 TARG v(out) VAL=tp_thr RISE=2
+    meas tran t_pHL TRIG v(in) VAL=tp_thr RISE=2 TARG v(out) VAL=tp_thr FALL=2
+    
+    let vector_trise[idx-1] = t_rise
+    let vector_tfall[idx-1] = t_fall
+    let vector_tpLH[idx-1] = t_pLH
+    let vector_tpHL[idx-1] = t_pHL
+    
+    let vector_Wp_Wn_ratio[idx-1] = ($&new_Wp/ $&new_Wn)
+    print ($&new_Wp/ $&new_Wn)
+    let idx = idx + 1
+end
+
+plot vector_trise vector_tfall vs vector_Wp_Wn_ratio xlabel 'Wp/Wn' ylabel 't_r, t_f'
+plot vector_tpLH vector_tpHL vs vector_Wp_Wn_ratio xlabel 'Wp/Wn' ylabel 't_pLH, t_pHL'
+.endc
+
+.end
+```
+</details>
+
+| **Output:** <br>  ![CircuitDesignWorkshop_D3_sky130_CMOS_Inv_WpWnRatio_Sweep_tpd](/docs/images/CircuitDesignWorkshop/CircuitDesignWorkshop_D3_sky130_CMOS_Inv_WpWnRatio_Sweep_tpd.png) |
+|:---|
+
 <br>
 
 _________________________________________________________________________________________________________  
