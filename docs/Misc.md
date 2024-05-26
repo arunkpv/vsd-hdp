@@ -71,7 +71,7 @@ ________________________________________________________________________________
 |:---:|
 
 ### 2.2 Yosys preserving signals during Optimization
-  - If you want any module, wire or reg from getting optimized out during synthesis by Yosys or abc, add a (* keep *) attribute to their respective declarations.
+  - If you want any module, wire or reg from getting optimized out during synthesis by Yosys or abc, add a `(* keep *)` attribute to their respective declarations.
   - This will prevent Yosys & abc from removing them even if they are unused.
     - An example use-case is when using a hardcoded test program with a sequence of instruction memory entries to verify a CPU core.
 
@@ -79,6 +79,14 @@ ________________________________________________________________________________
   - [Digital VLSI Design (RTL to GDS) course at Bar-Ilan University by Prof. Adam Teman](https://www.youtube.com/watch?v=GIPhBfenqMc&list=PLZU5hLL_713x0_AV_rVbay0pWmED7992G)
   - [Digital-on-top Physical Verification (Fullchip LVS/DRC)](https://www.youtube.com/watch?v=Hq6QD8aX2Q0&list=PLZU5hLL_713xp5sDexQMVdOM86l_wP5w8&index=1)
   - [Advanced Process Technologies](https://www.youtube.com/watch?v=5FEmD8ARF1g&list=PLZU5hLL_713x06MZ4OwMwnYGEeszuckZK)
+
+### 2.4 Generate timing lib files for your design using OpenSTA
+  - OpenSTA supports generating the timing lib file for your design using the command: `write_timing_model`
+
+### 2.5 diychip.org: Browse the sky130 PDK standard cells
+  - [https://diychip.org/sky130/sky130_fd_sc_hd/](https://diychip.org/sky130/sky130_fd_sc_hd/)
+
+ 
 
 <br>
 
