@@ -37,12 +37,8 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
   * The first line of a TL-X file, called the **"File Format Line"**, must identify the TL-X File Format Version and HDL Language, as well as a URL to the language specification.  
     For example, for a TL-Verilog source file using m4 macro pre-processing language, the first line will look like as follows:  
     `\m4_TLV_version 1d: tl-x.org`
-    <br>
-    
   * To this File Format line in the source file, we can add the required command-line arguments to be passed to Sandpiper, as shown in the following example:  
     `\m4_TLV_version 1d -p verilog --bestsv --noline --inlineGen --verbose: tl-x.org`
-    <br>
-
 <!--
     **NOTE:** Based on my observation, the argument `--iArgs` needs to be provided in the terminal itself for it to take effect for some reason.
     <br>
@@ -51,15 +47,12 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
 #### **10.1.1.2 Providing the SandPiper arguments in the command-line/ shell**
   * The first line in the source file - i.e., the "File Format Line" can be kept as it is and all the required arguments to sandpiper can be provided in the terminal.  
     The first line will remain unchanged in the standard format as follows: `\m4_TLV_version 1d: tl-x.org`
-    <br>
-
-  * The command-line invoking `sandpiper-saas` now needs to include all the required arguments.
-  * So the command-line to be executed with the above arguments added to the File Format line in the source file is:  
-    `sandpiper-saas -i <input_tlv_file.tlv> -o <output_file.v> --outdir <output_dir> --bestsv --noline --inlineGen --verbose --iArgs -p verilog`
-    <br>
-
+  * The command-line invoking `sandpiper-saas` now needs to include all the required arguments. So the command-line to be executed is:  
+    ```
+    sandpiper-saas -i <input_tlv_file.tlv> -o <output_file.v> --outdir <output_dir> --bestsv --noline --inlineGen --verbose --iArgs -p verilog
+    ```
   * To specify the target HDL language, either the project (`-p`) argument or the target HDL (`--hdl`) argument can be used.
-    * When the `-p verilog` or `--hdl verilog` argument is used, it needs to be provided as the last item in the command-line to avoid a bug with the argument parsing. (A link to the gitlab repo with this bug fixed is provided in _**Method 2**_ below)
+    * When the `-p verilog` or `--hdl verilog` argument is used, it needs to be provided as the last item in the command-line to avoid a bug with the argument parsing. A link to the [gitlab repo](https://gitlab.com/arunkumarpv/sandpiper-saas.git) with this bug fixed is provided in **Method 2** below.
 
 ### **10.1.2 <ins>Method 1:</ins> Using the Makerchip IDE**
   * The Makerchip IDE provides within itself indirect access to Sandpiper - i.e., the compilation output result files can be accessed via the IDE's Editor ("E") dropdown menu.
@@ -67,20 +60,11 @@ SandPiper TL-Verilog compiler, developed by Redwood EDA can be used to convert T
   * In this case, as we do not have direct access to sandpiper tool, all the required arguments need to be provided in the source file itself.
 
 **<ins>Steps:</ins>**
-  1) Enter the TL-Verilog code in the Makerchip IDE's Editor interface. Modify the **File Format Line** in the source file to include all the sandpiper arguments that you need.
-  2) Under the Editor ("E") dropdown menu, choose **Compile/ Sim** to perform the TL-Verilog code compilation and simulation.
-     |![D10_TLV_to_Verilog_using_MakerChipIDE_1](/docs/images/D10_TLV_to_Verilog_using_MakerChipIDE_1.png)|
-     |-|
-     
-  3) Under the Editor ("E") dropdown menu, choose **Open Results**.
-     * This will open up a new webpage that has links to the last SystemVerilog output files of the compilation.
-       |![D10_TLV_to_Verilog_using_MakerChipIDE_3](/docs/images/D10_TLV_to_Verilog_using_MakerChipIDE_3.png)|
-       |-|
-     
-  * Alternately, under the Editor ("E") dropdown menu, choose **Show Verilog**.
-    * This will open up a new webpage that shows the last compiled SystemVerilog results, along with some statistics about your TL-Verilog and SystemVerilog code.
-      |![D10_TLV_to_Verilog_using_MakerChipIDE_2](/docs/images/D10_TLV_to_Verilog_using_MakerChipIDE_2.png)|
-      |-|
+| |
+|:---|
+| <br>  1) Enter the TL-Verilog code in the Makerchip IDE's Editor interface. Modify the **File Format Line** in the source file to include all the sandpiper arguments that you need. <br>  2) Under the Editor ("E") dropdown menu, choose **Compile/ Sim** to perform the TL-Verilog code compilation and simulation. <br>  <br>  ![D10_TLV_to_Verilog_using_MakerChipIDE_1](/docs/images/D10_TLV_to_Verilog_using_MakerChipIDE_1.png) |
+| <br>  3.a) Under the Editor ("E") dropdown menu, choose **Open Results**. <br>  <br>  ![D10_TLV_to_Verilog_using_MakerChipIDE_3](/docs/images/D10_TLV_to_Verilog_using_MakerChipIDE_3.png) |
+| <br>  3.b) Alternately, under the Editor ("E") dropdown menu, choose **Show Verilog**. <br>  This will open up a new webpage that shows the last compiled SystemVerilog results, along with some statistics about your TL-Verilog and SystemVerilog code. <br>  <br>  ![D10_TLV_to_Verilog_using_MakerChipIDE_2](/docs/images/D10_TLV_to_Verilog_using_MakerChipIDE_2.png) |
 
 ### **10.1.3 <ins>Method 2:</ins> Using Sandpiper-SaaS**
   * Install Sandpiper-SaaS by following the steps in the following link: [https://pypi.org/project/sandpiper-saas/](https://pypi.org/project/sandpiper-saas/)
