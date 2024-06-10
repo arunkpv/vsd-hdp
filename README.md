@@ -2,7 +2,7 @@
 This GitHub repository is created as part of attending the VLSI Hardware Development Program ([VSD-HDP](https://www.vlsisystemdesign.com/hdp/), Cohort: 21 October, 2023 – 29 December, 2023).
 <br />
 <br />
- **Progress Status**
+ **Table of Contents (with Progress Status)**
  | Day # | Topic(s) Covered | Status |
  |---|---|---|
  |[Day 0](/docs/Day0.md) | GitHub repo creation, System/ Tools Setup | ![](https://progress-bar.dev/100/?title=done) |
@@ -10,11 +10,7 @@ This GitHub repository is created as part of attending the VLSI Hardware Develop
  |[Day 2](/docs/Day2.md) | <ul> <li>Familiarization of .lib file structure and various timing models (QTMs/ETMs)</li> <li>Hierarchical vs. Flat synthesis</li><li>Various Flip-Flop designs</li> </ul> | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 3](/docs/Day3.md) | Logic Synthesis Optimizations<ul><li>Combinational Logic Optimizations</li><li>Sequential Logic Optimizations</li></ul> | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 4](/docs/Day4.md) | Gate Level Simulation (GLS) and Synthesis-Simulation mismatch | ![](https://progress-bar.dev/100/?title=done) |
- |[Day 5](/docs/Day5.md) | Introduction to RISC-V ISA and GNU Compiler Toolchain | ![](https://progress-bar.dev/100/?title=done) |
- |[Day 6](/docs/Day6.md) | Introduction to ABI and basic verification flow | ![](https://progress-bar.dev/100/?title=done) |
- |[Day 7](/docs/Day7.md) | Digital Logic with TL-Verilog and Makerchip | ![](https://progress-bar.dev/100/?title=done) |
- |[Day 8](/docs/Day8.md) | Basic RISC-V CPU Microarchitecture | ![](https://progress-bar.dev/100/?title=done) |
- |[Day 9](/docs/Day9.md) | Complete Pipelined RISC-V CPU Microarchitecture | ![](https://progress-bar.dev/100/?title=done) |
+ |[Days 5-9](/docs/Day5.md) | RISC-V based MYTH (Microprocessor for You in Thirty Hours) <ul> <li>[Day 5](/docs/Day5.md) Introduction to RISC-V ISA and GNU Compiler Toolchain</li> <li>[Day 6](/docs/Day6.md) Introduction to ABI and basic verification flow</li> <li>[Day 7](/docs/Day7.md) Digital Logic with TL-Verilog and Makerchip</li> <li>[Day 8](/docs/Day8.md) Basic RISC-V CPU Microarchitecture</li> <li>[Day 9](/docs/Day9.md) Complete Pipelined RISC-V CPU Microarchitecture</li>  | ![](https://progress-bar.dev/100/?title=done) |
  |[Day 10](/docs/Day_10.md)| GLS of the implemented RISC-V CPU Core <ul><li>Conversion of TL-Verilog code to Verilog/ SystemVerilog</li> <li>GLS of the RISC-V CPU Core</li> </ul> | ![](https://progress-bar.dev/100/?title=done) |
  |[Days 11-13](/docs/Day_11.md)| Advanced Synthesis and STA with DC <ul> <li>[Day 11](/docs/Day_11.md) Introduction to STA</li> <li>[Day 12](/docs/Day_12.md) Advanced SDC Constraints</li> <li>[Day 13](/docs/Day_13.md) STA using OpenSTA</li> </ul> **Pending:** Documentation | ![](https://progress-bar.dev/90/?title=progress) |
  |[Days 14-18](/docs/Day_14.md)| Circuit Design using SKY130 PDK <ul> <li>[Day 14](/docs/Day_14.md) CMOS Fundamentals</li> <li>[Day 15](/docs/Day_15.md) Velocity Saturation and CMOS Inverter VTC</li> <li>[Day 16](/docs/Day_16.md) CMOS Switching Threshold and Dynamic Simulations</li> <li>[Day 17](/docs/Day_17.md) CMOS Noise Margin Robustness Evaluation</li> <li>[Day 18](/docs/Day_18.md) CMOS Power Supply and Device Variation Robustness Evaluation</li> </ul> | ![](https://progress-bar.dev/100/?title=done) |
