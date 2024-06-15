@@ -236,10 +236,24 @@ Ref:
 <br />
   
 ## 2.2 Lab: Hierarchical vs. Flat Synthesis
-In this experiment, we will take a look at how the Yosys tool performs the synthesis and generates the netlst for a multi-module design with and without preserving the design hierarchy.  
-For this example, we will use the design file, `multiple_modules.v`, which contains some logic implementation using two sub-modules.  
+In hierarchical synthesis, the design is broken down into multiple hierarchical levels. Each level represents a different abstraction of the design, ranging from high-level functional blocks to detailed logic gates.  
+The ASIC or chip gets divided into smaller and simpler modules or blocks, each having its own functionality and interface, and  the top-level module defines the connectivity of the various instantiation(s) of these sub-modules thus realizing the overall functionality/ behavior as well as performance of the chip.
 
-### 2.2.1 Hierarchical
+  - **Advantages:**
+    - _**Modularity & reusability:**_ Allows designers to manage complexity by breaking down the design into manageable blocks and thus allowing reusability of these blocks.
+    - _**Ease of Design:**_ Reduced complexity now that each team is dealing with smaller sub-modules. This facilitates a "Divide and conquer" approach in parallelising the design effort as different teams and/or engineers can work on different modules independently leading to improved productivity. Faster runtimes for synthesis and analysis EDA tools since each team will be working on individual modules which are small compared to the complete chip.
+    - _**Optimization:**_ Each block can be synthesized independently, optimizing performance and area at each level.
+
+  - **Applications:** Commonly used in complex designs where the entire circuit cannot be synthesized at once due to size or complexity, like modern SoCs, CPUs, GPUs, DSPs etc.
+
+  - **Disadvantages:**
+    - _**Hierarchical Partitioning Overhead:**_ Creating and managing multiple hierarchical levels requires careful planning and overhead in terms of design partitioning and inter-level communication.
+    - _**Timing Closure Challenges:**_ Timing closure can be more challenging in hierarchical synthesis due to the interaction between timing constraints at different levels. Ensuring timing requirements are met across all levels can be complex.
+    - _**Verification Complexity:**_ Verification tasks become more complex with hierarchical designs, as each level may require separate verification efforts before integration testing can be performed.
+    - _**Design Consistency:**_ Maintaining design consistency across different levels of hierarchy (especially with different designers working on different modules) can be a challenge, leading to potential integration issues.
+
+<br>
+
   Perform the hierarchical synthesis from the Yosys shell using the following commands:  
   ```shell
   read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
@@ -326,8 +340,26 @@ endmodule
   ```
 -->
 
-### 2.2.2 Flattened
-  To flatten the hierarchical design, the command **flatten** is used following which we can write the netlist, as shown below:  
+### 2.2.2 Flat Design
+Flat design approach considers the entire ASIC/ chip as a single monolithic entity. There is no concept of sub-modules or hierarchy andthe entire design is synthesized as a single unit without hierarchical decomposition, directly into the standard cells, IPs and macros available in the design library.
+
+  - **Advantages:**
+    - _**Simplicity:**_ Easier for small designs where breaking into hierarchical levels might not be necessary.
+    - _**Performance Optimization:**_ Can potentially optimize performance across the entire design as a whole.
+    - _**Optimization:**_ Each block can be synthesized independently, optimizing performance and area at each level.
+
+  - **Applications:** Suitable for smaller designs where the overhead of managing hierarchical levels may not be justified.
+Often used in simpler digital circuits or where the design size does not necessitate hierarchical partitioning.
+
+  - **Disadvantages:**
+    - _**Scalability Issues:**_ Flat synthesis becomes impractical for very large designs due to the sheer size and complexity, making it difficult to handle efficiently within a single synthesis pass.
+    - _**Limited Modularity:**_ Lack of hierarchical decomposition reduces modularity, making it harder to reuse or independently optimize different parts of the design.
+    - _**Complexity in Optimization:**_ Optimizing a large and complex design as a whole can be challenging, as changes in one part of the design can have unintended consequences elsewhere.
+    - _**EDA Tool Efficiency:**_ Synthesis tools may struggle to handle large flat designs efficiently, resulting in longer synthesis times or potential resource constraints.
+
+<br>
+
+  To flatten the hierarchical design in Yosys, the command **flatten** is used following which we can write the netlist, as shown below:  
   ```shell
   flatten
   write_verilog -noattr multiple_modules_flat.v
