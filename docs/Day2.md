@@ -32,7 +32,9 @@ The ASIC or chip gets divided into smaller and simpler modules or blocks, each h
     - _**Modularity & reusability:**_ Allows designers to manage complexity by breaking down the design into manageable blocks and thus allowing reusability of these blocks.
     - _**Ease of Design:**_ Reduced complexity now that each team is dealing with smaller sub-modules. This facilitates a "Divide and conquer" approach in parallelising the design effort as different teams and/or engineers can work on different modules independently leading to improved productivity. Faster runtimes for synthesis and analysis EDA tools since each team will be working on individual modules which are small compared to the complete chip.
     - _**Optimization:**_ Each block can be synthesized independently, optimizing performance and area at each level.
+
   - **Applications:** Commonly used in complex designs where the entire circuit cannot be synthesized at once due to size or complexity, like modern SoCs, CPUs, GPUs, DSPs etc.
+
   - **Disadvantages:**
     - _**Hierarchical Partitioning Overhead:**_ Creating and managing multiple hierarchical levels requires careful planning and overhead in terms of design partitioning and inter-level communication.
     - _**Timing Closure Challenges:**_ Timing closure can be more challenging in hierarchical synthesis due to the interaction between timing constraints at different levels. Ensuring timing requirements are met across all levels can be complex.
@@ -134,8 +136,10 @@ Flat design approach considers the entire ASIC/ chip as a single monolithic enti
     - _**Simplicity:**_ Easier for small designs where breaking into hierarchical levels might not be necessary.
     - _**Performance Optimization:**_ Can potentially optimize performance across the entire design as a whole.
     - _**Optimization:**_ Each block can be synthesized independently, optimizing performance and area at each level.
+
   - **Applications:** Suitable for smaller designs where the overhead of managing hierarchical levels may not be justified.
 Often used in simpler digital circuits or where the design size does not necessitate hierarchical partitioning.
+
   - **Disadvantages:**
     - _**Scalability Issues:**_ Flat synthesis becomes impractical for very large designs due to the sheer size and complexity, making it difficult to handle efficiently within a single synthesis pass.
     - _**Limited Modularity:**_ Lack of hierarchical decomposition reduces modularity, making it harder to reuse or independently optimize different parts of the design.
