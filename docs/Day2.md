@@ -135,7 +135,6 @@ Flat design approach considers the entire ASIC/ chip as a single monolithic enti
   - **Advantages:**
     - _**Simplicity:**_ Easier for small designs where breaking into hierarchical levels might not be necessary.
     - _**Performance Optimization:**_ Can potentially optimize performance across the entire design as a whole.
-    - _**Optimization:**_ Each block can be synthesized independently, optimizing performance and area at each level.
 
   - **Applications:** Suitable for smaller designs where the overhead of managing hierarchical levels may not be justified.
 Often used in simpler digital circuits or where the design size does not necessitate hierarchical partitioning.
