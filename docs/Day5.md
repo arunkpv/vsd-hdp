@@ -55,9 +55,10 @@ References:
 
   * [**bbl**](https://github.com/riscv-software-src/riscv-pk?tab=readme-ov-file#risc-v-proxy-kernel-and-boot-loader ), the Berkeley Boot Loader is a supervisor execution environment for tethered RISC-V systems. It is designed to host the RISC-V Linux port.
 
-The following slide from the RISC-V Software Tools Bootcamp presentation shows the overview of the Spike + pk  workflow:  
-| ![D5_RISCV_ISA_Simulator_Flow](D5_RISCV_ISA_Simulator_Flow.png) |
+The following slide from the RISC-V Software Tools Bootcamp presentation shows the overview of the **Spike + pk**  workflow:  
+| ![D5_RISCV_ISA_Simulator_Flow](/docs/images/D5_RISCV_ISA_Simulator_Flow.png) |
 |:---:|
+
 _Ref:_ [Software Tools Bootcamp](https://riscv.org/wp-content/uploads/2015/02/riscv-software-stack-tutorial-hpca2015.pdf)
 
 >Write a C program to compute the sum of first N natural numbers, compile using RISC-V GCC, simulate using Spike RISC-V ISA Simulator and disassemble to view the assembly code
