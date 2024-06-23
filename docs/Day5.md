@@ -10,11 +10,12 @@ RISC-V is an open standard instruction set architecture based on established red
 ## 5.1 RISC-V ISA base and extensions
 RISC-V has a modular design, consisting of alternative base parts, with added optional extensions. The ISA base and its extensions are developed in a collective effort between industry, the research community and educational institutions. The base specifies instructions (and their encoding), control flow, registers (and their sizes), memory and addressing, logic (i.e., integer) manipulation, and ancillaries. The base alone can implement a simplified general-purpose computer, with full software support, including a general-purpose compiler.  
 
+The RISC-V ISA is defined as a Base integer ISA, which is the basic necessity for the implemetation of any CPU core. In addition to that it also has optional extensions to the base ISA. The base RISC-V ISA has a little-endian memory system. The standard is maintained by the RISC-V foundation.  
+
 The standard extensions are specified to work with all of the standard bases, and with each other without conflict.  
+
 ![D5_RISC-V_ISA_Base_and_Extensions](/docs/images/D5_RISC-V_ISA_Base_and_Extensions.png)  
 <br>
-
-The RISC-V ISA is defined as a Base integer ISA, which is the basic necessity for the implemetation of any CPU core. In addition to that it also has optional extensions to the base ISA. The base RISC-V ISA has a little-endian memory system. The standard is maintained by the RISC-V foundation.  
 
 ## 5.2 RISC-V Instruction Formats
 ![D5_32-bit_RISC-V_instruction_formats](/docs/images/D5_32-bit_RISC-V_instruction_formats.png)  
@@ -27,10 +28,12 @@ References:
 ## 5.3 RISC-V ISA Simulator and Compiler toolchain setup
   * The RISC-V ISA simulator & GNU Compiler toolchain can be installed by running the following script from the terminal:
     [run.sh](https://github.com/kunalg123/riscv_workshop_collaterals/blob/master/run.sh)
+    * **Note:**
+      * We are not building the RISC-V C/C++ cross-compiler from source and instead taking a pre-built compiler from SiFive: [https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz](https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz).
+      * To build the RISC-V GNU Compiler Toolchain from scratch, please refer to the steps in the following GitHub repo: [https://github.com/riscv-collab/riscv-gnu-toolchain](https://github.com/riscv-collab/riscv-gnu-toolchain).
     <br>
 
-  * The following GitHub repo contains sample programs and the verilog code for a RV32I processor core (PicoRV32):
-    [RISC-V Workshop Collaterals](https://github.com/kunalg123/riscv_workshop_collaterals.git)
+  * The following GitHub repo - [RISC-V Workshop Collaterals](https://github.com/kunalg123/riscv_workshop_collaterals.git) -  contains sample programs and the verilog code for a RV32I processor core (PicoRV32).
     <br>
 
   * More information on how to use the toolchain to compile a source file, simulation of the object file and using the interactive debug mode can be found in the README page of the Spike RISC-V simulator GitHub repository:
@@ -43,7 +46,19 @@ References:
       3) [https://five-embeddev.com/toolchain/2019/06/26/gcc-targets/](https://five-embeddev.com/toolchain/2019/06/26/gcc-targets/)
       4) [https://github.com/riscv-non-isa/riscv-toolchain-conventions](https://github.com/riscv-non-isa/riscv-toolchain-conventions)
 
+
 ### 5.3.1 Lab: RISC-V program simulation using Spike RISC-V ISA Simulator
+
+  * [**Spike**](https://github.com/riscv-software-src/riscv-isa-sim) is a RISC-V ISA Simulator that implements a functional model of one or more RISC-V harts. (A **hart** is a hardware thread in RISC-V terminology)
+
+  * [**pk**](https://github.com/riscv-software-src/riscv-pk?tab=readme-ov-file#risc-v-proxy-kernel-and-boot-loader) is the RISC-V proxy kernel. It is a lightweight application execution environment that can host statically-linked RISC-V ELF binaries. It is designed to support tethered RISC-V implementations with limited I/O capability and thus handles I/O-related system calls by proxying them to a host computer.
+
+  * [**bbl**](https://github.com/riscv-software-src/riscv-pk?tab=readme-ov-file#risc-v-proxy-kernel-and-boot-loader ), the Berkeley Boot Loader is a supervisor execution environment for tethered RISC-V systems. It is designed to host the RISC-V Linux port.
+
+The following slide from the RISC-V Software Tools Bootcamp presentation shows the overview of the Spike + pk  workflow:  
+| ![D5_RISCV_ISA_Simulator_Flow](D5_RISCV_ISA_Simulator_Flow.png) |
+|:---:|
+_Ref:_ [Software Tools Bootcamp](https://riscv.org/wp-content/uploads/2015/02/riscv-software-stack-tutorial-hpca2015.pdf)
 
 >Write a C program to compute the sum of first N natural numbers, compile using RISC-V GCC, simulate using Spike RISC-V ISA Simulator and disassemble to view the assembly code
 
@@ -69,8 +84,14 @@ riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1toN.o sum1toN.c
         -march=ISA-string option specifies the RISC-V ISA for which the object code is to be generated.
         -O<number>, -Ofast, -Os, -Og etc. specify the optimize option to be used by the compiler.
 ```
-Spike simulation output:  
-![D5_sum1toN_compile_simulate](/docs/images/D5_sum1toN_compile_simulate.png)
+  
+**Spike simulation atop the proxy kernel (pk):**
+```shell
+spike pk sum1toN.o
+```
+Output:  
+| ![D5_sum1toN_compile_simulate](/docs/images/D5_sum1toN_compile_simulate.png) |
+|:---:|
 <br>
 
 **Disassemble command:**
@@ -80,10 +101,12 @@ riscv64-unknown-elf-objdump -d sum1toN.o
         -d, --disassemble flag displays the assembler contents of the executable sections.
 ```
 Output:  
-![D5_disassemble](/docs/images/D5_disassemble.png)
+| ![D5_disassemble](/docs/images/D5_disassemble.png) |
+|:---:|
 <br>
 
-Comparing the generated assembly code for main function with -O1 vs -Ofast compiler options:
+
+Comparing the generated assembly code for main function with **-O1 vs. -Ofast** compiler options:
 | -O1 | -Ofast |
 |-----------------------|------------------|
 | ![D5_disassemble_sum1toN_O1](/docs/images/D5_disassemble_sum1toN_O1.png) | ![D5_disassemble_sum1toN_Ofast](/docs/images/D5_disassemble_sum1toN_Ofast.png) |
@@ -103,7 +126,8 @@ spike -d pk sum1toN.o
 <br>
 
 _Snapshot showing usage of Spike Interactive Debug Mode_
-![D5_Spike_InteractiveDebugMode](/docs/images/D5_Spike_InteractiveDebugMode.png)
+| ![D5_Spike_InteractiveDebugMode](/docs/images/D5_Spike_InteractiveDebugMode.png) |
+|:---:|
 <br>
 
 ```shell
