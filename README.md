@@ -1360,7 +1360,7 @@ vvp -N testbench.vvp
 
 ______________________________________________________________________________________________________
 
-### **ADDENDUM:**  
+### **Addendum: To view the waves in Gktwave**  
 To dump the VCD file from the simulation using iverilog and further view the waves in Gktwave:
   * In `testbench.v`, comment out the undef line for WRITE_VCD and add a define for the same:
     ```
