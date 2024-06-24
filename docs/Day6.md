@@ -15,7 +15,7 @@ For more detailed information, refer to the [RISC-V ABI Specification v1.0](http
 
 ## 6.1 Lab: Rewrite the program to find the sum of first N natural numbers utilizing ABI function calls
 
-C Program: 1to9_custom.c
+**C Program:** 1to9_custom.c
 ```C
 #include <stdio.h>
 
@@ -30,7 +30,7 @@ int main() {
 ```
 <br>
 
-Assembly program: load.s
+**Assembly program:** load.s
 ```asm
 .section .text
 .global load
@@ -106,52 +106,53 @@ vvp -N testbench.vvp
 |:---:|
 <br>
 
-**Addendum:**  
+______________________________________________________________________________________________________
+
+### **ADDENDUM:**  
 To dump the VCD file from the simulation using iverilog and further view the waves in Gktwave:
   * In `testbench.v`, comment out the undef line for WRITE_VCD and add a define for the same:
-  ```
-  //`undef WRITE_VCD
-  define WRITE_VCD
-  ```
+    ```
+    //`undef WRITE_VCD
+    define WRITE_VCD
+    ```
   * Additionally, in `picorv32.v`, add the following define to enable the debug wires to view the internal Register File:
-  ```
-  `define DEBUGREGS
-  ```
+    ```
+    `define DEBUGREGS
+    ```
 
-  * Modified source files:
-
-  _**1to9_custom.c**_
-  ```c
-  #include <stdio.h>
-  
-  extern int load(int x, int y); 
-  
-  int main() {
-  	int result = 0;
+  * Modified source files:  
+    _**1to9_custom.c**_
+    ```c
+    #include <stdio.h>
+    
+    extern int load(int x, int y); 
+    
+    int main() {
+      int result = 0;
       int count = 10;
       result = load(0x0, count+1);
       printf("Sum of number from 1 to %d is %d\n", count, result); 
-  }
-  ```
+    }
+    ```
 
-  _**load.S**_
-  ```assembly
-  .section .text
-  .global load
-  .type load, @function
+    _**load.S**_
+    ```assembly
+    .section .text
+    .global load
+    .type load, @function
+    
+    load:
+        add 	a4, a0, zero  // Initialize sum register a4 with 0x0
+        add 	a2, a0, a1    // storecount of 10 in register a2. Register a1 is loaded with 0xa (decimal 10) from main program
+        add	a3, a0, zero    // Initialize intermediate sum register a3 by 0
+    loop:
+        add 	a4, a3, a4    // Incremental addition
+        addi 	a3, a3, 1     // Increment intermediate register by 1	
+        blt 	a3, a2, loop  // If a3 is less than a2, branch to label named <loop>
+        add a0, a4, zero    // Store final result to register a0 so that it can be read by main program
+        ret
+    ```
   
-  load:
-      add 	a4, a0, zero  // Initialize sum register a4 with 0x0
-      add 	a2, a0, a1    // storecount of 10 in register a2. Register a1 is loaded with 0xa (decimal 10) from main program
-      add	a3, a0, zero    // Initialize intermediate sum register a3 by 0
-  loop:
-      add 	a4, a3, a4    // Incremental addition
-      addi 	a3, a3, 1     // Increment intermediate register by 1	
-      blt 	a3, a2, loop  // If a3 is less than a2, branch to label named <loop>
-      add a0, a4, zero    // Store final result to register a0 so that it can be read by main program
-      ret
-  ```
-
   **Output:**
   | ![D6_picorv32_waves_1](/docs/images/D6_picorv32_waves_1.png) |
   |:---:|
