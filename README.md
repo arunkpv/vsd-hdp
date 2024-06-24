@@ -1274,10 +1274,10 @@ C Program: 1to9_custom.c
 extern int load(int x, int y); 
 
 int main() {
-	int result = 0;
-       	int count = 100;
-    	result = load(0x0, count+1);
-    	printf("Sum of number from 1 to %d is %d\n", count, result); 
+    int result = 0;
+    int count = 100;
+    result = load(0x0, count+1);
+    printf("Sum of number from 1 to %d is %d\n", count, result); 
 }
 ```
 <br>
@@ -1289,33 +1289,52 @@ Assembly program: load.s
 .type load, @function
 
 load:
-	add 	a4, a0, zero //Initialize sum register a4 with 0x0
-	add 	a2, a0, a1   // store count of 10 in register a2. Register a1 is loaded with 0xa
-                             // (decimal 10) from main program
-	add	a3, a0, zero // initialize intermediate sum register a3 by 0
-loop:	add 	a4, a3, a4   // Incremental addition
-	addi 	a3, a3, 1    // Increment intermediate register by 1	
-	blt 	a3, a2, loop // If a3 is less than a2, branch to label named <loop>
-	add	a0, a4, zero // Store final result to register a0 so that it can be read by
-                             // main program
-	ret
+    add 	a4, a0, zero //Initialize sum register a4 with 0x0
+    add 	a2, a0, a1   // store count of 10 in register a2. Register a1 is loaded with 0xa
+                       // (decimal 10) from main program
+    add	a3, a0, zero   // initialize intermediate sum register a3 by 0
+loop:
+    add 	a4, a3, a4   // Incremental addition
+    addi 	a3, a3, 1    // Increment intermediate register by 1	
+    blt 	a3, a2, loop // If a3 is less than a2, branch to label named <loop>
+    add	a0, a4, zero   // Store final result to register a0 so that it can be read by
+                       // main program
+    ret
 ```
 <br>
 
 The program can be compiled using the gcc and simulated using Spike as follows:
-![D6_1to9_custom_ABI](/docs/images/D6_1to9_custom_ABI.png)
+| ![D6_1to9_custom_ABI](/docs/images/D6_1to9_custom_ABI.png) |
+|:---:|
 <br>
 
 Disassembly of object code of above progam:
-![D6_ABI_Disassembly](/docs/images/D6_ABI_Disassembly.png)
-![D6_ABI_load_loop_subroutines](/docs/images/D6_ABI_load_loop_subroutines.png)
+| ![D6_ABI_Disassembly](/docs/images/D6_ABI_Disassembly.png) |
+|:---:|
+| ![D6_ABI_load_loop_subroutines](/docs/images/D6_ABI_load_loop_subroutines.png) |
 <br>
 
 ## 6.2 Lab: Simulate the above C program on a RISC-V CPU
 For this exercise, we will use the design files from the following GitHub repository: [https://github.com/kunalg123/riscv_workshop_collaterals.git](https://github.com/kunalg123/riscv_workshop_collaterals.git)  
-Execute the following file from shell:  
 
-rv32im.sh:
+The following figure shows the Hardware + Firmware verification flow:
+| ![D6_Basic_Verification_Flow](/docs/images/D6_Basic_Verification_Flow.png) |
+|:---:|
+
+Basically what we are doing here is:
+  * Our objective is to use run the program as a testbench on the PicoRV32 RISC-V CPU processor design coded in the picorv32.v verilog file.
+  * For this, all the source files used are compiled into object code using gcc with rv32im as the target RISC-V ISA. Source file(s) include:
+    * File(s) to perform the required CPU initialization
+    * File(s) that define the various system calls used
+    * File(s) containing the actual user program 
+  * Then, the various object files are linked together into an ELF file using gcc
+  * The ELF file is then converted into a hex verilog memory file, ```firmware.hex``` using riscv64-unknown-elf-objcopy
+  * These 8-bit hex files are converted into 32-bit format using a python script, ```hex8tohex32.py```
+  * Finally, a functional simulation is launched using iverilog, where the testbench loads the firmware.hex into the PicoRV32 CPU core for execution
+
+To run the flow, execute the following file from shell:  
+
+**rv32im.sh:**
 ```shell
 riscv64-unknown-elf-gcc -c -mabi=ilp32 -march=rv32im -o 1to9_custom.o 1to9_custom.c 
 riscv64-unknown-elf-gcc -c -mabi=ilp32 -march=rv32im -o load.o load.S
@@ -1335,19 +1354,60 @@ chmod -x testbench.vvp
 vvp -N testbench.vvp
 ```
 
-Basically what we are doing here is:
-  * Our objective is to use run the program as a testbench on the PicoRV32 RISC-V CPU processor design coded in the picorv32.v verilog file.
-  * For this, all the source files used are compiled into object code using gcc with rv32im as the target RISC-V ISA. Source file(s) include:
-    * File(s) to perform the required CPU initialization
-    * File(s) that define the various system calls used
-    * File(s) containing the actual user program 
-  * Then, the various object files are linked together into an ELF file using gcc
-  * The ELF file is then converted into a hex verilog memory file, ```firmware.hex``` using riscv64-unknown-elf-objcopy
-  * These 8-bit hex files are converted into 32-bit format using a python script, ```hex8tohex32.py```
-  * Finally, a functional simulation is launched using iverilog, where the testbench loads the firmware.hex into the PicoRV32 CPU core for execution
-
-![D6_Lab_firmware_iverilog_tb_simulation](/docs/images/D6_Lab_firmware_iverilog_tb_simulation.png)
+| ![D6_Lab_firmware_iverilog_tb_simulation](/docs/images/D6_Lab_firmware_iverilog_tb_simulation.png) |
+|:---:|
 <br>
+
+**Addendum:**  
+To dump the VCD file from the simulation using iverilog and further view the waves in Gktwave:
+  * In `testbench.v`, comment out the undef line for WRITE_VCD and add a define for the same:
+  ```
+  //`undef WRITE_VCD
+  define WRITE_VCD
+  ```
+  * Additionally, in `picorv32.v`, add the following define to enable the debug wires to view the internal Register File:
+  ```
+  `define DEBUGREGS
+  ```
+
+  * Modified source files:
+
+  _**1to9_custom.c**_
+  ```c
+  #include <stdio.h>
+  
+  extern int load(int x, int y); 
+  
+  int main() {
+  	int result = 0;
+      int count = 10;
+      result = load(0x0, count+1);
+      printf("Sum of number from 1 to %d is %d\n", count, result); 
+  }
+  ```
+
+  _**load.S**_
+  ```assembly
+  .section .text
+  .global load
+  .type load, @function
+  
+  load:
+      add 	a4, a0, zero  // Initialize sum register a4 with 0x0
+      add 	a2, a0, a1    // storecount of 10 in register a2. Register a1 is loaded with 0xa (decimal 10) from main program
+      add	a3, a0, zero    // Initialize intermediate sum register a3 by 0
+  loop:
+      add 	a4, a3, a4    // Incremental addition
+      addi 	a3, a3, 1     // Increment intermediate register by 1	
+      blt 	a3, a2, loop  // If a3 is less than a2, branch to label named <loop>
+      add a0, a4, zero    // Store final result to register a0 so that it can be read by main program
+      ret
+  ```
+
+  **Output:**
+  | ![D6_picorv32_waves_1](/docs/images/D6_picorv32_waves_1.png) |
+  |:---:|
+  | ![D6_picorv32_waves_2](/docs/images/D6_picorv32_waves_2.png) |
 
 _________________________________________________________________________________________________________  
 # Day 7: Digital Logic with TL-Verilog and Makerchip
