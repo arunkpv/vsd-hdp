@@ -1,5 +1,5 @@
 # VSD-HDP
-This GitHub repository is created as part of attending the VLSI Hardware Development Program ([VSD-HDP](https://www.vlsisystemdesign.com/hdp/), Cohort: 21 October, 2023 – 29 December, 2023).
+This GitHub repository is created as part of attending the VLSI Hardware Development Program ([VSD-HDP](https://www.vlsisystemdesign.com/hdp/), Cohort: ~~21-Oct. 2023 to 29-Dec. 2023~~, transferred to 20-Jan. 2024 to 30-Mar. 2024 ).
 <br />
 <br />
  **Table of Contents (with Progress Status)**
