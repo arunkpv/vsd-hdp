@@ -7,7 +7,7 @@ The instructions to build and instal OpenSTA from source is provided in the foll
 [https://github.com/parallaxsw/OpenSTA](https://github.com/parallaxsw/OpenSTA)  
 
 Install all the build dependencies and the external library dependencies first and then follow the installation steps below:  
-(For newer builds, `libeigen-dev` is a required external library, which can be installed using apt or other package managers)  
+(For newer builds, `libeigen3-dev` is a required external library, which can be installed using apt or other package managers)  
 ```
 git clone https://github.com/parallaxsw/OpenSTA.git
 cd OpenSTA
