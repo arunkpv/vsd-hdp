@@ -28,11 +28,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # ------------------------------------------------------------
 # Install OpenLane
 # ------------------------------------------------------------
-RUN git clone --depth 1 https://github.com/The-OpenROAD-Project/OpenLane.git && \
-    cd OpenLane/ && \
-    make && \
-    make test && \
-    cd ..
+#RUN git clone --depth 1 https://github.com/The-OpenROAD-Project/OpenLane.git && \
+#    cd OpenLane/ && \
+#    make && \
+#    make test && \
+#    cd ..
 
 
 # -----------------------------
