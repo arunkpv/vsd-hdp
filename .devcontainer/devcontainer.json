@@ -1,0 +1,18 @@
+{
+  "name": "VSD-HDP (RISC-V MYTH)",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "forwardPorts": [6080],
+  "portsAttributes": {
+    "6080": {
+      "label": "noVNC Desktop",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "overrideCommand": false,
+  "remoteUser": "root",
+  "containerEnv": {
+    "DISPLAY": ":1"
+  }
+}
