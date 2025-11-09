@@ -1,6 +1,9 @@
 # syntax=docker/dockerfile:1
 FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04
 
+# Enable privileged mode
+USER root
+
 SHELL ["/bin/bash", "-lc"]
 ENV DEBIAN_FRONTEND=noninteractive
 ENV DISPLAY=:1
