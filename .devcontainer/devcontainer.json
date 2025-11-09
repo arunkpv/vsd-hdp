@@ -11,6 +11,7 @@
     }
   },
   "overrideCommand": false,
+  "privileged": true
   "remoteUser": "root",
   "containerEnv": {
     "DISPLAY": ":1"
