@@ -25,6 +25,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-venv \
  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# ------------------------------------------------------------
+# Install OpenLane
+# ------------------------------------------------------------
+RUN git clone --depth 1 https://github.com/The-OpenROAD-Project/OpenLane.git && \
+    cd OpenLane/ && \
+    make && \
+    make test && \
+    cd ..
+
+
 # -----------------------------
 # noVNC desktop (supervisor)
 # -----------------------------
