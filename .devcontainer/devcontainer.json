@@ -1,23 +1,31 @@
 {
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:latest": {
-      "version": "latest"
-    }
-  },
   "name": "VSD-HDP (RISC-V MYTH)",
   "build": {
     "dockerfile": "Dockerfile"
   },
-  "forwardPorts": [6080],
-  "portsAttributes": {
-    "6080": {
-      "label": "noVNC Desktop",
-      "onAutoForward": "openBrowser"
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:latest": {
+      "version": "latest"
+    },
+    {
+    "ghcr.io/devcontainers/features/common-utils:2": {}
     }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }
+    }
+  },
+  "forwardPorts": [6080, 5901],
+  "portsAttributes": {
+    "6080": { "label": "noVNC Desktop", "onAutoForward": "openBrowser" },
+    "5901": { "label": "VNC TCP Tunnel" },
   },
   "overrideCommand": false,
   "privileged": true,
-  "remoteUser": "root",
+  "remoteUser": "vscode"
   "containerEnv": {
     "DISPLAY": ":1"
   }
