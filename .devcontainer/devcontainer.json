@@ -7,9 +7,7 @@
     "ghcr.io/devcontainers/features/docker-in-docker:latest": {
       "version": "latest"
     },
-    {
     "ghcr.io/devcontainers/features/common-utils:2": {}
-    }
   },
   "customizations": {
     "vscode": {
@@ -21,11 +19,11 @@
   "forwardPorts": [6080, 5901],
   "portsAttributes": {
     "6080": { "label": "noVNC Desktop", "onAutoForward": "openBrowser" },
-    "5901": { "label": "VNC TCP Tunnel" },
+    "5901": { "label": "VNC TCP Tunnel" }
   },
   "overrideCommand": false,
   "privileged": true,
-  "remoteUser": "vscode"
+  "remoteUser": "vscode",
   "containerEnv": {
     "DISPLAY": ":1"
   }

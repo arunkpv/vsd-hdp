@@ -26,4 +26,4 @@ vncserver -kill :1 || true
 # Start new session
 vncserver :1 -geometry 1440x900 -depth 24
 
-echo "✅ VNC server started on :1 (port 5901)"
+echo "VNC server started on :1 (port 5901)"
